@@ -14,6 +14,7 @@ def Bubble_sort(alist):
             break
 
     return alist
+        #冒泡
         
 alist=[54,65,43,54,56,22,34,21,234,90]
 
