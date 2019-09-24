@@ -1,7 +1,8 @@
 1.在本地写代码
-(可选)2.git diff  看看你的改动
-(可选)3.git status 看看你改动的文件
-4. git add 文件名  把你改动的文件添加到git上，用 . 代表所有改动的文件
-5. git commit  提交这次操作，写个提交信息 保存 关掉文件
-6. git push  推到github
-(可选)7. git pull 把github的东西拉下来
+(可选)2. git stash 把你的改动丢弃
+(可选)3. git diff  看看你的改动
+(可选)4. git status 看看你改动的文件
+5. git add 文件名  把你改动的文件添加到git上，用 . 代表所有改动的文件
+6. git commit  提交这次操作，写个提交信息 保存 关掉文件
+7. git push  推到github
+(可选)8. git pull 把github的东西拉下来
