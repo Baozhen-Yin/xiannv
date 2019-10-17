@@ -9,13 +9,15 @@ def Bubble_sort(alist):
                 alist[i],alist[i+1]=alist[i+1],alist[i]
                 #有交换行为设为 False
                 isSorted= False
-        #无交换行为 ，直接跳过本次循环
+        #无交换行为 ，直接跳过本次循环git
         if isSorted:
             break
 
     return alist
         #冒泡
-        
-alist=[54,65,43,54,56,22,34,21,234,90]
 
-print(Bubble_sort(alist))
+if __name__=="__main__":
+    alist=[2,3,4,1,2,456,332,445,223,433,235,56,233,23,45,89]
+    print(alist)
+    Bubble_sort(alist)
+    print(alist)
