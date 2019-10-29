@@ -10,11 +10,10 @@ def merge_sort(alist):
     right_li=merge_sort(alist[mid:])#調用從中間到末尾
     
     #將兩個有序的子序列合并為一個新的整體
-    # merge_sort(left_li,right_li)
     left_pointer,right_pointer=0,0 #左右兩個指針都指向第一個索引
     result=[] #新列表
 
-    while left_pointer<len(left_li) and right_pointer<len(right_li):
+    while left_pointer<len(left_li) and right_pointer<len(right_li): #[2,3,4,1,2,456,332,445,223,433,235,56,233,23,45,89]
         if left_li[left_pointer]<right_li[right_pointer]:
             result.append(left_li[left_pointer]) #左邊的小拿左邊的
             left_pointer +=1

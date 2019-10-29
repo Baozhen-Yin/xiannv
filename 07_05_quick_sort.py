@@ -6,7 +6,7 @@ def quick_sort(alist,first,last):
     low_index=first #經歷過的元素比mid_value小
     high_index=last #經歷過的元素比mid_value大
 
-    while low_index<high_index:
+    while low_index<high_index: #2,3,4,1,2,456,332,445,223,433,235,56,233,23,45,89
         #high 左移
         while low_index<high_index and alist[high_index] >= mid_value: #把等於的情況放到一邊去處理
             high_index-=1
