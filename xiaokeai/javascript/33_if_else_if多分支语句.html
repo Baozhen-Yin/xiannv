@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //1.多分支语句 就是利用多个条件来选择不同的语句执行 得到不同的结果 多选1 的过程
+        //2.if else if 语句是多分支语句
+        //3.语法规范
+        // if (条件表达式1) {
+        //     //语句1
+        // } else if (条件表达式2) {
+        //     //语句2
+        // } else if (条件表达式3) {
+        //     //语句3
+        // } else {
+        //     //语句4
+        // }
+        // //4.执行思路 
+        //如果条件表达式1 满足就执行 语句1 执行完毕后，退出整个if 分支语句
+        var score = prompt('请输入你的成绩'); //按从大到小的思路
+        if (score >= 90) {
+            alert('您的成绩等级为A');
+        } else if (score >= 80) {
+            alert('您的成绩等级为B');
+        } else if (score >= 70) {
+            alert('您的成绩等级为C');
+        } else if (score >= 60) {
+            alert('您的成绩等级为D');
+        } else if (score < 60) {
+            alert('您的成绩等级为E');
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
