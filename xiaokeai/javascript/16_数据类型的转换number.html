@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+    //parseInt(string)  将string类型转化成整数数值型   例：parselnt('78')
+    //parseFloat(string)  将string类型转化为浮点数类型 例：parseFloat('78.21')
+    //number 强制转化函数 将srting类型转化为数值型 Number('12')
+    //js隐式转换（- * /） 利用算术运算隐式转换为数值型 '12'-0 减乘除
+    var age = prompt('请输入你的可爱值');
+    console.log(age);
+    // 1. 得到的是整数
+    console.log(parseInt(age)); //变蓝 数值型
+    console.log(parseInt('3.1415')); //3 取整
+    console.log(parseInt('120px'));  //120 去掉了单位px
+    console.log(parseInt('eafds120px'));  //NaN 不是数字开头
+    //2. 得到小数或者浮点数
+    console.log(parseFloat('3.14')); //3.14
+    console.log(parseFloat('120px')); //120
+    console.log(parseFloat('safsafa120px')); //NaN
+    //3.利用Number变量
+    var str ='123';
+    console.log(Number(str));  //123
+    console.log(Number('12'));//12
+
+    //4.利用算术运算
+    console.log('12'-0); //12
+    console.log('123'*1);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

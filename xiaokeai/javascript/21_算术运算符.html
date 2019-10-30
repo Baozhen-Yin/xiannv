@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // +加 -减 *乘 /除 %取余数
+        console.log(1 + 1); //2 左右两侧敲空格
+        console.log(1 - 1); //0
+        console.log(1 / 2); //0.5
+        console.log(1 * 5); //5
+        //1.取余（取模）
+        console.log(25 % 4); //1
+        console.log(5 % 3); //2
+        console.log(3 % 5); //3
+        //2.浮点数 算术运算里面会有问题
+        console.log(0.1 + 0.2); //0.30000000004 出错
+        console.log(0.07 * 100); //7.00000000001 出错
+        //3.我们不能直接拿浮点数进行比较 是否相等 精度会有误差
+        var num = 0.1 + 0.2;
+        console.log(num == 0.3); //false 不相等
+
+        //余数是零则证明它能够被整除  是%算术运算符的主要用途
+        console.log(1 + 2 * 3); //7 有优先级先乘除后加减 右括号先括号里面
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
