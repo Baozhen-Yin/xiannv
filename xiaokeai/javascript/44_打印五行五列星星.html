@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var star = '';
+        for (i = 1; i <= 5; i++) { //外层循环负责打印五行
+            for (j = 1; j <= 5; j++) { //里层循环负责一行打印五颗星星
+                star = star + '⭐' //如果一行打印完五个星星就要另起一行
+            }
+            star = star + '\n';
+        }
+        console.log(star);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

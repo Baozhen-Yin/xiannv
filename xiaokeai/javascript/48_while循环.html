@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //1.while 循环语法结构 while 当。。。的时候
+        // while (条件表达式) {
+        //     //循环体
+        // }
+        //当条件表达式结果为true 则执行循环体 否则 退出循环
+        // num = 1;
+        // while (num <= 100) {
+        //     console.log('尹宝祯最可爱');
+        //     num++;
+        // }
+        //计算1-100的和
+        sum = 0;
+        var j = 1;
+        while (j <= 100) {
+            sum = sum + j;
+            j++;
+
+        }
+        console.log(sum);
+
+        var secret = prompt('你觉得尹宝祯是仙女吗?'); //为了第一次询问弹出
+        while (secret !== '是') {
+            secret = prompt('说实话') //为了结果不对第二次弹出
+        }
+        alert('我也觉得我是仙女')
+
+
+
+        //里面应该有计数器 初始化变量
+        //里面应该也有操作表达式 完成计数器的更新 防止死循环
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
