@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //1.问
+        console.log(num); // 压根儿没有num 直接输出 num is not defined
+
+
+        //2.问
+        console.log(num); //undefined  因为先进行了预解析
+        var num = 10;
+        //相当于执行了以下代码
+        var num;
+        console.log(num);
+        num = 10; //var不在了
+
+
+        //3.问
+        fn();
+
+        function fn() {
+            console.log(11); //11 自定义函数 调用函数写在上面下面都没有问题
+        }
+
+        //4问 """坑2"
+        fun();
+        var fun = function() {
+                console.log(22); //fun is not a function  不能写在上面
+            }
+            //函数表达式调用必须写在函数表达式下面
+
+
+        //相当于执行了以下代码
+        var fun;
+        fun();
+        fun = function() {
+                console.log(22); //fun is not a function  不能写在上面
+            } //var被提升 但是不赋值
+
+
+        //js代码是由浏览器中js解释器来执行的,js解释器在运行js代码的时候分为两步.
+        //预解析和代码执行
+        //(1).预解析: js引擎会把js里面所有的 var function 提升到当前作用域的最前面 不提升""赋值""操作
+        //(2).代码执行 按照代码书写顺序从上到下
+        //2.预解析分为 变量预解析(变量提升) 和函数预解析 (函数提升)
+        //(1)变量提升 就是把所有的变量声明提升到当前作用域的最前面 不提升赋值操作
+        //(2)函数提升 就是把所有的函数声明提升到当前作用域最前面 不调用函数
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

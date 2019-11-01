@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function fn() {
+            var num = 123;
+
+            function fn1() {
+                console.log(num); //123
+            }
+            fn1();
+        }
+        var num = 456;
+        fn();
+
+        //0级链 fn(), num=456
+        //1级链 num=123 , fn1()
+        //2级链 console.log(sum);
+        //站在目标一层一层往外查找console.log(num);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

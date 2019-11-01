@@ -1,10 +1,10 @@
 def Bubble_sort(alist):
     n=len(alist)
-    for j in range(n-1):
-        #每一轮初始是True 用于判断元素是否需要交换 
+    for j in range(0,n-1): #循环多少躺
+        #每一轮初始是True 用于判断元素是否需要交换 趟数
         isSorted=True
        
-        for i in range(0,n-j-1):
+        for i in range(0,n-j-1): #交换多少次
             if alist[i]>alist[i+1]:
                 alist[i],alist[i+1]=alist[i+1],alist[i]
                 #有交换行为设为 False

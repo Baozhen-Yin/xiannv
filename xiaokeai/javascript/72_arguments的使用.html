@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //当我们不确定有几个参数传递的时候，可以用arguments来获取，arguments实际上是当前函数的一个内置对象，所有函数都内置了
+        //arguments对象，在此对象中存储了传递的所有实参
+
+        //arguements的使用
+        function fn() {
+            //     console.log(arguments); //Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+            //     console.log(arguments.length); //3
+            //     console.log(arguments[1]); //2
+            // } // arguments 展示形式是一种伪数组
+            // fn(1, 2, 3);
+            //可以按数组方式遍历argumens
+            for (var i = 0; i < arguments.length; i++) {
+                console.log(arguments[i]);
+            }
+        }
+        fn(1, 2, 3); //1,2,3,undefined
+        //伪数组 并不是一种真正意义上的数组
+        //1.具有数组的 length属性
+        //2.按照索引的方式进行存储 0开始
+        //3.他没有真正数的一些方法 例如 pop() push()
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
