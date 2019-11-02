@@ -18,13 +18,14 @@
 
         //相当于执行了以下操作
         var num;
+        num = 10;
 
         function fun() {
             var num;
             console.log(num); //就近原则 undefined
             num = 20;
         }
-        num = 10;
+
         fun();
 
         //案例2
@@ -38,6 +39,7 @@
         fn();
         //相当于以下代码
         var num2;
+        num2 = 10;
 
         function fn() {
             var num1;
@@ -47,7 +49,7 @@
 
 
         }
-        num2 = 10;
+
         fn();
 
         //案例三
@@ -62,7 +64,7 @@
         }
         //相当于执行以下代码
         // var a;
-
+        // a = 18;
         // function f1() {
         //     var b;
         //     var a;
@@ -71,7 +73,6 @@
         //     console.log(b); //9 
         //     a = '123';
         // }
-        // a = 18;
         // f1();
 
         //案例四
