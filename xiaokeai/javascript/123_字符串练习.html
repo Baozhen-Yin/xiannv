@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //给定一个字符串 如abaasdffggghhjjkkgfddsssss3444343
+        //1.求该字符串长度
+        var str = 'abaasdffggghhjjkkgfddsssss3444343';
+        console.log(str.length); //33
+        //2.取出指定位置字符 如0，3，5，9
+        console.log(str.charAt(0)); //a
+        console.log(str.charAt(3)); //a
+        console.log(str.charAt(5)); //d
+        console.log(str.charAt(9)); //g
+        //3.查找指定字符是否在以上字符串中存在 如i,c,b
+
+        var index1 = str.indexOf('i')
+        if (index1 !== -1) {
+            console.log('这个符号存在');
+        } else {
+            console.log('这个符号不存在');
+        }
+
+        var index2 = str.indexOf('c')
+        if (index2 !== -1) {
+            console.log('这个符号存在');
+        } else {
+            console.log('这个符号不存在');
+        }
+
+        var index3 = str.indexOf('b')
+        if (index3 !== -1) {
+            console.log('这个符号存在');
+        } else {
+            console.log('这个符号不存在');
+        }
+        //4.替换指定字符 g替换为22,ss替换为b
+        console.log(str.replace('g', '22')); //abaasdff22gghhjjkkgfddsssss3444343
+        console.log(str.replace('ss', 'b')); //abaasdffggghhjjkkgfddbsss3444343
+        //5.截取指定开始位置到结束位置的字符串 取1-5的字符串
+        console.log(str.substr(1, 5)); //baasd
+
+        //5.找出以上字符串中出现次数最多的字符和出现的次数
+        var c = {};
+        for (i = 0; i < str.length; i++) {
+            var char = str.charAt(i);
+            if (c[char]) { //确认属性在没在对象里面的方法
+                c[char]++;
+            } else {
+                c[char] = 1;
+            }
+        }
+        console.log(c); //{3: 3, 4: 4, a: 3, b: 1, s: 6, d: 3, f: 3, …}
+        var max = 0;
+        var maxchar = '';
+        for (k in c) {
+            if (max < c[k]) {
+                max = c[k];
+                maxchar = k;
+            }
+        }
+        console.log('出现最多的字符是' + maxchar + '它出现的次数是' + max); //出现最多的字符是s它出现的次数是6
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
