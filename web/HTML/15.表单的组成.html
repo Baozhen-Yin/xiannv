@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 在html中 一个完整的表单通常由表单域、表单控件（表单元素）、提示信息三个部分组成 -->
+
+    <!-- 1.表单域 包含表单的区域 会把它范围内的表单元素提供给服务器 -->
+    <!-- 常用属性 action 属性值url地址 用于指定接收并处理表单数据的服务器程序的url地址 -->
+    <!-- method 属性值 get/post 用于设置表单数据的提交方式，其取值为get或者post -->
+    <!-- name 名称 用于指定表单的名称，以区分同一页多个表单域 -->
+    <form action="url地址" method="提交方式" name="表单域名称">
+        <!-- text 文本框 里面可以输入任何文字 -->
+        用户名：<input type="text" name="username" value="请输入用户名"> <br />
+        <!-- password 密码框 用户看不见输入的密码 -->
+        密码：<input type="password" name="password"> <br>
+        <!-- radio 单选按钮 可以实现多选一 -->
+        <!-- name是表单元素的名字 这里性别单选按钮必须有相同的名字name 才可以实现多选一 -->
+        性别：男<input type="radio" name="sex" value="男"> 女 <input type="radio" name="sex" value="女">人妖<input type="radio" name="sex" value="人妖"> <br>
+        <!-- checkbox多选框 实现多选 -->
+        爱好：吃饭<input type="checkbox" name="hobby">睡觉<input type="checkbox" name="hobby">打豆豆<input type="checkbox" name="hobby"><br>
+        <!-- 提交按钮 把表单域数据发送到服务器 -->
+        <input type="submit" value="免费注册">
+        <!-- 重置按钮 把之前填过的重置 -->
+        <input type="reset" value="重新填写">
+        <!-- 普通按钮 后期结合js搭配使用-->
+        <input type="button" value="获取短信验证码">
+    </form>
+
+    <!-- 2.表单元素 三组表单元素input select textarea 都应该含在form表单域里面，并且有name属性 
+           为了区别和其他表单元素的区别 -->
+    <form>
+        <input type="text" name="username">
+        <select name="from">
+    <option>贵阳</option>
+</select>
+        <textarea name="message"></textarea>
+
+    </form>
+</body>
+
+</html>

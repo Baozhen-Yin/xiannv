@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2.1 <input>表单元素 input标签用于收集用户信息 在input里面，包含一个type属性，根据不同的type属性值，输入字段拥有很多种形式
+           可以是文本字段、复选框、掩码后的文本控件、单选按钮、按钮等
+           type属性值有 text（内容） password(密码框）submit（提交 把表单域数据发送到服务器）-->
+    <!-- <input type="属性值"> -->
+    <!-- 除了type属性外 input标签还有其他很多属性，其常用属性为下 -->
+    <!-- name用户自定义 定义input元素名称  value用户自定义 定义input元素的值 
+         checked 规定此input元素首次加载时应当被选中 maxlength 正整数 规定输入字段中字符的最大长度-->
+    <form action="url地址" method="提交方式" name="表单域名称">
+        <!-- text 文本框 里面可以输入任何文字 -->
+        用户名：<input type="text" name="username" value="请输入用户名"> <br />
+        <!-- password 密码框 用户看不见输入的密码 -->
+        密码：<input type="password" name="password"> <br>
+        <!-- radio 单选按钮 可以实现多选一 -->
+        <!-- name是表单元素的名字 这里性别单选按钮必须有相同的名字name 才可以实现多选一 -->
+        性别：男<input type="radio" name="sex" value="男"> 女 <input type="radio" name="sex" value="女">人妖<input type="radio" name="sex" value="人妖"> <br>
+        <!-- checkbox多选框 实现多选 -->
+        爱好：吃饭<input type="checkbox" name="hobby">睡觉<input type="checkbox" name="hobby">打豆豆<input type="checkbox" name="hobby"><br>
+        <!-- 提交按钮 把表单域数据发送到服务器 -->
+        <input type="submit" value="免费注册">
+        <!-- 重置按钮 把之前填过的重置 -->
+        <input type="reset" value="重新填写">
+        <!-- 普通按钮 后期结合js搭配使用-->
+        <input type="button" value="获取短信验证码">
+    </form>
+</body>
+
+</html>

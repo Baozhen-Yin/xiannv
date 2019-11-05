@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- label标签 input定义元素标签 -->
+    <!-- label标签用于绑定一个表单元素，当点击<label>标签内文本时，浏览器就会自动将焦点（光标）转到或者选择
+         对应的表单元素上，用来“”“增加用户体验”“” -->
+    <label for="sex">男</label>
+    <input type="radio" name="sex" id="sex">
+    <!-- 核心 label标签的for属性 应当与相关元素的id属性相同 -->
+    <input type="radio" id="man"><label for="man">男</label><br>
+    <input type="radio" id="woman"><label for="woman">女</label><br> 爱好：
+    <input type="checkbox" name="hobby" id="eat"><label for="eat">吃饭</label>
+    <input type="checkbox" name="hobby" id="sleep"><label for="sleep">睡觉</label>
+    <input type="checkbox" name="hobby" id="ddd"><label for="ddd">打豆豆</label><br>
+</body>
+
+</html>

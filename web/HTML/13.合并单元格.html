@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 跨行合并 rowspan="合并单元格个数" 最上侧单元格为目标单元格 写合并代码 -->
+    <!-- 跨列合并 colspan ="合并单元格个数 比如两个合并为1个"  最左侧单元格为目标单元格 写合并代码-->
+    <!-- 目标单元格 写合并代码 -->
+    <!-- 合并单元格三部曲 1.先确定是跨行还是跨列 
+        2.找到目标单元格，写上合并方式=合并单元格数量。比如 <td colspan="2"></td>
+        3.删除多余的单元格 -->
+    <table align="center" border="1" cellpadding="20" cellspacing="0" width="500" hight="200">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>专业</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>尹宝祯</td>
+                <td rowspan="2">16</td>
+                <td>信息管理与信息系统</td>
+            </tr>
+            <tr>
+                <td>邢昱恺</td>
+                <!-- <td>17</td> -->
+                <td>计算机科学</td>
+            </tr>
+            <tr>
+                <td>可爱多</td>
+                <td>17</td>
+                <td>新闻</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</body>
+
+</html>
