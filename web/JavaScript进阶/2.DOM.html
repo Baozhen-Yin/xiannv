@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 因为我们文档页面从上往下加载，所以先得有标签 所以我们script写道标签的下面 -->
+    <!-- get获得element元素 by 通过 驼峰命名法-->
+    <div id="time">2018-11-03</div>
+    <script>
+        //(1)DOM文档对象模型（Document Object Model），是可扩展标记语言（HTML或者XML）的标准编程接口
+
+        //(2)DOM树
+        //文档：一个页面就是一个文档 document
+        //元素：页面里面所有标签都是元素 ELEMENT
+        //节点：网页中所有内容都是节点（标签，属性，文本，注释等），DOM中使用node表示
+        //DOM把以上内容都看作是对象
+
+        //(3)DOM获取页面元素
+        //1.getElementById() 方法可以获取带有ID的元素对象 Document的方法 getElementById()返回一个匹配特定 ID的元素. 
+        //  由于元素的 ID 在大部分情况下要求是独一无二的，这个方法自然而然地成为了一个高效查找特定元素的方法。
+        //  语法var element = document.getElementById(id);
+        //  element是一个 Element 对象。如果当前文档中拥有特定ID的元素不存在则返回null.
+        //  id是大小写敏感的字符串，代表了所要查找的元素的唯一ID. 
+        var timer = document.getElementById('time'); //2018-11-03  返回的是一个 Element 对象
+        console.log(typeof timer); //2.DOM.html:31 object
+        console.dir(timer); //打印返回的元素对象 更好的查看属性和方法
+    </script>
+</body>
+
+</html>

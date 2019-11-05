@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="ybz"> 123</div>
+    <script>
+        //（1）.执行事件的步骤
+        //点击div123 控制台输出 我被选中了
+
+        //1.获取事件源
+        var select = document.getElementById('ybz');
+        //2.绑定事件 div.onclick
+        //3.绑定事件处理程序
+        select.onclick = function() {
+            console.log('我被选中了');
+        }
+
+        // onmouseover  鼠标经过触发
+        // onmouseout 鼠标离开触发
+        // onfocus 鼠标获得焦点触发
+        // onblur 失去鼠标焦点触发
+        // onmousemove 鼠标移动触发
+        // onmouseup 鼠标弹起触发
+        // onmousedown 鼠标按下触发
+    </script>
+</body>
+
+</html>

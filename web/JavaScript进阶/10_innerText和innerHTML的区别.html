@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <p>
+        我是仙女
+        <span>
+            ybz
+        </span>
+    </p>
+    <!--innertext和innerHTML的区别-->
+    <!--改变元素内容，里面的文字会发生变化-->
+    <script>
+        //(一) innerText
+        //innerText不识别html标签
+        var div = document.querySelector('div');
+        // div.innerText = '今年是2019'
+
+        //innerHTML识别html标签
+        div.innerHTML = '<strong>今年是：</strong>2019'
+
+        //这两个属性是可读写的 可以获取元素里面的内容
+        var p = document.querySelector('p');
+        console.log(p.innerText); //不获取html标签 在一行去除空格和换行  且不获取<span>标签
+        console.log(p.innerHTML); //识别标签 保留空格和换行
+    </script>
+</body>
+
+</html>

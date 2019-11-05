@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--getElementsByTagName() 方法可以返回带有指定标签名的对象的集合-->
+    <ul>
+        <li>尹宝祯是世界上最可爱的人</li>
+        <li>哈哈哈哈哈</li>
+        <li>实在是可爱的不行了</li>
+        <li>超级可爱</li>
+    </ul>
+
+    <ol>
+        <li>邢昱恺是世界上最丑陋的人</li>
+        <li>哈哈哈哈哈</li>
+        <li>实在是丑的不行了</li>
+        <li>超级丑丑</li>
+    </ol>
+
+
+    <script>
+        //一、通过标签名获取
+        //(1)返回的是 获取过来的对象的集合 以伪数组的方式集合
+        var flag = document.getElementsByTagName('li')
+        console.log(flag); //HTMLCollection(4) [ul, ul, ul, ul] 伪数组形式存储
+        console.log(flag[0]); // <ul>尹宝祯是世界上最可爱的人</ul>
+        for (var i = 0; i < flag.length; i++) {
+            console.log(flag[i]);
+
+        }
+        //(2)得到的元素对象是动态的<ul>里面改变 下面自动改变
+        //（3）如果页面中只有一个 返回的还是伪数组
+        //(4)如果页面中压根没有这个元素 返回空的伪数组
+    </script>
+</body>
+
+</html>
