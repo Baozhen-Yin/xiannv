@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>块级盒子居中水平对齐</title>
+    <style>
+        /* 外边距可以让块级盒子水平居中 但必须满足两个条件 */
+        /* 1.盒子必须指定了宽度width */
+        /* 2.盒子的左右外边距都设置为auto */
+        /* 以上是让块级元素水平居中 */
+        /* 若是行内元素 或者 行内块级元素水平居中给其"""父元素"""添加text-align:center即可 */
+        
+        .header {
+            width: 900px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: pink;
+            text-align: center;
+        }
+        /* 父元素是.header 添加 text-align: center;即可  */
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <span>里面的文字</span>
+    </div>
+    <div class="header">
+        <a href="#">yyy</a>
+    </div>
+</body>
+
+</html>

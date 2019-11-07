@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 使用margin定义元素垂直外边距时,可能会出现外边距的合并 */
+        /* 两种情况 */
+        /* 1.相邻块元素垂直外边距的合并  两个兄弟块级元素上下*/
+        /* 2.嵌套块元素垂直外边距的塌陷  两个父子级关系*/
+        
+        .cat,
+        .dog {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        
+        .cat {
+            margin-bottom: 100px;
+        }
+        /* 如果上面元素有下外边距100px,下面元素有上外边距200px,ze他们垂直间距取大的那个 */
+        /* 解决方案:给其中一个加就行了 */
+        
+        .dog {
+            margin-top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cat">大猫</div>
+    <div class="dog">小狗</div>
+</body>
+
+</html>

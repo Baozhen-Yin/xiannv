@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- padding内边距可以撑开盒子,有时候也让我们去修改宽度 -->
+    <!-- 所以小米侧边栏这个案例,文字距离左侧的距离不应该用txet-indent 这样不精确 -->
+    <style>
+        /* 如果盒子本身没有指定width或者height属性,则此时padding不会撑开盒子大小 */
+        /* 没指定宽度就和body一样宽 */
+        
+        h1 {
+            height: 200px;
+            background-color: red;
+            padding: 30px;
+        }
+        
+        div {
+            width: 300px;
+            height: 100px;
+            background-color: purple;
+        }
+        
+        div p {
+            /* 因为p没有指定高度宽度 所以制定了内标签也不会超越div的范围 */
+            padding: 30px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1></h1>
+    <div>
+        <p></p>
+    </div>
+</body>
+
+</html>

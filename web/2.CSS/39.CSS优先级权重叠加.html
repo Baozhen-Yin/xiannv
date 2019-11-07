@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 权重叠加:如果是"""复合选择器""",则会有权重叠加,需要计算权重 -->
+    <style>
+        ul li {
+            color: green;
+        }
+        /* li的权重是0,0,0,1 */
+        /* ul li 的权重是 0,0,0,1+0,0,0,1 */
+        
+        li {
+            color: red;
+        }
+        /* .nav li 的权重是 0,0,1,0 + 0,0,0,1 = 0,0,1,1 */
+        
+        .nav li {
+            color: rebeccapurple;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <!-- 变成了绿色 -->
+        <!-- 紫色 -->
+        <li>大猪蹄子</li>
+        <li>邢昱恺</li>
+        <li>丑八怪</li>
+    </ul>
+</body>
+
+</html>

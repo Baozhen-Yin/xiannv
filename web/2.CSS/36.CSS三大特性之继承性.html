@@ -8,9 +8,26 @@
     <title>Document</title>
     <!-- 子标签会继承父标签的某些样式,如文本颜色和字号.子承父业吧 -->
     <style>
-        div {
+        /* font:font-style（字体样式） font-weight（字体粗细） font-size(字号）/line-height行高  
+        font-family（字体） 不可以颠倒顺序*/
+        /* <'font-style'> || <font-variant-css21> || <'font-weight'> || <'font-stretch'> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'> ] | caption | icon | menu | message-box | small-caption | status-bar */
+        /* 行高的继承性 */
+        
+        body {
             color: pink;
-            font-size: 200px;
+            font: 12px/1.5 'Microsoft YaHei'
+        }
+        
+        div {
+            /* 行高可以写单位也可以不写单位 */
+            /* 子元素继承了父元素body行高的 1.5倍 所以div的行高就是21像素 */
+            /* color: pink; */
+            font-size: 14px;
+        }
+        
+        p {
+            /* 现在变为24px  */
+            font-size: 16px;
         }
     </style>
 </head>
@@ -20,6 +37,10 @@
     <div>
         <p>龙生龙凤生凤老鼠生的孩子会打洞 </p>
     </div>
+    <ul>
+        <!-- li的大小就是 12*1.5 18px-->
+        <li>我没有指定文字大小</li>
+    </ul>
 </body>
 
 </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>外边距合并值嵌套块级元素</title>
+    <style>
+        /* 对于两个嵌套的(父子关系)的块元素,父元素有上外边距,此时父元素会塌陷较大的外边距值 */
+        /* 解决方案 */
+        /* 1.可以为父元素定义上边框 */
+        /* 2.可以为父元素定义内边距 */
+        /* 3.可以为父元素添加overflow: hidden; */
+        /* 之后学习 比如浮动,固定,绝对定位盒子就不会有塌陷问题 */
+        
+        .father {
+            width: 400px;
+            height: 400px;
+            background-color: purple;
+            margin-top: 50px;
+            /* 内边框  所以margin-top=100px可以使用*/
+            /* border: 1px transparent soild; */
+            /* 2.可以为父元素定义内边距 */
+            /* padding-top: 1px; */
+            /* overflow: hidden;就可以不增加盒子大小 */
+            overflow: hidden;
+        }
+        
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /*  */
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 嵌套关系 -->
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+</body>
+
+</html>

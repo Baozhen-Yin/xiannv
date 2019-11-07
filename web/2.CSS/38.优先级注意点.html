@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 选择器相同 则执行层叠性 谁挨得近 */
+        /* 选择器权重如下表所示 */
+        /* 继承或者*            选择器权重0,0,0,0 */
+        /* 元素选择器           选择器权重0,0,0,1 */
+        /* 类选择器,伪类选择器   选择器权重0,0,1,0 */
+        /* ID选择器             选择器权重0,1,0,0 */
+        /* 行内样式style=""     选择器权重1,0,0,0 */
+        /* !important重要的     选择器权重 无穷大 */
+        
+        #father {
+            color: hotpink;
+        }
+        /* 所以以后判断标签执行什么样式就先看这个标签有没有直接被选出来 */
+        
+        p {
+            color: lawngreen;
+        }
+        /* a链接浏览器默认指定了一个样式 蓝色的有下划线的 相当于a{color:blue text-decoration: none;}  */
+        
+        body {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 权重是由四位数字组成,但不会有进位 -->
+    <!-- 可以理解为类选择器大于元素选择器大于继承或者*... -->
+    <!-- 等级判断从左向右,如果某一为数值相同则判断下一位 -->
+    <div id="father">
+        我呢
+        <!-- 因为继承的权重为0 所以是绿色 -->
+        <p>我是什么颜色</p>
+    </div>
+    <a href="#">我是单独的样式</a>
+</body>
+
+</html>

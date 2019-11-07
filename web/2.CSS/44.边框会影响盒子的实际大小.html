@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 盒子加了边框影响盒子的实际大小 会变大 */
+        /* 我们需要一个200*200的盒子 但是需要10px的边框 */
+        
+        div {
+            width: 200px;
+            height: 200px;
+            border: violet solid 10px;
+        }
+        /* 边框会额外增加盒子的实际大小,因此我们有两种解决方案 */
+        /* 1.测量盒子大小的时候 不量边框 */
+        /* 2.如果测量的时候包含了边框,则需要width/height减去边框宽度 */
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+</body>
+
+</html>
