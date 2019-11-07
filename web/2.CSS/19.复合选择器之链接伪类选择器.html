@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 伪类选择器用于向某些选择器添加特殊的效果,比如给链接添加特殊效果,或选择第一个,第n个元素 */
+        /* 前面用冒号(:)来表示  比如:hover :first-child*/
+        /* 伪类选择器 有链接伪类选择器 */
+        /* 1.链接伪类选择器 a:link 选择所有未被访问的链接 */
+        /* a {
+            color: gray;
+        } */
+        
+        a:link {
+            /* 把没有访问过的链接选出来 */
+            color: #333333;
+            text-decoration: none;
+        }
+        /* 2.a:visited 链接所有已被访问的链接 比如有的页面我访问过一次 我再刷新看就是另一种颜色了 */
+        
+        a:visited {
+            color: orange;
+        }
+        /* 
+        3. a:hover 选择鼠标指针位于其上的链接 鼠标经过的时候 */
+        
+        a:hover {
+            color: green;
+        }
+        /* 4. a:active 选择活动链接(鼠标按下为弹起的链接) */
+        
+        a:active {
+            color: pink;
+        }
+        /* 为了确保生效 请按照 LHAV 顺序声明  */
+        /* love hate */
+        /* 因为a链接在浏览器中具有默认样式,所以我们实际工作中都需要给链接单独指定样式 */
+    </style>
+</head>
+
+<body>
+    <a href="#">小猪佩奇</a><br>
+    <a href="#">尹宝祯仙女</a><br>
+    <a href="#">可可爱爱</a>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 链接属于行内元素,但是此时需要高度宽度,因此需要模式转换 */
+        /* 文字需要垂直居中和水平居中,因此需要单行文字垂直居中的代码 */
+        /* 链接里面需要设置背景图片 */
+        /* 鼠标已更换需要更换背景图片 链接伪类选择器 */
+        
+        .nav a {
+            display: inline-block;
+            width: 120px;
+            height: 58px;
+            background-color: pink;
+            line-height: 58px;
+            text-align: center;
+            background-position: 10px center;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .nav .bg1 {
+            background-image: url(image2/color1.png);
+        }
+        
+        .nav .bg1:hover {
+            background-image: url(image2/color2.png);
+        }
+        
+        .bg2 {
+            background-image: url(image2/color2.png);
+        }
+        
+        .bg3 {
+            background-image: url(image2/color3.png);
+        }
+        
+        .bg4 {
+            background-image: url(image2/color4.png);
+        }
+        
+        .bg5 {
+            background-image: url(image2/color5.png);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <!-- a{五彩导航}*5 -->
+        <a href="#" class="bg1">五彩导航</a>
+        <a href="#" class="bg2">五彩导航</a>
+        <a href="#" class="bg3">五彩导航</a>
+        <a href="#" class="bg4">五彩导航</a>
+        <a href="#" class="bg5">五彩导航</a>
+    </div>
+
+</body>
+
+</html>

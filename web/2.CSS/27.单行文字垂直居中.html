@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- CSS没有提供文字垂直居中的代码，这里我们可以用一个小技巧来实现 -->
+    <!-- 解决方案 ：让文字的行高等于盒子的高度，就可以让文字在当前盒子内垂直居中 ling-height = height -->
+    <!-- 原理：因为行高是上空隙＋文字本身高度+下空隙 组成的  相当于上空隙+文字本身高度+下空隙 = 盒子高度-->
+    <!-- 因为上空隙下空隙都是看不见的 行高的上空隙和下空隙把文字挤到中间了 
+         是如果行高小于盒子高度,文字会偏上,行高大于盒子高度则文字会偏下 -->
+
+    <style>
+        /* 1.先把链接转化为块级元素,这样链接就可以单独占一行 */
+        /* 2.鼠标经过a设置背景颜色 */
+        
+        a {
+            display: block;
+            width: 230px;
+            height: 40px;
+            background-color: #55585a;
+            font-size: 14px;
+            color: #ffffff;
+            text-decoration: none;
+            text-indent: 2em;
+            line-height: 40px;
+        }
+        
+        a:hover {
+            background-color: #ff6700;
+            ;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#">手机 电话卡</a>
+    <a href="#">电视 盒子</a>
+    <a href="#">笔记本 平板</a>
+    <a href="#">出行 穿戴</a>
+    <a href="#">智能 路由器</a>
+    <a href="#">健康 儿童</a>
+    <a href="#">耳机 音响</a>
+
+</body>
+
+</html>

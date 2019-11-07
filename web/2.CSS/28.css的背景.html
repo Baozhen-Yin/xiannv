@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 背景颜色 背景图片 背景平铺 背景图片位置 背景图像固定等 */
+        /* 1,背景颜色  background-color: red;  transparent;透明*/
+        /* 2.背景图片 或者小的 装饰性的图片  优点  非常容易控制位置  none 没有背景图片*/
+        /* 既可以添加背景颜色又可以添加背景图片 但是背景图片会压住背景颜色 */
+        /* 3.背景图片位置 background-position:x y; 参数为x坐标与y坐标 可以使用方位名词或者精确单位 */
+        /* length 百分数 由浮点数字和单位标识符组成的长度值 */
+        /* position top center bottom left center right 方位名词 */
+        
+        div {
+            width: 1000px;
+            height: 700px;
+            /* 透明色 */
+            /* background-color: transparent; */
+            background-color: gray;
+            /* 按下 bgi即可 */
+            background-image: url(image2/lyf.jpg);
+            /* 平铺 */
+            /* background-repeat: repeat; */
+            /* 不平铺 */
+            background-repeat: no-repeat;
+            /* 沿着x轴平铺 横着铺 */
+            /* background-repeat: repeat-x; */
+            /* 沿着y轴平铺  竖着铺*/
+            /* background-repeat: repeat-y; */
+            /* background-position: center top; */
+            /* XY 第二个参数Y省略 会居中 根据y垂直居中 */
+            /* 可以使用混合坐标 20px center */
+            background-position: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

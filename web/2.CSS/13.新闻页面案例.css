@@ -1,0 +1,33 @@
+body {
+    /* 字体16px 行高28px  微软雅黑 */
+    font: 16px/28px 'Microsoft YaHe';
+}
+
+h1 {
+    /* 让粗体的文字不加粗  且水平居中*/
+    font-weight: 400;
+    text-align: center;
+}
+
+.gray {
+    color: #888888;
+    font-size: 12px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.search {
+    color: #666;
+    width: 170px;
+}
+
+.btn {
+    font-weight: 700;
+}
+
+p {
+    text-indent: 2em;
+}

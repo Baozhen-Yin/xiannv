@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 我想把ol里面的li改为粉红色  */
+        /* 因为li是ol的后代 所以用后代选择器 元素一必须是父亲 元素二必须是孩子 */
+        /* 元素二可以是儿子 也可以是孙子等 只要是元素一的后代就可 */
+        /* 元素一和元素二可以是任意的基础选择器 */
+        
+        ol .li {
+            color: pink;
+        }
+        
+        ol li a {
+            color: red;
+        }
+        
+        .nav li a {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <ol>
+        <li class="li">粉红色</li>
+        <li>粉红色</li>
+        <li>粉红色</li>
+        <li>粉红色</li>
+        <li><a href="#">我是ol的孙子</a></li>
+    </ol>
+    <ul>
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+    </ul>
+    <ul class="nav">
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+        <li><a href="#">我是ol的孙子</a></li>
+        <li><a href="#">我是ol的孙子</a></li>
+        <li><a href="#">我是ol的孙子</a></li>
+        <li><a href="#">我是ol的孙子</a></li>
+
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- CSS 的层叠性 -->
+    <!-- 在相同选择器给设置相同的样式，此时一个样式就会覆盖（层叠）另一个冲突的样式。层叠性主要解决样式冲突的问题 -->
+    <!-- 层叠性原则 样式冲突遵循就近原则 那个样式结构近就执行哪个样式 -->
+    <!-- 样式不冲突 不会层叠 -->
+    <style>
+        div {
+            color: red;
+        }
+        /* 后来者居上 */
+        
+        div {
+            color: rebeccapurple;
+        }
+    </style>
+</head>
+
+<body>
+    <div>长江后浪退前浪，前浪死在沙滩上</div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 并集选择器可以选择多组标签,同时为他们定义相同的样式,通常用于集体声明 */
+        /* 任何形式的选择器都可以作为并集选择器的一部分 */
+        /* 1.把胸大屁股翘一起改为粉红色 */
+        /* 元素一,元素二 {样式声明} */
+        
+        div,
+        p {
+            color: pink;
+        }
+        
+        div,
+        p,
+        .nav li {
+            color: yellow;
+        }
+        /* 约定的语法规范,我们并集选择器喜欢竖着写 */
+        /* 一定要注意最后一个选择器不需要加逗号 */
+        /* 2.把胸大屁股翘改为黄色 ul里都改为黄色 */
+    </style>
+</head>
+
+<body>
+    <div>胸大</div>
+    <p>屁股翘</p>
+    <span>发质浓密</span>
+    <ul class="nav">
+        <li>可爱的</li>
+        <li>仙女</li>
+        <li>眼睛大</li>
+    </ul>
+</body>
+
+</html>
