@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>清除浮动之父级添加双伪元素</title>
+    <!-- 清除浮动之父级添加双伪元素 -->
+    <!-- 语法 -->
+    <!--  .clearfix::before,
+        .clearfix::after {
+            content: '';
+            display: table;
+        }
+        
+        .clearfix::after {
+            clear: both;
+        }
+        
+        .clearfix {
+            *zoom: 1;
+        } -->
+    <style>
+        .clearfix::before,
+        .clearfix::after {
+            content: '';
+            display: table;
+        }
+        
+        .clearfix::after {
+            clear: both;
+        }
+        
+        .clearfix {
+            /* 照顾IE6 IE7 */
+            *zoom: 1;
+        }
+        
+        .box {
+            width: 800px;
+            border: 1px solid blue;
+            margin: 0 auto;
+        }
+        /* 由于父级盒子很多情况下 不方便给高度 但是子盒子浮动又不占位置 最后父级盒子高度为0时 就会影响下面的标准流盒子 */
+        
+        .one {
+            float: left;
+            width: 300px;
+            height: 200px;
+            background-color: purple;
+        }
+        
+        .two {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        
+        .footer {
+            height: 200px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 缺点 照顾低版本浏览器 -->
+    <!-- 优点 代码更简洁 -->
+    <!-- 代表网站：腾讯 小米等 -->
+    <div class="box clearfix">
+        <div class="one">1</div>
+        <div class="two">2</div>
+    </div>
+    <div class="footer"></div>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 如果多个盒子都设置了浮动，则它们会按照属性值一行内显示并且顶端对齐排列 -->
+    <!-- 浮动的元素是紧紧贴在一起的（不会有缝隙），如果父级宽度装不下这些浮动的盒子，多出的盒子会起另一行对齐 -->
+    <style>
+        div {
+            height: 300px;
+            width: 300px;
+            background-color: pink;
+        }
+        
+        .one,
+        .two,
+        .three,
+        .four {
+            float: left;
+        }
+        
+        .two,
+        .three {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+    <div class="four">4</div>
+</body>
+
+</html>

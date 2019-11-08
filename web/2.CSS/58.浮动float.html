@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 为什么需要浮动？ -->
+    <!-- 当我想让多个div模块排列在一行的时候 使用行内块元素 比较难 中间会有空隙 很难控制-->
+    <!-- 如何实现两个盒子左右对齐呢？ -->
+    <!-- 浮动最典型的应用：可以让多个块级元素一行内排列显示 -->
+    <!-- 网页布局第一准则：多个块级元素纵向排列找标准流，多个块级元素横向排列找浮动 -->
+    <style>
+        /* 浮动float属性用于创建浮动框，将其移到另一边，直到左边缘或右边缘触及包含快或者贴着另一个浮动框边缘 */
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .right,
+        .left {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        
+        .right {
+            float: right;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="left">邢昱恺在左边</div>
+    <div class="right">尹宝祯在右边</div>
+</body>
+
+</html>

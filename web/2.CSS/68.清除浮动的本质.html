@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 清楚浮动元素的本质就是清除浮动元素所造成的影响 -->
+    <!-- 如果父盒子本身有高度，则不需要清楚浮动 -->
+    <!-- 清除浮动之后，父级就会根据浮动的子盒子自动检测高度。父级有了高度，就不会影响下面的标准流了 -->
+    <style>
+        /* 语法： */
+        /* 选择器{clear：属性值;} */
+        /* left 不允许左侧有浮动元素（清除左侧浮动的影响） */
+        /* right 不允许右侧有浮动元素（清除右侧浮动的影响） */
+        /* both 同时清除左右两侧浮动的影响 */
+        /* 我们实际工作中 几乎只用clear：both */
+        /* 清除浮动的策略是 闭合浮动 */
+        /* 为什么要清除浮动？ */
+        /* 1.父级没高度 */
+        /* 2.子盒子浮动了 */
+        /* 3。影响下面布局了 */
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

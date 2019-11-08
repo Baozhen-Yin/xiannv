@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>盒子阴影</title>
+    <!-- CSS3中新增了盒子阴影 -->
+    <!-- 使用box-shadow为盒子添加阴影 -->
+    <!-- 值 h-shadow 必须值。水平阴影的位置，允许负值 正值向右负值向左-->
+    <!-- 值 v-shadow 必须值，垂直阴影的位置，允许负值 负值向上 正值向下-->
+    <!-- 值 blur 可选，模糊距离 虚实 数值越大越模糊 0的时候非常清晰 -->
+    <!-- 值spread 可选 阴影的尺寸 阴影的大小-->
+    <!-- 值 color 阴影的颜色 -->
+    <!-- 值inset 将外部阴影outset改为内部阴影 -->
+
+    <!-- CSS3中新增了文字阴影 -->
+    <!-- text-shadow:h-shadow,v-shadow,blur color -->
+    <!-- 值 h-shadow 必须值。水平阴影的位置，允许负值 正值向右负值向左-->
+    <!-- 值 v-shadow 必须值，垂直阴影的位置，允许负值 负值向上 正值向下-->
+    <!-- 值 blur 可选，模糊距离 虚实 数值越大越模糊 0的时候非常清晰 -->
+    <!-- 值 color 阴影的颜色 -->
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 100px auto;
+            /* 水平阴影10px 垂直阴影10px blur模糊距离10px spread阴影尺寸10px 颜色黑色 */
+            box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, .3);
+        }
+        
+        h1 {
+            font-size: 200px;
+            text-shadow: 10px 10px 10px rgba(0, 0, 0, .3);
+            text-align: center;
+            color: seagreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <h1>尹宝祯仙女</h1>
+</body>
+
+</html>

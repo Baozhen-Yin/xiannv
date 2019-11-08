@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 是css新增的 是i9和i9以上新增的 -->
+    <!-- 1.圆角边框 -->
+    <style>
+        .yuan {
+            width: 200px;
+            height: 200px;
+            /* radius半径  */
+            /* 想做一个圆 先要一个正方形 圆角边框设置为宽度或者高度的一半即可 */
+            /* 如果是正方形 可以设置为百分比 50% 就是宽度一半 等价于100px  就是⚪*/
+            border-radius: 50%;
+            border: blueviolet 1px solid;
+        }
+        
+        .juxing {
+            width: 200px;
+            height: 100px;
+            /* 如果是个矩形 设置为高度的一半就可以做圆角矩形 50% */
+            border-radius: 50px;
+            border: blueviolet 1px solid;
+        }
+        
+        .radius {
+            width: 200px;
+            height: 200px;
+            /*顺序  左上角 右上角 右下角 左下角  不可颠倒*/
+            /* 如果跟两个值 就是对角线关系 先左后右 */
+            /* 分开写  border-top-left-radius: ;  border-top-right-radius: ;  
+                       border-bottom-right-radius: ;border-bottom-left-radius: ; */
+            border-radius: 10px 40px;
+            border: blueviolet 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1.设置圆形 -->
+    <div class="yuan"></div>
+    <!-- 2.设置圆角矩形 -->
+    <div class="juxing"></div>
+    <!-- 3.可以设置不同的圆角 -->
+    <div class="radius"></div>
+</body>
+
+</html>

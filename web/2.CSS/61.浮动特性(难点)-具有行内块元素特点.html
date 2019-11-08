@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 任何元素都可以浮动，不管原先是什么模式的元素，添加浮动之后具有行内块元素的相似性 -->
+    <!-- 如果块级盒子没有设置快读，默认宽度和父级一样宽 ，但是添加浮动后，他的大小根据内容来决定 -->
+    <!-- 浮动的盒子中间没有缝隙，是挨着的 -->
+    <!-- 行内元素同理 -->
+
+    <style>
+        span,
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            float: left;
+        }
+        /* 如果行内元素有了浮动，则不需要转换块级或者行内块元素就可以直接给高度和宽度 */
+        
+        p {
+            height: 400px;
+            background-color: purple;
+            /* 如果不指定宽度 则内容多大就多大 */
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <span>1</span>
+    <span>2</span>
+    <div>3</div>
+    <p>p</p>
+</body>
+
+</html>

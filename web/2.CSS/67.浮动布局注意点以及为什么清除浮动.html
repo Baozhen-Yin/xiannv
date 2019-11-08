@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 前面浮动元素都有一个标准流的父元素 他们的共同特点就是都是有高度的 -->
+    <!-- 但是 所有父盒子都必须有高度吗 -->
+    <!-- 理想的状态是，让子盒子撑开父亲，有多少孩子，父盒子就有多高 -->
+
+    <!-- 注意点 -->
+    <!-- 1.浮动和标准流的盒子搭配 -->
+    <!-- 先用标准流的父元素排列上下位置，之后内部子元素采取浮动排列左右位置 -->
+    <!-- 2.一个元素浮动了，理论上其余兄弟元素也要跟着浮动 -->
+    <!-- 一个盒子里面有多个子盒子，如果其中一个盒子浮动了，那么其他兄弟也应该跟着浮动，以防止引起问题 -->
+    <style>
+        .box {
+            width: 800px;
+            border: 1px solid blue;
+            margin: 0 auto;
+        }
+        /* 由于父级盒子很多情况下 不方便给高度 但是子盒子浮动又不占位置 最后父级盒子高度为0时 就会影响下面的标准流盒子 */
+        
+        .one {
+            float: left;
+            width: 300px;
+            height: 200px;
+            background-color: purple;
+        }
+        
+        .two {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="one">1</div>
+        <div class="two">2</div>
+    </div>
+
+
+</body>
+
+</html>
