@@ -9,14 +9,32 @@
     <!-- 如果多个盒子都设置了浮动，则它们会按照属性值一行内显示并且顶端对齐排列 -->
 </head>
 
+
 <body>
 
 </body>
 
-</html>yle> /* 重点！！！！！ */ /* 1.脱离普通标准流的控制（浮）移动到指定位置(动) (俗称脱膘) */ /* 2.浮动的盒子不再保持原先的位置 */ .box1 { width: 200px; height: 200px; background-color: red; float: left; } /* 红色盒子会压住蓝色盒子 漂浮在普通流上面 不占位置 但是字不会盖住 */ .box2 { width: 300px; height: 300px; background-color:
-blue; }
+
+<style>
+    /* 重点！！！！！ */
+    /* 1.脱离普通标准流的控制（浮）移动到指定位置(动) (俗称脱膘) */
+    /* 2.浮动的盒子不再保持原先的位置 */
+    
+    .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        float: left;
+    }
+    /* 红色盒子会压住蓝色盒子 漂浮在普通流上面 不占位置 但是字不会盖住 */
+    
+    .box2 {
+        width: 300px;
+        height: 300px;
+        background-color: blue;
+    }
 </style>
-</head>
+
 
 <body>
     <div class="box1">浮动的盒子</div>
