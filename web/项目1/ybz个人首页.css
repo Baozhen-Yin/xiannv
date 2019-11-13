@@ -319,6 +319,10 @@ body {
     margin-right: 0;
 }
 
+.explain-down .fifteenth {
+    margin-right: 0;
+}
+
 .explain-down ul li img {
     width: 100%;
 }
@@ -367,6 +371,14 @@ body {
 .links dl {
     float: left;
     margin-left: 100px;
+}
+
+.links dl dt:hover {
+    color: rgba(49, 150, 94, 0.89);
+}
+
+.links a:hover {
+    color: rgba(21, 104, 182, 0.938);
 }
 
 .links dl dt {
