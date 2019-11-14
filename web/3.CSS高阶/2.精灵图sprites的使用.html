@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 精灵技术主要针对于小的背景图片的使用，就是把多个小背景图片整合到一张大图片中 -->
+    <!-- 大图片称作 精灵图 雪碧图 -->
+    <!-- 移动背景位置 此时可以用background-position -->
+    <!-- 移动的距离就是这个目标图片的x y 坐标  越往右x越大 越往下y越大 -->
+    <!-- 一般情况都是向上向左移动 所以是负值 -->
+    <style>
+        .box1 {
+            width: 60px;
+            height: 60px;
+            background-color: pink;
+            margin: 100px auto;
+            background: url(image4/index.png) -182px 0 no-repeat;
+            /* background-position: -182px 0; */
+        }
+        
+        .box2 {
+            width: 27px;
+            height: 25px;
+            background-color: pink;
+            margin: 50px auto;
+            background: url(image4/index.png) -155px -106px no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+
+</html>

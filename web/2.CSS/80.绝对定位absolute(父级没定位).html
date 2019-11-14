@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对定位</title>
+    <!--绝对定位是在元素移动位置时，是相对于它的祖先来说的（拼爹型）  -->
+    <!-- 语法 -->
+    <!-- 选择器{position:absolute;} -->
+    <!-- 特点 -->
+    <!-- 1.如果没有祖先元素或者祖先元素没有定位(标准流或者普通盒子），则以浏览器为准定位（Document文档) -->
+    <!-- 2.如果祖先元素有定位（相对，绝对，固定定位），则以最近一级的有定位祖先元素作为参考点移动位置-->
+    <!-- 3.绝对定位不再占有之前的位置（脱标） -->
+
+    <style>
+        .father {
+            width: 500px;
+            height: 500px;
+            background-color: skyblue;
+        }
+        
+        .son {
+            position: absolute;
+            top: 100px;
+            right: 200px;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        
+        .brother {
+            position: absolute;
+            left: 100px;
+            bottom: 100px;
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        我是父亲我没有定位
+        <div class="son">我父亲没有定位 我按浏览器还是父亲呢</div>
+    </div>
+    <div class="brother">我没父亲 但我定位了</div>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 固定定位小技巧:固定在版心右侧位置 -->
+    <!-- 小算法 -->
+    <!-- 让盒子left走50%.走到浏览器可视区(就是版心)的一半位置 -->
+    <!-- 让固定定位的盒子margin-left:版心宽度的一般距离.多走版心宽度的一半位置 -->
+    <!-- 就可以让固定定位的盒子贴着版心的右侧对齐了 -->
+    <style>
+        .heart {
+            width: 800px;
+            height: 1400px;
+            background: pink;
+            margin: 0 auto;
+        }
+        
+        .fix {
+            position: fixed;
+            left: 50%;
+            margin-left: 405px;
+            top: 100px;
+            width: 100px;
+            height: 300px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heart">
+        我是版心盒子
+    </div>
+    <div class="fix">
+        我是固定定位的盒子
+    </div>
+</body>
+
+</html>

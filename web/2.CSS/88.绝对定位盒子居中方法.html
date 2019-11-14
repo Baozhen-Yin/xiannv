@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对定位盒子居中</title>
+    <!-- 加了水平定位的盒子是不能通过margin:0 auto 水平居中 -->
+    <!-- 方法 -->
+    <!-- 1.left:50% 让盒子左侧移到父级元素水平中心位置-->
+    <!-- 2.margin-left :-100px 让盒子向左移动自身宽度的一半 -->
+    <style>
+        .box {
+            position: absolute;
+            left: 50%;
+            margin-left: -100px;
+            top: 50%;
+            margin-top: -100px;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">尹宝祯最可爱</div>
+
+
+</body>
+
+</html>

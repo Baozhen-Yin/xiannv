@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>相对定位中 父级已定位情况</title>
+    <!-- 2.如果祖先元素有定位（相对，绝对，固定定位），则以最近一级的有定位祖先元素作为参考点移动位置-->
+    <!-- 如果爸爸没有定位 爷爷定位了 和爷爷定位 -->
+
+    <style>
+        .grandfather {
+            position: relative;
+            left: 300px;
+            top: 200px;
+            width: 800px;
+            height: 800px;
+            background-color: green;
+        }
+        
+        .father {
+            /* position: relative; */
+            width: 500px;
+            height: 500px;
+            background-color: skyblue;
+        }
+        
+        .son {
+            position: absolute;
+            bottom: 0;
+            left: 30px;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        
+        .brother {
+            position: absolute;
+            left: 100px;
+            bottom: 100px;
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grandfather">
+        我是爷爷
+        <div class="father">
+            我是父亲我没有定位
+            <div class="son">我父亲没有定位 但是我的祖先有定位 我和爸爸还是爷爷</div>
+        </div>
+    </div>
+
+    <div class="brother">我没父亲 但我定位了</div>
+</body>
+
+</html>

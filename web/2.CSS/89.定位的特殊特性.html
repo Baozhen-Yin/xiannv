@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定位的特殊特性</title>
+
+    <!-- 绝对定位和固定定位和浮动有些类似 -->
+    <!-- 1.行内元素添加绝对定位或者固定定位 可以直接设置宽度和高度-->
+    <!-- 2.块级元素添加绝对定位或者固定定位,如果不给宽度或者高度,默认大小是内容的大小 -->
+    <style>
+        span {
+            position: absolute;
+            left: 300px;
+            top: 400px;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        
+        div {
+            position: absolute;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <span>ybz</span>
+    <div>尹宝祯</div>
+</body>
+
+</html>

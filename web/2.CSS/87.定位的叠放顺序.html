@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定位的叠放数据</title>
+    <!-- 定位的叠放次序 z-index -->
+    <!-- 在使用布局定位时 可能会出现盒子重叠的情况.此时,可以使用z-index来控制盒子的前后次序(z轴) -->
+    <!-- 语法 -->
+    <!-- 选择器{z-index:1;} -->
+    <!-- 数值可以是正整数 负整数 或者0,默认是auto,数值越大 盒子越靠上 -->
+    <!-- 如果值相同 按照书写顺序 后来者居上 -->
+    <!-- 数字后面不能加单位 -->
+    <!-- 只有定位的盒子才有 z-index属性  -->
+    <style>
+        .w {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .box1 {
+            z-index: 1;
+            background-color: pink;
+        }
+        
+        .box2 {
+            background-color: skyblue;
+            left: 50px;
+            top: 50px;
+            /* z-index: 2; */
+        }
+        
+        .box3 {
+            background-color: hotpink;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class=" w box1">尹宝祯要在最上面!!!</div>
+    <div class=" w box2">呀呼呀呼呀呼</div>
+    <div class=" w box3">我也要在上面!!!</div>
+</body>
+
+</html>

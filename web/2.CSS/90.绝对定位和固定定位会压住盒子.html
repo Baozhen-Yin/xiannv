@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对定位和固定定位会完全压住盒子</title>
+    <!-- 浮动元素不同 他只会压住它标准流下面的盒子,但是不会压住下面标准流盒子里面的文字 -->
+    <style>
+        .box {
+            /*浮动不会压住文字 */
+            /* 因为浮动产生的最初的目的就是做文字环绕效果的 */
+            /* float: left; */
+            /* 绝对定位或者固定定位会压住下面标准流的所有的内容 */
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <p>ybz最可爱啦啦啦啦啦啦啦啦啦啦啦</p>
+</body>
+
+</html>

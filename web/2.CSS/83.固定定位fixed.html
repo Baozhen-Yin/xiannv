@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>固定定位</title>
+    <!-- 固定定位是元素固定于浏览器可视区的位置。主要使用场景：可以在浏览器页面滚动时元素的位置不会变 -->
+    <!-- 主要使用场景：可以在浏览器页面滚动时元素的位置不会变 -->
+    <!-- 比如抬头的菜单和侧面的菜单 -->
+
+    <!-- 特点 -->
+    <!-- 1.和固定定位不同的是 它是以浏览器的可视窗口为参照点移动元素 -->
+    <!-- 跟父元素没有任何关系 -->
+    <!-- 不随滚动条滚动 -->
+    <!-- 2.固定定位不再占有原先位置 -->
+    <style>
+        .r_nav .r_dj span {
+            display: block;
+            position: absolute;
+            top: 37px;
+            left: 12px;
+            width: 88px;
+            height: 36px;
+            font-size: 14px;
+            text-indent: 14px;
+            font-weight: bold;
+            line-height: 18px;
+            color: #62401b;
+            overflow: hidden;
+        }
+        
+        .r_nav .r_dj {
+            position: absolute;
+            top: 15px;
+            right: 24px;
+            z-index: 2;
+            width: 165px;
+            height: 145px;
+            background: url(image2/r_dj.png) no-repeat top center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="r_nav">
+        <div class="r_dj">
+            <span>欢迎来做客哦~</span>
+        </div>
+    </div>
+</body>
+
+</html>

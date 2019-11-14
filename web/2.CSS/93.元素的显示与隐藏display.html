@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>显示与隐藏</title>
+    <!-- 类似网站广告 当我们点击关闭就不见了 但是重新刷新页面就会出来 -->
+    <!-- 本质:让一个元素在页面中隐藏或显示起来 -->
+    <!-- 一般我们都不想让溢出的内容显示出来 因为会影响布局 -->
+    <!-- 但是如果有定位的盒子 请慎用overflow:hidden 因为他会隐藏多余的部分 比如标签右上角的hot -->
+
+
+
+    <!-- 1.display 显示隐藏 而且不再占有原来的位置 人死了钱也没了-->
+    <!-- display主要设置一个属性如何显示 -->
+    <!-- display:none  隐藏对象-->
+    <!-- (重点)!!!!! display:block  除了转化为块级元素之外,同时还有显示元素的意思 -->
+    <!-- 应用极其广泛 搭配js可以做很多的网页特效 -->
+
+
+    <!-- 2.visibility 显示隐藏-->
+    <!-- visibility:inherit  继承上一个父对象可见性 我爸可见我就可见 -->
+    <!-- visibility:visible 对象可视   -->
+    <!-- visibility:hidden  对象隐藏  占有原来的位置 人死了钱还在 -->
+
+
+
+    <!-- 3.overflow 溢出显示隐藏  一个盒子装不下的文字 溢出的内容 -->
+    <!-- overflow:visible 不剪切内容也不添加滚动条,默认超出部分显示 -->
+    <!-- overflow:hidden 隐藏超出部分  -->
+    <!-- overflow: scroll 溢出部分显示滚动条 不溢出也显示滚动条 -->
+
+
+
+
+    <style>
+        .peggy {
+            /* 隐藏了佩奇 之后它位置不在了 乔治占有了他的位置 */
+            /* display: none; */
+            /* 改成了block就可以看见啦 */
+            /* display: block; */
+            visibility: hidden;
+            /* 占有原来的位置 人死了钱还在 乔治没能上去*/
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        
+        .george {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(209, 24, 55);
+        }
+        
+        .peppa {
+            /* 隐藏多余的文字 */
+            /* overflow: hidden; */
+            /* scroll 溢出部分显示滚动条 不溢出也显示滚动条 */
+            /* overflow: scroll; */
+            /* auto 溢出的时候显示滚动条 不溢出不显示 */
+            overflow: auto;
+            width: 200px;
+            height: 200px;
+            border: 3px solid pink;
+            margin: 0px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="peggy">佩奇</div>
+    <div class="george">乔治</div>
+    <div class="peppa">刘亦菲，1987年8月25日出生于湖北省武汉市，华语影视女演员、歌手，毕业于北京电影学院2002级表演系本科班。2002年主演个人首部电视剧《金粉世家》，</div>
+    <p class="peppa">从而踏入演艺圈。2003年因主演武侠剧《天龙八部》崭露头角。2004年凭借仙侠剧《仙剑奇侠传》赵灵儿一角获得了高人气与关注度。2005年因在武侠剧《神雕侠侣》中饰演小龙女受到广泛关注。2006年发行首张国语专辑《刘亦菲》和日文专辑《All My ...</p>
+</body>
+
+</html>

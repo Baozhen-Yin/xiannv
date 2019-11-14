@@ -260,7 +260,13 @@ body {
     padding: 0 15px;
     height: 40px;
     border-right: 1px #e0e0e0 solid;
-    color: rgba(53, 9, 42, 0.747);
+    color: rgba(53, 9, 42, 0.747)
+}
+
+.explain-down ul li em {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .heros .mod {
@@ -303,6 +309,7 @@ body {
 }
 
 .explain-down ul li {
+    position: relative;
     float: left;
     height: 270px;
     width: 233px;
@@ -323,7 +330,7 @@ body {
     margin-right: 0;
 }
 
-.explain-down ul li img {
+.explain-down ul li>img {
     width: 100%;
 }
 

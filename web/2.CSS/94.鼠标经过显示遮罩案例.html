@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>案例</title>
+    <!-- 1.练习元素的显示与隐藏 -->
+    <!-- 2.练习元素的定位 -->
+    <!-- 一张图片盖上去会有灰色透明色盖上去 -->
+    <!-- 核心原理：原先半透明盒子看不见 鼠标经过就显示 -->
+    <!-- 遮罩的盒子不再占有位置，就需要用绝对定位和display -->
+    <style>
+        .box {
+            position: relative;
+            width: 1094px;
+            height: 652px;
+            margin: auto;
+        }
+        
+        .box a img {
+            position: absolute;
+            top: 320px;
+            margin-top: -10px;
+            left: 50%;
+            margin-left: -10px;
+        }
+        
+        .black {
+            /* 隐藏遮罩层 */
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1094px;
+            height: 652px;
+            background: rgba(0, 0, 0, .4) url(image2/button1.jpg) no-repeat center;
+        }
+        /* 当鼠标经过图片 就让里面的遮罩层显示 */
+        /* 当鼠标经过盒子 里面的black */
+        
+        .box:hover .black {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="black">
+        </div>
+        <img src="image2/dva.jpg" alt="dva爱你哦">
+        <!-- 播放键 -->
+
+    </div>
+</body>
+
+</html>
