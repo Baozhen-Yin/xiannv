@@ -1,0 +1,92 @@
+/* main主体模块 */
+
+.main {
+    width: 980px;
+    height: 465px;
+    margin-left: 220px;
+}
+
+.focus {
+    width: 721px;
+    height: 465px;
+    float: left;
+}
+
+.focus img {
+    width: 100%;
+    height: 100%;
+}
+
+.newsflash {
+    width: 250px;
+    height: 465px;
+    float: right;
+}
+
+.news {
+    height: 165px;
+    border: 1px solid #e4e4e4;
+}
+
+.lifeservice {
+    /* 边框大了 */
+    overflow: hidden;
+    height: 218px;
+    background-color: purple;
+}
+
+.lifeservice ul {
+    width: 252px;
+}
+
+.lifeservice ul li {
+    float: left;
+    width: 63px;
+    height: 73px;
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.bargin {
+    width: 250px;
+    height: 76px;
+    margin-top: 5px;
+}
+
+.bargin img {
+    width: 100%;
+    height: 100%;
+}
+
+.news-hd {
+    height: 33px;
+    border-bottom: 1px dotted #e4e4e4;
+    line-height: 33px;
+    padding: 0 15px;
+}
+
+.news-hd h5 {
+    float: left;
+    font-size: 14px;
+}
+
+.news-hd .more {
+    float: right;
+}
+
+.news-hd a::after {
+    font-family: 'icomoon';
+    content: '\ea3b';
+}
+
+.news-bd {
+    padding: 5px 15px 0;
+}
+
+.news-bd ul li {
+    height: 24px;
+    line-height: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
