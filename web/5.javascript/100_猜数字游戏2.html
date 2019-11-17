@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        var random = getRandom(1, 50);
+        for (i = 1; i <= 10; i++) {
+            var num = prompt('你来猜1~50之间的数字,只有10次机会哦');
+            if (num > random) {
+                alert('你猜大了');
+            } else if (num < random) {
+                alert('你猜小了');
+            } else {
+                alert('你好帅哦，猜对了');
+                break //退出整个循环 结束程序
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

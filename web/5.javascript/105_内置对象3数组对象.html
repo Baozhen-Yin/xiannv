@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //ARRAY 是一个构造函数 需要实例化
+        //创建数组对象两种方式
+        //1.字面量方式
+        var arr = [];
+        arr[0] = 1;
+        arr[2] = 2;
+        console.log(arr); //(3) [1, empty, 2]
+
+        //2.new Array()
+        var arr1 = new Array(); //创建了一个空的数组
+        console.log(arr1);
+
+        var arr2 = new Array(2);
+        console.log(arr2); //(2) [empty × 2] 2表示数组长度为2 里面有2个空的数组元素
+
+        var arr3 = new Array(2, 3);
+        console.log(arr3); //(2) [2, 3]  等价于创建【2，3】 这样写表示里面有两个数组元素 2和3
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

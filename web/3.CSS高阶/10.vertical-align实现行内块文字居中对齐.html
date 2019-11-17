@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vertical-align实现文字内居中对齐</title>
+    <!-- 使用场景 用户设置图片或者行内块元素和文字垂直对齐 -->
+    <!-- 图片和文字垂直对齐 -->
+    <!-- 只针对行内元素或者行内块元素才有效   对块级元素无效 -->
+
+    <!-- 语法 vertical-align{baseline|top|middle|bottom} -->
+    <!-- baseline 默认 元素放置在父元素基线上 -->
+    <!-- top 把元素的顶端与行中最高元素的顶端对齐 -->
+    <!-- middle 把此元素放置在父元素中部 -->
+    <!-- bottom 把元素的顶端与行中最低的元素的顶端对齐 -->
+    <style>
+        img {
+            /* 与图片顶部对齐 */
+            /* vertical-align: top; */
+            /* 与图片中部对其 */
+            vertical-align: middle;
+            /* 底部对齐 */
+            /* vertical-align: bottom; */
+        }
+    </style>
+</head>
+
+<body>
+    <img src="image4/r_dj.png" alt=" "> 尹宝祯是仙女
+</body>
+
+</html>

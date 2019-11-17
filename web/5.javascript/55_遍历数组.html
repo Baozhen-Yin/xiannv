@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var arr = ['尹宝祯', '仙女', '大美女', '个子高', '腿长', '嘿嘿嘿', 'beautiful']
+        for (var i = 0; i < 6; i++) { //i<=5为6个 或者i<6
+            console.log(arr[i]);
+        }
+        for (var i = 0; i < arr.length; i++) { //i<=5为6个 或者i<6
+            console.log(arr[i]);
+        } //arr.length动态索引数组元素长度
+
+        //求数组和
+        var sum = 0;
+        var average = 0;
+        var arr2 = [2, 6, 1, 7, 4];
+        for (i = 0; i < arr2.length; i++) {
+            sum += arr2[i];
+        }
+        average = sum / arr2.length;
+        console.log(sum);
+        console.log(average);
+        //求数组最大值
+        var max = arr3[0];
+        var arr3 = [2, 6, 1, 77, 52, 25, 7];
+        for (i = 1; i < arr3.length; i++) {
+            if (arr3[i] > max) {
+                max = arr3[i] //快速排序思想
+            }
+        }
+        console.log(max);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 新增的多媒体标签主要包含两个 -->
+    <!-- 1.音频<audio> -->
+    <!-- 2.视频<video> -->
+    <!-- 使用它们可以很方便的在页面中嵌入音频和视频，而不再使用flash和其他浏览器插件 -->
+
+    <!-- 视频文件格式 -->
+    <!-- ie safari 只支持MP4 -->
+    <!-- 火狐 谷歌 chrome 都支持 MP4 WebM Ogg -->
+    <!-- 常见属性 autoplay(自动播放) controls(向用户显示播放控件) witdh(播放器宽度) height(播放器高度) loop(是否循环播放)
+         preload(auto (预先加载视频) none(不应加载视频))  src(视频url地址) poster(加载等待的画面图片) muted(静音播放) -->
+    <!-- 音频控件controls 后期js来加 -->
+
+    <!-- 音频文件格式 -->
+    <!-- 都支持MP3 -->
+    <!-- safiri 和 ie 不支持ogg -->
+    <!-- ie也不支持wav -->
+    <!-- 常见属性 autoplay(自动播放)  controls(向用户显示播放控件) loop(是否循环播放)  src(音频url地址)  -->
+    <!-- 谷歌把视频和音频自动播放禁止了 -->
+</head>
+
+<body>
+    <video autoplay="autoplay" muted="muted" width="320px" height="240px" loop="loop"> 
+        <source src="image5/wy.mp4" type="video/mp4">
+    </video>
+    <audio src="image5/mamamoo.mp3" autoplay="autoplay" muted="muted" controls="controls"></audio>
+
+
+    <!-- 我们可以给video标签添加muted属性来静音播放视频，但是音频不可以 (js解决) -->
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>9.伪元素使用场景-土豆网</title>
+    <style>
+        .box {
+            position: relative;
+            width: 1094px;
+            height: 652px;
+            margin: auto;
+        }
+        
+        .box a img {
+            position: absolute;
+            top: 320px;
+            margin-top: -10px;
+            left: 50%;
+            margin-left: -10px;
+        }
+        
+        .box::before {
+            /* 隐藏遮罩层 */
+            content: '';
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1094px;
+            height: 652px;
+            background: rgba(0, 0, 0, .4) url(image2/button1.jpg) no-repeat center;
+        }
+        /* 当鼠标经过图片 就让里面的遮罩层显示 */
+        /* 当鼠标经过盒子 里面的black */
+        
+        .box:hover::before {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="image5/dva.jpg" alt="dva爱你哦">
+        <!-- 播放键 -->
+    </div>
+
+
+</body>
+
+</html>

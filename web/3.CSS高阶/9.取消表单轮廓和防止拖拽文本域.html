@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 轮廓线 outline -->
+    <!-- 给表单添加 outline：0；或者 outline：none；样式之后，就可以去掉默认的蓝色边框 -->
+
+    <!-- 防止拖拽文本域 -->
+    <!-- resize:none -->
+
+    <style>
+        .no {
+            /* 1.取消表单轮廓 */
+            outline: 0;
+            /* 2.防止拖拽文本域 */
+            resize: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input class="no" type="text">
+    <input type=" " name="" id="">
+    <textarea name="text" id="" cols="30" rows="10"></textarea>
+    <textarea class="no" name="text" id="" cols="30" rows="10"></textarea>
+</body>
+
+</html>

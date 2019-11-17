@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var money = 100;
+        var moneySum = 0;
+        var str = parseInt(prompt("请输入您要的操作： \n1.存钱 \n2.取钱 \n3.显示余额 \n4.退出"))
+        switch (str) {
+            case 1:
+                moneySum = parseInt(money) + parseInt(prompt('请输入你存钱数'));
+                alert('您现在的余额为' + moneySum);
+                break;
+            case 2:
+                moneySum = parseInt(money) - parseInt(prompt('请输入你取钱数'));
+                alert('您现在的余额为' + moneySum);
+                break;
+            case 3:
+                alert('您现在的余额为' + money)
+                break;
+            case 4:
+                alert('您正在退出')
+                break;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

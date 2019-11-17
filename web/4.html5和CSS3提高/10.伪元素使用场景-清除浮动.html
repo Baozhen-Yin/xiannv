@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10.伪元素使用场景-清除浮动</title>
+    <style>
+        /* 后面两种伪元素清除浮动算是额外标签法升级和优化 */
+        
+        .clearfix:after {
+            /* 伪元素必写属性 */
+            content: "";
+            /* 插入的元素必须是块级 */
+            display: block;
+            /* 不要看见这个元素 */
+            height: 0;
+            /* 核心代码清除浮动 */
+            clear: both;
+            /* 不要看见这个元素 */
+            visibility: hidden;
+        }
+        
+        .clearfix {
+            /* IE6、7专有 */
+            *zoom: 1;
+        }
+        /*  第二种 */
+        
+        .clearfix::before,
+        .clearfix::after {
+            content: '';
+            /* 表格  把两个盒子放在一行上  左侧右侧 */
+            /* 转化成块级元素并且在一行 */
+            display: table;
+        }
+        
+        .clearfix::after {
+            clear: both;
+        }
+        
+        .clearfix {
+            /* 照顾IE6 IE7 */
+            *zoom: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

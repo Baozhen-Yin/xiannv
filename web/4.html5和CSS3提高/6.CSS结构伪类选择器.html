@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6.CSS结构伪类选择器</title>
+
+    <!-- E:first-child  匹配父元素中第一个子元素E -->
+
+    <!-- E:last-child  匹配父元素中最后一个子元素E -->
+
+    <!-- E:nth-child(n) 匹配父元素中第n个子元素E -->
+    <!-- n可以是数字 关键字 和公式  -->
+    <!-- n可以是关键字：even偶数，odd奇数 -->
+
+    <!-- E:first-of-type 指定类型E中的第一个 -->
+
+    <!-- E：last-of-type 指定类型E中最后一个 -->
+
+    <!-- E:nth-of-type(n) 指定类型E中的第n个 -->
+    <style>
+        /*  E:first-child  匹配父元素中第一个子元素E  */
+        
+        ul li:first-child {
+            /* 注意空格 */
+            /* 选择ul里面第一个子孩子 */
+            background-color: pink;
+        }
+        
+        ul li:last-child {
+            background-color: skyblue;
+        }
+        
+        ul li:nth-child(2) {
+            background-color: green;
+        }
+        /* 把所有偶数孩子变黄 */
+        
+        ul li:nth-child(even) {
+            color: yellow;
+        }
+        /* 3.nth-child(n) 里面必须是n 不能是其他字母 n从零开始计算 但是第0个元素或者超出了元素的个数会被忽略 n就选择了所有孩子*/
+        /* 2n代表偶数 2n+1奇数 5n(5,10,15...) n+5(第五个开始 包含5 到最后)  -n+5 前五个 包含第五个 */
+        
+        ol li:nth-child(n) {
+            background-color: pink;
+        }
+        /* nth-child会把所有盒子都排列序号 */
+        /* 他执行时候首先看:nth-child(1) 之后回去看前面的div 因为他的第一个孩子是p不是div 所有选不出来没有改变 */
+        
+        section div:nth-child(1) {
+            background-color: red;
+        }
+        /* 熊二被选出来 */
+        /* :nth-last-of-type会把指定的元素的盒子排列序号 */
+        
+        section div:nth-last-of-type(1) {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>p
+    <ul>
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+        <li>我是第9个孩子</li>
+    </ul>
+    <ol>
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+        <li>我是第9个孩子</li>
+    </ol>
+    <!-- 区别 -->
+    <section>
+        <p>光头强</p>
+        <div>熊大</div>
+        <div>熊二</div>
+    </section>
+</body>
+
+</html>

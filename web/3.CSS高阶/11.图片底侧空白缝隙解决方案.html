@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>底侧空白解决方案</title>
+    <style>
+        /* 图片加了边框有个默认的空白缝隙 */
+        /* 字不会有空隙 图片才有 */
+        /* 行内块元素是默认与文字基线对齐 */
+        /* 因为图片默认是和基线而不是底线对齐 所以p会在底部 图片会顶着p的基线 */
+        
+        div {
+            border: navy 1px solid;
+        }
+        
+        div img {
+            /* 解决方案1 */
+            vertical-align: bottom;
+            /* 或者把图片转化为块级元素 */
+            /* display: block; */
+        }
+    </style>
+</head>
+
+<body>
+    <div><img src="image4/r_dj.png" alt="">尹宝祯仙女ppp</div>
+</body>
+
+</html>

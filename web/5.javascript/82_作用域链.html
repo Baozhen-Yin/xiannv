@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //作用域链:内部函数访问外部函数的变量采取的是链式查找的方式 确定取哪个值称作作用域链 """就近原则"""
+        //只要是代码 就至少有一个作用域
+        //写在函数内部的局部作用域
+        //如果函数中还有函数,那么在这个作用域中又可以诞生一个作用域
+        //根据"""内部函数可以访问外部函数变量"""这种机制,用"链式查找"决定哪些数据能够被内部函数访问,就称作作用域链
+        var num = 10;
+
+        function fun() { //外部函数
+            var num = 20;
+
+            function fun1() { //内部函数
+                console.log(num); //就近原则输出20
+
+            }
+            fun1()
+        }
+        fun();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

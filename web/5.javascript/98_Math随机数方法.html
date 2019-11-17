@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //Math.random() 函数返回一个浮点 为随机函数范围[0，1） 左闭右开空间
+        console.log(Math.random()); //0.35922709890136595  范围[0，1）
+        //得到两个数之间的随机整数,这个值比最小值min大，比最大值max小
+        function getRandomInt(min, max) {
+            max = Math.floor(max); //2.1 取2 向下取整
+            min = Math.ceil(min); //向上取整 1.6取2
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        ////得到两个数之间的随机整数,包括两个数在内
+        function getRandomIntinclusive(min, max) {
+            max = Math.floor(max); //2.1 取2 向下取整
+            min = Math.ceil(min);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        console.log(getRandomIntinclusive(55, 77)); //61
+
+        //随机点名
+        var arr = ['尹宝祯', '可爱', '邢昱恺', '丑陋'];
+        console.log(arr[getRandomIntinclusive(0, arr.length - 1)]);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

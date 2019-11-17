@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //需要注意的是，只能通过Date"""构造函数"""来实例化日期对象：以常规函数调用它（即不加new操作符） 将会返回字符串，而不是日期对象
+        //date对象没有字面量格式
+        //date必须使用new来调用
+        var arr = new Array(); //new 创建一个数组对象
+        var obj = new Object(); //new 创建了一个对象实例
+        //1.使用date
+        var date = new Date(); //如果里面没有跟参数 """返回当前系统的当前时间"""
+        console.log(date);
+        //2.参数常用的写法  数字型 2019，10，01 或者是 字符串型'2019-10-01 08:08:28'
+        var date1 = new Date(2019, 10, 01) //Fri Nov 01 2019 00:00:00 GMT+0800 (中国标准时间) 是十一月不是十月
+        console.log(date1);
+        var date2 = new Date('2019-10-01 08:08:28');
+        console.log(date2); //Tue Oct 01 2019 08:08:28 GMT+0800 (中国标准时间)
+        //date 必须new 实例化后才可以使用
+        //date方法的使用
+        //date构造函数的参数 
+        //如果括号里面有时间就返回时间
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

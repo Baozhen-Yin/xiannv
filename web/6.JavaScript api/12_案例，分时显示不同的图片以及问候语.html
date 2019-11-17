@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src=" " alt="">
+    <div></div>
+
+    <!--根据系统不同事件来判断，所以需要用到日期内置对象-->
+    <!--利用多分支语句来设置不同的图片-->
+    <!--需要一个图片，并且根据时间修改图片，就需要用到操作元素src属性-->
+    <!--需要一个div元素 显示不同问候语 修改内容元素即可-->
+    <script>
+        var img = document.querySelector('img');
+        var div = document.querySelector('div');
+        //得到当前小时数
+        var date = new Date();
+        var hours = date.getHours();
+        //判断小时数 改变图片和配文
+        if (hours < 12) {
+            img.src = ""
+            div.innerHTML = '上午好，好好学习';
+        } else if (h < 18) {
+            img.src = ""
+            div.innerHTML = '下午好，好好学习'
+        } else {
+            img.src = ""
+            div.innerHTML = '晚上好 可以准备睡觉'
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,400 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.w {
+    width: 1226px;
+    margin: 0 auto;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.qingchu {
+    clear: both;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    /* 照顾IE6 IE7 */
+    *zoom: 1;
+}
+
+body {
+    background-color: white;
+    /* height: 3000px; */
+}
+
+.head {
+    height: 42px;
+    background-color: white;
+    margin: 30px auto;
+    color: #b0b0b0;
+    font-size: 12px;
+    line-height: 42px;
+}
+
+
+/* 在实际开发中，我们不会直接用a而是用li 包含链接（li+a）的做法 */
+
+.logo {
+    float: left;
+    width: 198px;
+    height: 44px;
+}
+
+
+/* 不给nav盒子宽度 行内块盒子特性 有什么内容就有多宽 可以继续添加文字 */
+
+
+/* 块级盒子加了浮动就会自动有行内块盒子的特性  */
+
+
+/* <!-- 2.默认宽度就是它本身内容的宽度(行内元素特点) --!> */
+
+.nav {
+    margin-left: 10px;
+    float: left;
+}
+
+
+/* 让导航栏一行显示，给li加浮动，因为li是块级元素，需要一行显示 */
+
+.nav ul li {
+    float: left;
+    margin: 0 10px;
+}
+
+
+/* 文字字数不一样多，不方便给宽，可以让padding撑开盒子 */
+
+.nav ul li a {
+    display: block;
+    height: 42px;
+    padding: 0 10px;
+    line-height: 42px;
+    font-size: 15px;
+    color: #050505;
+}
+
+
+/* 设置鼠标触及有蓝色实体线 2px */
+
+.nav ul li a:hover {
+    border-bottom: 2px solid #00a4ff;
+    color: peru;
+}
+
+
+/* 搜索模块 */
+
+.search {
+    float: left;
+    height: 42px;
+    width: 387px;
+    margin-left: 30px;
+    /* background-color: blue; */
+}
+
+.search input {
+    float: left;
+    height: 40px;
+    width: 300px;
+    border: 1px solid #00a4ff;
+    border-right: none;
+    color: #bfbfbf;
+    font-size: 14px;
+    padding-left: 15px;
+}
+
+
+/* 按钮 */
+
+
+/* input img 属于行内块元素 所以中间有缝隙 */
+
+.search button {
+    float: left;
+    height: 42px;
+    width: 42px;
+    /* button有个默认边框 当时我采用border：none  不对 应该是border：0 */
+    border: 0;
+    background: url(image3/dva.jpg);
+    background-repeat: no-repeat;
+}
+
+.wechat {
+    float: left;
+    height: 42px;
+    /* 不需要给宽 给padding 自己撑开便是 浮动模块拥有行内块相似属性 */
+    margin-left: 20px;
+}
+
+
+/* banner区域 */
+
+.banner {
+    height: 421px;
+    background-color: pink;
+}
+
+.banner .w {
+    height: 421px;
+    background: url(image3/bgdva.jpg) no-repeat top center;
+}
+
+.subnav {
+    float: left;
+    width: 190px;
+    height: 421px;
+    background: rgb(159, 131, 172, .5);
+}
+
+.subnav ul li {
+    height: 45px;
+    line-height: 45px;
+    padding: 0 20px;
+}
+
+.subnav ul li a {
+    font-size: 16px;
+    color: #fff;
+}
+
+.subnav ul li a span {
+    float: right;
+}
+
+.subnav ul li a:hover {
+    color: rgb(170, 27, 206);
+}
+
+.course {
+    float: right;
+    height: 300px;
+    width: 230px;
+    /* 浮动的盒子不会有外边距合并的问题 */
+    margin: 60px 0;
+}
+
+.course h2 {
+    height: 48px;
+    background-color: rgba(140, 69, 173, 0.3);
+    text-align: center;
+    line-height: 48px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.brother {
+    padding: 0 20px;
+}
+
+.brother ul li {
+    padding: 14px 0;
+    border-bottom: 1px solid #cccccc;
+}
+
+.brother ul li h4 {
+    font-size: 16px;
+    color: #4e4e4e;
+}
+
+.brother ul li p {
+    font-size: 12px;
+    color: #a5a5a5;
+}
+
+.brother .more {
+    /* a是行内元素 没有大小 转化为块级元素即可 */
+    display: block;
+    height: 38px;
+    border: rgb(228, 23, 177) solid 1px;
+    /* 水平居中 */
+    text-align: center;
+    /* 垂直居中 */
+    line-height: 38px;
+    color: rgb(207, 114, 200);
+    font-size: 23px;
+}
+
+
+/* banner结束 */
+
+
+/* 推荐菜单栏 开始*/
+
+.heros {
+    height: 60px;
+    background-color: #fff;
+    margin-top: 10px;
+    /* 行高会继承 */
+    line-height: 60px;
+    box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.heros ul {
+    float: left;
+}
+
+.heros ul li {
+    float: left;
+}
+
+.heros ul li a {
+    padding: 0 15px;
+    height: 40px;
+    border-right: 1px #e0e0e0 solid;
+    color: rgba(53, 9, 42, 0.747)
+}
+
+.explain-down ul li em {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.heros .mod {
+    float: right;
+    margin-right: 30px;
+    font-style: 14px;
+    color: rgb(22, 124, 150);
+}
+
+.heros ul li a:hover {
+    color: peru;
+    border-bottom: 2px solid #00a4ff;
+}
+
+.explain {
+    margin-top: 30px;
+    /* overflow: hidden; */
+}
+
+.explain .explain-up {
+    height: 45px;
+}
+
+.explain-up h3 {
+    float: left;
+    font-size: 20px;
+    color: #494949;
+}
+
+.explain-up a {
+    float: right;
+    font-size: 12px;
+    color: #a5a5a5;
+    margin-top: 10px;
+    margin-right: 30px;
+}
+
+.explain-down {
+    float: left;
+}
+
+.explain-down ul li {
+    position: relative;
+    float: left;
+    height: 270px;
+    width: 233px;
+    background-color: #fff;
+    margin-right: 15.2px;
+    margin-bottom: 15px;
+}
+
+.explain-down .five {
+    margin-right: 0;
+}
+
+.explain-down .ten {
+    margin-right: 0;
+}
+
+.explain-down .fifteenth {
+    margin-right: 0;
+}
+
+.explain-down ul li>img {
+    width: 100%;
+}
+
+.explain-down ul li h4 {
+    height: 50px;
+    margin: 20px 20px 20px 25px;
+    font-size: 14px;
+    color: #050505;
+    font-weight: 400;
+}
+
+.explain-down .info {
+    margin: 0 20px 10px 25px;
+    font-size: 12px;
+    color: #999;
+}
+
+.explain-down .info span {
+    color: red;
+}
+
+.footer {
+    height: 414px;
+    /* background-color: pink; */
+}
+
+.footer .w {
+    padding: 70px;
+}
+
+.right {
+    float: left;
+}
+
+.right p {
+    font-size: 12px;
+    color: #666;
+    margin: 20px 0 15px 0;
+}
+
+.links {
+    float: right;
+}
+
+.links dl {
+    float: left;
+    margin-left: 100px;
+}
+
+.links dl dt:hover {
+    color: rgba(49, 150, 94, 0.89);
+}
+
+.links a:hover {
+    color: rgba(21, 104, 182, 0.938);
+}
+
+.links dl dt {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.links dl dd a {
+    color: #333;
+    font-size: 12px;
+}

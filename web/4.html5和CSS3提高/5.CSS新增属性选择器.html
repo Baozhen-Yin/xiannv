@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5.CSS新增属性选择器</title>
+    <!-- 属性选择器可以根据元素特定的属性来选择元素。这样就可以不用借助于类或者id选择器 -->
+    <style>
+        /* 必须是input且包含value这个属性 */
+        /*         
+        input[value] {
+            color: thistle;
+        } */
+        
+        input[type=text] {
+            color: red;
+        }
+        /* 选择首先是div 并且具有class属性 并且icon开头 */
+        
+        div[class^=icon] {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1.利用属性选择器可以 不用借助于类或者id选择器  -->
+    <!-- <input type="text" value="请输入用户值">
+    <input type="text"> -->
+
+    <!-- 2.利用属性选择器可以选择 属性=值 的某些元素  重点 务必学会-->
+    <!-- <input type="text">
+    <input type="password"> -->
+
+    <!-- 3.利用属性选择器可 选择 属性值开头的 某些元素 [att^="val"] 有att属性并且以val开头的-->
+    <div class="icon1">图片1</div>
+    <div class="icon2">图片2</div>
+    <div class="icon3">图片3</div>
+    <div class="icon4">图片4</div>
+    <div>打酱油~~~</div>
+
+    <!-- 4.利用属性选择器可以 选择 属性值结尾的 某些元素   [att$="val"] 有att属性并且以val结尾的 -->
+
+    <!-- 5.利用属性选择器可以 选择 属性值具有的 某些元素   [att*="val"] 有att属性并且含有val的 -->
+
+
+</body>
+
+</html>

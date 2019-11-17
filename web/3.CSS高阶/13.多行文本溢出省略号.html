@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多行文本溢出省略号</title>
+    <!-- 多行文本溢出显示省略号，有较大的兼容问题，适合于webKit浏览器或移动端（移动端大部分是Webkit内核） -->
+
+    <!-- overflow:hidden; -->
+    <!-- text-overflow:ellipsis -->
+    <!-- 弹性伸缩盒子模型展示 -->
+    <!-- display: -webkit-box;-->
+    <!-- 限制在一个块元素显示的文本的行数 -->
+    <!-- -webkit-line-clamp:2 ; -->
+    <!-- 设置或检索伸缩盒对象的子元素的排列方式 -->
+    <!--  -webkit-box-orient:vertical; -->
+
+    <style>
+        div {
+            width: 150px;
+            height: 65px;
+            background-color: pink;
+            margin: 0 auto;
+            overflow: hidden;
+            white-space: normal;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        馈开始就货到付款HF卡扎菲的课时费的客户收款 馈开始就货到付款HF卡扎菲的课时费的客户收款 馈开始就货到付款HF卡扎菲的课时费的客户收款
+    </div>
+</body>
+
+</html>

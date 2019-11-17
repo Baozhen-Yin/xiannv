@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML新特性</title>
+    <!-- 这些新特性都有兼容性问题 i9以上才支持 -->
+
+    <!-- 以前布局都是用div来用的 div对搜索引擎来说 是没有语义的 -->
+    <!-- 对搜索引擎并不好 什么都会都不精 -->
+    <!-- 增加了语义化标签 -->
+    <!-- 1.这些语义化标准主要针对搜索引擎 -->
+    <!-- 2.这些新标签页面中可以使用多次 -->
+    <!-- 3.在IE9中，需要把这些元素转化为块级元素 -->
+    <!-- 4.移动端更喜欢这些标签 -->
+    <style>
+        header {
+            height: 120px;
+            background-color: pink;
+            border-radius: 15px;
+            width: 800px;
+            margin: 15px auto;
+        }
+        
+        nav {
+            height: 120px;
+            background-color: pink;
+            border-radius: 15px;
+            width: 800px;
+            margin: 15px auto;
+        }
+        
+        article {
+            width: 500px;
+            height: 300px;
+            background-color: skyblue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>头部标签</header>
+    <nav>导航标签</nav>
+    <article>内容标签</article>
+    <section>定义文档某个区域</section>
+    <aside>侧边栏标签</aside>
+    <footer>尾部标签</footer>
+</body>
+
+</html>

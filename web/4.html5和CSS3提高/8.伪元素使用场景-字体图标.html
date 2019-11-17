@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8.伪元素使用场景-字体图标</title>
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?8731pf');
+            src: url('fonts/icomoon.eot?8731pf#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf?8731pf') format('truetype'), url('fonts/icomoon.woff?8731pf') format('woff'), url('fonts/icomoon.svg?8731pf#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+        
+        div {
+            position: relative;
+            width: 300px;
+            height: 35px;
+            border: 1px solid red;
+        }
+        
+        div::after {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-family: 'icomoon';
+            content: "";
+            font-size: 18px;
+            /* 定位盒子不占用任何位置 */
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+
+    </div>
+</body>
+
+</html>

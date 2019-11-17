@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>margin负值的用处</title>
+    <!-- 当两个盒子边框重叠 1px 会变成2px 不好看  -->
+    <!-- collapse也可以但是不会变颜色 -->
+    <style>
+        ul li {
+            position: relative;
+            float: left;
+            list-style: none;
+            width: 150px;
+            height: 200px;
+            border: solid 1px red;
+            /* 加上-1px 往左走1像素  */
+            /* 是第一个li执行再执行第二个 渲染形 不是一整坨一起挪动 */
+            margin-left: -1px;
+        }
+        
+        ul li:hover {
+            /* 但是只有三条边会变颜色 */
+            /* 改成相对定位即可 因为相对定位会压住其他的标注流 鼠标经过哪个哪个就是相对定位 压住旁边的 自己变色 */
+            /* 如果都有定位 则z-index */
+            /* position: relative; */
+            z-index: 1;
+            border-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</body>
+
+</html>

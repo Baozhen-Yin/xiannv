@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        var re = prompt("欢迎使用简易计算器：\n1.加法运算；\n2.减法运算；\n3.乘法运算；\n4.除法运算；\n5.退出；\n请输入您的选项：");
+        if (re == 1) {
+            var re1 = parseInt(prompt('请输入第一个值：')) + parseInt(prompt('请输入第二个值：'));
+            alert('结果为' + re1);
+        } else if (re == 2) {
+            var re1 = parseInt(prompt('请输入第一个值：')) - parseInt(prompt('请输入第二个值：'));
+            alert('结果为' + re1);
+        } else if (re == 3) {
+            var re1 = parseInt(prompt('请输入第一个值：')) * parseInt(prompt('请输入第二个值：'));
+            alert('结果为' + re1);
+        } else if (re == 4) {
+            var re1 = parseInt(prompt('请输入第一个值：')) / parseInt(prompt('请输入第二个值：'));
+            alert('结果为' + re1);
+        } else if (re == 5) {
+            alert('您正在退出');
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

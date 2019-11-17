@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //可以通过修改length长度以及索引号增加数组长度
+        //1.修改length长度新增数组元素
+        var arr = ['red', 'green', 'blue'];
+        console.log(arr.length);
+        arr.length = 5; //把数组长度修改为5 数组元素应该为5
+        console.log(arr); // ["red", "green", "blue", empty × 2]
+        console.log(arr[3]); //undefined
+        console.log(arr[4]); //undefined 但是已经实现了数组扩容
+
+        //2.通过修改数组索引新增数组元素
+        var arr2 = ['red', 'green', 'blue'];
+        arr2[3] = 'yellow';
+        console.log(arr2[3]); //yellow
+        arr2[0] = 'black';
+        console.log(arr2[0]); //black 这里是替换数组元素
+        arr1 = '有点意思'
+        console.log(arr1); //有点意思 不要直接给数组名赋值 否则会覆盖掉以前的数据
+        //新建一个数组 里面存放十个整数（1~10）
+        //1.通过循环来追加数组
+        arr3 = []
+        for (var i = 0; i < 10; i++) {
+            // arr=i 不要直接给组名赋值
+            arr3[i] = i + 1
+
+        }
+        console.log(arr3);
+
+        //将数组[2,0,6,1,77,0,52,0,25,7]中大于等与10的元素选出来放入新数组
+        Newarr = [];
+        var j = 0;
+        arr5 = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        for (var i = 0; i < arr5.length; i++) {
+            if (arr5[i] >= 10) {
+                //新数组应该从零开始依次递增
+                Newarr[j] = arr5[i];
+                j++
+            }
+        }
+        console.log(Newarr);
+        //方法2
+        arr5 = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        newarr2 = []
+        for (var i = 0; i < arr5.length; i++) {
+            if (arr5[i] >= 10) {
+                //新数组应该从零开始依次递增
+                newarr2[newarr2.length] = arr5[i]; //newarr.length动态索引数组长度
+            }
+        }
+        console.log(newarr2);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

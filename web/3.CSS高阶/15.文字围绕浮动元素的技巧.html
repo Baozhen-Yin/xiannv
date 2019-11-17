@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文字围绕浮动元素</title>
+    <!-- 巧妙运用浮动不会压住文字的特性 -->
+    <!-- 思路：1.首先准备一个大盒子 -->
+    <!-- 2.左侧添加浮动图片 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .box1 {
+            width: 300px;
+            height: 70px;
+            margin: 0 auto;
+            background-color: pink;
+        }
+        
+        .pic {
+            float: left;
+            width: 120px;
+            height: 60px;
+            margin-right: 5px;
+        }
+        
+        .pic img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box1">
+        <div class="pic"><img src="image4/r_dj.png" alt=""></div>
+        馈开始就货到付款HF卡扎菲的课时费的客户收款 馈开始就馈开始就货到付款HF卡扎菲的课时费的客户收款 馈开始就馈开始就货到付款HF卡扎菲的课时费的客户收款 馈开始就
+    </div>
+</body>
+
+</html>

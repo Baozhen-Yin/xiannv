@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三角巧妙运用</title>
+    <!-- CSS三角强化 -->
+    <!-- 直角三角形 -->
+    <!-- 如果只要右边直角三角形 -->
+    <!-- 1.去掉border-bottom border-left 宽度设置为零去掉 -->
+    <!-- 2.把border-top 提高 -->
+    <style>
+        .box1 {
+            width: 0px;
+            height: 0px;
+            /* border: 10px solid; */
+            border-top: 100px solid transparent;
+            border-right: 50px solid rgb(224, 10, 10);
+            /* border-bottom: 10px solid rgb(29, 151, 84); */
+            /* border-left: 10px solid rgb(204, 238, 11); */
+        }
+        
+        .box2 {
+            width: 0px;
+            height: 0px;
+            line-height: 0;
+            font-size: 0;
+            border-top: 100px solid transparent;
+            border-left: 50px solid rgb(29, 161, 40);
+        }
+        
+        .box3 {
+            width: 0px;
+            height: 0px;
+            line-height: 0;
+            font-size: 0;
+            border-left: 100px solid transparent;
+            border-top: 50px solid rgb(13, 52, 226);
+        }
+        
+        .box4 {
+            width: 0px;
+            height: 0px;
+            line-height: 0;
+            font-size: 0;
+            border-right: 100px solid transparent;
+            border-top: 50px solid rgb(13, 52, 226);
+        }
+        
+        .price {
+            width: 160px;
+            height: 24px;
+            border: 1px solid red;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 24px;
+        }
+        
+        .price .ms {
+            position: relative;
+            width: 100px;
+            height: 100%;
+            float: left;
+            background-color: red;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .price .sanjiao {
+            position: absolute;
+            width: 0px;
+            height: 0px;
+            right: 0;
+            bottom: 0;
+            border-top: 24px solid transparent;
+            border-right: 15px solid #fff;
+        }
+        
+        .price .origin {
+            font-size: 12px;
+            color: gray;
+            /* 删除线 */
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="price">
+        <span class="ms">$1560 <div class="sanjiao"></div></span>
+        <span class="origin">$5088</span>
+
+    </div>
+
+</body>
+
+</html>

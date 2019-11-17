@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //(1)reverse() 颠倒数组中元素的顺序，无参数  该方法会改变原来的数组 返回新数组
+        //(2)sort() 对数组元素进行排序  该方法会改变原来的数组 返回新数组
+
+        //1.翻转数组
+        var arr = ['瘌蛤蟆', '邢昱恺', '仙女', '尹宝祯']
+        arr.reverse();
+        console.log(arr); //(4) ["尹宝祯", "仙女", "邢昱恺", "瘌蛤蟆"]
+        console.log(arr.reverse()); //(4) ["瘌蛤蟆", "邢昱恺", "仙女", "尹宝祯"]
+
+        //2.数组排序
+        var arr1 = [5, 3, 6, 2];
+        arr1.sort();
+        console.log(arr1); //(4) [2, 3, 5, 6]
+        //缺点 只能排个位数 
+        var arr3 = [12, 22, 13, 21, 45, 19, 29, 18, 3, 5, 9]
+        arr3.sort()
+        console.log(arr3); //(11) [12, 13, 18, 19, 21, 22, 29, 3, 45, 5, 9] 结果不对
+
+        arr3.sort(function(a, b) {
+            return a - b; //按照升序排序
+        })
+
+
+        console.log(arr3);
+        arr3.sort(function(a, b) {
+            return b - a; //按照降序排序
+        })
+        console.log(arr3) //(11) [45, 29, 22, 21, 19, 18, 13, 12, 9, 5, 3]
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

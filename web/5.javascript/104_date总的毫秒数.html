@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //date对象是基于1970年1月1日（世界标准时间）起的毫秒数
+        //我们经常利用毫秒数来计算时间 使得它更精确
+        //获得date总的毫秒数 距离1970年1月1号过了多少毫秒数
+        //1.通过valueof()得到 getTime()
+        var date = new Date();
+        console.log(date.valueOf()); //1572691357632  就是现在时间距离1970年一月一号总的毫秒数
+        console.log(date.getTime()); //1572691377160
+
+        //2.简单的写法 最常用的写法
+        var date1 = +new Date(); //+new Date()返回的就是总的毫秒数
+        console.log(date1);
+
+        //3.h5新增的获取毫秒数
+        console.log(Date.now()); //1572691503058
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

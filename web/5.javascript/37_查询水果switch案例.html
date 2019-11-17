@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //case后面的值必须要加引号 因为必须是全等匹配
+        var fruit = prompt('请输入一个你喜欢的水果：')
+        switch (fruit) {
+            case 'apple':
+                alert('五元一斤');
+                break;
+            case '梨':
+                alert('10元一斤');
+                break;
+            case '桃子':
+                alert('20元一斤');
+                break;
+            case '哈密瓜':
+                alert('十五元一斤');
+                break;
+            default:
+                alert('没有此水果');
+
+        } // 固定值用switch 灵活范围值则用 if else if 
+        //switch语句进行判断后直接执行到程序的条件语句，效率更高 而if else语句有几种条件 就的判断多少次
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

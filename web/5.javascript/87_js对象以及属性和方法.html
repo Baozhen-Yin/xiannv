@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //(1)什么是对象
+        //对象是"""一个具体"""的事物,一个数据库,一个网页,一个远程服务器也可以看作一个对象
+        //js中,对象是一组无序的"""相关属性"""和"""方法"""的集合,所有事物都是对象,例如字符串\数值\数组\函数等
+        // 对象是由'''属性'''和'''方法'''组成的
+        // 属性:事物的"特征",在对象中用属性来表示(常用名词)
+        // 方法:事物的"行为",在对象中用方法来表示(常用动词)
+        //例如 : 在手机中 大小 颜色 重量 屏幕尺寸 厚度 为属性||| 打电话 发短信 玩游戏 砸核桃 为方法
+        //(2)创建对象的方式
+        //1.用字面量来创建{} 里面包含了具体事物对象的属性和方法
+        var obj = {}; //创建了一个空的对象
+        var obj1 = { //键值对形式
+                uname: '尹宝祯', //属性的写法
+                uage: 16, //多个属性或者方法用逗号隔开
+                usex: '仙女',
+                sayHi: function() { //方法的写法,方法后面跟匿名函数
+                    console.log('hi~');
+                }
+            }
+            //2.使用对象
+            //(1)调用对象属性 我们采取 对象名.属性名
+        console.log(obj1.uname); //尹宝祯
+        //(2)调用属性的第二种方法 对象名['属性名']
+        console.log(obj1['uage']); //16
+        //(3)调用对象的方法 对象名.方法名
+        obj1.sayHi(); //hi~
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

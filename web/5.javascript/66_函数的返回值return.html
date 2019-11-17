@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //函数是做某件事或者实现某种功能
+        function cook(dish) { //形参是接受实参的
+            console.log('我需要一份' + dish);
+        }
+        cook('apple'); //我需要一份apple
+        //有时候我们希望函数把值返回给调用者 此时通过return就可以实现
+        //（1）我们函数只是实现某种功能 最终的结果需要返回给函数的调用者函数名()通过return实现
+        //(2)只要函数遇到return 就把后面的结果返回给函数的调用者
+        function getResult() {
+            return 666
+        }
+        getResult(); //getResult() =  666; 赋值操作 没有任何结果 需要打印
+        console.log(getResult()); //数值型  666
+
+        //函数是做某件事或者实现某种功能
+        function cook(dish) { //形参是接受实参的
+            return dish;
+        }
+        console.log(cook('apple'));
+        //我需要一份apple
+
+        function getSum(num1, num2) {
+            return num1 + num2;
+        }
+        console.log(getSum(1, 2));
+        //不要在内部去输出结果 因为函数只是做某件事情 最终处理完的结果一段要返回给函数调用者 函数名()
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

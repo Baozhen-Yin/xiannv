@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //利用构造函数创建对象
+        //我们为什么要创建构造函数 因为我们前面两种创建对象方式一次只能创造一个对象
+        var xiannv = {
+                uname: '尹宝祯',
+                age: 16,
+                sex: '仙女',
+                sing: function() {
+                    console.log('打豆豆');
+                }
+            }
+            //如果还得创造一个邢昱恺的对象 又得重新写一遍 太麻烦了
+            //因为我们一次创建一个对象,里面很多属性和方法大多相同 我们只能复制
+            //因此我们可以利用函数的方法 重复这些代码 我们把这个函数称为构造函数
+            //因为这个函数不一样 里面封装的不是普通代码 而是对象
+            //构造函数就是把"对象"里面一些相同的"属性"和"方法""""抽象'""出来"""封装"""到函数里面
+
+        // function 构造函数名() {
+        //     this.属性 = 值;
+        //     this.方法 = function({
+        //     })
+        // }
+        // new 构造函数名();
+        function Star(uname, age, sex) { //构造函数名字首字母要大写
+            this.uname = uname; //值是实参传给形参 再放到uname
+            this.age = age;
+            this.sex = sex;
+            this.sing = function(sang) {
+                console.log(sang);
+
+            }
+        }
+        var xiannv = new Star('尹宝祯', 16, '女');
+        console.log(typeof xiannv);
+        console.log(xiannv.uname);
+        xiannv.sing('打豆豆'); //实参传给形参 传给log
+        var chounan = new Star('邢昱恺', 80, '人妖');
+        console.log(chounan.uname);
+
+        function Hero(name, type, blood, attack) {
+            this.name = name;
+            this.type = type;
+            this.blood = blood;
+            this.attack = function(attacked) {
+                console.log(attacked);
+
+            }
+        }
+        var lianpo = new Hero('廉颇', '力量型', '500血量');
+        lianpo.attack('近战');
+        var houyi = new Hero('后裔', '射手型', '100血量');
+        houyi.attack('远程')
+        console.log(lianpo.name);
+        console.log(lianpo.type);
+        console.log(lianpo.blood);
+        lianpo.attack('近战');
+        console.log(houyi); //Hero {name: "后裔", type: "射手型", blood: "100血量", attack: ƒ}
+
+
+
+        //1.构造函数名字需大写
+        //2.构造函数不需要return 就可以返回结果
+        //3.我们调用构造函数 必须用new
+        //4.我们只要new star()调用函数 就创建一个对象
+        //5.我们的属性和方法前面必须添加this 因为this是当前 指向正想创建的对象
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

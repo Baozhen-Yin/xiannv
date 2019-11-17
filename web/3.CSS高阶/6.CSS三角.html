@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS三角形</title>
+    <style>
+        .box1 {
+            width: 0px;
+            height: 0px;
+            /* border: 10px solid; */
+            border-top: 10px solid #000;
+            border-right: 10px solid rgb(224, 10, 10);
+            border-bottom: 10px solid rgb(29, 151, 84);
+            border-left: 10px solid rgb(204, 238, 11);
+        }
+        /* 上边三角形出现啦 */
+        
+        .box2 {
+            width: 0px;
+            height: 0px;
+            /* border: 10px solid; */
+            /* 为了兼容性还会写以下两句话 */
+            line-height: 0;
+            font-size: 0;
+            border: 10px solid transparent;
+            border-top: 10px solid #000
+            /* border-top: 10px solid #000;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid transparent; */
+        }
+        
+        .box3 {
+            width: 0px;
+            height: 0px;
+            /* border: 10px solid; */
+            line-height: 0;
+            font-size: 0;
+            border-top: 100px solid transparent;
+            border-right: 100px solid pink;
+            border-bottom: 100px solid transparent;
+            border-left: 100px solid transparent;
+        }
+        
+        .box4 {
+            width: 0px;
+            height: 0px;
+            /* border: 10px solid; */
+            line-height: 0;
+            font-size: 0;
+            border-top: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 100px solid yellow;
+            border-left: 100px solid transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+</body>
+
+</html>
