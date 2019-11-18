@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>23.图片放大案例</title>
+    <style>
+        div {
+            /* 超出的部分不显示 */
+            overflow: hidden;
+            float: left;
+            margin: 10px;
+            border: 1px solid rgb(155, 43, 136);
+        }
+        
+        div img {
+            width: 300px;
+            height: 200px;
+            transition: all 0.4s;
+        }
+        
+        div img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <a href="#"><img src="image5/dva.jpg" alt=""></a>
+    </div>
+    <div>
+        <a href="#"><img src=" image5/dva.jpg" alt=""></a>
+    </div>
+    <div>
+        <a href="#"><img src="image5/dva.jpg " alt=""></a>
+    </div>
+</body>
+
+</html>

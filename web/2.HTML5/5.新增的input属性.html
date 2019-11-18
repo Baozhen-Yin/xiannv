@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- autocomplete 适用于 <form> 标签，以及以下类型的 <input> 
+        标签：text, search, url, telephone, email, password, datepickers, range 以及 color。
+        当用户在自动完成域中开始输入时，浏览器应该在该域中显示填写的选项： -->
+    <form action="demo_form.asp" method="get" autocomplete="on">
+        Firstname: <input type="text" name="fname" /><br />
+        <!--  -->
+        Lastname: <input type="text" name="lname" /><br />
+        <!-- 就是以前输入过的值，现在再输，没输完也会有提示 -->
+        E-mail: <input type="email" name="email" autocomplete="off" /><br />
+        <input type="submit" />
+
+        <!-- autofocus 属性
+        autofocus 属性规定在页面加载时，域自动地获得焦点。打开自动有光标-->
+        User name: <input type="text" name="user_name" autofocus="autofocus" />
+
+        <!-- multiple 属性规定输入域中可选择多个值。选择多个文件提交 -->
+        Select images: <input type="file" name="img" multiple="multiple" />
+
+        <!-- required 属性规定必须在提交之前填写输入域（不能为空）。 -->
+        Name: <input type="text" name="usr_name" required="required" />
+    </form>
+</head>
+
+<body>
+
+</body>
+
+</html>

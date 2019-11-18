@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>16.让一个盒子水平居中translate</title>
+    <style>
+        div {
+            position: relative;
+            background-color: pink;
+            width: 500px;
+            height: 500px;
+            /* transform: translate(x, y);  */
+            /* 如果里面是百分号 移动的距离是盒子自身的高度和宽度对比的 */
+            /* 这里的50%就是50px 因为盒子宽度为100px */
+        }
+        
+        p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background-color: rgb(49, 226, 167);
+            width: 200px;
+            height: 200px;
+            /* margin-top: -100px;
+            margin-left: -100px; */
+            /* 利用定位和translate来垂直居中 */
+            transform: translate(-50%, -50%);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <p></p>
+    </div>
+
+</body>
+
+</html>

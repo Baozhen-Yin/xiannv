@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.新增视频标签</title>
+
+
+    <!-- HTML5 <video> - 使用 DOM 进行控制  HTML5 <video> 元素同样拥有方法、属性和事件。
+
+    其中的方法用于播放、暂停以及加载等。其中的属性（比如时长、音量等）可以被读取或设置。
+    其中的 DOM 事件能够通知您，比方说，<video> 元素开始播放、已暂停，已停止，等等。
+
+    下例中简单的方法，向我们演示了如何使用 <video> 元素，读取并设置属性，以及如何调用方法。 -->
+    <video src="movie.ogg" controls="controls">
+                </video>
+    <!-- controls 属性供添加播放、暂停和音量控件。包含宽度和高度属性也是不错的主意。
+
+    <video> 与 </video> 之间插入的内容是供不支持 video 元素的浏览器显示的： -->
+    <video src="movie.ogg" width="320" height="240" controls="controls">
+            这句话是看不见的</video>
+
+
+    <!-- 兼容性写法 video 元素允许多个 source 元素。source 元素可以链接不同的视频文件。
+        浏览器将使用第一个可识别的格式：-->
+    <video width="320" height="240" controls="controls">
+    <source src="movie.ogg" type="video/ogg">
+    <source src="movie.mp4" type="video/mp4">
+                 你的视频不支持这个视频格式
+    </video>
+
+    <!-- 添加muted="muted"静音播放 就可以自动播放啦 -->
+    <!-- autoplay	autoplay	如果出现该属性，则视频在就绪后马上播放。
+        controls	controls	如果出现该属性，则向用户显示控件，比如播放按钮。
+        height	pixels	设置视频播放器的高度。
+        loop	loop	如果出现该属性，则当媒介文件完成播放后再次开始播放。
+        preload	preload	如果出现该属性，则视频在页面加载时进行加载，并预备播放。如果使用 "autoplay"，则忽略该属性。
+        src	url	要播放的视频的 URL。
+        width	pixels	设置视频播放器的宽度。-->
+</head>
+
+<body>
+
+</body>
+
+</html>

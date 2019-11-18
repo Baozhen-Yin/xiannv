@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>18.2D转化scale</title>
+    <!-- scale()方法，该元素增加或减少的大小，取决于宽度（X轴）和高度（Y轴）的参数： -->
+    <!-- scale（2,3）转变宽度为原来的大小的2倍，和其原始大小3倍的高度。 -->
+    <!-- 不会影响其他盒子,而且可以设置缩放的中心点 -->
+    <style>
+        .three {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            /* transform: scale(2, 3); */
+            /* 标准语法 */
+            /* 左下角缩放 */
+            transform-origin: left bottom;
+            margin: 200px auto;
+        }
+        
+        .three:hover {
+            transform: scale(2);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="three"></div>
+</body>
+
+</html>

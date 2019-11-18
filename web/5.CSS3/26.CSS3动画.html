@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 页面一打开一个盒子就从左边走到右边 -->
+
+    <!-- @keyframes 规则用于创建动画。在 @keyframes 中规定某项 CSS 样式，
+        就能创建由当前样式逐渐改为新样式的动画效果。 -->
+    <!-- @keyframes 动画名称
+    {
+        from {background: red;}
+        to {background: yellow;}
+    } -->
+
+    <!-- 0% 是动画的开始，100% 是动画的完成。
+        为了得到最佳的浏览器支持，应该始终定义 0% 和 100% 选择器。 -->
+    <style>
+        /* 1.定义动画 */
+        
+        @keyframes myfirst {
+            0% {
+                background: red;
+            }
+            25% {
+                background: yellow;
+            }
+            50% {
+                background: blue;
+            }
+            100% {
+                background: green;
+            }
+        }
+        
+        @keyframes move {
+            0% {
+                transform: translateX(1000px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        /* 2.使用动画 */
+        /* animation	所有动画属性的简写属性，除了 animation-play-state 属性。 */
+        /* animation-name	规定 @keyframes 动画的名称。 */
+        /* animation-duration	规定动画完成一个周期所花费的秒或毫秒。默认是 0。 */
+        /* animation-timing-function	规定动画的速度曲线。默认是 "ease"。 */
+        /* animation-delay	规定动画何时开始。默认是 0。 */
+        /* animation-iteration-count	规定动画被播放的次数。默认是 1。 */
+        /* animation-direction	规定动画是否在下一周期逆向地播放。默认是 "normal"。 */
+        /* animation-play-state	规定动画是否正在运行或暂停。默认是 "running"。 */
+        /* animation-fill-mode	规定对象动画时间之外的状态。 */
+        
+        div {
+            width: 200px;
+            height: 200px;
+            border: olive 1px solid;
+            animation-name: myfirst;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-play-state: running;
+        }
+        
+        .one {
+            width: 200px;
+            height: 200px;
+            border: olive 1px solid;
+            animation-name: move;
+            animation-duration: 5s;
+            /* animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-play-state: running; */
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div class="one"></div>
+</body>
+
+</html>

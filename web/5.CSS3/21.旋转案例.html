@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>21.旋转案例</title>
+    <style>
+        div {
+            overflow: hidden;
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            border: solid 1px palevioletred;
+        }
+        
+        div::before {
+            content: '仙女';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            transform: rotate(180deg);
+            transform-origin: left bottom;
+            transition: all 0.4s;
+        }
+        
+        div:hover::before {
+            transform: rotate(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

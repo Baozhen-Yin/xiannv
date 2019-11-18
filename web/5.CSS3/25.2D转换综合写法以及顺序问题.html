@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>25.2D转换综合写法以及顺序问题</title>
+
+    <!-- 同时使用多个转换 格式为 -->
+    <!-- transform:translate() rotate() scale() -->
+    <!-- 其顺序会影响转换的效果 先旋转会改变坐标轴方向 -->
+    <!-- 当我们同时有位移和其他属性时候,记得位移放到最前 -->
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            transition: all .4s;
+        }
+        
+        div:hover {
+            transform: translate(100px, 100px) rotate(180deg) scale(1.5)
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

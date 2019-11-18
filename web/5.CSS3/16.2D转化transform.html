@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>16.2D转化transform</title>
+    <!-- CSS3 转换可以对元素进行移动、缩放、转动、拉长或拉伸。 -->
+    <!-- translate()方法，根据左(X轴)和顶部(Y轴)位置给定的参数，从当前元素位置移动。 -->
+    <!-- Internet Explorer 10, Firefox, 和 Opera支持transform 属性.
+        Chrome 和 Safari 要求前缀 -webkit- 版本.
+        注意： Internet Explorer 9 要求前缀 -ms- 版本. -->
+
+    <!-- translate最大的优点：不会影响到其他元素移动 -->
+    <!-- translate中的百分比单位是相对于自身元素的translate：(50%,50%)  如果盒子100px 则移动50px-->
+    <!-- 对行内标签没有效果 -->
+    <style>
+        .one {
+            background-color: pink;
+            width: 50px;
+            height: 100px;
+            /* transform: translate(x, y);  */
+            transform: translate(50px, 100px);
+            -ms-transform: translate(50px, 100px);
+            /* IE 9 */
+            -webkit-transform: translate(50px, 100px);
+            /* Safari and Chrome */
+        }
+        
+        .two {
+            background-color: rgb(68, 36, 41);
+            width: 70px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one">
+        red
+    </div>
+    <div class="two"></div>
+</body>
+
+</html>
