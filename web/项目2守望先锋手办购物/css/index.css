@@ -90,3 +90,321 @@
     overflow: hidden;
     text-overflow: ellipsis
 }
+
+
+/* <!-- 推荐模块 recommed 开始 --> */
+
+.recom {
+    position: relative;
+    height: 326px;
+    background-color: #f5f5f5;
+    margin: 12px auto;
+}
+
+.recom .reom_right {
+    position: absolute;
+    width: 741px;
+    height: 223;
+    left: 800px;
+    top: 60px;
+}
+
+.hidden_one {
+    position: absolute;
+    display: none;
+    top: 260px;
+    left: 142px;
+    color: rgba(247, 242, 242, 0.425);
+    font-size: 23px;
+    width: 600px;
+    height: 66px;
+    background: rgba(0, 0, 0, .4);
+}
+
+.de_four:hover .hidden_one {
+    display: block;
+}
+
+.recom .reom_right h5 {
+    color: rgb(84, 88, 99);
+    font-weight: 400;
+    font-family: "microsoft yahei", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-style: italic;
+    font-size: 48px;
+}
+
+.recom .one {
+    font-size: 24px;
+    color: #4E6495;
+}
+
+.recom .two {
+    font-size: 18px;
+    width: 560px;
+    line-height: 26px;
+    color: #333333;
+}
+
+.recom button {
+    margin-top: 25px;
+    color: #fefefe;
+    text-align: center;
+    width: 165px;
+    height: 38px;
+    font-size: 20px;
+    border: 3px solid #ff9c00;
+    background-color: #ff9c00;
+    line-height: 30px;
+    font-weight: 700;
+}
+
+
+/* <!-- 推荐模块 recommed 结束 --> */
+
+
+/* 楼层区域制作开始 */
+
+.floor .w {
+    margin-top: 30px;
+}
+
+.warcraft .box_hd {
+    height: 30px;
+    border-bottom: 2px solid #211510;
+}
+
+.warcraft .box_hd h3 {
+    float: left;
+    font-size: 18px;
+    color: #211510;
+    font-weight: 400;
+}
+
+.tab_list {
+    float: right;
+}
+
+.tab_list ul li {
+    float: left;
+    margin: 0 15PX;
+}
+
+
+/* .tab_list ul li a {
+
+} */
+
+.tab_list ul li a:hover {
+    color: rgba(10, 24, 150, 0.829);
+}
+
+.box_bd {
+    height: 361px;
+    /* background-color: pink; */
+}
+
+.tab_list_item>div {
+    float: left;
+    height: 361px;
+}
+
+.col_210 {
+    position: relative;
+    width: 210px;
+    height: 361px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.col_210 img {
+    width: 100%;
+    height: 100%;
+}
+
+.hid {
+    /* 隐藏遮罩层 */
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 303px;
+    color: rgba(247, 242, 242, 0.425);
+    font-size: 16px;
+    width: 100%;
+    height: 58px;
+    background: rgba(0, 0, 0, .4);
+}
+
+
+/* 当鼠标经过图片 让里面的遮罩层现身 */
+
+.de_one:hover .hid {
+    display: block;
+}
+
+.col_210 ul {
+    padding-left: 12px;
+}
+
+.col_210 ul li {
+    float: left;
+    width: 85px;
+    height: 34px;
+    margin-right: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    line-height: 33px;
+}
+
+.col_210 img {
+    width: 210px;
+    height: 258px;
+}
+
+.col_329 {
+    position: relative;
+    margin-left: 1px;
+    margin-right: 1px;
+    width: 260px;
+}
+
+.col_329 img {
+    width: 260px;
+    height: 100%;
+}
+
+.hid1 {
+    position: absolute;
+    display: none;
+    top: 303px;
+    left: 0;
+    color: rgba(247, 242, 242, 0.425);
+    font-size: 16px;
+    width: 100%;
+    height: 58px;
+    background: rgba(0, 0, 0, .4);
+}
+
+.col_329:hover .hid1 {
+    display: block;
+}
+
+.col_221_one {
+    position: relative;
+    margin-left: 2px;
+    width: 221px;
+}
+
+.col_221_one img {
+    width: 100%;
+    height: 180px;
+}
+
+.hid3 {
+    position: absolute;
+    display: none;
+    top: 303px;
+    left: 0;
+    color: rgba(247, 242, 242, 0.425);
+    font-size: 16px;
+    width: 220px;
+    height: 58px;
+    background: rgba(0, 0, 0, .4);
+}
+
+.de_two:hover .hid3 {
+    display: block;
+}
+
+.hid4 {
+    position: absolute;
+    display: none;
+    top: 122px;
+    left: 0;
+    color: rgba(247, 242, 242, 0.425);
+    font-size: 16px;
+    width: 220px;
+    height: 58px;
+    background: rgba(0, 0, 0, .4);
+}
+
+.de_three:hover .hid4 {
+    display: block;
+}
+
+.dd {
+    /* 一般情况下 如果a包含有宽度的盒子 a需要转化为块级元素 */
+    display: block;
+    border-bottom: 1px solid #ccc;
+}
+
+.col_221_two {
+    position: relative;
+    width: 265px;
+    margin: 0 2px;
+}
+
+.hid6 {
+    position: absolute;
+    display: none;
+    top: 303px;
+    left: 0;
+    color: rgba(247, 242, 242, 0.425);
+    font-size: 16px;
+    width: 100%;
+    height: 58px;
+    background: rgba(0, 0, 0, .4);
+}
+
+.col_221_two:hover .hid6 {
+    display: block;
+}
+
+.col_221_two img {
+    width: 265px;
+    height: 100%;
+}
+
+.col_219 {
+    position: relative;
+    width: 236px;
+}
+
+.col_219 img {
+    width: 100%;
+    height: 180px;
+}
+
+.hid7 {
+    position: absolute;
+    display: none;
+    top: 122px;
+    left: 0;
+    color: rgba(247, 242, 242, 0.425);
+    font-size: 16px;
+    width: 236px;
+    height: 58px;
+    background: rgba(0, 0, 0, .4);
+}
+
+.image_up:hover .hid7 {
+    display: block;
+}
+
+.hid8 {
+    position: absolute;
+    display: none;
+    top: 303px;
+    left: 0;
+    color: rgba(247, 242, 242, 0.425);
+    font-size: 16px;
+    width: 236px;
+    height: 58px;
+    background: rgba(0, 0, 0, .4);
+}
+
+.image_down:hover .hid8 {
+    display: block;
+}
+
+
+/* 楼层区域制作结束 */
