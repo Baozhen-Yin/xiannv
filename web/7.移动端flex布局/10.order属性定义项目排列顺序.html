@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10.order属性定义项目排列顺序</title>
+    <!-- 数值越小 排列越靠前 默认为0 如果改为-1就朝前了 -->
+    <!-- 和z-index不一样 -->
+    <style>
+        div {
+            display: flex;
+            width: 80%;
+            height: 300px;
+            background-color: pink;
+            /* 让三个盒子沿着侧轴底侧对齐 */
+            /* align-items: flex-end; */
+            /* 我们想只让三号盒子下来 */
+        }
+        
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: rgb(151, 19, 19);
+            margin-right: 5px;
+        }
+        
+        div span:nth-child(2) {
+            /* 2号盒子跑到一号前面了 */
+            order: -1;
+        }
+        
+        div span:nth-child(3) {
+            /* 只有第三个盒子下来了 */
+            align-self: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+
+</html>

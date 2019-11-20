@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5.align-items设置侧轴上的子元素的排列方式</title>
+    <!-- 值	描述	测试
+        stretch	默认值。元素被拉伸以适应容器，高多高拉多高。
+        center	元素位于容器的中心。
+        flex-start	元素位于容器的开头。
+        flex-end	元素位于容器的结尾。
+        baseline	元素位于容器的基线上。
+        其它情况下，该值将参与基线对齐
+        initial	设置该属性为它的默认值。
+        inherit	从父元素继承该属性。 -->
+
+    <style>
+        div {
+            display: flex;
+            width: 800px;
+            height: 400px;
+            background-color: rgb(236, 14, 14);
+            /* 沿着主轴对齐 */
+            justify-content: center;
+            /* 沿着侧轴居中 */
+            align-items: center;
+            /* 达成垂直居中 */
+        }
+        
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: rgb(160, 78, 78);
+            margin: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+
+</html>

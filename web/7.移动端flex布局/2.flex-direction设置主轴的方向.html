@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.flex设置主轴的方向</title>
+    <!-- 以下6个属性是对父元素进行设置的 -->
+    <!-- display: flex  必须属性
+        flex-direction：设置主轴的方向
+        justify-content 主轴的对其方式
+        flex-wrap 设置子元素是否换行
+        align-content：设置侧轴上的子元素的排列方式（多行）
+        align-items  交错轴的对其方式（单行）
+        flex-flow：复合属性，相当于同时设置了flex-direction和flex-wrap -->
+
+    <!-- flex布局中，是分为主轴和侧轴，同样的叫法有：行和列、x轴和y轴 -->
+    <!-- 默认的主轴方向是x轴方向，水平向右 -->
+    <!-- 默认侧轴就是y轴方向，水平向下 -->
+    <!-- flex-direction属性决定主轴的方向（即项目的排列方向） -->
+    <!-- 注意：主轴和侧轴是会变化的，就看flex-direction设置谁为主轴，剩下的就是侧轴，而我们子元素是跟着主轴来排列的 -->
+
+    <!-- 主轴由 flex-direction 定义，可以取4个值：
+        row 默认值从左到右
+        row-reverse 从右到左
+        column 从上到下
+        column-reverse 从下到上
+        如果你选择了 row 或者 row-reverse，你的主轴将沿着 inline 方向延伸。 -->
+    <style>
+        div {
+            /* 给父级添加flex属性 */
+            display: flex;
+            width: 800px;
+            height: 300px;
+            background-color: rgb(236, 14, 14);
+            justify-content: space-around;
+            /* 默认为row */
+            /* 我们的元素是跟着主轴来排列的 */
+            /* flex-direction: row; */
+            /* 简单了解 翻转  321*/
+            /* flex-direction: row-reverse; */
+            /* 把主轴设置为y轴 那么x就成了侧轴 从上到下 */
+            /* flex-direction: column; */
+            /* 翻转 从下到上 321*/
+            flex-direction: column-reverse;
+        }
+        
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: rgb(160, 78, 78);
+            margin-right: 5px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+
+</html>

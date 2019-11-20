@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex布局体验</title>
+    <!-- 传统布局：兼容性好 布局繁琐 局限性，不能在移动端很好的布局 -->
+    <!-- flex布局：操作方便 布局极为简单，移动端应用很广泛 pc端浏览器支持情况较差-->
+    <!-- 在行内元素里面也可以用span布局 而且布局不分行内元素或者块级元素都是有大小的 -->
+    <!-- 不需要清除浮动 -->
+
+    <!-- flex 是 flexible Box的缩写 意为弹性布局 用来为盒状模型提供最大的灵活性，任何一个容器都可以指定为flex布局 -->
+    <!-- 当我们为父盒子设为flex布局以后，里面子元素float、clear、和vertical-align属性都将失效 -->
+    <!-- 伸缩布局=弹性布局=伸缩盒布局=flex布局 -->
+
+    <!-- 采用flex布局的元素，称为flex容器，简称容器，他的所有子元素自动成为容器成员，称为flex项目，简称项目 -->
+    <!-- flex布局原理： -->
+    <!-- 通过给父盒子添加flex属性，来控制子盒子的位置和排列方式 -->
+    <style>
+        div {
+            display: flex;
+            width: 80%;
+            height: 300px;
+            background-color: rgb(236, 14, 14);
+            justify-content: space-around;
+        }
+        
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: rgb(160, 78, 78);
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+
+</html>

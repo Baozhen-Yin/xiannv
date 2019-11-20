@@ -1,0 +1,229 @@
+/* 常用的初始化样式 */
+
+body {
+    margin: 0 auto;
+    width: 100%;
+    min-width: 320px;
+    /* 原版 iphone原版尺寸 */
+    max-width: 640px;
+    background-color: rgb(201, 214, 200);
+    font-size: 14px;
+    font-family: -apple-system, 'Helvetica', sans-serif;
+    color: #666;
+    height: 2000px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    /* 清除底层空白缝隙 */
+    vertical-align: top;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #666;
+}
+
+.app {
+    /* 现在高度只能写死 后续有办法  现在写死不会有清除浮动的问题*/
+    height: 45px;
+}
+
+.app ul li {
+    float: left;
+    height: 45px;
+    background-color: #333333;
+    line-height: 45px;
+    text-align: center;
+    color: #fff;
+}
+
+.app ul li:nth-child(1) {
+    width: 8%;
+}
+
+.app ul li:nth-child(1) img {
+    width: 10px;
+}
+
+.app ul li:nth-child(2) {
+    width: 10%;
+}
+
+.app ul li:nth-child(2) img {
+    /* 一开始并没有居中 */
+    /* 图片默认和文字基线对齐 图片属于行内块 上面哪个图片10像素和文字差不多大小 所以差不多对齐 */
+    vertical-align: middle;
+    width: 30px;
+}
+
+.app ul li:nth-child(3) {
+    width: 57%;
+}
+
+.app ul li:nth-child(4) {
+    width: 25%;
+    background-color: #F63515;
+}
+
+
+/* 搜索 */
+
+.search-wrap {
+    position: fixed;
+    width: 100%;
+    height: 44px;
+    overflow: hidden;
+    max-width: 640px;
+    min-width: 320px;
+}
+
+.search-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 44px;
+}
+
+.search-btn::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 18px;
+    background: url(../images/gang.png) no-repeat;
+    /* 调整背景图片尺寸 */
+    background-size: 100% 100%;
+    margin: 14px 0 0 15px;
+}
+
+.search-login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 44px;
+    color: #fff;
+    line-height: 44px;
+}
+
+.search {
+    position: relative;
+    height: 30px;
+    margin: 0 50px;
+    /* 嵌套内外边距合并所以盒子塌陷 把父亲带下来 需要给父级元素添加overflow：hidden */
+    margin-top: 7px;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+.jd {
+    position: absolute;
+    top: 8px;
+    left: 13px;
+    width: 20px;
+    height: 15px;
+    background: url(../images/jd.png);
+    background-size: 100% 100%;
+}
+
+.jd::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -8px;
+    display: block;
+    /* 竖线 */
+    width: 1px;
+    height: 15px;
+    background-color: #ccc;
+}
+
+.sou {
+    position: absolute;
+    top: 8px;
+    left: 50px;
+    width: 18px;
+    height: 15px;
+    /* 添加了精灵图 */
+    background: url(../images/jingling.png) no-repeat -81px 0;
+    /* 缩放是整个图缩放 不是单独 对精灵图是无用的 */
+    /*错的： background-size: 18px 15px; */
+    /* 二倍精灵图 1.先等比例缩放为原来的一半 fw试图左边按钮  缩小为原来一半你才可以去测量 -81 0 */
+    /* 2.之后根据大小测量坐标 */
+    /* 3.注意代码background-size也要写：精灵图原来宽度的一半 原来png为400*400*/
+    background-size: 200px auto;
+}
+
+.slider img {
+    /* 图片默认底部空白缝隙 */
+    width: 100%;
+    height: 100%;
+}
+
+
+/* nav */
+
+nav {
+    /* 清除浮动 */
+    overflow: hidden;
+    /* height: 162px; */
+    padding-top: 5px;
+}
+
+nav a {
+    float: left;
+    width: 20%;
+    text-align: center;
+}
+
+nav a img {
+    width: 40px;
+    margin: 10px 0;
+}
+
+nav a span {
+    display: block;
+}
+
+
+/* new */
+
+
+/* 行内元素设置成浮动之后变得更加像是inline-block（行内块级元素，设置成这个属性的元素会同时拥有行内和块级的特性，
+最明显的不同是它的默认宽度不是100%），
+这时候给行内元素设置padding-top和padding-bottom或者width、height都是有效果的 */
+
+.new {
+    margin-top: 20px;
+}
+
+.new a {
+    float: left;
+}
+
+.new img {
+    width: 100%;
+}
+
+.new a:nth-child(1) {
+    width: 50%;
+}
+
+.new a:nth-child(2) {
+    width: 50%;
+}
+
+.shiyan {
+    width: 100%;
+    height: 500px;
+    background-color: rgb(214, 20, 20);
+}

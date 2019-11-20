@@ -1,0 +1,87 @@
+body {
+    max-width: 540px;
+    min-width: 320px;
+    margin: 0 auto;
+    font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+    color: #000;
+    background-color: #f2f2f2;
+    /* 水平滚动条隐藏 */
+    overflow-x: hidden;
+    /* 背景高亮取消 */
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    text-decoration: none;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.search-index {
+    display: flex;
+    /* 固定定位以屏幕为准 */
+    position: fixed;
+    top: 0;
+    /* 水平居中 */
+    left: 50%;
+    /* 自身宽度不知道多少的时候 */
+    transform: translateX(-50%);
+    height: 44px;
+    /* 固定盒子必须有宽度 */
+    width: 100%;
+    min-width: 320px;
+    max-width: 540px;
+    /* background-color: #fff; */
+    /* flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start; */
+}
+
+.search {
+    position: relative;
+    flex: 1;
+    height: 26px;
+    border: solid #ccc 1px;
+    border-radius: 7px;
+    margin: 6px 10px;
+    font-size: 12px;
+    color: #666;
+    line-height: 26px;
+    padding-left: 25px;
+}
+
+.search::before {
+    content: '';
+    /* display: block; */
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 15px;
+    height: 15px;
+    background: url(../images/me.png) no-repeat 0 0;
+    background-size: 21px auto;
+}
+
+.user {
+    /* position: absolute; */
+    /* right: 0;
+    top: 0; */
+    height: 44px;
+    width: 44px;
+    /* background-color: rgb(209, 26, 26); */
+    font-size: 12px;
+    text-align: center;
+    color: #2eaae0;
+}
+
+.user::before {
+    content: '';
+    display: block;
+    width: 23px;
+    height: 23px;
+    background: url(../images/me.png) no-repeat 0 -75px;
+    background-size: 21px auto;
+    margin: 4px auto 0;
+}

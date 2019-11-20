@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.justify-content元素排列</title>
+    <!--justify-content 属性定义了项目在主轴上的对齐方式  -->
+    <!-- 注意：使用这个属性之前一定要确认好主轴是哪个 -->
+    <!-- 值	描述	
+        flex-start	默认值。项目位于容器的开头。	
+        flex-end	项目位于容器的结尾。	
+        center	    项目位于容器的中心。
+        space-around	项目位于各行之前、之间、之后都留有空白的容器内,平分剩余空间。	
+        space-between	项目位于各行之间留有空白的容器内。-->
+    <style>
+        div {
+            display: flex;
+            width: 80%;
+            height: 300px;
+            background-color: rgb(236, 14, 14);
+            /* 默认主轴x轴 */
+            flex-direction: row;
+            /* justify-content: 设置主轴对齐方式 */
+            /* 默认值。项目位于容器的开头。 */
+            /* justify-content: flex-start; */
+            /* 项目位于容器的结尾。 */
+            /* justify-content: flex-end; */
+            /* 平分 边框平分 */
+            /* justify-content: space-around; */
+            justify-content: space-between;
+        }
+        
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: rgb(160, 78, 78);
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+
+</html>

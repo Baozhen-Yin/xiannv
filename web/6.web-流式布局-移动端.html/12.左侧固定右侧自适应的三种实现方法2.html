@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12.左侧固定右侧自适应的三种实现方法2</title>
+    <!-- 2.利用定位实现左侧固定右侧自适应
+        (1) 给父盒子设置padding-left 值
+        (2) 给左侧子盒子设置width = padding-left ,并定位到父盒子的padding-left上.
+        (3) 右侧盒子自适应 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .father {
+            position: relative;
+            padding-left: 200px;
+            height: 400px;
+            background-color: pink;
+        }
+        
+        .left {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 300px;
+            /* width = padding-left */
+            width: 200px;
+            background-color: orange;
+        }
+        
+        .right {
+            height: 350px;
+            background-color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="father">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+
+</html>

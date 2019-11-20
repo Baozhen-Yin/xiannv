@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6. align-content设置侧轴上的子元素的排列方式（多行）</title>
+    <!-- 设置子项在侧轴的排列方式并且只能用于子项出现 """换行""" 的情况（多行），在单行下是没有效果的 -->
+    <!-- stretch：默认值，元素被拉伸以适应容器 -->
+    <!-- center：元素位于容器的中心 -->
+    <!-- flex-start：元素位于容器的开头 -->
+    <!-- flex-end：元素位于容器的结尾 -->
+    <!-- space-between：元素位于各行之间留有空白的容器内 -->
+    <!-- space-around：元素上下左右都会留有空白 -->
+    <style>
+        div {
+            display: flex;
+            width: 800px;
+            height: 400px;
+            background-color: rgb(175, 84, 84);
+            /* 必须换行 换行 */
+            flex-wrap: wrap;
+            /* 因为有了换行 此时我们侧轴控制子元素的对齐方式 用多行的 align-content */
+            /* align-content: flex-start; */
+            /* align-content: center; */
+            /* 从中间向两边分开 */
+            /* align-content: space-between; */
+            align-content: space-around;
+        }
+        
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: rgb(90, 156, 59);
+            margin: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+
+</html>

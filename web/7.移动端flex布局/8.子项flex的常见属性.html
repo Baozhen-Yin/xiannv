@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8.子项flex的常见属性</title>
+    <!-- flex子项占的份数 -->
+    <!-- align-self控制子项自己在侧轴的排列方式 -->
+    <!-- order属性定义子项的排列顺序（前后顺序） -->
+
+    <!-- 1.flex属性 -->
+    <!-- 用于定义子项目分配剩余空间，用flex来表示占多少份数 -->
+    <!-- .item{
+        flex:<number>; } -->
+
+    <!-- 左右两侧固定中间自适应 -->
+
+
+    <style>
+        section {
+            display: flex;
+            width: 60%;
+            height: 150px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+        
+        section div:nth-child(1) {
+            width: 100px;
+            height: 150px;
+            background-color: rgb(230, 18, 18);
+        }
+        
+        section div:nth-child(2) {
+            width: 100px;
+            height: 150px;
+            background-color: rgb(15, 206, 117);
+        }
+        
+        section div:nth-child(2) {
+            flex: 1;
+        }
+        
+        section div:nth-child(3) {
+            width: 100px;
+            height: 150px;
+            background-color: rgb(137, 39, 218);
+        }
+        
+        p {
+            display: flex;
+            width: 60%;
+            height: 150px;
+            background-color: rgb(233, 36, 69);
+            margin: 100px auto;
+        }
+        
+        p span {
+            /* 平均分配 */
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+    <p>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </p>
+</body>
+
+</html>

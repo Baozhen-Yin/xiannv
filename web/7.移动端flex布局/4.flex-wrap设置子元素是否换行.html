@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.flex-wrap设置子元素是否换行</title>
+    <!-- 默认情况下，项目都排在一条线上（又称轴线上）。flex-wrap属性定义，flex布局中默认是不换行的 -->
+    <!-- 值	描述
+        nowrap	默认值。规定灵活的项目不拆行或不拆列。
+        wrap	规定灵活的项目在必要的时候拆行或拆列。
+        wrap-reverse	规定灵活的项目在必要的时候拆行或拆列，但是以相反的顺序。
+        initial	设置该属性为它的默认值。请参阅 initial。
+        inherit	从父元素继承该属性。请参阅 inherit。 -->
+    <style>
+        div {
+            display: flex;
+            width: 600px;
+            height: 300px;
+            background-color: rgb(236, 14, 14);
+            /* justify-content: space-around; */
+            flex-wrap: wrap;
+        }
+        
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: rgb(160, 78, 78);
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+    </div>
+</body>
+
+</html>
