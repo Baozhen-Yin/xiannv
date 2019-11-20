@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8.移动端开发选择</title>
+    <!-- 1.单独制作移动端页面（主流） -->
+    <!-- 流式布局(百分比布局)   flex弹性布局(强烈推荐) less+rem+媒体查询布局 混合布局 -->
+    <!-- 2.响应式兼容PC移动端 （相当麻烦） -->
+    <!-- 媒体查询 bootstarp -->
+
+    <!-- 1.移动端基本以webkit内核为主，因此就考虑webkit兼容问题 我们可以放心使用h5和css3样式
+         同时我们浏览器私有前缀我们只需要添加 webkit即可 -->
+
+    <!-- 2.CSS初始化  推荐使用normalize.css -->
+    <!-- 保护了有价值的默认值 修复了浏览器的bug 是模块化的 拥有详细的文档 -->
+    <!-- <p>http://necolas.github.io/normalize.css</p> -->
+
+    <!-- 3.CSS3盒子模型 box-sizing  -->
+    <!-- 传统盒子模型：盒子的宽度=width+border+padding   -->
+    <!-- CSS3盒子模型：盒子的宽度=CSS中设置的宽度width里面包含了border和padding。
+                      也就是说，padding和border不会再撑大盒子了 -->
+    <style>
+        div:nth-child(1) {
+            /* 传统盒子模型 不会有变化 */
+            /* pc端如果完全需要兼容 我们就用传统模式，如果不考虑兼容性，我们就选择CSS3盒子模型 */
+            box-sizing: content-box;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            padding: 10px;
+            border: 10px solid red;
+            /* 最终变成240*240 */
+        }
+        
+        div:nth-child(2) {
+            /* 用了CSS3中的盒子模型 不会撑大盒子 */
+            /* padding和border不会再撑大盒子了 */
+            /* ie678不支持 */
+            /* 移动端放心大胆使用 */
+            box-sizing: border-box;
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            padding: 10px;
+            border: 10px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+</body>
+
+</html>

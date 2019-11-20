@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>9.移动端特殊样式</title>
+    <!-- 1.转换成移动端时候 点击链接会有高亮 我们需要清除  -->
+    <!-- 设置为transparent 完成透明 -->
+    <!-- 2.在移动端浏览器默认的外观ios加上这个属性才能给按钮和输入框自定义样式 -->
+    <!-- -webkit-appearance: none; -->
+    <!-- 3.禁止长按页面时弹出菜单 -->
+    <!-- -webkit-touch-callout: none; -->
+
+
+    <style>
+        a {
+            /* 清楚了高亮 */
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        input {
+            /* 去掉外观高亮效果 在移动端浏览器默认的外观ios加上这个属性才能给按钮和输入框自定义样式 */
+            -webkit-appearance: none;
+        }
+        
+        img,
+        a {
+            -webkit-touch-callout: none;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#">仙女</a>
+    <input type="button" value="提交">
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5.背景缩放background-size</title>
+    <!-- 规定背景图像尺寸 -->
+    <!-- background-size:宽度 高度 -->
+    <!-- cover把背景图像扩展至足够大,以至背景图像完全覆盖背景区域 但是不是全包 可能会显示不全 -->
+    <!-- contain 把图像扩展至最大尺寸,以至其宽度和高度完全适应内容区域  当宽度或者高度铺满就不再继续拉升了 可能有部分空白-->
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            border: 2px solid red;
+            background: url(image7/dva.jpg) no-repeat;
+            /* 只写宽度 不写高度 等比例缩放 */
+            /* background-size: 500px; */
+            /* background-size: cover; */
+            background-size: contain;
+        }
+        /* 需要二倍图可以去ps的cutterman选择即可 */
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

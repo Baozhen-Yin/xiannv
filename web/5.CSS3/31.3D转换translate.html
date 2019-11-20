@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3D转换</title>
+    <!-- x轴水平向右 x右边是正值，左边是负值 -->
+    <!-- y轴垂直向下 y下面是正值，上面是负值 -->
+    <!-- z轴垂直屏幕 z往外面是正值，往里面是负值 -->
+
+
+
+
+    <!-- matrix3d(n,n,n,n,n,n,
+        n,n,n,n,n,n,n,n,n,n)	定义 3D 转换，使用 16 个值的 4x4 矩阵。
+        translate3d(x,y,z)	定义 3D 转化。
+        translateX(x)	定义 3D 转化，仅使用用于 X 轴的值。
+        translateY(y)	定义 3D 转化，仅使用用于 Y 轴的值。
+        translateZ(z)	定义 3D 转化，仅使用用于 Z 轴的值 一般用px单位。
+        scale3d(x,y,z)	定义 3D 缩放转换。
+        scaleX(x)	定义 3D 缩放转换，通过给定一个 X 轴的值。
+        scaleY(y)	定义 3D 缩放转换，通过给定一个 Y 轴的值。
+        scaleZ(z)	定义 3D 缩放转换，通过给定一个 Z 轴的值。 -->
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* 这样都是transform Y会把X覆盖掉  */
+            /* transform: translateX(100px);
+            transform: translateY(100px); */
+            transform: translateX(100px) translateY(100px) translateZ(100px);
+            /*1. translateZ沿着Z轴移动 一般跟px */
+            /*2.translateZ(100px) 向外移动 向我们眼睛100px */
+            /*3. transform:translate3d(x,y,z) 简写*/
+            /*4.x y不可以省略 可以写成0 */
+            transform: translate3d(100px, 100px, 100px);
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

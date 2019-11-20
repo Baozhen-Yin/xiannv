@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>35.3D旋转rotateZ</title>
+    <style>
+        body {
+            perspective: 200px;
+        }
+        /* 左手准则 */
+        /* 大拇指Y轴正方向 手指弯曲方向就是该元素沿着x轴旋转的方向 */
+        
+        img {
+            display: block;
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            transition: all 1s;
+        }
+        /* img:hover {
+            transform: rotateZ(45deg);
+        } */
+        
+        img:hover {
+            /*     rotate3d(x,y,z,angle)	定义 3D 旋转。 */
+            transform: translate3d(1, 1, 0, 45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <img src="image5/r_dj.png" alt="">
+</body>
+
+</html>

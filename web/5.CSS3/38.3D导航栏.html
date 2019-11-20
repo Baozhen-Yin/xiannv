@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>38.3D导航栏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            margin: 100px;
+        }
+        
+        ul li {
+            width: 120px;
+            height: 35px;
+            list-style: none;
+            margin: 100px auto;
+            /* 一会需要给box旋转也需要透视 给li加里面的子盒子也有透视效果 */
+            perspective: 500px;
+        }
+        
+        .box {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all .4s;
+        }
+        
+        .box:hover {
+            transform: rotateX(90deg);
+        }
+        
+        .front,
+        .bottom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 10px;
+            line-height: 35px;
+            text-align: center;
+        }
+        
+        .front {
+            z-index: 1;
+            background-color: hotpink;
+            transform: translateZ(17.5px);
+        }
+        
+        .bottom {
+            background-color: rgb(238, 68, 16);
+            /* 这个要求一定是负值 不然字反了*/
+            /* 我们如果有移动或者其他样式 必须先写移动translate */
+            transform: translateY(17.5px) rotateX(-90deg);
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <div class="box">
+
+                <div class="front">尹宝祯小可爱</div>
+                <div class="bottom">小仙女本仙</div>
+            </div>
+        </li>
+
+        <!-- <li>
+                <div class="front">尹宝祯小可爱</div>
+                <div class="back">小仙女本仙</div>
+            </li>
+            <li>
+                <div class="front">尹宝祯小可爱</div>
+                <div class="back">小仙女本仙</div>
+            </li>
+            <li>
+                <div class="front">尹宝祯小可爱</div>
+                <div class="back">小仙女本仙</div>
+            </li>
+            <li>
+                <div class="front">尹宝祯小可爱</div>
+                <div class="back">小仙女本仙</div>
+            </li> -->
+    </ul>
+
+
+</body>
+
+</html>

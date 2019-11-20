@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>37.两面翻转盒子案例</title>
+    <!-- 1.搭建结构 是大盒子翻转 不是front（前面盒子）和back（后面盒子）翻转 -->
+    <!-- 2.box指定大小 3d呈现 back盒子需沿着Y轴翻转180度 最后鼠标经过box沿着y旋转180deg -->
+    <style>
+        body {
+            perspective: 500px;
+        }
+        
+        .box {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            line-height: 200px;
+            margin: 100px auto;
+            transform-style: preserve-3d;
+            transition: all 1s;
+        }
+        
+        .box:hover {
+            transform: rotateX(180deg);
+        }
+        
+        .front,
+        .back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            font-size: 30px;
+            line-height: 300px;
+            text-align: center;
+        }
+        
+        .front {
+            z-index: 1;
+            background-color: rgb(71, 159, 194);
+        }
+        
+        .back {
+            background-color: rgb(102, 189, 131);
+            /* 这一步为了背对背 */
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="front">我是小可爱</div>
+        <div class="back">小可爱是我</div>
+    </div>
+</body>
+
+</html>

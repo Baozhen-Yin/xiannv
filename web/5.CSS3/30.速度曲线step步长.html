@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30.速度曲线step步长</title>
+    <!-- animation-timing-function中的steps()函数。 -->
+    <!-- 它以ease方式（速度逐渐放慢）过渡，它会在每个关键帧之间插入补间动画，所以动画效果是连贯性的
+        但有些时候，我们不需要这种过渡效果，而是想实现跳跃式的效果，这时，steps()函数就出现了。 -->
+    <!-- steps()是一个阶跃函数，用于把整个操作领域切分为相同大小的间隔，每个间隔都是相等的。 -->
+
+    <!-- linear 动画从头到尾的速度是相同的。
+        ease 默认。动画以低速开始，然后加快，在结束前变慢。
+        ease-in 动画以低速开始。
+        ease-out 动画以低速结束。
+        ease-in-out 动画以低速开始和结束。
+        cubic-bezier(n,n,n,n) 在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值-->
+    <style>
+        div {
+            width: 10px;
+            height: 30px;
+            background-color: rgb(88, 67, 67);
+            animation: move 3s infinite;
+            /* 文字强制一行显示 */
+            white-space: nowrap;
+            overflow: hidden;
+            /* 以五步走完 分几步完成动画 */
+            animation-timing-function: steps(10);
+            color: pink;
+            font-size: 20px;
+        }
+        
+        @keyframes move {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        我是小可爱小可爱是我
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>33.3D透视</title>
+    <!-- perspective: number|none; -->
+    <!-- number	元素距离视图的距离，以像素计。
+         none	默认值。与 0 相同。不设置透视。 -->
+    <!-- d:视距是一个人眼睛到屏幕的距离 -->
+    <!-- z:物体距离屏幕的距离，Z越大（正值)我们看到的物体就越大 近大远小-->
+
+    <!-- 透视写在被观察元素的父盒子上面 比如div父盒子是body -->
+    <style>
+        body {
+            perspective: 1000px;
+        }
+        
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            transform: translate3d(400px, 100px, 100px);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
