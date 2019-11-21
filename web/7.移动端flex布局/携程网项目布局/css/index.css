@@ -13,10 +13,17 @@ body {
 
 a {
     text-decoration: none;
+    color: #222;
 }
 
 div {
     box-sizing: border-box;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .search-index {
@@ -29,14 +36,13 @@ div {
     /* 自身宽度不知道多少的时候 */
     transform: translateX(-50%);
     height: 44px;
+    background-color: #f6f6f6;
     /* 固定盒子必须有宽度 */
     width: 100%;
     min-width: 320px;
     max-width: 540px;
-    /* background-color: #fff; */
-    /* flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: flex-start; */
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
 .search {
@@ -44,12 +50,17 @@ div {
     flex: 1;
     height: 26px;
     border: solid #ccc 1px;
-    border-radius: 7px;
-    margin: 6px 10px;
+    border-radius: 16px;
+    margin: 9px 10px;
     font-size: 12px;
     color: #666;
-    line-height: 26px;
+    /* 偏下 css3盒子模型是吧padding算进去的 不和传统盒子模型一样 */
+    /* 所以应该去掉上或下的边框用来定位内容 */
+    /* line-height: 26px; */
+    /* 减去上下边框 */
+    line-height: 24px;
     padding-left: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
 }
 
 .search::before {
@@ -83,5 +94,252 @@ div {
     height: 23px;
     background: url(../images/me.png) no-repeat 0 -75px;
     background-size: 21px auto;
-    margin: 4px auto 0;
+    margin: 4px auto -2px;
+}
+
+.focus img {
+    width: 100%;
+}
+
+.local-nav ul {
+    /* 给父级添加 */
+    display: flex;
+    height: 64px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 3px 4px;
+}
+
+.local-nav ul li {
+    flex: 1;
+}
+
+.local-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+}
+
+
+/*以local-nav-icon 开头 */
+
+.local-nav li [class^=local-nav-icon] {
+    width: 32px;
+    height: 32px;
+    background-color: pink;
+    margin-top: 8px;
+    background: url(../images/nav.png) no-repeat 0 0;
+    background-size: 32px auto;
+}
+
+
+/* 属性选择器 省了类名*/
+
+.local-nav li .local-nav-icon-icon2 {
+    background: url(../images/nav.png) no-repeat 0 -32px;
+    background-size: 32px auto;
+}
+
+.local-nav li .local-nav-icon-icon3 {
+    background: url(../images/nav.png) no-repeat 0 -64px;
+    background-size: 32px auto;
+}
+
+.local-nav li .local-nav-icon-icon4 {
+    background: url(../images/nav.png) no-repeat 0 -96px;
+    background-size: 32px auto;
+}
+
+.local-nav li .local-nav-icon-icon5 {
+    background: url(../images/nav.png) no-repeat 0 -128px;
+    background-size: 32px auto;
+}
+
+
+/* nav模块开始 */
+
+nav {
+    border-radius: 8px;
+    margin: 0 4px 3px;
+    overflow: hidden;
+}
+
+.nav-common {
+    height: 88px;
+    background-color: red;
+    display: flex;
+}
+
+.nav-common:nth-child(2) {
+    margin: 3px 0;
+}
+
+.nav-items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-items a {
+    flex: 1;
+    text-align: center;
+    line-height: 44px;
+    color: #fff;
+    font-size: 14px;
+    text-shadow: 1px 1px rgba(0, 0, 0, .2);
+}
+
+.nav-items a:nth-child(1) {
+    border-bottom: 1px solid #fff;
+}
+
+.nav-items:nth-child(1) a {
+    border: 0;
+    line-height: 88px;
+    /* 靠底端对齐 中间对齐 */
+    background: url(../images/hoel.png) no-repeat bottom center;
+    background-size: 146px auto;
+}
+
+.nav-common:nth-child(2) .nav-items:nth-child(1) a {
+    background: url(../images/feiji.png) no-repeat left bottom;
+}
+
+
+/* 给第一个盒子的中间盒子边框 */
+
+.nav-common .nav-items:nth-child(-n+2) {
+    border-right: 1px solid #fff;
+}
+
+.nav-common:nth-child(1) {
+    background: -webkit-linear-gradient(left, #FA5A55, #FA994D);
+}
+
+.nav-common:nth-child(2) {
+    background: -webkit-linear-gradient(left, #4B90ED, #53BCED);
+    /* background: url(../images/feiji.png) no-repeat left center; */
+}
+
+.nav-common:nth-child(3) {
+    background: -webkit-linear-gradient(left, #34C2A9, #6CD559);
+}
+
+.subnav-entry {
+    display: flex;
+    border-radius: 8px;
+    background-color: #fff;
+    margin: 0 4px;
+    flex-wrap: wrap;
+    padding: 5px 0;
+    box-shadow: 1px 1px rgba(0, 0, 0, .2);
+}
+
+.subnav-entry li {
+    /* flex可以用百分比来表示 相对于父级来说的*/
+    /* 可以达成强制换行效果 */
+    flex: 20%;
+}
+
+.subnav-entry a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subnav-entry-icon {
+    width: 28px;
+    height: 28px;
+    margin-top: 4px;
+    background-color: rgb(218, 23, 23);
+    background: url(../images/subnav.png) 0 0;
+    background-size: 28px auto;
+    background-repeat: no-repeat;
+}
+
+.sales-box {
+    border-top: 1px solid #bbb;
+    background-color: #fff;
+    margin: 4px;
+}
+
+.sales-hd {
+    position: relative;
+    height: 44px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+/* ?SEO */
+
+.sales-hd h2 {
+    position: relative;
+    text-indent: -999px;
+    overflow: hidden;
+}
+
+.sales-hd h2::after {
+    /* 行内元素 */
+    /* 用定位 */
+    position: absolute;
+    top: 8px;
+    left: 20px;
+    content: '';
+    width: 79px;
+    height: 15px;
+    background: url(../images/un_home_text.png) no-repeat 0 -20px;
+    background-size: 79px auto;
+}
+
+.sales-hd h2 span {
+    position: absolute;
+    left: 100px;
+    top: 8px;
+    width: 36px;
+    height: 15px;
+    background: url(../images/icon-gg@2x.png) no-repeat;
+    background-size: 36px auto;
+}
+
+.sales-hd a {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 10px;
+    background: -webkit-linear-gradient(left, #ff4e63, #ff6cc9);
+    /* 用padding把盒子撑开 */
+    padding: 3px 20px 3px 10px;
+}
+
+.sales-hd a::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 9px;
+    width: 7px;
+    height: 7px;
+    border-top: solid 2px #fff;
+    border-right: solid 2px #fff;
+    transform: rotate(45deg);
+}
+
+.row {
+    display: flex;
+}
+
+.row a {
+    /* 每个a占一半 所以图片的宽度占一般就行 */
+    flex: 1;
+    border-bottom: 1px solid #eee;
+}
+
+.row img {
+    width: 100%;
+}
+
+.row a:nth-child(1) {
+    border-right: solid 1px #eee;
 }
