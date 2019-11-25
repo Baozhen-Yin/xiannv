@@ -1,0 +1,134 @@
+// 首页的样式less文件
+// 把刚才设置好的common.less引入到index.less语法里面 语法如下:
+@import "common";
+// import导入 是把一个样式文件导入到另一个样式文件里面
+// link 是把一个文件引入到html页面里面
+
+// 页面元素计算公式 页面元素px/html字体大小
+body{
+    // 刚刚不小心写成max-width 所以图片一直扭曲
+    min-width: 320px;
+    // 整个设计稿750px 我们设定好 1rem=50px  所以750/50 =15rem
+    width: 15rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #F2F2F2;
+    height: 2000px;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+@baseFont:50;
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+.search-content{
+    display: flex;
+    width: 15rem;
+    // 固定定位必须有宽度
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 88rem / @baseFont ;
+    background-color: #FFC001;
+    // 儿子要写到爸爸里面
+    .classify{
+        width: 44rem / @baseFont;
+        height: 70rem / @baseFont;
+        margin: 11rem / @baseFont 25rem / @baseFont 7rem / @baseFont 24rem / @baseFont;
+        background: url(../upload/FEILIE.png) no-repeat;
+        // 背景缩放
+        background-size: 44rem / @baseFont  70rem / @baseFont;
+    }    
+    .search{
+        // flex1 占一份 自适应
+        flex: 1;
+        // background-color: #fff;
+        input{
+            // input默认边框切除
+            outline: none;
+            border: 0;
+            // 切除完毕
+            width: 100%;
+            height: 66rem / @baseFont;
+            border-radius: 33rem / @baseFont;
+            background-color: #FFF2CC;
+            margin-top: 12rem / @baseFont;
+            padding-left: 55rem / @baseFont;
+            font-size: 25rem / @baseFont;
+            color: #757575;
+        }
+    }
+    .login{
+        width: 75rem / @baseFont;
+        height: 70rem / @baseFont;
+        margin: 10rem / @baseFont;
+        background: url(../upload/denglv.png) no-repeat center;
+        background-size: 61rem / @baseFont 67rem / @baseFont ;
+    }
+
+}
+
+.banner {
+    width: 750rem / @baseFont;
+    height: 368rem / @baseFont;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.advertise{
+    display: flex;
+    a{
+        flex: 1;
+        img{
+            width: 100%;
+        }
+        // height: 210rem / @baseFont;
+        // &:nth-child(1){
+        // background: url(../upload/advertise1.gif) no-repeat;
+        // background-size: auto 210rem / @baseFont;
+        // }
+        // &:nth-child(2){
+        //     background: url(../upload/advertise2.gif) no-repeat;
+        //     background-size: auto 210rem / @baseFont;
+        //     }
+        // &:nth-child(3){
+        //     background: url(../upload/advertise3.gif) no-repeat;
+        //     background-size: auto 210rem / @baseFont;
+        //     }
+       
+    }
+}
+nav{
+    // display: flex;
+    width: 750rem / @baseFont;
+    // flex-wrap: wrap;
+    a{
+        // flex: 20%;
+        float: left;
+      
+        width: 150rem / @baseFont;
+        height: 140rem / @baseFont;
+        text-align: center;
+        img{
+            // 行内元素不能设置居中对齐 转化成块级元素
+            display: block;
+            width: 82rem / @baseFont;
+            height: 82rem / @baseFont;
+            margin: 10rem / @baseFont  auto 0;
+        }
+        span{
+            display: block;
+            font-size: 25rem / @baseFont;
+            color: #333;
+        }
+    }
+}

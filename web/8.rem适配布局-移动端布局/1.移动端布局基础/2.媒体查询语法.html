@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.媒体查询语法</title>
+    <!-- 通过 @media 媒体查询可以针对不同的媒体类型定义不同的样式 -->
+    <!-- @media 可以针对不同的屏幕尺寸设置不同的样式 -->
+    <!-- 当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面 -->
+    <!-- 目前针对很多苹果手机 安卓手机，平板等设备都用得到 多媒体查询 -->
+
+    <!-- link元素中的CSS媒体查询 -->
+    <!-- <link rel="stylesheet" media="(max-width: 800px)" href="example.css" /> -->
+
+    <!-- 样式表中的CSS媒体查询 -->
+    <!-- @media mediatype and|not|only (media feature){
+        CSS-Code;
+    } -->
+    <!-- @符好开头， mediatype媒体类型， 关键字 and not only ，media feature 媒体特性 必须有小括号包含 -->
+
+    <!-- mediatype查询类型 -->
+    <!-- all	打印所有设备 -->
+    <!-- print	文档打印或打印预览模式 -->
+    <!-- screen	彩色电脑屏幕，手机屏幕等 -->
+
+    <!-- 逻辑操作符 关键字 -->
+    <!-- and 关键字用于合并多个媒体属性或合并媒体属性与媒体类型。"且"的意思 -->
+    <!-- not 排除某个媒体类型 相当于"非" 可以省略 -->
+    <!-- only 指定某个特定的媒体类型 可以省略 -->
+
+    <!-- 媒体特性 -->
+    <!-- 大多数媒体属性可以带有“min-”或“max-”前缀，用于表达“最低...”或者“最高...”。 -->
+    <!-- 如，max-width:12450px表示应用其所包含样式的条件最高是宽度为12450px，大于12450px则不满足条件，
+        不会应用此样式。这避免了使用与HTML和XML冲突的“<”和“>”字符。如果你未向媒体属性指定一个值，
+        并且该特性的实际值不为零，则该表达式被解析为真。 -->
+    <style>
+        /* 如果在我们屏幕上 且小于等于800px 我就把body颜色改为绿色 自己拖动屏幕可以实现*/
+        
+        @media screen and (max-width: 800px) {
+            body {
+                background-color: rgb(26, 228, 53);
+            }
+        }
+        /* 如果在我们屏幕上 且小于等于500px 我就把body颜色改为蓝色 自己拖动屏幕可以实现 */
+        
+        @media screen and (max-width: 500px) {
+            body {
+                background-color: rgb(24, 68, 216);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

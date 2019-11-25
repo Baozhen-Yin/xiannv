@@ -1,0 +1,21 @@
+@border:5px + 5;
+@baseFont:50px;
+html{
+    font-size: @baseFont;
+}
+// 可以实现加法运算
+div{
+    width: 200px- 50px;
+    height: (200px + 50px) * 2;
+    border: @border solid red;
+    background-color: #666 - #444;
+}
+img{
+    width: 82rem / @baseFont;
+    width: 82rem / 50rem;
+    // css文件生成1.64rem
+}
+
+// 细节 运算符中间有空格 不然容易bug
+// 两个数参与运算如果只有一个数有单位 那么结果就以这个单位为准
+// 如果两个数都有单位 而且不一样 在img 最后结果以第一个单位为准 82rem

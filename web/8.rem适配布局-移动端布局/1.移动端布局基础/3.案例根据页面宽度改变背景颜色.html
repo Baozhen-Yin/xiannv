@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.案例根据背景宽度改变颜色</title>
+    <!-- 注意按照从大到小的或者从小到大的思路 -->
+    <!-- 注意我们有最大值max-width 和最小值min-width 都是包含等于的 -->
+    <!-- 当屏幕小于540像素 背景颜色变蓝色 -->
+    <!-- 540大于等于x 小于等于969 绿色 -->
+    <!-- 大于970 红色 -->
+    <style>
+        @media screen and (max-width: 539px) {
+            body {
+                background-color: rgb(11, 14, 235);
+            }
+        }
+        
+        @media screen and (min-width: 540px) {
+            /* and (max-width: 969px) */
+            /* 样式层叠性 会覆盖 第三档覆盖了第二档冲突的部分 */
+            /* 从小到大顺序写的优势 */
+            body {
+                background-color: rgb(8, 247, 107);
+            }
+        }
+        /* screen和and必须带上 不能省略 */
+        
+        @media screen and (min-width: 970px) {
+            body {
+                background-color: rgb(235, 11, 48);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

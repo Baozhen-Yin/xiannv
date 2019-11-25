@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.响应式开发原理</title>
+    <!-- 使用媒体查询针对不同宽度的设备进行布局和样式的设置从而适配不同设备 -->
+    <!-- 设备划分 尺寸区间 -->
+    <!-- 超小屏幕（手机）  <768px -->
+    <!-- 小屏设备（平板） >=768px ~ <992px -->
+    <!-- 中等设备（桌面显示器） >=992px ~ <1200px -->
+    <!-- 宽屏设备（大桌面显示器） >=1200px  -->
+
+    <!-- 1.2 响应式布局容器 -->
+    <!-- 响应式需要一个父级作为布局容器，来配合子级元素来实现变化效果 -->
+    <!-- 原理就是在不同屏幕下，通过媒体查询来改变这个布局容器的大小，再改变里面子元素的排列方式和大小
+         从而实现不同屏幕下，看到不同页面布局和样式变化 -->
+
+    <!-- 为了居中对齐 两侧有空白 -->
+    <!-- 超小屏幕（手机）  <768px                 设置宽度为100%-->
+    <!-- 小屏设备（平板） >=768px ~ <992px        设置宽度为750px-->
+    <!-- 中等设备（桌面显示器） >=992px ~ <1200px  设置宽度为970px-->
+    <!-- 宽屏设备（大桌面显示器） >=1200px         宽度设置为1170px-->
+    <style>
+        .container {
+            height: 150px;
+            background-color: rgb(228, 13, 13);
+            margin: 0 auto;
+        }
+        /* 1.超小屏幕下 小于768 容器布局的宽度为100% */
+        
+        @media screen and (max-width: 767px) {
+            .container {
+                width: 100%;
+            }
+        }
+        
+        @media screen and (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+        }
+        
+        @media screen and (min-width: 992px) {
+            .container {
+                width: 970px;
+            }
+        }
+        
+        @media screen and (min-width: 1200px) {
+            .container {
+                width: 1170px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 响应式开发里面 首先需要一个布局容器 -->
+    <div class="container"></div>
+</body>
+
+</html>

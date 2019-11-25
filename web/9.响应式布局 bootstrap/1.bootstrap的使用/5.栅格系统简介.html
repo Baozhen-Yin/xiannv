@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 一定不要忘记引入bootstrap样式文件 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <title>5.栅格系统简介</title>
+    <!-- 将页面布局分成等宽的列,然后通过列数的定义来模块化页面布局 -->
+    <!-- bootstrap 提供了一套响应式,移动设备优先的流式栅格系统,随着屏幕或视口尺寸的增加,系统会自动分为最多12列 -->
+    <!-- bootstrap里面的container宽度是固定的,但在不同屏幕下,container的宽度不同,我们再把container划分为12等份 -->
+
+    <!-- 栅格系统用于通过一系列的行(rows) 与 列(columns) 的组合来创建页面布局,你的内容就可以放入这些创建好的布局中 -->
+    <!-- 	超小屏幕 手机 (<768px)	小屏幕 平板 (≥768px)	中等屏幕 桌面显示器 (≥992px)	大屏幕 大桌面显示器 (≥1200px)
+.container  最大宽度	None （自动）	750px	                   970px	                1170px
+ 类前缀	       .col-xs-                	.col-sm-	         . col-md-	                 .col-lg- 
+列（column）数	12 -->
+    <style>
+        [class^="col"] {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- 每个占三份 -->
+            <div class="col-lg-3">1</div>
+            <div class="col-lg-3">2</div>
+            <div class="col-lg-3">3</div>
+            <div class="col-lg-3">4</div>
+            <!-- 第一个占六份 -->
+            <!-- 如果孩子的份数相加等于12 则孩子能占满container份数 -->
+        </div>
+        <div class="row">
+            <div class="col-lg-6">1</div>
+            <div class="col-lg-2">2</div>
+            <div class="col-lg-2">3</div>
+            <div class="col-lg-2">4</div>
+        </div>
+        <!-- 如果孩子的份数相机小于十二 则站不满 会有空白-->
+        <div class="row">
+            <!-- <div class="col-lg-6">1</div> -->
+            <div class="col-lg-2">2</div>
+            <div class="col-lg-2">3</div>
+            <div class="col-lg-2">4</div>
+        </div>
+        <!-- 如果孩子的份数多于12 会起到下一行-->
+        <div class="row">
+            <div class="col-lg-6">1</div>
+            <div class="col-lg-2">2</div>
+            <div class="col-lg-2">3</div>
+            <div class="col-lg-2">4</div>
+            <div class="col-lg-2">4</div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

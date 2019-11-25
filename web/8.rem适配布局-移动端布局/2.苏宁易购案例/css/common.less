@@ -1,0 +1,80 @@
+// 新建common.less文件,设置好常见的屏幕尺寸,利用媒体查询设置不同的html字体大小,因为除了首页其他页面也需要
+// 我们关心的尺寸有320px,360px,375px,384px,400px,414px,424px,480px,540px,720px,750px
+// 划分的份数我们定为15等份
+// 因为我们pc端也可以打开我们的苏宁移动端页面,我们默认html字体为50px,注意这句话写到上面
+
+
+// 规定我们此次划分的为15
+@number:15;
+// 如果在普通pc页面打开,我们默认html字体为50px,因为层叠性
+html{
+    font-size: 50px;
+}
+// 320px
+@media screen and (min-width:320px){
+    html{
+        // 我们规定了此次的划分等份为15 则屏幕尺寸除以15就是我们要的字体尺寸
+        font-size: 320px / @number;
+    }
+}
+@media screen and (min-width:360px){
+    html{
+        // 我们规定了此次的划分等份为15 则屏幕尺寸除以15就是我们要的字体尺寸
+        font-size: 360px / @number;
+    }
+}
+@media screen and (min-width:375px){
+    html{
+        // iphone 678
+        // 我们规定了此次的划分等份为15 则屏幕尺寸除以15就是我们要的字体尺寸
+        font-size: 375px / @number;
+    }
+}
+@media screen and (min-width:384px){
+    html{
+        // 我们规定了此次的划分等份为15 则屏幕尺寸除以15就是我们要的字体尺寸
+        font-size: 384px / @number;
+    }
+}
+@media screen and (min-width:400px){
+    html{
+        // 我们规定了此次的划分等份为15 则屏幕尺寸除以15就是我们要的字体尺寸
+        font-size: 400px / @number;
+    }
+}
+@media screen and (min-width:414px){
+    html{
+        // 我们规定了此次的划分等份为15 则屏幕尺寸除以15就是我们要的字体尺寸
+        font-size: 414px / @number;
+    }
+}
+@media screen and (min-width:424px){
+    html{
+        // 我们规定了此次的划分等份为15 则屏幕尺寸除以15就是我们要的字体尺寸
+        font-size: 424px / @number;
+    }
+}
+@media screen and (min-width:480px){
+    html{
+        // 我们规定了此次的划分等份为15 则屏幕尺寸除以15就是我们要的字体尺寸
+        font-size: 480px / @number;
+    }
+}
+@media screen and (min-width:540px){
+    html{
+        // 我们规定了此次的划分等份为15 则屏幕尺寸除以15就是我们要的字体尺寸
+        font-size: 540px / @number;
+    }
+}
+@media screen and (min-width:720px){
+    html{
+        // 我们规定了此次的划分等份为15 则屏幕尺寸除以15就是我们要的字体尺寸
+        font-size: 720px / @number;
+    }
+}
+@media screen and (min-width:750px){
+    html{
+        // 我们规定了此次的划分等份为15 则屏幕尺寸除以15就是我们要的字体尺寸
+        font-size: 750px / @number;
+    }
+}

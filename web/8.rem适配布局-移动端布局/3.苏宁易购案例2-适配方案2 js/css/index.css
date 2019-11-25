@@ -1,0 +1,82 @@
+body {
+    min-width: 320px;
+    /* 我们设置750 */
+    max-width: 750px;
+    /* js给我们划分了十等份 750 / 75（每一个rem是75） = 10 */
+    /* VScode里面 px转换rem 插件 cssrem */
+    width: 10rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f2f2;
+}
+
+
+/* 这个插件默认html cssroot 定义为16px */
+
+
+/* 我们这里面rem应该是75 不是 16 应该符合自己尺寸 */
+
+
+/* 修改尺寸大小 记得设置html基准值 比如我们把1rem=75px*/
+
+
+/* 如果屏幕超过了750px那我们就按照750设计稿来走 不会让我们页面超过750px */
+
+@media screen and (min-width:750px) {
+    html {
+        font-size: 75px!important;
+    }
+}
+
+a {
+    text-decoration: none;
+    font-size: .333333rem;
+}
+
+.search-content {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10rem;
+    height: 1.173333rem;
+    background-color: #FFC001;
+}
+
+.classify {
+    width: .586667rem;
+    height: .933333rem;
+    margin: .146667rem .333333rem .133333rem;
+    /* background-color: rgb(235, 16, 16); */
+    background: url(../upload/FEILIE.png) no-repeat;
+    background-size: .586667rem .933333rem;
+}
+
+.search {
+    flex: 1;
+    /* background-color: rgb(7, 245, 38); */
+}
+
+.search input {
+    width: 100%;
+    height: .88rem;
+    outline: none;
+    border: 0;
+    font-size: .333333rem;
+    border-radius: .44rem;
+    background-color: #FFF2CC;
+    margin-top: .133333rem;
+    color: #757575;
+    padding-left: .733333rem;
+}
+
+.login {
+    width: .88rem;
+    height: .933333rem;
+    margin: .133333rem;
+    background-color: rgb(82, 19, 230);
+    background: url(../upload/denglv.png) no-repeat;
+    background-size: .88rem .933333rem;
+}

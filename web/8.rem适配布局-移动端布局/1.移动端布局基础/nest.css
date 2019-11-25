@@ -1,0 +1,17 @@
+.header {
+  width: 200px;
+  height: 200px;
+  background-color: #ca54b6;
+}
+.header a {
+  color: aquamarine;
+}
+.header a:hover {
+  color: blueviolet;
+}
+.nav .logo {
+  color: #f814d2;
+}
+.nav::before {
+  content: '???';
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.响应式导航</title>
+    <!-- 1.当我们屏幕大于768像素,我们给布局容器container宽度为750px -->
+    <!-- 2.container里面包含八个li 每个盒子宽度定为93.75px(750/8),高度为30px,浮动一行显示 -->
+    <!-- 3.当我们屏幕缩放,宽度小于768像素的时候,container盒子宽度修改为100%宽度 -->
+    <!-- 4.此时里面八个小li,宽度修改为33.33% 这样一行就只能显示3个小li,剩余下行显示 -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul li {
+            list-style: none;
+        }
+        
+        .container {
+            width: 750px;
+            margin: 0 auto;
+        }
+        
+        .container ul li {
+            float: left;
+            width: 93.75px;
+            height: 30px;
+            background-color: rgb(231, 27, 27);
+        }
+        /* 当我们屏幕小于768px */
+        
+        @media screen and (max-width:767px) {
+            .container {
+                width: 100%;
+            }
+            .container ul li {
+                width: 33.33%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+        </ul>
+    </div>
+</body>
+
+</html>

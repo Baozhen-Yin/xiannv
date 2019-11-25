@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- 要求当前网页使用IE最高浏览器来渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>                                             
+                  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+                  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+                <![endif]-->
+    <!-- 引入bootstrap样式文件 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- 屏幕缩放发现 大屏幕与中屏幕布局是一致的,因此我们列定义为了 col-md就可以了 md是大于等于970以上的 -->
+    <!-- 屏幕缩放发现 小屏幕布局发生变化 因此我们需要为小屏幕根据需求改变布局 -->
+    <!-- 屏幕缩放发现 超小屏幕布局又发生变化 因此我们需要为超小屏幕根据需求改变布局 -->
+    <!-- 策略:我们先布局 md以上的pc端布局,最后根据实际需求再修改 小屏幕 和 超小屏幕特殊布局样式 -->
+    <title>阿里百秀</title>
+    <!-- 本设计图采用1280px尺寸 -->
+</head>
+
+<body>
+    <div class="container">
+        <!-- 加了行原先padding会消掉 -->
+        <div class="row">
+            <header class="col-md-2">
+                <div class="logo">
+                    <a href="#">
+                        <img src="upload/logo.png" alt="">
+                    </a>
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a href="#" class="glyphicon glyphicon-camera">生活馆</a>
+                        </li>
+                        <li>
+                            <a href="#">自然汇</a>
+                        </li>
+                        <li>
+                            <a href="#">科技潮</a>
+                        </li>
+                        <li>
+                            <a href="#">奇趣事</a>
+                        </li>
+                        <li>
+                            <a href="#">美食杰</a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+            <article class="col-md-7">中间</article>
+            <aside class="col-md-3">右侧</aside>
+        </div>
+    </div>
+</body>
+
+</html>

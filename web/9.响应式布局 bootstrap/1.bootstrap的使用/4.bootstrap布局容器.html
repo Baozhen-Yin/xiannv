@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- 1.创建文件结构 -->
+<!-- 2.创建HTML骨架结构 -->
+<!-- 3.引入相关样式文件 -->
+<!-- 4.书写内容 -->
+
+<head>
+    <meta charset="utf-8">
+    <!-- 要求当前网页使用IE最高浏览器来渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+                                                 
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+        .login {
+            /* 利用我们自己写的样式覆盖原先的样式 */
+            width: 180px;
+            height: 45px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- bootstrap是用类名来使用的 -->
+    <!-- bootstrap 需要为页面内容和栈格系统包裹一个.container容器,Bootstarp预先定义好了这个类,叫.container
+         它提供了两个作用此处的类 -->
+
+
+    <!-- container类 -->
+    <!-- 为了居中对齐 两侧有空白 指定固定宽度 -->
+    <!-- 超小屏幕（手机）  <768px                 设置宽度为100%-->
+    <!-- 小屏设备（平板） 》=768px ~ <992px        设置宽度为750px-->
+    <!-- 中等设备（桌面显示器） >=992px ~ <1200px  设置宽度为970px-->
+    <!-- 宽屏设备（大桌面显示器） >=1200px         宽度设置为1170px-->
+
+    <!-- 2.container-fluid类 -->
+    <!-- 流式布局容器 百分百宽度 -->
+    <!-- 占据全部视口(viewport)的容器 -->
+    <!-- 适合于单独做移动端开发 -->
+
+    <!-- <h1 class="btn btn-success">你好，世界！</h1>
+    <button type="button" class="btn btn-success login">（成功）Success</button> -->
+    <div class="container">123</div>
+</body>
+
+</html>
