@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>18.显示隐藏文本框内容案例</title>
+    <!-- 当鼠标点击文本框时，里面默认的文字隐藏，当鼠标离开文本框时，里面的文字显示 -->
+    <!-- 两个新的表单事件 -->
+    <style>
+        input {
+            color: #999;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" value="手机">
+    <script>
+        // 获取元素
+        var text = document.querySelector('input');
+        // 注册事件 获得焦点事件
+        text.onfocus = function() {
+            // 获得焦点
+            if (this.value == '手机') {
+                this.value = '';
+            }
+            // 获得焦点需要把文本框里面颜色变黑
+            this.style.color = '#333';
+        }
+        text.onblur = function() {
+            // 失去焦点
+            if (this.value === '') {
+                this.value = '手机';
+            }
+            // 当我们失去焦点的时候 里面文字颜色变浅
+            this.style.color = '#999'
+        }
+    </script>
+</body>
+
+</html>

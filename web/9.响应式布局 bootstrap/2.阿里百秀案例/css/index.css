@@ -6,6 +6,14 @@
       }
   }
   
+  body {
+      background-color: #f5f5f5;
+  }
+  
+  .container {
+      background-color: #fff;
+  }
+  
   ul {
       list-style: none;
       padding: 0;
@@ -26,19 +34,63 @@
       /* 把左侧盒子的padding值去掉 权重*/
       padding-left: 0!important;
   }
+  /* 1280px 1170px 970px以上布局写开始 */
   
   .logo {
       background-color: #429ad9;
   }
+  /* 在大屏幕隐藏 小屏幕出现 */
+  
+  .logo p {
+      height: 50px;
+      line-height: 50px;
+      color: #fff;
+      font-size: 18px;
+      /* 文字水平居中 */
+      text-align: center;
+  }
   
   .logo img {
+      display: block;
       /* 图片也自适应缩放效果 */
-      width: 100%;
+      /* 指定100% 小屏显示会有问题  logo图片不需要缩放*/
+      /* width: 100%; 这样图片会有缩放效果 我们不要它有缩放效果*/
+      max-width: 100%;
+      margin: 0 auto;
   }
+  /* 如果进入超小屏幕 logo屏幕下的图片就隐藏起来 换成字 */
   
   .nav {
       background-color: #eee;
       border-bottom: 1px solid #ccc;
+  }
+  /* 当我们进入小屏幕和超小屏幕时候 我们nav里面的li浮动起来 并且占20% */
+  
+  @media screen and (max-width:991px) {
+      .nav li {
+          float: left;
+          width: 20%;
+      }
+      article {
+          margin-top: 10px;
+      }
+  }
+  /* 当我们进入了超小屏幕 文字会变成14px */
+  
+  @media screen and (max-width:767px) {
+      .nav li a {
+          font-size: 14px;
+      }
+      /* 当我们进入小屏幕和超小屏幕时候 第一个li占宽度100% 剩下的各占50% */
+      .news li:nth-child(1) {
+          width: 100%!important;
+      }
+      .news li {
+          width: 50%!important;
+      }
+      .publish h3 {
+          font-size: 14px;
+      }
   }
   
   .nav a {
@@ -55,7 +107,102 @@
   }
   
   .nav a::before {
-      /* 实现行内块元素居中对齐 */
+      /* 实现行内块元素和行内元素居中对齐 */
+      /* 默认地，这个伪元素是行内元素，不过可以使用属性 display 改变这一点。 */
       vertical-align: middle;
       padding-right: 5px;
   }
+  /* 中间模块 */
+  
+  .news li {
+      /* 左浮动 */
+      float: left;
+      width: 25%;
+      height: 128px;
+      padding-right: 10px;
+      margin-bottom: 10px;
+  }
+  
+  .news li a {
+      /* a是行内元素没有大小 必须转化为块级元素 */
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+  }
+  
+  .news li a img {
+      width: 100%;
+      height: 100%;
+  }
+  
+  .news li:nth-child(1) {
+      width: 50%;
+      /* 写死高度 */
+      height: 266px;
+      /* background-color: pink; */
+  }
+  
+  .news li:nth-child(1) p {
+      line-height: 41px;
+      font-size: 20px;
+      padding: 0 10px;
+  }
+  
+  .news li a p {
+      /* p默认有一个下的外边距 把它去掉 */
+      margin-bottom: 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 41px;
+      background-color: rgba(0, 0, 0, .5);
+      color: #fff;
+      padding: 3px 10px;
+      /* 多余部分省略号 */
+      overflow: hidden;
+      white-space: normal;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+  }
+  
+  .publish {
+      border-top: 1px solid #ccc;
+  }
+  
+  .publish .row {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+  }
+  
+  .pic {
+      margin-top: 10px;
+  }
+  
+  .pic img {
+      width: 100%;
+  }
+  
+  .banner img {
+      width: 100%;
+  }
+  
+  .hot {
+      display: block;
+      margin-top: 20px;
+      padding: 0 20px 20px;
+      border: 1px solid #ccc;
+  }
+  
+  .hot span {
+      border-radius: 0;
+      margin-bottom: 20px;
+  }
+  
+  .hot p {
+      font-size: 12px;
+  }
+  /* 1280px 1170px 970px以上布局写完毕 */

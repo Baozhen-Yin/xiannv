@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <div></div>
+    <div>
+
+    </div>
     <p>
         我是仙女
         <span>
@@ -20,11 +22,11 @@
     <!--改变元素内容，里面的文字会发生变化-->
     <script>
         //(一) innerText
-        //innerText不识别html标签
+        //1.innerText不识别html标签 非标准
         var div = document.querySelector('div');
         // div.innerText = '今年是2019'
 
-        //innerHTML识别html标签
+        //2.innerHTML识别html标签 W3C推荐
         div.innerHTML = '<strong>今年是：</strong>2019'
 
         //这两个属性是可读写的 可以获取元素里面的内容

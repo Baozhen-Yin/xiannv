@@ -14,28 +14,32 @@
 </head>
 
 <body>
-    <img src=" " alt="">
-    <div></div>
+    <img src="image2/moning.gif" alt="" title="早上好">
+    <div>早上好</div>
 
     <!--根据系统不同事件来判断，所以需要用到日期内置对象-->
     <!--利用多分支语句来设置不同的图片-->
     <!--需要一个图片，并且根据时间修改图片，就需要用到操作元素src属性-->
     <!--需要一个div元素 显示不同问候语 修改内容元素即可-->
     <script>
+        // 1.获取元素
         var img = document.querySelector('img');
         var div = document.querySelector('div');
         //得到当前小时数
+        // 日期内置对象
         var date = new Date();
         var hours = date.getHours();
         //判断小时数 改变图片和配文
         if (hours < 12) {
-            img.src = ""
+            // 修改图片
+            img.src = "image2/moning.gif";
+            // 修改内容
             div.innerHTML = '上午好，好好学习';
-        } else if (h < 18) {
-            img.src = ""
+        } else if (hours < 18) {
+            img.src = "image2/afternoon.jpg"
             div.innerHTML = '下午好，好好学习'
         } else {
-            img.src = ""
+            img.src = "image2/afternoon.jpg"
             div.innerHTML = '晚上好 可以准备睡觉'
         }
     </script>

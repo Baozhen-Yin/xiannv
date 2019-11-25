@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>17.循环精灵图</title>
+    <!-- 可以利用for循环设置一组元素的精灵图背景 -->
+    <!-- 首先精灵图排列是有规律的 -->
+    <!-- 核心思路利用for循环 修改图片的背景位置 background-position -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .box {
+            width: 230px;
+            margin: 100px auto;
+        }
+        
+        .box li {
+            float: left;
+            width: 24px;
+            height: 24px;
+            margin: 15px;
+            background-color: rgb(224, 13, 189);
+            background: url(image2/tbjlt.png) no-repeat;
+            /* 因为是二倍图 */
+            background-size: 24px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+    </div>
+    <script>
+        //1.获取元素 所有li
+        var lis = document.querySelectorAll('li')
+        for (var i = 0; i < lis.length; i++) {
+            var index = i * 44;
+            lis[i].style.backgroundPosition = '0 -' + index + 'px';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>16.仿淘宝关闭二维码案例</title>
+    <!-- 核心思路：利用样式的显示和隐藏完成，display：none 隐藏元素 display：block 显示元素 -->
+    <!-- 点击按钮，就让这个二维码盒子隐藏即可 -->
+    <style>
+        .box {
+            position: relative;
+            color: #f40;
+            width: 76px;
+            height: 88px;
+            font-size: 12px;
+            text-align: center;
+            margin: 100px auto;
+        }
+        
+        .box img {
+            width: 60px;
+            margin-top: 5px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: -1px;
+            left: -16px;
+            width: 14px;
+            height: 14px;
+            border: solid 1px #ccc;
+            line-height: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        淘宝二维码
+        <img src="image2/ewm.png" alt="">
+        <i class="close-btn">x</i>
+    </div>
+    <script>
+        // 1.获取元素 
+        var btn = document.querySelector('.close-btn');
+        var box = document.querySelector('.box');
+        // 2.绑定事件 注册事件 程序处理
+        btn.onclick = function() {
+            // 不能用this 因为指向事件调用者 我们关的不是btn 而是box
+            box.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

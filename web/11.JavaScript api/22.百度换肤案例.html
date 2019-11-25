@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>22.百度换肤案例</title>
+    <!-- 这个案例练习的是 给一组元素注册事件 -->
+    <!-- 给4个小图片利用循环注册点击事件 -->
+    <!-- 当我们点击了这个图片 让我们页面背景改为这个图片 -->
+    <!-- 核心算法：把当前图片的src路径取过来 给body当背景图片 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: url(image2/color1.png) repeat center top;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .baidu {
+            overflow: hidden;
+            margin: 100px auto;
+            background-color: #fff;
+            width: 420px;
+            padding-top: 3px;
+        }
+        
+        .baidu li {
+            float: left;
+            margin: 0 1px;
+            /* cursor 属性规定要显示的光标的类型（形状）。 pointer手掌 */
+            cursor: pointer;
+            border: solid #ccc 1px;
+        }
+        
+        .baidu img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="baidu">
+        <li><img src="image2/color1.png" alt=""></li>
+        <li><img src="image2/color2.png" alt=""></li>
+        <li><img src="image2/color3.png" alt=""></li>
+        <li><img src="image2/color4.png" alt=""></li>
+    </ul>
+    <script>
+        // 1.获取元素 获取类名为baidu的所有图片
+        var imgs = document.querySelector('.baidu').querySelector('img');
+    </script>
+</body>
+
+</html>

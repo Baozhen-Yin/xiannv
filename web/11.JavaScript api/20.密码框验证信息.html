@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>20.密码框验证信息</title>
+    <!-- 首先判断的事件是失去焦点 -->
+    <!-- 如果输入正确则 提示正确的信息颜色为绿色 小图标变化 -->
+    <!-- 如果输入不是6~16位 则提示信息显示颜色为红色 小图标变化 -->
+    <!-- 里面样式变化多 采取className修改样式 -->
+    <style>
+        div {
+            width: 600px;
+            margin: 100px auto;
+        }
+        
+        .message {
+            display: inline-block;
+            font-size: 12px;
+            color: #999;
+            background: url(image2/info_small.gif) no-repeat left center;
+            padding-left: 20px;
+        }
+        
+        .wrong {
+            color: red;
+            background: url(image2/button1.jpg) no-repeat left center;
+        }
+        
+        .right {
+            color: green;
+            background: url(image2/r_dj.png) no-repeat left center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register">
+        <input type="password" name="" class="pwd">
+        <p class="message">请输入6~16位密码</p>
+    </div>
+    <script>
+        // 1.获取元素
+        var pwd = document.querySelector('.pwd');
+        var message = document.querySelector('.message')
+            // 2.注册事件 失去焦点
+        pwd.onblur = function() {
+            if (this.value.length < 6 || this.value.length > 16) {
+                message.className = 'message wrong';
+                message.innerHTML = '请输入的位数不对，要求6~16位'
+            } else {
+                message.className = 'message right';
+                message.innerHTML = '您输入的正确'
+            }
+        }
+    </script>
+</body>
+
+</html>

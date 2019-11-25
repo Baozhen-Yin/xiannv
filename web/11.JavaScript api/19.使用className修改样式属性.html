@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>19.使用className修改样式属性</title>
+    <!-- element.style 行内样式操作 -->
+    <!-- element.ClassName 添加类名样式操作 -->
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(100, 18, 233);
+        }
+        
+        .change {
+            background-color: rgb(241, 226, 11);
+            color: #fff;
+            font-size: 25px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">文本</div>
+    <script>
+        // 使用element.className来修改样式
+        var test = document.querySelector('div');
+        test.onclick = function() {
+            // 我们可以通过修改元素的className更改元素的样式 适合于样式较多或者功能复杂的情况
+            // class因为是个保留字，因此使用className来操作元素类名属性
+            // className会更改元素的类名 会覆盖原先的类名
+            // this.className = 'change';
+
+            // 如果想要保留原先类名 可以这么做
+            this.className = 'box change'
+
+        }
+    </script>
+</body>
+
+</html>
