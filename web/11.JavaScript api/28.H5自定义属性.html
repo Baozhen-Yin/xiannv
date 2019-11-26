@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>28.H5自定义属性</title>
+    <!-- 自定义属性目的:是为了保存并使用数据,有些数据可以直接保存到页面而不用保存到数据库中 -->
+    <!-- 自定义属性是通过getAttribute('属性')获取 -->
+    <!-- 但有些自定义属性很容易引起歧义,不容易判断是元素的内置属性还是自定义属性 -->
+    <!-- H5给我们新增了自定义属性: -->
+    <!-- H5规定自定义属性data- 开头作为属性名并且赋值 -->
+    <!-- 比如 <div data-index ="1"></div? -->
+</head>
+
+<body>
+    <div data-time="20" data-list-name="ybz"></div>
+    <script>
+        // 1.设置
+        var div = document.querySelector('div')
+
+        // 2.获取H5自定义属性 
+        //(1)兼容性获取:element.getAttribute('data-index')
+        //(2)H5新增 element.dataset.index 或者 element.dataset['index'] ie11才开始支持 
+        //dataset是一个集合里面存放了所有以data开头的自定义属性
+        console.log(div.getAttribute('data-time')); //20
+
+        console.log(div.dataset.time); //20
+        console.log(div.dataset['time']); //20
+        // 如果自定义属性里面有多个-链接的单词 我们命名时采用驼峰命名法
+        console.log(div.dataset['listName']); //ybz
+    </script>
+</body>
+
+</html>

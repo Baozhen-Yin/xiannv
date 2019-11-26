@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30.节点的优点</title>
+</head>
+
+<body>
+    <!-- 节点的优点 -->
+    <!-- 一般的 节点至少拥有nodeType节点类型 nodeName节点名称 nodeValue节点值 三个基本属性 -->
+    <!-- 元素节点 nodeType 为1 -->
+    <!-- 属性节点 nodeType 为2 -->
+    <!-- 文本节点 nodeType 为3(包含文字 空格 换行等) -->
+    <!-- 在实际开发里面 节点操作主要操作元素节点 -->
+    <div>我是div</div>
+    <span>我是span</span>
+    <ul>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ul>
+    <ol>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ol>
+    <div class="box">
+        <div class="box1">
+            <div class="erweima">x</div>
+        </div>
+
+    </div>
+    <script>
+        //  如果我们想点了二维码把box获取过来
+        //1.父节点 parentNode
+        var erweima = document.querySelector('.erweima');
+        // var box = document.querySelector('.box');
+        // 得到的是离元素最近的父节点 输出box1 亲爸 如果找不到父节点返回为空
+        console.log(erweima.parentNode);
+
+
+        //2.如果想把ul的li获取过来
+        // 用DOM提供的API获取
+        // var lis = document.querySelector('ul').querySelectorAll('li');
+        var ul = document.querySelector('ul');
+        var lis = ul.querySelectorAll('li');
+        // 用子节点方法 parentNode.childNodes
+        console.log(ul.childNodes);
+        // 返回值包含了所有子节点包括元素节点文本节点等 就是空格也会出来
+        // 我们想要获取里面的元素节点则需要专门获取,所以一般不提倡childNodes
+
+        // 3.parentNode.children (非标准)
+        // parentNode.children是一个只读属性,返回所有的子元素节点,他只返回子元素节点,其余节点不返回(这个是我们重点)
+        // 虽然children是一个非标准,但是得到了各个浏览器支持,因此我们可以放心使用
+        console.log(ul.children);
+    </script>
+</body>
+
+</html>

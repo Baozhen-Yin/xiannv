@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo" index="1" class="nav"></div>
+    <script>
+        // 1.获取元素属性值
+        var div = document.querySelector('div')
+        console.log(div.id); // demo
+        console.log(div.getAttribute('id')); // demo
+        console.log(div.getAttribute('index')); //1
+
+        // 2.设置元素属性值
+        // （1） element.属性 = '值';
+        div.id = 'text';
+        console.log(div.id); //text
+        div.className = 'navs'
+            // （2） element.setAttribute('属性','值');  主要针对自定义属性
+        div.setAttribute('index', '250')
+        console.log(div.getAttribute('index')); //250
+        div.setAttribute('class', 'xiannv') //xiannv class特使 这里面写的就是class 不是classname 把上面的navs覆盖掉了
+            //（3）移除属性
+        div.removeAttribute('index');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>31.节点操作之最后一个和第一个子元素</title>
+</head>
+
+<body>
+    <ol>
+        <li>我是li1</li>
+        <li>我是li2</li>
+        <li>我是li3</li>
+        <li>我是li4</li>
+    </ol>
+    <script>
+        // 获取ol里面第一个孩子和最后一个孩子 
+        var ol = document.querySelector('ol');
+        // parentNode.firstChild lastChild获取第一个子节点 不管是文本节点还是元素节点
+        console.log(ol.firstChild); //#text 错误 把第一个文本节点取来
+
+        // firstElementChild 返回第一个子元素节点 有兼容性问题
+        console.log(ol.firstElementChild);
+        // lastElementChild
+        console.log(ol.lastElementChild);
+
+        // 实际开发中firstChild和lastchild 包含其他节点,操作不方便,而firstElementChild又有兼容性问题
+        //解决方案:实际开发写法 没有兼容性问题 
+        // 如果想要第一个元素节点可以使用 parentNode.chilren[0]
+        console.log(ol.children[0]);
+        // 最后一个
+        console.log(ol.children[ol.children.length - 1]);
+    </script>
+</body>
+
+</html>

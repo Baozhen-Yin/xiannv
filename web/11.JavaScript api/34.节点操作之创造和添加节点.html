@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>34.节点操作之创造和添加节点</title>
+    <!-- 创建节点 -->
+    <!-- document.createElement('tagName') -->
+    <!-- document.createElement()方法创建由tagName指定的HTML元素.因为这些元素原先不存在,是根据我们的需求动态生成的
+         所以我们也称为 "动态创建元素节点" -->
+
+    <!-- 添加节点 -->
+    <!-- 方法1:添加末尾node.appendChild(child) -->
+    <!-- node.appendChild() 方法将一个节点添加到指定父节点列表"""末尾""".类似于CSS里面的after伪元素 -->
+
+    <!-- 方法2:node.insertBefore(child,指定元素) -->
+    <!-- 将一个节点添加到父节点指定子节点前面 类似于before伪元素 -->
+</head>
+
+<body>
+    <ul>
+        <li>123</li>
+    </ul>
+    <script>
+        //1.创建元素节点 document.createElement('tagName') 
+        var li = document.createElement('li');
+        // 2.添加元素节点node.appendChild(child) node父级 child子级 
+        // 获取父级
+        var ul = document.querySelector('ul')
+        ul.appendChild(li);
+        //3.添加节点 node.insertBefore(child,指定元素)
+        var li2 = document.createElement('li');
+        ul.insertBefore(li2, ul.children[0])
+
+        // 我们想要页面添加一个新的元素:1.创建元素 2.添加元素
+    </script>
+</body>
+
+</html>

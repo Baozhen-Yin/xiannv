@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>25.获取元素自定义属性值</title>
+</head>
+
+<body>
+    <div id="demo" index="1"></div>
+    <script>
+        var div = document.querySelector('div')
+            // 1.获取元素的属性值 
+            // （1）element.属性
+        console.log(div.id); // demo
+        //(2)element.getAttribute('属性')
+        // 我们程序员自己添加的属性我们称为自定义属性
+        console.log(div.getAttribute('id')); // demo
+        console.log(div.getAttribute('index')); //1
+
+
+        // 总结
+        // element.属性 获取内置属性值（元素本身自带的属性）
+        // element.getAttribute('属性') 获得自定义的属性（标准） 我们自己定义的属性
+    </script>
+</body>
+
+</html>

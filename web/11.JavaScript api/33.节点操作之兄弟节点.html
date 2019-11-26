@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>33.节点操作之兄弟节点</title>
+</head>
+
+<body>
+    <div>我是div</div>
+    <span>我是span</span>
+    <script>
+        var div = document.querySelector('div');
+        // 1.node.nextSibling 下一个"兄弟节点" 包含元素节点或者 文本节点等等
+        console.log(div.nextSibling); //#text 错误了
+
+        // 2.node.previousSibling  返回当前元素上一个兄弟节点,找不到则返回null,同样也是包含所有的节点
+        console.log(div.previousSibling); //#text 错误了
+
+        // 3.node.nextElementSibling 得到下一个"""兄弟"元素"节点""" IE9以上支持
+        console.log(div.nextElementSibling); //span
+
+        // 3.node.previousElementSibling 得到上一个"""兄弟"元素"节点""" IE9以上支持
+        console.log(div.previousElementSibling); //null 没得哥哥
+
+        // 解决方案 :自己封装一个兼容性函数
+        function getNextElementSibling(element) {
+            var el = element;
+            while (el = el.nextSibling) {
+                if (el.nodeType === 1) {
+                    return el;
+                }
+            }
+            return null;
+        }
+    </script>
+</body>
+
+</html>

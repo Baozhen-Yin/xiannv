@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>36.节点操作之删除节点</title>
+    <!-- node.removeChild(child)  从DOM中删除一个子节点 返回删除的子节点-->
+</head>
+
+<body>
+    <button>删除</button>
+    <ul>
+        <li>熊大</li>
+        <li>熊二</li>
+        <li>光头强</li>
+    </ul>
+    <script>
+        //1.获取元素
+        var btn = document.querySelector('button')
+        var ul = document.querySelector('ul')
+
+        //2.删除元素 node.removeChild(child)
+        // ul.removeChild(ul.children[0])
+
+        //3.点击事件(点击按钮依次删除里面的孩子) li是动态的 删一个少一个
+        btn.onclick = function() {
+            // ul.removeChild(ul.children[0])
+            // 加一个判断条件 如果删完了 按钮禁用
+            if (ul.children.length === 0) {
+                this.disabled = true;
+            } else {
+                ul.removeChild(ul.children[0])
+            }
+
+        }
+    </script>
+</body>
+
+</html>

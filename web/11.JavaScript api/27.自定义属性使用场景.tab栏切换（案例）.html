@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>27.自定义属性使用场景.tab栏切换（案例）</title>
+    <!-- 鼠标点击上面相应的选项卡（tab）下面内容跟随变化 -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .tab {
+            width: 800px;
+            height: 800px;
+            margin: 100px auto;
+        }
+        
+        .tab_list {
+            /* margin: 100px auto; */
+            height: 39px;
+            /* width: 800px; */
+            border: 1px solid #ccc;
+            border-bottom: 1px solid #b10b16;
+        }
+        
+        .tab_list li {
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .tab_list li:hover {
+            color: #b10b16;
+        }
+        
+        .tab_list .current {
+            background-color: #c81623;
+            color: #fff;
+        }
+        
+        .item_info {
+            padding: 20px 0 0 20px;
+        }
+    </style>
+</head>
+<!-- 案例分析 -->
+<!-- 1.tab栏有两个大模块 -->
+<!-- 2.上的模块选项卡，点击某一个，当前这一个底色会是红色，其余不变（排他思想）修改类名方式 -->
+<!-- 3.下面的模块内容 会随着上面的选项卡变化,所以下面模块内容要写到点击事件里面 -->
+<!-- 4.规律:下面的模块显示内容和上面的选项卡一一对应 相匹配 -->
+<!-- 5.核心思路:给上面的tab_list里面的所有小li添加自定义属性 属性值从0开始编号 -->
+<!-- 6.当我们点击tab_list里面的某个小li,让tab_con 里面对应序号的内容显示,其余隐藏(排他思想) -->
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格和包装</li>
+                <li>售后保障</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">
+                商品介绍模块内容
+            </div>
+            <div class="item" style="display: none;">
+                规格和包装模块内容
+            </div>
+            <div class="item" style="display: none;">
+                售后保障模块内容
+            </div>
+            <div class="item" style="display: none;">
+                商品评价模块内容
+            </div>
+            <div class="item" style="display: none;">
+                手机社区模块内容
+            </div>
+        </div>
+    </div>
+    <!-- 2.上的模块选项卡，点击某一个，当前这一个底色会是红色，其余不变（排他思想）修改类名方式 -->
+    <script>
+        //1.获取元素 (看哪些元素参与操作)
+        var lis = document.querySelector('.tab_list').querySelectorAll('li');
+        // var  = tab_list.
+        var items = document.querySelectorAll('.item')
+
+        // 2.添加点击事件 for循环绑定点击事件
+        for (var i = 0; i < lis.length; i++) {
+            // 开始给5个小li设置索引号
+            lis[i].setAttribute('index', i)
+            lis[i].onclick = function() {
+                // 干掉所有人 其余li清除class这个类
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = ''
+                }
+                // 留下我自己
+                this.className = 'current';
+
+                // 2.下面显示内容模块
+                var index = this.getAttribute('index') //得到当前的index属性值
+                console.log(index);
+                // 干掉所有人 让其余的item这些div隐藏
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none';
+                }
+                //留下我自己
+                items[index].style.display = 'block';
+
+            }
+        }
+
+        // 3.
+    </script>
+</body>
+
+</html>

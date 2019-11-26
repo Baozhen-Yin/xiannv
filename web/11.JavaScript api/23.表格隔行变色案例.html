@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>23.表格隔行变色案例</title>
+    <!-- 新的鼠标事件 鼠标经过onmouseover 鼠标离开onmouseout -->
+    <!-- 1.核心思路：鼠标经过tr行，当前的行需要变换背景颜色，鼠标离开后去掉当前背景颜色 -->
+    <!-- 2.注意：第一行是（thead）不需要变化颜色，因此我们获取的是tbody里面的行 -->
+    <style>
+        table {
+            width: 800px;
+            margin: 100px auto;
+            text-align: center;
+            /* 表格线重叠 */
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        
+        thead tr {
+            height: 30px;
+            background-color: skyblue;
+        }
+        
+        tbody tr {
+            height: 30px;
+        }
+        
+        tbody td {
+            border-bottom: 1px solid #d7d7d7;
+            font-size: 12px;
+            color: blue;
+        }
+        
+        .bg {
+            background-color: rgb(21, 250, 200);
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>代课</th>
+                <th>代课</th>
+                <th>代课</th>
+                <th>代课</th>
+                <th>代课</th>
+                <th>代课</th>
+                <th>代课</th>
+                <th>代课</th>
+                <th>代课</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+            </tr>
+            <tr>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+            </tr>
+            <tr>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+            </tr>
+            <tr>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+            </tr>
+            <tr>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+            </tr>
+            <tr>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+            </tr>
+            <tr>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+                <td>可爱</td>
+            </tr>
+        </tbody>
+
+    </table>
+    <script>
+        //1.获取元素 tbody里面所有的行
+        var trs = document.querySelector('tbody').querySelectorAll('tr');
+        // 2.循环注册绑定事件
+        for (var i = 0; i < trs.length; i++) {
+            // 鼠标经过事件
+            trs[i].onmouseover = function() {
+                // 添加一个类名 常用写法
+                this.className = 'bg';
+            }
+            trs[i].onmouseout = function() {
+                // 添加一个类名 常用写法
+                this.className = '';
+
+
+            }
+        }
+        // 鼠标离开事件
+    </script>
+</body>
+
+</html>
