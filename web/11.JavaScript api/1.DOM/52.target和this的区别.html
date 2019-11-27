@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件对象常见的属性和方法</title>
+    <!-- e.target 返回触发事件的对象 标准 -->
+    <!-- e.srcElement 返回触发事件的对象 非标准 ie6-8使用 -->
+    <!-- e.type 返回事件的类型 比如click mouseover 不带on -->
+    <!-- e.cancelBubble 阻止冒泡 ie6-8使用 -->
+    <!-- e.stopPropagation() 阻止冒泡 标准 -->
+    <!-- e.returnValue 阻止默认事件 默认行为 非标准 比如不让链接跳转 -->
+    <!-- e.preventDefault() 该方法 阻止默认事件 默认行为 标准 比如不让链接跳转 -->
+
+    <!-- 区别 e.target点击了哪个元素返回哪个元素  this哪个元素绑定了这个点击事件就返回谁 -->
+    <!-- this和currentTarget有相似的属性 但是ie678不认识 -->
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(29, 96, 240);
+        }
+    </style>
+</head>
+
+<body>
+    <div>123</div>
+    <ul>
+        <li>abc</li>
+        <li>abc</li>
+        <li>abc</li>
+    </ul>
+    <script>
+        //事件对象常见的属性和方法
+        //1.e.target 返回的是触发事件的对象 (元素) 也就是谁被点击了
+        //    this返回的是绑定事件的对象
+        var div = document.querySelector('div');
+        div.addEventListener('click', function(e) {
+            console.log(e.target); //<div>123</div>
+            console.log(this); //<div>123</div>
+        })
+
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function(e) {
+            //我们给ul绑定了事件 this指向ul 点击li也返回ul
+            console.log(this); //ul
+            //e.target 指向点击了的对象 所以返回li
+            console.log(e.target); //li
+        })
+
+        //区别 e.target点击了哪个元素返回哪个元素  this哪个元素绑定了这个点击事件就返回谁
+    </script>
+</body>
+
+</html>

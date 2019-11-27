@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>57.获得鼠标在页面中的坐标</title>
+    <!-- event对象代表事件的状态,跟事件相关的一系列信息的集合.现阶段我们主要是用鼠标事件对象MouseEvent
+         和键盘事件对象KeyboardEvent -->
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        //鼠标事件对象 MouseEvent
+        document.addEventListener('click', function(e) {
+            console.log(e.clientX);
+            console.log(e.clientY);
+            console.log('------------------------------');
+
+            //返回鼠标相对于浏览器窗口""可视区""的X 和 Y坐标
+            //e.clientX:  鼠标来看 拖动不算 永远以可视窗口为主
+            //e.clientY: 
+
+            //相对于文档页面的X 和 Y坐标 ie9+支持
+            //e.pageX:  
+            //e.pageY: 
+            console.log(e.pageX);
+            console.log(e.pageY);
+
+
+            //screenX:  相对于电脑屏幕的X坐标
+            //screenY:  相对于电脑屏幕的Y坐标
+        })
+    </script>
+</body>
+
+</html>

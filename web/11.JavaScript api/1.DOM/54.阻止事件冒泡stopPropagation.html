@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>54.阻止事件冒泡</title>
+    <!-- 事件冒泡:开始时由最具体的元素接收,然后逐级向上传播到DOM最顶层节点 -->
+    <!-- 事件冒泡本身的特性,会带来坏处,也会带来好处,需要灵活掌握 -->
+
+    <!-- 阻止事件冒泡 -->
+    <!-- 标准写法:利用事件对象里面的stopPropagation()方法 -->
+    <style>
+        .father {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background-color: rgb(17, 226, 97);
+            margin: 100px auto;
+        }
+        
+        .son {
+            position: absolute;
+            top: 140px;
+            left: 140px;
+            width: 200px;
+            height: 200px;
+            background-color: rgb(238, 18, 18);
+            text-align: center;
+            line-height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">son盒子</div>
+    </div>
+    <script>
+        //stopPropagation()阻止冒泡
+        var son = document.querySelector('.son')
+        son.addEventListener('click', function(e) {
+            alert('son');
+            e.stopPropagation() //stop 停止 propagation 传播 这个也有兼容性问题
+                // e.cancelBubble = true; //cancel取消
+
+
+        }, false);
+
+        var father = document.querySelector('.father')
+        father.addEventListener('click', function(e) {
+            alert('father');
+            // 兼容性方案 阻止father继续冒泡
+            if (e && e.stopPropagation) {
+                e.stopPropagation();
+            } else {
+                window.event.cancelBubble = true;
+            }
+        }, false);
+        document.addEventListener('click', function() {
+            alert('document')
+        })
+    </script>
+</body>
+
+</html>

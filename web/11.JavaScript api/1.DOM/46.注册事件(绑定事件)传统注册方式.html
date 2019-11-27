@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>46.注册事件(绑定事件)</title>
+    <!-- 给元素添加事件，称为注册事件或者绑定事件 -->
+    <!-- 注册事件有两种方式：传统方式和方法监听注册方式 -->
+
+    <!-- 1.传统注册方式 -->
+    <!-- 利用on开头的事件 onclick -->
+    <!-- btn.onclick = function(){} -->
+    <!-- 特点：注册事件唯一性 同一个元素同一个事件只能设置一个处理函数，最后注册的处理函数将会覆盖前面的注册函数-->
+</head>
+
+<body>
+    <button>传统注册事件</button>
+    <button>方法监听注册事件</button>
+    <script>
+        var btns = document.querySelectorAll('button');
+        btns[0].onclick = function() {
+            alert('ybzxiannv')
+        }
+        btns[0].onclick = function() {
+            alert('hi!~') //只把最后一个弹出来了 前面的覆盖掉
+        }
+    </script>
+</body>
+
+</html>

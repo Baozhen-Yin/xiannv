@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>48.删除事件(解绑事件)</title>
+    <!-- 传统注册解绑方式  -->
+    <!-- eventTarget.onclick = null; -->
+    <!-- 方法监听注册方式 -->
+    <!-- evenTarget.removeEventlistener(type,listener[,useCapture]) -->
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(218, 21, 21);
+        }
+    </style>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        var divs = document.querySelectorAll('div');
+        divs[0].onclick = function() {
+            //1.传统方式删除事件
+            alert('111')
+                //弹了一次不再弹
+            divs[0].onclick = null;
+        }
+
+        // 监听注册方式删除事件 removeEventlistener(type,listener[,useCapture])
+        divs[1].addEventListener('click', fn) //里面的fn不需要加调用小括号 特殊 而且不能用匿名函数
+        function fn() {
+            alert('222')
+            divs[1].removeEventListener('click', fn)
+        }
+    </script>
+</body>
+
+</html>

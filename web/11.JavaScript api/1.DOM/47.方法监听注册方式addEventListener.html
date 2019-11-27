@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>47.方法监听注册方式</title>
+    <!-- W3C推荐使用方式 -->
+    <!-- addEventListener()它是一个方法 一般用这个-->
+    <!-- IE9之前IE不支持这个方法 用attachEvent()代替 -->
+    <!-- 特点：同一个元素，同一个事件可以注册多个监听器 -->
+
+    <!-- 语法 -->
+    <!-- eventTarget.addEventListener(type,listener[,useCapture]) -->
+    <!-- eventTarget.addEventListener()方法将指定的监听器注册到eventTarget（目标对象)上 
+        触发指定事件执行事件处理函数-->
+
+    <!-- type：事件类型字符串，比如 click mouseover 注意这里不要带on 是字符串 -->
+    <!-- listener：事件处理函数，事件发生时，会调用该监听函数 -->
+    <!-- useCapture：可选参数，是一个布尔值，默认是false。学完DOM事件流再进一步学习 -->
+</head>
+
+<body>
+    <button>传统注册事件</button>
+    <button>方法监听注册事件</button>
+    <button>IE9之前的方法</button>
+
+    <script>
+        var btns = document.querySelectorAll('button');
+        btns[1].addEventListener('click', function() {
+            alert('ybzxiannv')
+        })
+        btns[1].addEventListener('click', function() {
+            alert('hi!~')
+        })
+
+        //attachEvent() IE9之前IE支持这个方法
+        btns[2].attachEvent('click', function() {
+            alert('hi!~') //点不出来
+        })
+    </script>
+</body>
+
+</html>

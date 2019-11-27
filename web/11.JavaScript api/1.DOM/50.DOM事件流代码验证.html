@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>50.DOM事件流代码验证</title>
+    <!-- 注意 -->
+    <!-- 1.JS代码只能执行捕获或者冒泡其中的一个阶段 -->
+    <!-- 2.onclick 和 attachEvent 只能得到冒泡阶段 -->
+    <!-- 3.只点了son也会按照一定顺序把father弹出来 -->
+    <!-- 4.addEventlistener """第三个参数是true""" 那么则处于捕获阶段 
+           第三个参数是false或者省略""" 那么则处于冒泡阶段  -->
+    <!-- 5.实际开发我们很少使用事件捕获 我们更关注冒泡 -->
+    <!-- 6.有些事件是没有冒泡的 比如onblur,onfocus,onmouseenter,ommouseleave -->
+    <!-- 7.事件冒泡有时会带来麻烦,有时又会很巧妙做某些事件 -->
+    <style>
+        .father {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background-color: rgb(17, 226, 97);
+            margin: 100px auto;
+        }
+        
+        .son {
+            position: absolute;
+            top: 140px;
+            left: 140px;
+            width: 200px;
+            height: 200px;
+            background-color: rgb(238, 18, 18);
+            text-align: center;
+            line-height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">son盒子</div>
+    </div>
+    <script>
+        //dom 事件流 三个阶段
+        //1.JS代码只能执行捕获或者冒泡其中的一个阶段 
+        //2.onclick 和 attachEvent 只能得到冒泡阶段
+
+        //3.捕获阶段 如果addEventlistener """第三个参数是true""" 那么则处于捕获阶段 
+        // 捕获阶段  document -> html -> body -> father -> son
+        // var son = document.querySelector('.son')
+        // son.addEventListener('click', function() {
+        //     alert('son');
+        // }, true);
+
+        // var father = document.querySelector('.father')
+        // father.addEventListener('click', function() {
+        //     alert('father');
+        // }, true);
+
+        //先弹出father 在弹出son
+
+        //4.冒泡阶段 如果addEventlistener """第三个参数是false或者省略""" 那么则处于冒泡阶段 
+        // 冒泡阶段  son -> father -> body -> html -> document
+        var son = document.querySelector('.son')
+        son.addEventListener('click', function() {
+            alert('son');
+        }, false);
+
+        var father = document.querySelector('.father')
+        father.addEventListener('click', function() {
+            alert('father');
+        }, false);
+
+        //先弹出son再father
+    </script>
+</body>
+
+</html>

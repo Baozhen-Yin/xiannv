@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>58.跟随鼠标的天使</title>
+    <!-- 1.鼠标不断地移动,使用鼠标移动事件:mousemove -->
+    <!-- 2.因为是在页面移动,给document注册事件 -->
+    <!-- 3.图片要不断移动位置而且不占位置,使用绝对定位即可 -->
+    <!-- 核心原理:每次鼠标移动,我们都会获得最新的鼠标坐标,把这个X和Y坐标做为图片的top和left就可以移动图片 -->
+    <style>
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="image2/r_dj.png" alt="">
+    <script>
+        var pic = document.querySelector('img');
+        document.addEventListener('mousemove', function(e) {
+            //mousemove只要鼠标移动1px就会触发这个事件
+            var x = e.pageX;
+            var y = e.pageY;
+            // console.log('x坐标是' + x + 'y坐标是' + y);
+            //千万不要忘记给top left添加px 因为图片是165x145 我把每一个都减一个75 方便居中
+            pic.style.left = x - 75 + 'px';
+            pic.style.top = y - 75 + 'px';
+
+        })
+    </script>
+</body>
+
+</html>

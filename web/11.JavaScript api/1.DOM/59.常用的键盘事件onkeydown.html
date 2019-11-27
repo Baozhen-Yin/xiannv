@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>59.常用的键盘事件</title>
+    <!-- onkeyup 某个键盘按键被松开时触发 -->
+    <!-- onkeydown 某个键盘按键被按下时触发 -->
+    <!-- onkeypress 某个键盘被按下时触发 但是不识别功能键 比如ctrl shift 箭头等 -->
+    <!-- 三个事件执行顺序 keydown -- keypress -- keyup -->
+</head>
+
+<body>
+    <script>
+        //1.onkeyup 某个键盘按键被松开时触发
+        // document.onkeyup = function() {
+        //     console.log('我弹起来了'); //松开手输出
+        // }
+        document.addEventListener('keyup', function(e) {
+            console.log('我弹起来了'); //松开手输出
+        })
+
+        //2.onkeydown 某个键盘按键被按下时触发
+        // document.onkeydown = function() {
+        //     console.log('我弹起来了'); //按下手输出
+        // }
+        document.addEventListener('keydown', function(e) {
+            console.log('按下去了'); //按下手输出
+        })
+
+        //3.onkeypress 某个键盘被按下时触发 但是不识别功能键 比如ctrl shift 箭头等
+        document.addEventListener('keypress', function(e) {
+            console.log('我弹起来了hhh'); //松开手输出
+        })
+    </script>
+</body>
+
+</html>

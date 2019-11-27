@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>61.模拟京东按键输入内容案例</title>
+    <!-- 案例:当我们按下s键,光标就定位到搜索框 -->
+    <!-- 核心思路:检测用户是否按下了s键,如果按下了s键,就把光标定位到搜索框里面 -->
+    <!-- 使用键盘事件对象里面的keyCode判断用户是否按下了s键 -->
+    <!-- 搜索框获得焦点:js里面focus()方法 -->
+</head>
+
+<body>
+    <input type="search">
+    <script>
+        var search = document.querySelector('input');
+        //用keydown的时候会在搜索框里面 但是用keyup可以按键松开再触发
+        document.addEventListener('keyup', function(ea) {
+            console.log(ea.keyCode); //S=83
+            if (ea.keyCode === 83) {
+                //搜索框获得焦点
+                search.focus()
+            }
+
+        })
+    </script>
+</body>
+
+</html>
