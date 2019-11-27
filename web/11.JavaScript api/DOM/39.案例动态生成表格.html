@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>39.案例动态生成表格</title>
+    <!-- 不写死表格 根据数据动态的发生变化 增加删除等 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table {
+            /* 没给高度 因为需要动态添加 */
+            width: 500px;
+            margin: 100px auto;
+            text-align: center;
+            border-collapse: collapse;
+        }
+        
+        td,
+        th {
+            border: solid 1px #333;
+        }
+        
+        thead tr {
+            height: 40px;
+            border: solid 1px #bbb;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>ybz</td>
+                <td>JS</td>
+                <td>100</td>
+                <td><a href="javascript:;">删除</a></td>
+            </tr>
+            -->
+        </tbody>
+    </table>
+    <!-- 因为里面的学生数据都是动态的，我们需要js动态生成。这里我们模拟数据，自己定义好数据。数据我们采取对象形式存储 -->
+    <!-- 所有数据都放到tbody里面 -->
+    <!-- 因为行很多，我们需要创建多个行（对应多个人） -->
+
+    <script>
+        // 1.先去准备好学生的数据
+        var datas = [{
+                name: 'ybz',
+                subject: 'python',
+                score: 100
+            }, {
+                name: 'xyk',
+                subject: 'python',
+                score: 60
+            }, {
+                name: 'qwe',
+                subject: 'python',
+                score: 99
+            }, {
+                name: 'q45',
+                subject: 'python',
+                score: 99
+            }]
+            // 2.往tbody里面创建行 有几个人创建多少行（通过数组长度）
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < datas.length; i++) { //外面for循环管行 tr
+            //1.创建tr行 循环一次创建一行tr
+            var tr = document.createElement('tr');
+            // 添加到tbody里面
+            tbody.appendChild(tr)
+                //2.行里面创建单元格  td  单元格数量取决于每个""对象""属性个数 for..in遍历对象 datas[i] 
+            for (var k in datas[i]) { //里面的for循环管列 td
+                //创建单元格
+                // 遍历对象通过 for(var k in obj){
+                // console.log(k); //k变量 输出的是属性名 name subject
+                //console.log(obj1[k]); //obj[k]得到的是属性值 python 很少用来遍历方法
+                // }
+                var td = document.createElement('td');
+                //创建了单元格的同时把对象里面的属性值 datas[i][k]给td
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);
+            }
+            //3.创建有删除两个字的单元格
+            var td = document.createElement('td');
+            td.innerHTML = '<a href="javascript:;">删除</a>'
+            tr.appendChild(td)
+        } //创建完毕单元格
+        //4.删除操作 开始 核心原理：把所有的a都获取过来，获取完毕依次添加注册事件，当点完之后把a所在的行删掉
+        var as = document.querySelectorAll('a');
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function() {
+                //点击a 删除当前a所在的行(链接的爸爸<td>的爸爸<tbody> 整行删除 ) node.removeChild(child)
+                tbody.removeChild(this.parentNode.parentNode)
+            }
+        }
+    </script>
+</body>
+
+</html>

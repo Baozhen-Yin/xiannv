@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>44.DOM重点核心</title>
+    <!-- 文档对象模型 DOCUMENT OBJECT MODEL  是W3C组织推荐的处理可扩展标记语言（html和xml）的标准编程接口-->
+    <!-- W3C已经定义了一系列接口，通过这些接口 -->
+    <!-- 对于javascript 为了能使用js操作HTML js就有了一套自己的编程接口 -->
+    <!-- 对于HTML dom使得HTML形成一棵dom树。包含文档，元素，节点 -->
+    <!-- 我们获取过来的DOM元素是一个“对象” ，所有称为文档对象模型 -->
+
+    <!-- 关于dom的操作我们主要是 创建、增、删、查、改、属性操作、事件操作 -->
+    <!-- 1.创建 -->
+    <!-- document.write -->
+    <!-- innerHTML -->
+    <!-- createElement -->
+
+    <!-- 2.增 -->
+    <!-- appendChild -->
+    <!-- insertBefore -->
+
+    <!-- 3.删 -->
+    <!-- removeChild -->
+
+    <!-- 4.改 注意修改dom的元素属性 dom元素的内容、属性、表单的值等-->
+    <!-- 修改元素属性：src href title等 -->
+    <!-- 修改普通元素内容：innerHTML innerTEXT -->
+    <!-- 修改表单元素 :value type disabled等 -->
+    <!-- 修改元素样式 ：style,className等 -->
+
+    <!-- 5.查 主要获取查询dom元素-->
+    <!-- 1.DOM提供的API方法：getElementById，getElementByTagName 古老 不太推荐 -->
+    <!-- 2.H5提供的新方法：querySelector querySelectorAll 提倡 -->
+    <!-- 3.利用节点操作获取元素：父(parentNode)、子（children）、兄（previousElementSibling）弟（nextElementSibling）提倡-->
+
+    <!-- 6.属性操作 主要针对自定义属性 -->
+    <!-- setAttribute：设置dom属性值 -->
+    <!-- getAttribute：得到dom的属性值 -->
+    <!-- removeAttribute移除属性 -->
+
+    <!-- 7.事件操作  给元素注册事件，采取 事件源.事件类型 = 事件处理程序-->
+    <!-- onclick 鼠标点击左键触发 -->
+    <!-- onmouseover 鼠标经过触发 -->
+    <!-- onmouseout 鼠标离开触发 -->
+    <!-- onfocus 获得鼠标焦点触发 -->
+    <!-- onblur 失去鼠标焦点触发 -->
+    <!-- onmousemove 鼠标移动触发 -->
+    <!-- onmouseup 鼠标谈起触发 -->
+    <!-- onmousedown 鼠标按下触发 -->
+
+</head>
+
+<body>
+
+</body>
+
+</html>
