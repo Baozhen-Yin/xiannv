@@ -18,6 +18,12 @@
     <link rel="stylesheet" href="css/index.css">
     <!-- 引入favicon图标 -->
     <link rel="shortcut icon" href="favicon.ico">
+    <!--引入首页js文件 -->
+    <!-- 这个animate必须写到index上面 顺序不能颠倒 因为index要使用animate -->
+    <script src="js/18.animate_callback.js"></script>
+    <script src="js/index.js"></script>
+
+
 </head>
 
 <body>
@@ -174,10 +180,37 @@
     <!-- 首页专有模块 main -->
     <div class="w">
         <div class="main">
-            <div class="focus">
+            <div class="focus f1">
+                <!-- 左侧按钮 -->
+                <a href="javascript:;" class="arrow-l">⬅</a>
+                <!-- 右侧按钮 -->
+                <a href="javascript:;" class="arrow-r">➡</a>
                 <ul>
-                    <li><img src="upload/dva1.jpg" alt=""></li>
+                    <li>
+                        <a href="#"><img src="upload/dva1.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/dva222.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/dva333.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/dva444.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/dva555.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/dva666.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/dva777.jpg" alt=""></a>
+                    </li>
+
+
                 </ul>
+                <ol class="circle"></ol>
             </div>
             <div class="newsflash">
                 <div class="news">

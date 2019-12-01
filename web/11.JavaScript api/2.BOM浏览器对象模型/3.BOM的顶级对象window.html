@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.BOM的顶级对象window</title>
+    <!-- WINDOW组成 -->
+    <!-- 1.docoment 2.location 3.navigation 4.screen 5.history -->
+
+    <!-- window对象是浏览器的顶级对象，它具有双重角色 -->
+    <!-- 1.它是JS访问浏览器窗口的一个接口 -->
+    <!-- 2.它是一个全局对象。定义在""全局""作用域的变量、函数都会变成window对象的属性和方法 -->
+    <!-- 在调用的时候可以省略window，前面学习的对话框都属于window对象方法，如alert(),prompt()等 -->
+
+    <!-- 注意：window下的一个特殊属性window.name 是一个空的字符串 -->
+</head>
+
+<body>
+    <script>
+        // window.document.querySelector();
+        var num = 10;
+        console.log(num); //10
+        console.log(window.num); //10 自动变成window的变量
+        function fn() {
+            console.log(11);
+        }
+        fn(); //11
+        window.fn() //11
+        alert('ybz')
+        window.alert('加了window')
+        console.dir(window)
+    </script>
+</body>
+
+</html>

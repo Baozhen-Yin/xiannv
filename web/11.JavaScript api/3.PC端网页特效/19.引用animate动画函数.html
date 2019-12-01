@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>19.引用animate动画函数</title>
+    <script src="18.animate_callback.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .slider {
+            position: relative;
+            right: -60px;
+            top: 100px;
+            width: 200px;
+            height: 40px;
+            margin: 100px 1400px;
+        }
+        
+        span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 40px;
+            height: 40px;
+            background-color: pink;
+            z-index: 1;
+            color: blue;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        
+        .con {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 40px;
+            background-color: purple;
+            z-index: -1;
+            color: black;
+            font-size: 20px;
+            line-height: 40px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <span>⬅</span>
+        <div class="con">问题反馈</div>
+    </div>
+
+    <script>
+        //当我们鼠标经过slider 就会让这个con盒子滑动到左侧
+        //当我们鼠标离开slider 就会让这个con盒子滑动到右侧
+
+        //1.获取元素
+        var slider = document.querySelector('.slider')
+        var con = document.querySelector('.con')
+        slider.addEventListener('mouseenter', function() {
+            // animate(obj, target, callback)
+            animate(con, -160, function() {
+                //当动画执行完毕就把左箭头改为右箭头
+                slider.children[0].innerHTML = '➡'
+            })
+        });
+        slider.addEventListener('mouseleave', function() {
+            // animate(obj, target, callback)
+            animate(con, 0, function() {
+                slider.children[0].innerHTML = '⬅'
+            })
+        })
+    </script>
+</body>
+
+</html>

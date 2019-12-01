@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8.元素滚动scroll系列</title>
+    <!-- scrollTop  :内容层顶部 到 可视区域顶部的距离。返回被卷上去的上侧距离,返回数值不带单位 -->
+    <!-- scrollLeft :内容层左端 到 可视区域左端的距离.  返回被卷上去的左侧距离,返回数值不带单位-->
+    <!-- scrollWidth：获取指定标签内容层的真实宽度（可视区域宽度+被隐藏区域宽度）。 -->
+    <!-- scrollHeight：获取指定标签内容层的真实高度（可视区域高度+被隐藏区域高度） -->
+
+    <!-- 2.页面被卷去的头部事件 -->
+    <!-- 如果浏览器的高或者宽不足以显示整个页面,会自动出现滚动条.当滚动条向下滚动时,页面上面被隐藏掉的高度,
+         我们就称为被卷去的头部.滚动条在滚动时会触发onscroll事件 -->
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(36, 228, 100);
+            border: solid 10px;
+            padding: 10px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</div>
+    <script>
+        //scroll系列
+        var div = document.querySelector('div');
+        // console.log(div.scrollHeight); //200 加上padding220
+        console.log(div.scrollHeight); //430 因为内容超了 得到内容大小
+
+        console.log(div.scrollTop); //0
+        console.log(div.scrollLeft);
+        //scorll是滚动事件 当我们的滚动条发生变化会触动的事件
+        div.addEventListener('scroll', function() {
+            console.log(this.scrollTop);
+            console.log(this.scrollLeft);
+        })
+    </script>
+</body>
+
+</html>

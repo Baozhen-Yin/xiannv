@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.offset与style的区别</title>
+    <!-- 行内样式：就是代码写在具体网页中的一个元素内；比如：<div style="color:#f00"></div>
+         内嵌式：就是在</head>前面写；比如：<style type="text/css">.div{color:#F00}</style>
+         外部式：就是引用外部css文件；比如：<link href="css.css" type="text/css" rel="stylesheet" /> -->
+    <style>
+        .box {
+            /* 内嵌式：就是在</head>前面写 */
+            width: 200px;
+            height: 200px;
+            background-color: rgb(17, 247, 227);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        // offset与style的区别
+        var box = document.querySelector('.box');
+        console.log(box.offsetWidth); //200
+        console.log(box.style.width); //没有输出
+
+        // sytle只能获得行内样式表中的样式值            offset可以获得任意样式表中的样式值
+        // style.width获得的是带有单位的字符串          offset获取的数值是没有单位的
+        // style.width获得不包含padding和border的值    offsetWidth 包含padding+border+width
+        // style.width是可读写属性，可以获取也可以赋值  offsetWidth等属性是只读属性 只可获取不可赋值
+
+        // 总结：我们想要获取元素大小位置用offset更合适 给元素改写值用style
+        box.style.width = '300px'
+    </script>
+</body>
+
+</html>

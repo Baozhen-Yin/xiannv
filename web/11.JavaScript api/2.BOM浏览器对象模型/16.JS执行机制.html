@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>16.JS执行机制</title>
+    <!-- 1.先执行执行栈中的同步任务 （主车道）-->
+    <!-- 2.异步任务（回调函数）放入任务队列中 （应急车道）-->
+    <!-- 3.一旦执行栈中的所有同步任务执行完毕，系统就会按次序读取任务队列中的异步任务，于是被读取的异步任务
+        结束等待状态，进入执行栈开始执行。 -->
+
+    <!-- 优点：有些任务需要加载点击或者等待 花费时间比较长 回调函数都是和时间有关系 都放到异步任务里面
+               增加性能优化 -->
+</head>
+
+<body>
+    <script>
+        //主线程执行线 log(1) -> document.onclick ->log(2) -> setTimeout
+        //异步进程处理 document.onclick（点击了才写道任务队列里面，不点击不写） setTimeout（时间到了才写）
+        //同步任务执行完毕后 还会回头看任务队列看有没有新的异步任务取回执行栈执行 反复看 称作事件循环
+        //事件循环：由于主线程不断的重复获得任务、执行任务、再获取任务、再执行，所以这种机制被称作事件循环 这样就不会有异步任务落下了！
+
+        console.log(1); //同步任务
+        document.onclick = function() {
+            console.log('click'); //异步任务
+        }
+        console.log(2); //同步任务
+        setTimeout(function() {
+                console.log(3); //异步任务
+
+            }, 3000)
+            //1 2 3 前提我没有点击
+            //1 2 click 3 三秒之前点击
+    </script>
+</body>
+
+</html>

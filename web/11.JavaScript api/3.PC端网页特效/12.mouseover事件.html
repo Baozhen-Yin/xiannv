@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12.mouseover事件</title>
+    <!-- mouseover鼠标经过自身盒子会触发,经过子盒子还是会触发.mouseenter只会经过自身盒子触发 -->
+    <style>
+        .father {
+            width: 400px;
+            height: 400px;
+            background-color: rgb(21, 230, 66);
+        }
+        
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(9, 155, 252);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son')
+        father.addEventListener('mouseover', function() {
+            console.log(11); //经过father 会触发 经过son还是会触发
+
+        })
+    </script>
+</body>
+
+</html>

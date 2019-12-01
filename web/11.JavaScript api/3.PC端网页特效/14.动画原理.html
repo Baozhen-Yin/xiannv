@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14.动画原理</title>
+    <!-- 动画实现原理:通过定时器setInterval()不断移动盒子的位置 -->
+    <!-- 实现步骤 -->
+    <!-- 1.获得盒子当前位置 -->
+    <!-- 2.当前位置基础上加一个移动距离 -->
+    <!-- 3.利用定时器不断重复这个操作 -->
+    <!-- 4.加一个结束定时器条件 -->
+    <!-- 5.此元素一定要添加定位,才能使用element.style.left -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: rgb(9, 155, 252);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div')
+            //1.获得盒子当前位置 div.offsetLeft
+        var timer = setInterval(stop, 30)
+
+        function stop() {
+            if (div.offsetLeft >= 400) {
+                //停止定时器window.clearInterval(intervalID)
+                clearInterval(timer)
+            }
+            div.style.left = div.offsetLeft + 5 + 'px';
+        }
+    </script>
+</body>
+
+</html>

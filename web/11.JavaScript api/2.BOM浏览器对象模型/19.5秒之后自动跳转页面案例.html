@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>19.5秒之后自动跳转页面案例</title>
+    <!-- 1.利用定时器做倒计时效果 -->
+    <!-- 2.时间到了直接location.herf跳转页面 -->
+    <style>
+        div {
+            width: 200px;
+            height: 50px;
+            background-color: rgb(99, 92, 92);
+            margin: 200px auto;
+            color: #f30e0e;
+            font-size: 700;
+            line-height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div')
+        var time = 5;
+        callback(); //不会在打开页面时出现一秒空隙
+        setInterval(callback, 1000)
+
+        function callback() {
+            if (time == 0) {
+                location.href = 'http://baidu.com'
+            } else {
+                div.innerHTML = '还剩' + time + '秒跳转页面';
+                time--;
+            }
+        }
+    </script>
+</body>
+
+</html>

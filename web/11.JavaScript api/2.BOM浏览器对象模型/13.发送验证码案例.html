@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13.发送验证码案例</title>
+    <!-- 点击按钮后,该按钮60秒之内不能再点击,以防重复发送短信 -->
+    <!-- 按钮点击之后,会禁用 disable 为 true -->
+    <!-- 同时按钮里面内容也会变化,注意button里面内容通过innerHTML修改 -->
+    <!-- 里面秒数是有变化的,因此需要用到定时器 -->
+    <!-- 定义一个变量,在定时器里面,不断递减 -->
+    <!-- 如果变量为0 说明到了时间 我们需要停止定时器 并复原按钮回到从前 -->
+</head>
+
+<body>
+    手机号码:<input type="number">
+    <button>点击发送短信</button>
+    <script>
+        //1.获取事件
+        var btn = document.querySelector('button');
+        //2.操作事件
+        var time = 3; //定义剩下的秒数
+        btn.addEventListener('click', function() {
+            //btn按钮点完就得禁用
+            btn.disabled = true; //这里可以改成this 是btn调用
+            //定时器
+            var timer = setInterval(function() {
+                if (time == 0) {
+                    clearInterval(timer); //如果到0了 定时器停止
+                    btn.disabled = false; //按键复原 这里不能改成this 因为他的指向是window 在定时器里
+                    btn.innerHTML = '发送'; //按键复原后里面的字为发送
+                    time = 3; //time继续为3秒
+                } else {
+                    //里面会显示剩下多少秒
+                    btn.innerHTML = '还剩下' + time + '秒';
+                    time--;
+                }
+            }, 1000)
+
+
+        })
+    </script>
+</body>
+
+</html>

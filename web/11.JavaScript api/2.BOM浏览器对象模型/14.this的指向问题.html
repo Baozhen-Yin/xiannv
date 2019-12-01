@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14.this的指向问题</title>
+    <!-- this的指向在函数定义的时候是确定不了的,只有函数执行的时候才能确定this到底指向谁,
+        一般情况来说this指向的是最终调用它的对象 -->
+</head>
+
+<body>
+    <button>点击</button>
+    <script>
+        //this 指向问题 一般情况下this最终指向的是那个调用他的对象
+
+        //1.全局作用域或者普通函数中this指向全局对象window(注意定时器里面的this指向window) 因为window调用了他们
+        console.log(this); //window
+
+        function fn() {
+            console.log(this);
+
+        }
+        fn(); //window
+
+        setTimeout(function() {
+                console.log(this);
+            }, 1000) //window
+
+        //2.方法调用中谁调用指向谁
+        var o = {
+            sayhi: function() {
+                console.log(this); //指向o这个对象 object
+            }
+        }
+        o.sayhi();
+
+        var btn = document.querySelector('button');
+        // btn.onclick = function() {
+        //     console.log(this); //button 按钮
+        // }
+        btn.addEventListener('click', function() {
+            console.log(this); //button 按钮
+        })
+
+        //3.构造函数中this指向构造函数实例
+        function YBZ() {
+            //只要函数之前加了个new 他就会新开辟一个空间 创造一个空的对象
+            //this就会指向这个对象
+            //指向创建的这个新对象 只不过我们把这个对象实例化赋值给了fun this 指向fun
+            console.log(this); // this 指向 fun 实例对象
+        }
+        var fun = new YBZ();
+    </script>
+</body>
+
+</html>

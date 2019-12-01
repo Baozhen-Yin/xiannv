@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>16.动画函数-给不同元素记录不同定时器</title>
+    <!-- 如果多个元素都使用这个动画函数,每次都要var声明定时器.
+        我们可以给不同的元素使用不同的定时器(自己专门用自己的定时器) 唯一 优越-->
+    <!-- 核心原理:JS是一门动态语言,可以很方便的给当前对象添加属性 -->
+    <!-- var obj = {}; -->
+    <!-- obj.name = 'andy'; -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: rgb(9, 155, 252);
+        }
+        
+        span {
+            /* 必须加定位 */
+            position: absolute;
+            left: 0;
+            top: 200px;
+            display: block;
+            width: 150px;
+            height: 150px;
+            background-color: rgb(137, 236, 22);
+        }
+    </style>
+</head>
+
+<body>
+    <button>点击夏雨荷才走</button>
+    <div></div>
+    <span>夏雨荷</span>
+    <script>
+        //简单动画函数封装 obj目标对象 target目标位置
+        function animate(obj, target) {
+            //bug当我们不断点击按钮 元素速度越来越快 因为开启了很多定时器
+            //解决方案就是让我们元素只有一个定时器执行
+            clearInterval(obj.timer); //先清除以前的定时器 只保留当前的一个定时器执行
+            //避免了var声明变量 不再去内存中开辟空间 因为我的obj已经存在 我只是给他添加了一个属性
+            obj.timer = setInterval(stop, 30);
+
+            function stop() {
+                if (obj.offsetLeft >= target) {
+                    //停止定时器window.clearInterval(intervalID)
+                    clearInterval(obj.timer)
+                }
+                obj.style.left = obj.offsetLeft + 5 + 'px';
+            }
+        }
+
+        //调用函数
+        var div = document.querySelector('div');
+        var span = document.querySelector('span'); //动画必须加定位
+        var btn = document.querySelector('button')
+        animate(div, 300);
+        btn.addEventListener('click', function() {
+            animate(span, 200); //点了才走 点击次数越多走得越快 (bug) 因为点击一下调用一次
+        })
+    </script>
+</body>
+
+</html>

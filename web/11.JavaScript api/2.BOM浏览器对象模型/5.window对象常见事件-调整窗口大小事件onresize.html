@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5.window对象常见事件-调整窗口大小事件</title>
+    <!-- 1.window.onresize = function(){} -->
+    <!-- 2.window.addEventListener("resize",function(){}) -->
+
+    <!-- window.onresize 是调整窗口大小加载事件，当触发时就调用的处理函数 -->
+    <!-- 我们经常利用这个事件完成响应式布局。window.innerWidth当前屏幕的宽度 -->
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(10, 169, 231);
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        window.addEventListener('load', function() { //当前div写在下面
+            var div = document.querySelector('div'); //获取div
+            window.addEventListener('resize', function() {
+                console.log(window.innerWidth); //打印当前屏幕的宽度
+                console.log('变化了'); //只有我拖动窗口 窗口大小像素发生改变就会输出
+                if (window.innerWidth <= 800) {
+                    div.style.display = 'none';
+                } else {
+                    div.style.display = 'block';
+                }
+            })
+        })
+    </script>
+    <div></div>
+</body>
+
+</html>

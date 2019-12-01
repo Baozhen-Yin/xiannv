@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7.像素比和pagashow事件</title>
+    <!-- pageshow只有页面重新加载就会触发的事件 -->
+
+    <!-- 下面三种情况都会触发load事件 -->
+    <!-- 1.a标签的超链接 -->
+    <!-- 2.F5或者刷新按钮(强制刷新) -->
+    <!-- 3.前进后退按钮 -->
+    <!-- 但是在火狐中,有个特点,有个往返缓存,这个缓存中不仅保存着页面数据,还保存了DOM和JS的状态,
+        实际上的将整个页面都保存在了内存里,所以此时后退按钮不能刷新页面 -->
+    <!-- 此时可以用pageshow事件来触发,这个事件在页面显示时触发,无论页面是否来自缓存,在重新加载页面中,
+        pagashow会在load事件触发后触发;根据实际对象中的persisted来判断是否缓存中的页面触发的pageshow事件,
+        """注意这个事件给window添加""" -->
+</head>
+
+<body>
+    <script>
+        window.addEventListener('load', function() {
+            alert('11');
+        })
+    </script>
+</body>
+
+</html>

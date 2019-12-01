@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12.停止setInterval定时器</title>
+    <!-- window.clearInterval(intervalID) -->
+    <!-- clearInterval方法取消了先前通过调用setInterval()建立的定时器 -->
+
+    <!-- 1.window可以省略 -->
+    <!-- 2.里面的参数就是定时器的标识符 -->
+</head>
+
+<body>
+    <button class="began">开启定时器</button>
+    <button class="stop">关闭定时器</button>
+    <script>
+        var began = document.querySelector('.began');
+        var stop = document.querySelector('.stop');
+        var timer = null; //全局变量 null是一个空对象 一定要赋值 object
+        began.addEventListener('click', function() {
+            timer = setInterval(function() { //timer是局部变量 下面函数访问不了 会报错
+                console.log('过了一秒钟');
+            }, 1000);
+        })
+        stop.addEventListener('click', function() {
+            clearInterval(timer);
+        })
+    </script>
+</body>
+
+</html>

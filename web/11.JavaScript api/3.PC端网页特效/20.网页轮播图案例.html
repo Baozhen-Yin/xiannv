@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>20.网页轮播图案例</title>
+    <!-- 轮播图也称为焦点图  -->
+    <!-- 功能需求 -->
+    <!-- 1.鼠标经过轮播图模块,左右按钮显示,离开隐藏左右按钮 -->
+    <!-- 2.点击右侧按钮一次,图片往左播放一张,以此类推 -->
+    <!-- 3.图片播放的同时,下面小圆圈模块跟随一起变化 -->
+    <!-- 4.点击小圆圈可以播放相应图片 -->
+    <!-- 5.鼠标不经过轮播图,轮播图也能自己播放 -->
+    <!-- 6.鼠标经过轮播图模块,自动播放停止 -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .w {
+            width: 1200px;
+            margin: auto;
+        }
+        
+        .main {
+            width: 980px;
+            height: 465px;
+            margin-left: 220px;
+        }
+        
+        .focus {
+            position: relative;
+            width: 721px;
+            height: 465px;
+            float: left;
+        }
+        
+        .focus ul {
+            /* 把ul设置为父盒子的10倍 */
+            width: 1200%;
+        }
+        
+        .focus ul li {
+            float: left;
+        }
+        
+        .arrow-l,
+        .arrow-r {
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            width: 24px;
+            height: 40px;
+            background: rgba(0, 0, 0, .3);
+            text-align: center;
+            line-height: 40px;
+        }
+        
+        .arrow-r {
+            right: 0;
+        }
+        
+        .focus ul li a img {
+            width: 721px;
+            height: 465px;
+        }
+        
+        .fl {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w">
+        <div class="main">
+            <div class="focus fl">
+                <!-- 左侧按钮 -->
+                <a href="#" class="arrow-l">⬅</a>
+                <!-- 右侧按钮 -->
+                <a href="#" class="arrow-r">➡</a>
+                <!-- 核心的滚动区域 -->
+                <ul>
+                    <li>
+                        <a href="#"><img src="image2/dva.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="image2/dva1.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="image2/dva2.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="image2/dva.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="image2/dva.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="image2/dva.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="image2/dva.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="image2/dva.jpg" alt=""></a>
+                    </li>
+                </ul>
+                <!-- 小圆圈 -->
+                <div class="circle">
+                    <li></li>
+                    <li class="current"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

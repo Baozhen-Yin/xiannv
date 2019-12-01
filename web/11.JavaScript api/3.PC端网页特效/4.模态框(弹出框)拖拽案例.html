@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.模态框拖拽案例</title>
+    <!-- 弹出框：我们也称为模态框 -->
+    <!-- 1.点击弹出层，会弹出模态框，并且显示灰色半透明遮罩层 -->
+    <!-- 2.点击关闭按钮，可以关闭模态框，并且同时关闭灰色半透明遮罩层 -->
+    <!-- 3.鼠标放到模态框最上面一行，可以按住鼠标拖拽 -->
+    <!-- 4.鼠标松开，可以停止拖动模态框移动 -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        a {
+            /* 链接的颜色为#000 且不要下边线 */
+            text-decoration: none;
+            color: #000;
+        }
+        
+        .login-header {
+            height: 70px;
+        }
+        
+        .login-header a {
+            display: block;
+            text-align: center;
+            line-height: 70px;
+            font-size: 20px;
+            color: #000;
+        }
+        
+        .login {
+            display: none;
+            /* 因为登录框始终都会在我的屏幕正中央显示 所以用了固定定位 */
+            position: fixed;
+            width: 512px;
+            height: 280px;
+            border: #ebebeb solid 1px;
+            /* 保证水平垂直居中 */
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            box-shadow: 0 0 20px #ddd;
+            /* 这样的话 遮罩层的颜色就遮不住啦 好笨!!! */
+            z-index: 9999;
+        }
+        
+        .login-title {
+            position: relative;
+            width: 100%;
+            margin: 10px 0 0 0;
+            height: 40px;
+            line-height: 40px;
+            color: #111111;
+            font-size: 18px;
+            text-align: center;
+            cursor: move;
+        }
+        
+        .close-login {
+            display: block;
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            height: 40px;
+            width: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 20px;
+            font-size: 15px;
+            color: #111;
+            box-shadow: 1px #ccc;
+            background: #fff;
+            border: #ebebeb solid 1px;
+        }
+        
+        .login-input-content {
+            /* 上外边距20px */
+            margin-top: 20px;
+        }
+        
+        .login-button {
+            /* 登录会员按钮 */
+            width: 50%;
+            /* 上右下左 给左右auto自然居中 */
+            margin: 30px auto 0 auto;
+            line-height: 40px;
+            font-size: 14px;
+            border: #ebebeb 1px solid;
+            text-align: center;
+        }
+        
+        .login-button a {
+            display: block;
+        }
+        
+        .login-bg {
+            /* 遮罩层 */
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, .3);
+        }
+        
+        .login-input label {
+            /* 用户名登录密码 */
+            float: left;
+            width: 90px;
+            padding-right: 10px;
+            text-align: right;
+            line-height: 35px;
+            height: 35px;
+            font-size: 14px;
+        }
+        
+        .login-input .list-input {
+            /* 输入框 */
+            float: left;
+            line-height: 35px;
+            height: 35px;
+            width: 350px;
+            border: #ebebeb 1px solid;
+            text-indent: 5px;
+        }
+        
+        .login-input {
+            overflow: hidden;
+            /* 上右下左 */
+            margin: 0 0 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-header"><a href="javascript:;" id="link">点击，弹出登录框</a></div>
+    <div class="login" id="login">
+        <div id="title" class="login-title">登录会员
+            <span><a href="javascript:void(0)" id="closeBtn" class="close-login">关闭</a></span>
+        </div>
+        <div class="login-input-content">
+            <div class="login-input">
+                <label>用户名</label>
+                <input type="text" name="info[username]" id="username" class="list-input" placeholder="请输入用户名">
+            </div>
+            <div class="login-input">
+                <label>登录密码</label>
+                <input type="password" name="info[password]" id="password" placeholder="请输入登录密码" class="list-input">
+            </div>
+        </div>
+        <div class="login-button" id="loginBtn">
+            <a href="javascript:void(0)" id="login-button-submit">登录会员</a>
+        </div>
+    </div>
+    <!-- 遮盖层 -->
+    <div class="login-bg" id="bg"></div>
+
+    <!-- js模块 -->
+    <script>
+        //1.点击弹出层,模态框和遮挡层就会显示出来display:block;
+        //2.点击关闭按钮,模态框和遮挡层就会隐藏起来
+        //3.在页面中拖拽的原理:鼠标按下并且移动,之后松开鼠标
+        //4.触发事件是鼠标按下mousedown 鼠标移动mousemove 鼠标松开mouseup
+        //5.拖拽过程:鼠标移动过程中,获得最新赋值给模态框的left和top值,这样模态框就可以跟着鼠标走了
+        //6.鼠标按下触发的事件源是最上面一行 就是id为title
+        //7.鼠标的坐标 减去 鼠标在盒子内的坐标,才是模态框真正的位置
+        //8.鼠标按下得到鼠标在盒子内的坐标
+        //9.鼠标移动,就让模态框坐标 设置为:鼠标全局坐标-盒子坐标即可(注意移动事件要写到按键事件下面)
+        var loginheader = document.querySelector('.login-header') // 获取点击弹出登录框按钮
+        var loginbg = document.querySelector('.login-bg'); //获取遮罩层
+        var login = document.querySelector('.login') //登录框
+        var closelogin = document.querySelector('.close-login') //获取关闭按钮
+        var title = document.querySelector('#title'); //获取按鼠标范围
+        loginheader.addEventListener('click', function() {
+            loginbg.style.display = 'block';
+            login.style.display = 'block';
+        })
+        closelogin.addEventListener('click', function() {
+            login.style.display = 'none';
+            loginbg.style.display = 'none';
+        })
+
+        // 拖拽效果 原理:鼠标移动过程中 将获得最新的值赋值给模态框的left和top值,这样模态框就可以跟着鼠标走了 和之前天使案例一致 每次鼠标移动,我们都会获得最新的鼠标坐标,把这个X和Y坐标做为图片的top和left就可以移动图片
+
+        // (1)当我们鼠标按下 就获得鼠标在盒子内的坐标
+        title.addEventListener('mousedown', function(e) {
+            // 鼠标在盒子内的坐标
+            var x = e.pageX - login.offsetLeft;
+            var y = e.pageY - login.offsetTop;
+            // (2)鼠标可以在全局移动 所以是document 鼠标移动的时候把鼠标在页面中的坐标减去鼠标在盒子的坐标
+            document.addEventListener('mousemove', move)
+                // style.width获得的是带有单位的字符串  是字符串
+                //因为解绑事件需要函数 所有函数单独出来
+            function move(e) {
+                login.style.left = e.pageX - x + 'px';
+                login.style.top = e.pageY - y + 'px';
+
+            } //(3)鼠标弹起,就让鼠标移动事件移除
+            document.addEventListener('mouseup', function() {
+                // removeEventlistener(type,listener[,useCapture]) 解绑事件
+                document.removeEventListener('mousemove', move)
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6.淘宝flexible.JS源码分析</title>
+    <!-- 1.立即执行函数 -->
+    <!-- (function(){})() -->
+    <!-- 2.主要作用 创建一个独立的作用域,避免了命名冲突的问题(局部变量没有命名冲突问题) -->
+</head>
+
+<body>
+    <script>
+        //1.立即执行函数:不需要调用,自己里面可以执行
+
+        //2.第一种写法
+        // (function() {})()
+
+        (function(a) {
+            console.log('我没调用,就不需要调用');
+            console.log(a); //我是a
+            var num = 10;
+        })('我是a'); //第二个小括号可以看作是调用函数 也可以当形参
+        //多个立即执行函数一定要有分号隔开
+
+
+        //3.第二种写法
+        // (function() {}())
+        (function(a, b) {
+            console.log(a + b); //5
+            console.log('我也没调用,就不需要调用');
+            var num = 10; //局部变量
+        }(2, 3))
+
+        //4.立即执行函数最大的作用就是 独立创建了一个作用域,里面的变量都是局部变量,不会有名字冲突 比如num
+    </script>
+</body>
+
+</html>

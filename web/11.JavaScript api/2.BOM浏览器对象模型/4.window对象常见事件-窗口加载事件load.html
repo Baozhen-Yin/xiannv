@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.window对象常见事件</title>
+    <!-- 1.窗口加载事件  -->
+    <!-- window.onload 是窗口（页面）加载事件，当文档内容完全加载会触发该事件（包括图像，脚本文件，CSS文件等），就调用      处理函数 -->
+    <!-- 1.有了window.onload可以把JS代码写道页面元素上方，因为onload是等页面内容全部加载完毕，再去执行处理函数 -->
+    <!-- 2.window.onload传统注册事件方式只能写一次，如果有多个，会以最后一个window.onload为准 -->
+
+    <!-- 3.提倡写法window.addEventListener('load', function()  不会覆盖掉原先 没有限制 随便写多少-->
+    <!-- load等页面全部内容加载完毕，包含页面dom元素，图片 flash css 等 没有DOMContentLoaded快-->
+
+    <!-- 4.第三钟写法document.addEventListener('DOMContentLoaded', function() { -->
+    <!-- DOMContentLoaded事件触发时，仅当DOM加载完成，不包括样式，图片，flash等。ie9以上才支持 -->
+    <!-- 如果页面图片很多的话，从用户访问到onload触发可能需要很长时间，交互效果就不能实现，必然影响用户的体验，
+        此时用DOMContentLoaded比较合适 -->
+</head>
+
+<body>
+    <!-- 因为页面自上而下加载 我非得把他放到上面才可以执行btn -->
+
+    <script>
+        //第一种写法 传统写法 只能写一次 最后一个覆盖上面
+        // window.onload = function() { //页面所有文档元素加载完毕执行 可以把js放到任何位置
+        // var btn = document.querySelector('button');
+        // btn.addEventListener('click', function() {
+        // alert('我好像出不来了')
+        // })
+        // }
+        // window.onload = function() { //页面所有文档元素加载完毕执行 可以把js放到任何位置
+        // alert('我会覆盖掉上面的window.onload'); //再按点击不起作用 点击按钮也没出来 会冲突
+        // }
+
+        //2.最提倡的一种写法 不会有冲突问题
+        window.addEventListener('load', function() {
+            var btn = document.querySelector('button');
+            btn.addEventListener('click', function() {
+                alert('我没被覆盖')
+            })
+        })
+        window.addEventListener('load', function() {
+            alert('我不会覆盖掉上面的window.onload') //继续点按钮会出现第一个
+        })
+
+        //3.document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            alert('我第一个跳出来');
+        })
+    </script>
+    <button>点击</button>
+    <!--在下面-->
+</body>
+
+</html>

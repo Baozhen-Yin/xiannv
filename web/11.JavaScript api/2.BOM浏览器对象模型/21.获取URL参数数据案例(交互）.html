@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>21.获取URL参数数据案例(交互）</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        console.log(location.search); //?uname=ybz
+        //1.先去掉问号？ substr('起始的位置'，截取几个字符)
+        var params = location.search.substr(1) //uname = ybz
+        console.log(params);
+        //2.利用=把字符串分割为数组 
+        var arr = params.split('=')
+        console.log(arr);
+        var div = document.querySelector('div');
+        //3.把数据写入div中
+        div.innerHTML = arr[1] + '您好！';
+        //中文会乱码！！！之后会解决
+    </script>
+</body>
+
+</html>

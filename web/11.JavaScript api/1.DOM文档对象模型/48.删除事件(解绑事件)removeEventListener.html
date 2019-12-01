@@ -36,7 +36,7 @@
         divs[1].addEventListener('click', fn) //里面的fn不需要加调用小括号 特殊 而且不能用匿名函数
         function fn() {
             alert('222')
-            divs[1].removeEventListener('click', fn)
+            this.removeEventListener('click', fn)
         }
     </script>
 </body>

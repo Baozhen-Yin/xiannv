@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.offsetLeft和offsetTop获取元素偏移</title>
+    <!-- 1.offset 翻译过来就是偏移量，我们使用offset系列相关属性可以动态的得到该元素的位置（偏移）、大小等 -->
+    <!-- 1.获得元素距离带有定位父元素的位置 -->
+    <!-- 2.获得自身元素的大小（宽度高度） ps：返回数值不带单位-->
+    <!-- 3.注意：返回的数值都不带单位 -->
+
+    <!-- offset系列常用属性 -->
+    <!-- element.offsetParent 返回作为该元素带有定位的父级元素，如果父级都没有定位则返回body -->
+    <!-- element.offsetTop  返回元素相对带有定位父元素""上方""的偏移 -->
+    <!-- element.offsetLeft 返回元素相对带有定位父元素""左边框""的偏移  -->
+    <!-- element.offsetWidth 返回自身包括padding、边框、内容区的""宽度""，返回数值不带单位 -->
+    <!-- element.offsetHeight 返回自身包括padding、边框、内容区的""高度""，返回数值不带单位 -->
+
+    <!-- offsetWidth的实际宽度 offsetWidth = width + 左右padding + 左右boder -->
+    <!-- offsetHeight的实际高度 offsetHeith = height + 上下padding + 上下boder -->
+    <!-- offsetTop实际宽度offsetTop：当前元素 上边框 外边缘 到 最近的已定位父级（offsetParent） 上边框 内边缘的 距离。如果父级都没有定位，则分别是到body 顶部 和左边的距离 -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .father {
+            /* 加上定位才可 */
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: rgb(40, 250, 12);
+            margin: 100px;
+        }
+        
+        .son {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background-color: rgb(19, 245, 151);
+        }
+        
+        .ybz {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            margin: 0 auto 200px;
+            padding: 10px;
+            border: 15px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <div class="ybz"></div>
+    <script>
+        //offset系列
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son');
+        //1.可以得到元素的偏移 位置 返回数值不带单位
+        console.log(father.offsetTop);
+        console.log(father.offsetLeft);
+        console.log(son.offsetLeft); //以body为主了 因为father没有定位 150
+        //父级定位了 得到50
+
+        //2.可以得到自身包括padding、边框、内容区的""宽度""，返回数值不带单位 
+        var ybz = document.querySelector('.ybz');
+        console.log(ybz.offsetWidth); //200 加了padding变成220px 加了border250px
+        console.log(ybz.offsetHeight); //200 加了padding变成220px 加了border250px
+
+        //3.可以返回带有定位的父亲 否则返回的是body
+        console.log(son.offsetParent); //返回的必须带有定位的父亲 没有定位继续往上找 没有就返回body
+        console.log(son.parentNode); //返回的是亲爸爸 不管父亲有没有定位
+    </script>
+</body>
+
+</html>

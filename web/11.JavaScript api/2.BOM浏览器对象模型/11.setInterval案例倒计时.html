@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>11.setInterval案例倒计时</title>
+    <!-- 1.这个倒计时是不断变化的 因此需要定时器来自动变化(setInterval) -->
+    <!-- 2.三个黑色盒子放时分秒 -->
+    <!-- 3.三个盒子利用innerHTML放入计算的小时分钟秒数 -->
+    <!-- 4.第一次执行也是间隔毫秒数,因此刚刚刷新页面会空白 -->
+    <!-- 5.最好采用封装函数的方式,这样可以先调用一次这个函数,放在刚开始刷新有空白问题 -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        div {
+            width: 300px;
+            height: 100px;
+            margin: 100px auto;
+            /* background-color: rgb(14, 223, 77); */
+        }
+        
+        .hour,
+        .minute,
+        .second {
+            display: block;
+            float: left;
+            width: 50px;
+            height: 50px;
+            background-color: rgb(12, 2, 2);
+            margin: 10px 10px;
+            color: #bbb;
+            font-size: 700;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <span class="hour"></span>
+        <span class="minute"></span>
+        <span class="second"></span>
+    </div>
+    <script>
+        //1.获取元素
+        var hour = document.querySelector('.hour');
+        var minute = document.querySelector('.minute');
+        var second = document.querySelector('.second');
+        //2.操作元素
+        var importTime = +new Date('2019-11-29 00:00:00') //返回的是用户输入时间总的毫秒数
+            //拿到外面可以不动函数直接修改时间 因为是全局变量
+        countDown(); //我们先调用一次这个函数 防止页面刷新有空白 不然的话它也是各一秒再出现
+        //必须写在时间下面 因为有时间调用才能计算
+        //3.开启定时器
+        setInterval(countDown, 1000); //每隔一秒调用一次
+        function countDown() {
+            var nowTime = +new Date(); //括号为空返回当前时间总的毫秒数
+            //var importTime = +new Date(time); //返回的是用户输入时间总的毫秒数
+            var times = (importTime - nowTime) / 1000; //剩余时间总的秒数
+            //1秒=1000毫秒
+            // var d = parseInt(times / 60 / 60 / 24);
+            // d = d < 10 ? '0' + d : d; 天数不需要
+            var h = parseInt(times / 60 / 60 % 24);
+            h = h < 10 ? '0' + h : h;
+            hour.innerHTML = h; //把h赋值给hour
+            var m = parseInt(times / 60 % 60);
+            m = m < 10 ? '0' + m : m;
+            minute.innerHTML = m;
+            var s = parseInt(times % 60);
+            s = s < 10 ? '0' + s : s;
+            second.innerHTML = s;
+        }
+    </script>
+</body>
+
+</html>

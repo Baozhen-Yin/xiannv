@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>20.获取URL参数数据案例</title>
+    <!-- 主要练习数据在不同页面的相互传递 -->
+    <!--1.第一个登录页面，里面有提交表单，action提交到了  获取URL参数数据案例.html 页面  -->
+    <!--2.第二个页面，可以使用第一个页面的参数，这样实现了一个数据不同页面间的传递效果 -->
+    <!--3.第二个页面之所以可以使用第一个页面的数据，是利用了url里面的location.search 参数 -->
+    <!--4.在第二个页面中，需要把这个参数提取 -->
+    <!-- 5.第一步去掉？ 利用substr -->
+    <!-- 6.第二步 利用=号分割 键和值 split('=') -->
+</head>
+
+<body>
+    <!-- 所有的表单必须放到表单域里面 这样才可以提交 -->
+    <!-- 1.表单域 包含表单的区域 会把它范围内的表单元素提供给服务器 -->
+    <form action="21.获取URL参数数据案例(交互）.html">
+        用户名：<input type="text" name="uname">
+        <!-- 必须有name 有name才可以提交 -->
+        <!-- name 名称 用于指定表单的名称，以区分同一页多个表单域 -->
+        <input type="submit" value="登录">
+    </form>
+</body>
+
+</html>

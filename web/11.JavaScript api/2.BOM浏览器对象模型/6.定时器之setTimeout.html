@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6.定时器之setTimeout</title>
+    <!-- 自动播放下一张图片间隔时间 网页上的倒计时 -->
+    <!-- window对象给我们提供了2个非常好用的办法 - 定时器 -->
+    <!-- 1.setTimeout() -->
+    <!-- 2.setInterval() -->
+
+    <!-- 一、setTimeout()-->
+    <!-- window.setTimeout(调用函数，[延迟的毫秒数]); -->
+    <!-- setTimeout()方法用于设置一个定时器，该定时器在定时器到期之后执行调用函数 -->
+</head>
+
+<body>
+    <script>
+        //setTimeout 语法规范 window.setTimeout(调用函数，[延迟的毫秒数]);
+        // 1.这个window在调用的时候可以省略
+        // 2.这个延时时间单位是毫秒 但是可以省略，如果省略默认是0 立马执行
+
+        setTimeout(function() { //直接写函数
+                console.log('两秒到了');
+            }, 2000) //1m =1000ms
+
+        // 3.这个调用函数可以直接写函数 还可以写函数名 还有一个写法'函数名（）'不太提倡
+        // 4.页面中可能有很多的定时器 我们经常给定时器加标识符 time1
+        function callback() { //写函数名 
+            console.log('时间到了');
+        }
+        var time1 = setTimeout(callback, 3000);
+        var time2 = setTimeout('callback()', 5000);
+    </script>
+</body>
+
+</html>

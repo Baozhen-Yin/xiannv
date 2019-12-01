@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6.元素可视区client系列</title>
+    <!-- client翻译过来就是客户端,可视区的意思 -->
+    <!-- 我们使用client系列的相关属性来获取元素可视区的相关信息.
+        通过client的相关属性可以动态的得到该元素的边框大小元素大小等 -->
+
+    <!-- element.clientTop 返回元素上边框的大小 -->
+    <!-- element.clientLeft 返回元素左边框的大小 -->
+    <!-- element.clientWidth 返回自身包括padding,内容区的宽度 不含边框,返回数值不带单位 -->
+    <!-- element.clientHeight 返回自身包括padding,内容区的高度,不含边框,返回数值不带单位 -->
+
+
+    <!-- clientTop的实际宽度    clientTop = boder.top(上边框的宽度) -->
+    <!-- clientLeft的实际宽度   clientLeft = boder.left(左边框的宽度) -->
+    <!-- clientWidth的实际宽度  clientWidth = width+左右padding -->
+    <!-- clientHeigh的实际高度  clientHeigh = height + 上下padding  -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(141, 69, 69);
+            border: 10px solid;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        console.log(div.clientWidth); //200 不包含边框 也是200 加了padding220
+        console.log(div.clientLeft); //10
+        console.log(div.clientTop); //10
+    </script>
+</body>
+
+</html>

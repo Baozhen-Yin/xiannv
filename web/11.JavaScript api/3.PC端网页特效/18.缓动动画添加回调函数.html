@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>18.缓动动画添加回调函数</title>
+    <!-- 回调函数原理:函数可以作为一个参数.将这个函数作为参数传到另一个函数里面,
+        当那个函数执行完之后,再执行传进去的这个函数,这个过程就叫做回调. -->
+    <!-- 比如我想让盒子到八百之后变色 这就需要回调函数了 -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: rgb(9, 155, 252);
+        }
+        
+        span {
+            /* 必须加定位 */
+            position: absolute;
+            left: 0;
+            top: 200px;
+            display: block;
+            width: 150px;
+            height: 150px;
+            background-color: rgb(137, 236, 22);
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn500">点击夏雨荷才走500</button>
+    <button class="btn800">点击夏雨荷才走800</button>
+
+    <span>夏雨荷</span>
+    <script>
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(stop, 30);
+
+            function stop() {
+                var step = (target - obj.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer)
+                        //回调函数写的位置 ,定时器结束的位置
+                    if (callback) {
+                        callback() //调用函数
+                    }
+                }
+                obj.style.left = obj.offsetLeft + step + 'px';
+            }
+        }
+        var span = document.querySelector('span');
+        var btn500 = document.querySelector('.btn500')
+        var btn800 = document.querySelector('.btn800')
+        btn500.addEventListener('click', function() {
+            animate(span, 500);
+        })
+        btn800.addEventListener('click', function() {
+            animate(span, 800, function() { //这个函数作为参数传到另一个函数里面
+                span.style.backgroundColor = 'pink'
+            });
+        })
+    </script>
+</body>
+
+</html>

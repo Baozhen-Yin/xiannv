@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>9.停止setTimeout定时器</title>
+    <!-- window.clearTimeout(timeoutID) -->
+</head>
+
+<body>
+
+    <script>
+        window.addEventListener('load', function() {
+            var btn = document.querySelector('button')
+            var time1 = setTimeout(function() { //这就是为啥要取名的原因
+                console.log('bong');
+            }, 5000);
+            btn.addEventListener('click', function() {
+                clearTimeout(time1) //window.clearTimeout(timeoutID)
+            })
+        })
+    </script>
+    <button>点击停止定时器</button>
+</body>
+
+</html>

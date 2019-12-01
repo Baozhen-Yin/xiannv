@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>24.history对象</title>
+    <!-- window对象给我们提供了一个history对象，与浏览器"""历史记录"""进行交互。该对象包含用户（在浏览器窗口中）访问过的URL -->
+
+    <!-- back() 可以后退功能 就是浏览器的后退按钮-->
+    <!-- forward() 前讲功能 -->
+    <!-- go(参数) 前讲后退功能 参数如果是1 前进一个页面 如果是-1 后退一个页面 -->
+
+    <!-- history对象一般实际开发很少用到 但是会在一些OA办公系统中用到 -->
+</head>
+
+<body>
+    <a href="25.history对象(交互).html">点我去往交互页</a>
+    <button>前进</button>
+    <script>
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function() {
+            // history.forward()
+            history.go(1);
+        })
+    </script>
+</body>
+
+</html>

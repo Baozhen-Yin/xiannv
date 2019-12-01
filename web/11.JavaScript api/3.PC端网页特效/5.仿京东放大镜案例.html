@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 引入js文件 -->
+    <script src="5.仿京东放大镜案例.js"></script>
+    <title>5.仿京东放大镜案例</title>
+    <style>
+        .preview_img {
+            margin: 100px;
+            position: relative;
+            height: 400px;
+            width: 400px;
+            border: 1px solid #ccc;
+        }
+        
+        img {
+            height: 400px;
+            width: 400px;
+        }
+        
+        .mask {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background-color: #FEDE4F;
+            /* 半透明 */
+            opacity: .5;
+            border: 1px solid #ccc;
+            cursor: move;
+        }
+        
+        .big {
+            display: none;
+            position: absolute;
+            left: 410px;
+            top: 0;
+            width: 500px;
+            height: 500px;
+            background-color: rgb(168, 38, 38);
+            z-index: 999;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+        
+        .big img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="preview_img">
+        <img src="image2/dva555.jpg" alt="">
+        <div class="mask"></div>
+        <div class="big"><img src="image2/dva555.jpg" alt="" style="width: 800px;height: 800px;" class="bigimg"></div>
+    </div>
+    <script>
+        //案例分析 整个案例可以分为三个功能模块
+        // 1.鼠标经过小图片盒子,黄色的遮挡层和大图片盒子显示,离开隐藏2个盒子 功能
+        // 2.黄色遮挡层跟随鼠标功能.
+        // 3.移动黄色遮挡层,大图片跟随移动功能
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>22.location常见的方法</title>
+    <!-- 1.location.assign() 跟href一样，可以跳转页面 -->
+    <!-- 2.location.replace() 替换当前页面，因为不记录历史，所以不能后退页面 -->
+    <!-- 3.location.reload() 重新加载页面，相当于刷新按钮或者f5 如果参数为true 强制刷新ctrl+f5 -->
+</head>
+
+<body>
+    <script>
+        // 1.location.assign() 跟href一样，可以跳转页面
+        window.addEventListener('load', function() {
+            var btn = document.querySelector('button');
+            btn.addEventListener('click', function() {
+                location.assign('http://www.baidu.com');
+            })
+        })
+
+        //2.location.replace() 替换当前页面，因为不记录历史，所以不能后退页面
+        window.addEventListener('load', function() {
+            var btn2 = document.querySelector('.hhh');
+            btn2.addEventListener('click', function() {
+                location.replace('http://www.baidu.com');
+            })
+        })
+
+        //3.location.reload() 重新加载页面，相当于刷新按钮或者f5 如果参数为true 强制刷新ctrl+f5
+        window.addEventListener('load', function() {
+            var btn3 = document.querySelector('.fff');
+            btn3.addEventListener('click', function() {
+                location.reload();
+            })
+        })
+    </script>
+    <button>点我能回来</button>
+    <button class="hhh">点我回不来</button>
+    <button class="fff">点我就刷新</button>
+
+
+</body>
+
+</html>

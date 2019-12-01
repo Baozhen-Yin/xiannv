@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>15.简单动画函数封装</title>
+    <!-- 注意函数需要传递两个参数, 1.动画对象 2.移动到的距离 -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: rgb(9, 155, 252);
+        }
+        
+        span {
+            /* 必须加定位 */
+            position: absolute;
+            left: 0;
+            top: 200px;
+            display: block;
+            width: 150px;
+            height: 150px;
+            background-color: rgb(137, 236, 22);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <span>夏雨荷</span>
+    <script>
+        //简单动画函数封装 obj目标对象 target目标位置
+        function animate(obj, target) {
+            var timer = setInterval(stop, 30)
+
+            function stop() {
+                if (obj.offsetLeft >= target) {
+                    //停止定时器window.clearInterval(intervalID)
+                    clearInterval(timer)
+                }
+                obj.style.left = obj.offsetLeft + 5 + 'px';
+            }
+        }
+
+        //调用函数
+        var div = document.querySelector('div');
+        animate(div, 500)
+        var span = document.querySelector('span'); //动画必须加定位
+        animate(span, 200)
+    </script>
+</body>
+
+</html>

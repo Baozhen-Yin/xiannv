@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10.定时器之setInterval</title>
+    <!-- window.setInterval(回调函数，[间隔的毫秒数]) -->
+    <!-- setInterval()方法""重复调用一个函数""，每隔这个时间，就去调用一次函数 -->
+    <!-- 1.window可以省略 -->
+    <!-- 2.这个调用函数可以 直接写函数 写函数名 或者 '函数名()' 三种形式 -->
+    <!-- 3.间隔的毫秒数省略默认是0,如果写,必须是毫秒,表示每间隔多少毫秒就自动调用这个函数 -->
+    <!-- 4.因为定时器可能有很多 我们经常给定时器赋值一个标识符 -->
+</head>
+
+<body>
+    <script>
+        //1.setInterval() window.setInterval(回调函数，[间隔的毫秒数])
+        setInterval(function() {
+                console.log('继续输出'); //每隔一秒就打印一次
+            }, 1000)
+            //2.setTimeout 延时时间到了 就去回调这个函数,只调用了一次 就结束了这个定时器
+            //3.setInterval 每隔这个延时时间,就去调用这个回调函数,会调用很多次,重复调用这个函数
+    </script>
+</body>
+
+</html>
