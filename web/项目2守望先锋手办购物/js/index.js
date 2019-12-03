@@ -4,6 +4,9 @@ window.addEventListener('load', function() {
     var arrowright = document.querySelector('.arrow-r');
     var focus = document.querySelector('.focus');
     var focuswidth = focus.offsetWidth;
+    var num = 0; //控制图片的播放
+    var circle = 0; //控制小圆圈的播放
+    var flag = true;
     focus.addEventListener('mouseenter', function() {
         arrowleft.style.display = 'block';
         arrowright.style.display = 'block';
@@ -18,7 +21,7 @@ window.addEventListener('load', function() {
                 arrowright.click(); //手动调用点击事件
             }, 2000)
         })
-        //(2)动态生成小圆圈 
+        //(2)动态生成小圆圈 有几个li就几个小圆圈
         //1.小圆圈个数要与图片张数一致 
         //2.所以首先得到ul里面的小li数量(图片放入li里面,所以就是li的个数)
         //3.利用for循环动态生成小圆圈 (放入ol里面)
@@ -33,9 +36,9 @@ window.addEventListener('load', function() {
             //记录当前小圆圈索引号 element.setAttribute('属性','值');  主要针对自定义属性 为了方便下面的动画
         li.setAttribute('index', i) //创建自定义属性
         ol.appendChild(li);
-        //6.把ol里面的第一个li设置为类current   变成白色 显示当前点击
-        //(1)小圆圈排他思想
-        //(2)点击当前小圆圈 就添加current类 其余小圆圈移除current类
+        //（3）.把ol里面的第一个li设置为类current   变成白色 显示当前点击
+        //1小圆圈排他思想
+        //2点击当前小圆圈 就添加current类 其余小圆圈移除current类
         // ol.children[0].className = 'current';
         ol.children[0].className = 'current';
         li.addEventListener('click', function() {
@@ -44,7 +47,7 @@ window.addEventListener('load', function() {
             }
             this.className = 'current';
 
-            //点小圆圈滚动图片
+            //（4）点小圆圈滚动图片
             //1.此时用到animate动画滚动函数 将js文件引入 因为index也要有animate函数 所以要写在index上方
             //2.使用动画函数的前提是必须要有定位
             //3.注意是ul移动 而不是小li
@@ -57,49 +60,61 @@ window.addEventListener('load', function() {
         })
     }
 
-    //1.点击右侧按钮一次,就让图片滚动一张
-    //2.声明一个变量num,点击一次自增1,这个变量乘以图片的宽度就是ul的滚动距离.
-    //3.图片无缝滚动原理
-    //4.把ul第一个复制一份 放到ul最后面
+    //（5）.点击右侧按钮一次,就让图片滚动一张
+    //1.声明一个变量num,点击一次自增1,这个变量乘以图片的宽度就是ul的滚动距离.
+    //2.图片无缝滚动原理
+    //3.把ul第一个复制一份 放到ul最后面
     var first = ul.children[0].cloneNode(true);
     ul.appendChild(first)
         // （1）克隆ul第一个li cloneNode()  加true深克隆复制里面的子节点 false浅克隆
         // （2）appendChild 添加到ul最后面
         //5.当图片滚动到克隆的最后一张图片时，让ul快速的，不做动画跳到最左侧：left=0；
         //6.同时num赋值为0 就又可以重新开始了
-    var num = 0; //控制图片的播放
-    var circle = 0; //控制小圆圈的播放
+
+    // （6）鼠标点击一次 滚动一张图 滚动的是ul
     arrowright.addEventListener('click', function() {
         //如果走到了最后复制的一张图片
-        if (num == ul.children.length - 1) {
-            ul.style.left = 0;
-            num = 0;
+        if (flag) {
+            flag = false;
+            if (num == ul.children.length - 1) {
+                ul.style.left = 0;
+                num = 0;
 
-        }
-        num++;
-        animate(ul, -num * focuswidth)
-            //1.点击右侧按钮 小圆圈跟着变化
-            //2.声明一个变量 circle 每次点击自增1，左侧按钮也需要这个变量 声明的为全局变量
-        circle++;
-        if (circle == ol.children.length) {
-            circle = 0;
+            }
+            num++;
+            animate(ul, -num * focuswidth, function() {
+                    flag = true;
+                })
+                //1.点击右侧按钮 小圆圈跟着变化
+                //2.声明一个变量 circle 每次点击自增1，左侧按钮也需要这个变量 声明的为全局变量
+            circle++;
+            if (circle == ol.children.length) {
+                circle = 0;
+            }
+
+            circleChange()
         }
 
-        circleChange()
     })
 
     arrowleft.addEventListener('click', function() {
-            if (num == 0) {
-                num = ul.children.length - 1;
-                ul.style.left = -num * focuswidth + 'px';
+            if (flag) {
+                flag = false;
+                if (num == 0) {
+                    num = ul.children.length - 1;
+                    ul.style.left = -num * focuswidth + 'px';
+                }
+                num--;
+                animate(ul, -num * focuswidth, function() {
+                    flag = true;
+                });
+                circle--;
+                if (circle < 0) {
+                    circle = ol.children.length - 1;
+                }
+                circleChange()
             }
-            num--;
-            animate(ul, -num * focuswidth);
-            circle--;
-            if (circle < 0) {
-                circle = ol.children.length - 1;
-            }
-            circleChange()
+
         })
         //3.清除其余的小圆圈current类名
         //4.留下当前小圆圈的current类名

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>23.筋斗云案例</title>
+    <!-- 案例分析 -->
+    <!-- 1.利用动画函数做动画效果 -->
+    <!-- 2.原先精斗云起始位置是0 -->
+    <!-- 3.鼠标经过某个小li 把当前小li的offsetLeft位置作为目标值即可 -->
+    <!-- 4.鼠标离开某个小li 再把目标值设为0 -->
+    <script src="18.animate_callback.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .c-nav {
+            position: relative;
+            width: 800px;
+            height: 50px;
+            margin: 100px auto;
+            background-color: rgb(213, 221, 213);
+            border-radius: 5px;
+        }
+        
+        ul {
+            list-style: none;
+            position: relative;
+        }
+        
+        li {
+            list-style: none;
+            float: left;
+            width: 83px;
+            height: 50px;
+            font: 400 16px/50px "simsun";
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .cloud {
+            position: absolute;
+            top: 0;
+            width: 83px;
+            height: 50px;
+            background: url(image2/r_dj.png) no-repeat;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function() {
+            var current = 0 //作为精斗云起始位置
+            var cloud = document.querySelector('.cloud');
+            var cnav = document.querySelector('.c-nav');
+            var lis = document.querySelectorAll('li');
+            //绑定事件；
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].addEventListener('mouseenter', function() {
+                    animate(cloud, this.offsetLeft);
+                })
+                lis[i].addEventListener('mouseleave', function() {
+                    animate(cloud, current); //离开时候回到current
+                })
+                lis[i].addEventListener('click', function() {
+                    current = this.offsetLeft; //当我们点击鼠标就把当前位置作为目标值
+                })
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <div class="c-nav" id="c-nav">
+        <span class="cloud"></span>
+        <ul>
+            <li><a href="#">首页新闻</a></li>
+            <li><a href="#">师资力量</a></li>
+            <li><a href="#">活动策划</a></li>
+            <li><a href="#">企业文化</a></li>
+            <li><a href="#">招聘信息</a></li>
+            <li><a href="#">公司简介</a></li>
+            <li><a href="#">我是仙女</a></li>
+            <li><a href="#">仙女是我</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>21.节流阀以及逻辑中断应用</title>
+    <!-- 1.节流阀：防止轮播图按钮连续点击造成的播放过快 -->、
+    <!-- 目的：当上一个函数动画内容执行完毕，再去执行下一个函数动画，让时间无法连续触发 -->
+    <!-- 核心实现思路：利用回调函数，添加一个变量来控制，锁住函数和解锁函数 -->
+    <!-- 开始设置一个变量 var flag = true； -->
+    <!-- if（flag）{flag=flase；do something} 关闭水龙头 -->
+    <!-- 利用回调函数 动画执行完毕 flag=true 打开水龙头 -->
+
+    <!-- 2.短路运算符 -->
+    <!-- if (callback) {
+            callback() //调用函数
+        } -->
+    <!-- callback && callback(); -->
+</head>
+
+<body>
+    <script>
+        var flag = true; //开始设置一个变量
+        arrowleft.addEventListener('click', function() {
+            if (flag) {
+                flag = false; //关闭水龙头
+                if (num == 0) {
+                    num = ul.children.length - 1;
+                    ul.style.left = -num * focuswidth + 'px';
+                }
+                num--;
+                animate(ul, -num * focuswidth, function() {
+                    flag = true; //利用回调函数 动画执行完毕 flag=true 打开水龙头
+                });
+                circle--;
+                if (circle < 0) {
+                    circle = ol.children.length - 1;
+                }
+                circleChange()
+            }
+
+        })
+    </script>
+</body>
+
+</html>

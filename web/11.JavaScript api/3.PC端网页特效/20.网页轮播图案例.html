@@ -14,6 +14,9 @@
     <!-- 4.点击小圆圈可以播放相应图片 -->
     <!-- 5.鼠标不经过轮播图,轮播图也能自己播放 -->
     <!-- 6.鼠标经过轮播图模块,自动播放停止 -->
+    <script src="20.index.js"></script>
+    <script src="18.animate_callback.js"></script>
+    <link rel="stylesheet" href="20.index.css">
     <style>
         * {
             padding: 0;
@@ -71,6 +74,10 @@
         .fl {
             float: left;
         }
+        
+        ol {
+            list-style: none;
+        }
     </style>
 </head>
 
@@ -110,16 +117,9 @@
                     </li>
                 </ul>
                 <!-- 小圆圈 -->
-                <div class="circle">
-                    <li></li>
-                    <li class="current"></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </div>
+                <ol class="circle">
+
+                </ol>
             </div>
         </div>
     </div>

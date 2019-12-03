@@ -84,6 +84,7 @@ a {
     overflow: hidden;
     max-width: 640px;
     min-width: 320px;
+    z-index: 999;
 }
 
 .search-btn {
@@ -105,16 +106,6 @@ a {
     margin: 14px 0 0 15px;
 }
 
-.search-login {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 40px;
-    height: 44px;
-    color: #fff;
-    line-height: 44px;
-}
-
 .search {
     position: relative;
     height: 30px;
@@ -123,6 +114,16 @@ a {
     margin-top: 7px;
     background-color: #fff;
     border-radius: 15px;
+}
+
+.search-login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 44px;
+    color: #fff;
+    line-height: 44px;
 }
 
 .jd {
@@ -167,6 +168,33 @@ a {
     /* 图片默认底部空白缝隙 */
     width: 100%;
     height: 100%;
+}
+
+
+/* 复制swiper样式部分 */
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
 }
 
 

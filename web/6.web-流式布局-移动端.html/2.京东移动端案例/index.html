@@ -3,13 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no,
-    maximum-scale=1.0,minimun-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimun-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- 引入初始化css初始化文件 -->
     <link rel="stylesheet" href="css/normalize.css">
     <!-- 引入首页css -->
     <link rel="stylesheet" href="css/index.css">
+    <!-- 引入swipercss文件 -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <!-- 引入js文件 -->
+    <script src="js/swiper.min.js"></script>
+    <!-- 引入自己的js文件 -->
+    <script src="js/index.js"></script>
     <title>京东移动端</title>
     <!-- 1.技术选型 单独制作页面 -->
     <!-- 2.布局：流式布局 -->
@@ -17,6 +22,7 @@
 </head>
 
 <body>
+
     <!-- 顶部开始 -->
     <header class="app">
         <ul>
@@ -42,7 +48,21 @@
     <div class="main-content">
         <!-- 滑动图 -->
         <div class="slider">
-            <img src="images/goods.jpg.dpg" alt="">
+            <!-- Swiper不要更改里面的结构和类名 -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/111.jpg.dpg" alt=""></div>
+                    <div class="swiper-slide"><img src="images/222.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="images/333.jpg.dpg" alt=""></div>
+                    <div class="swiper-slide"><img src="images/444.jpg.dpg" alt=""></div>
+                    <div class="swiper-slide"><img src="images/555.jpg.dpg" alt=""></div>
+                    <div class="swiper-slide"><img src="images/666.dpg" alt=""></div>
+                    <div class="swiper-slide"><img src="images/goods.jpg.dpg" alt=""></div>
+
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
     </div>
     <!-- nav目录 -->

@@ -8,9 +8,11 @@ function animate(obj, target, callback) {
         if (obj.offsetLeft == target) {
             clearInterval(obj.timer)
                 //回调函数写的位置 ,定时器结束的位置
-            if (callback) {
-                callback() //调用函数
-            }
+                // if (callback) {
+                //     callback() //调用函数
+                // }
+                //高级写法
+            callback && callback();
         }
         obj.style.left = obj.offsetLeft + step + 'px';
     }

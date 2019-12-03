@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>22.返回顶部案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .w {
+            /* 版心 */
+            width: 1200px;
+            margin: auto;
+        }
+        
+        body {
+            position: relative;
+        }
+        
+        .header {
+            height: 200px;
+            background-color: rgb(245, 13, 13);
+            margin-bottom: 10px;
+        }
+        
+        .banner {
+            height: 400px;
+            background-color: rgb(145, 240, 22);
+            margin-bottom: 10px;
+        }
+        
+        .main {
+            height: 1000px;
+            background-color: rgb(43, 202, 202);
+        }
+        
+        .slider-bar {
+            background-color: rgb(194, 62, 235);
+            position: absolute;
+            height: 200px;
+            width: 100px;
+            right: 0;
+            top: 370px;
+        }
+        
+        span {
+            display: none;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 滚动窗口至文档中的特定位置 -->
+    <!-- window.scroll(x,y) 滚动到window页面的x坐标y坐标 -->
+    <div class="slider-bar">
+        <span class="go-back">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">主题区域</div>
+    <div class="main w">主体部分</div>
+    <script>
+        var sliderbar = document.querySelector('.slider-bar')
+        var banner = document.querySelector('.banner')
+        var bannerTop = banner.offsetTop;
+        var sliderbarTop = sliderbar.offsetTop - bannerTop;
+        var main = document.querySelector('.main')
+        var goback = document.querySelector('.go-back')
+        var mainTop = main.offsetTop;
+        document.addEventListener('scroll', function() {
+            console.log(window.pageYOffset); //pageXOffset 和 pageYOffset 属性返回文档在窗口左上角水平和垂直方向滚动的像素。
+            if (window.pageYOffset >= bannerTop) {
+                sliderbar.style.position = 'fixed';
+                sliderbar.style.top = sliderbarTop + 'px';
+            } else {
+                sliderbar.style.position = 'absolute';
+                sliderbar.style.top = '370px';
+            }
+            if (window.pageYOffset >= mainTop) {
+                goback.style.display = 'block';
+
+            } else {
+                goback.style.display = 'none';
+            }
+        })
+
+        //当我们点击了返回顶部模块 就让窗口滚动到页面的最上方
+        //1.带有动画的返回顶部
+        //2.此时我们可以继续使用我们封装的动画函数
+        //3.因为我们动画函数只能左右摇摆 不能上下乱窜 只需要把所有left转化为 跟页面垂直滚动距离相关的就可以了
+        goback.addEventListener('click', function() {
+            //里面xy不跟单位 直接加数字
+            // window.scroll(0, 0) //滚动最上方 但是不温柔 直接就上去了
+            //因为是窗口滚动 所以obj=window
+            animate(window, 0)
+        })
+
+        // 引入动画js
+        //页面滚动了多少我们可以根据 window.pageYOffset得到
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(stop, 30);
+
+            function stop() {
+                var step = (target - window.pageYOffset) / 10; //步长
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (window.pageYOffset == target) {
+                    clearInterval(obj.timer);
+                    callback && callback();
+                }
+                // obj.style.left = obj.offsetLeft + step + 'px';
+                window.scroll(0, window.pageYOffset + step)
+            }
+        }
+    </script>
+</body>
+
+</html>

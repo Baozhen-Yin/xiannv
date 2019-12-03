@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8.fastclick插件的使用</title>
+    <!-- 1.什么是插件？ -->
+    <!-- 移动端要求的是快速开发，所以我们经常会借助于一些插件来帮我完成操作 -->
+    <!-- JS插件时js文件，它遵循一定规范编写，方便程序展示效果，拥有特定功能且方便调用。如轮播图和瀑布流插件 -->
+    <!-- 特点：他一般是为了解决某个问题而专门存在，功能单一，并且比较小 -->
+    <!-- 我们以前写的animate.js也算简单的插件 -->
+    <!-- fastclick插件解决300ms延迟。使用延迟 -->
+    <!-- github官网地址：https://github.com/ftlabs/fastclick/blob/master/lib/fastclick.js -->
+    <script src="8.fastclick.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(21, 228, 38);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+        var div = document.querySelector('div');
+        div.addEventListener('click', function() {
+            alert(11)
+        })
+    </script>
+</body>
+
+</html>

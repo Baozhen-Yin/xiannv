@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7.移动端click事件300ms延时解决</title>
+    <!-- 移动端click事件会有300ms延时，原因是移动端屏幕双击会缩放（double tap to zoom）页面。 -->
+    <!-- 解决方案： -->
+    <!-- 1.禁用缩放。浏览器禁用默认的双击缩放行为并且去掉300ms到的点击延迟 -->
+    <!-- <mate name="viewport" content="user-scalable=no"> -->
+
+    <!-- 2.利用touch事件自己封装这个事件解决300ms延迟 -->
+    <!-- 原理就是 -->
+    <!-- （1）当我们手指触摸屏幕，记录当前触摸时间 -->
+    <!-- （2）当我们手指离开屏幕，用离开的时间减去触摸的时间 -->
+    <!-- （3）如果时间小于150ms，并且没有滑动过屏幕，那我们就定义为点击 -->
+
+    <!-- 3.利用fastclick插件解决 -->
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

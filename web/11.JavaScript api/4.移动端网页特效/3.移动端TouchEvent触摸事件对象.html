@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.移动端TouchEvent触摸事件对象</title>
+    <!-- touchstart 手指触摸到一个dom元素触发 -->
+    <!-- touchmove 手指在一个dom上滑动触发 -->
+    <!-- touchend 手指从dom元素上移开时触发 -->
+    <!-- touchstart,touchmove,touchend都会有自己的事件对象 -->
+
+    <!-- TouchEvent是一类描述手指在触摸平面（触摸屏，触摸板等）状态变化的事件。这类事情用于描述一个或多个触点，使开发者可以检测触点的移动，触点的增加或者减少等 -->
+
+    <!-- touches       正在触摸屏幕的所有手指的一个列表（因为可以多个手指一起触碰） -->
+    <!-- targetTouches 正在触摸当前DOM元素上的手指的一个列表 如果监听的是一个DOM元素 和touches一样的-->
+    <!-- changedTouches 手指状态发生了改变的列表，从无到有，从有到无变化 -->
+    <!-- 因为我们一般都是触摸元素 所以最经常使用的是targetTouches -->
+    <!-- 想得到第一个手指的触摸相关信息 console.log(e.targetTouches[0]) 坐标等 -->
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(21, 228, 38);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        div.addEventListener('touchstart', function(e) {
+            console.log(e); //TouchEvent {isTrusted: true, touches: TouchList, targetTouches: TouchList, changedTouches: TouchList, altKey: false, …}
+
+        });
+        div.addEventListener('touchmove', function() {
+            console.log('我继续摸'); //手指在一个dom上滑动触发
+
+        });
+        div.addEventListener('touchend', function() {
+            console.log('我不敢摸了'); //当我们手指离开屏幕就没有了touches，targetTouches列表
+            //但是会有changedTouches
+        });
+    </script>
+</body>
+
+</html>

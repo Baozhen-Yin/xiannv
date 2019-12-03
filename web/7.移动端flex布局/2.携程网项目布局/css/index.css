@@ -43,6 +43,7 @@ ul {
     max-width: 540px;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
+    z-index: 999;
 }
 
 .search {
@@ -97,8 +98,57 @@ ul {
     margin: 4px auto -2px;
 }
 
+.goback {
+    display: none;
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    height: 40px;
+    width: 40px;
+    background: url(../images/r_dj.png) no-repeat;
+    background-size: 40px 40px;
+}
+
+.focus {
+    overflow: hidden;
+    position: relative;
+    padding-top: 44px;
+}
+
 .focus img {
     width: 100%;
+}
+
+.focus ul {
+    overflow: hidden;
+    width: 500%;
+    margin-left: -100%;
+}
+
+.focus ul li {
+    width: 20%;
+    float: left;
+}
+
+.focus ol {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    margin: 0;
+}
+
+.focus ol li {
+    display: inline-block;
+    list-style: none;
+    width: 5px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all .3s;
+}
+
+.focus .current {
+    width: 15px;
 }
 
 .local-nav ul {
