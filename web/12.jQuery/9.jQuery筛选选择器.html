@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>9.jQuery筛选选择器</title>
+    <script src="jQuery.min.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li>多选一</li>
+        <li>多选一</li>
+        <li>多选一</li>
+        <li>多选一</li>
+        <li>多选一</li>
+        <li>多选一</li>
+        <li>多选一</li>
+        <li>多选一</li>
+        <li>多选一</li>
+    </ul>
+    <ol>
+        <li>多个选一个</li>
+        <li>多个选一个</li>
+        <li>多个选一个</li>
+        <li>多个选一个</li>
+        <li>多个选一个</li>
+        <li>多个选一个</li>
+        <li>多个选一个</li>
+        <li>多个选一个</li>
+        <li>多个选一个</li>
+    </ol>
+    <script>
+        //:first  用法$('li:first')  获取第一个li元素
+        //：last  $('li:last') 获取最后一个
+        //:eq(index) $('li:eq(2)') 获取到li元素中，选择索引号为2的元素 索引号index从0开始
+        //odd 奇数
+        //even 偶数
+        $(function() {
+            $('ul li:first').css('color', 'red')
+            $('ul li:last').css('color', 'blue')
+            $('ul li:eq(5)').css('color', 'yellow')
+            $('ol li:first').css('color', 'red')
+            $('ol li:last').css('color', 'blue')
+            $('ol li:eq(5)').css('color', 'yellow')
+        })
+    </script>
+</body>
+
+</html>

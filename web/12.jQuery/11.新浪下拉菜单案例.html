@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>11.新浪下拉菜单案例</title>
+    <script src="jQuery.min.js"></script>
+    <style>
+        li {
+            list-style: none;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .nav {
+            width: 1000px;
+            height: 500px;
+            /* border: 1px solid red; */
+            margin: 100px auto;
+        }
+        
+        .nav>li {
+            position: relative;
+            float: left;
+            width: 150px;
+            height: 41px;
+        }
+        
+        .nav>li>a {
+            display: block;
+            width: 100%;
+            height: 41px;
+            line-height: 41px;
+            color: #333;
+            text-align: center;
+        }
+        
+        .nav>li>a:hover {
+            background-color: #eee;
+        }
+        
+        .nav>li>ul {
+            display: none;
+            position: absolute;
+            top: 41px;
+            left: 0px;
+            width: 150px;
+            border-left: 1px solid #FEcc5B;
+            border-right: 1px solid #FEcc5B;
+        }
+        
+        .nav>li>ul>li>a {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .nav>li>ul>li>a:hover {
+            background-color: #FFF5DA;
+        }
+        
+        .nav ul li {
+            border-bottom: 1px solid #FEcc5B;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="#">私信</a>
+                </li>
+                <li>
+                    <a href="#">评论</a>
+                </li>
+                <li>
+                    <a href="#">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="#">私信</a>
+                </li>
+                <li>
+                    <a href="#">评论</a>
+                </li>
+                <li>
+                    <a href="#">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="#">私信</a>
+                </li>
+                <li>
+                    <a href="#">评论</a>
+                </li>
+                <li>
+                    <a href="#">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="#">私信</a>
+                </li>
+                <li>
+                    <a href="#">评论</a>
+                </li>
+                <li>
+                    <a href="#">@我</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        $(function() {
+            //鼠标经过
+            // $('.nav>li').mouseover(function() {
+            //     // $(this) jQuery当前元素 this不要加引号
+            //     $(this).children('ul').slideDown(200); //show显示元素
+            // })
+            // $('.nav>li').mouseleave(function() {
+            //     $(this).children('ul').slideUp(200);
+            // })
+
+            //事件切换 21 如果只写一个函数 那么鼠标离开和经过都会触发这个函数
+            $('.nav>li').hover(function() {
+                $(this).children('ul').slideToggle();
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>18.tab栏切换案例</title>
+    <script src="jQuery.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .tab {
+            width: 800px;
+            height: 800px;
+            margin: 100px auto;
+        }
+        
+        .tab_list {
+            /* margin: 100px auto; */
+            height: 39px;
+            /* width: 800px; */
+            border: 1px solid #ccc;
+            border-bottom: 1px solid #b10b16;
+        }
+        
+        .tab_list li {
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .tab_list li:hover {
+            color: #b10b16;
+        }
+        
+        .current {
+            background-color: #c81623;
+            color: #fff;
+        }
+        
+        .item_info {
+            padding: 20px 0 0 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格和包装</li>
+                <li>售后保障</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">
+                商品介绍模块内容
+            </div>
+            <div class="item" style="display: none;">
+                规格和包装模块内容
+            </div>
+            <div class="item" style="display: none;">
+                售后保障模块内容
+            </div>
+            <div class="item" style="display: none;">
+                商品评价模块内容
+            </div>
+            <div class="item" style="display: none;">
+                手机社区模块内容
+            </div>
+        </div>
+    </div>
+    <script src="jQuery.min.js"></script>
+    <script>
+        $(function() {
+            $('tab_list li').click(function() {
+                $(this).addClass("current").siblings().removeClass("current");
+                var index = $(this).index();
+                console.log(index);
+                $('.tab_con .item').eq(index).show().siblings().hide();
+
+            })
+        })
+    </script>
+</body>
+
+</html>

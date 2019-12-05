@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6.jQuery对象和DOM对象相互转化</title>
+    <script src="jQuery.min.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <video src="image5/wy.mp4" muted></video>
+    <script>
+        //DOM对象和jQuery对象之间是可以相互转化的。
+        //因为原生JS比jQuery更大，原生的一些属性和方法jQuery没有给我们封装，想要使用这些属性和方法需要把
+        //jQuery对象转化成DOM对象才可以使用
+
+        //1.DOM对象转化成jQuery对象:$(DOM对象)
+
+        // (1)我们直接获取视频，得到的就是jquery对象
+        $('video');
+        //(2)我们已经使用原生JS获取DOM对象
+        var myvideo = document.querySelector('video');
+        $(myvideo); //jQuery对象
+
+        //2.jQuery对象转化为DOM对象:1.$('div')[index]; index是索引号 2.$('div').get(index) index是索引号
+        // myvideo.play(); 原生js方法
+        $('video')[0].play();
+    </script>
+</body>
+
+</html>

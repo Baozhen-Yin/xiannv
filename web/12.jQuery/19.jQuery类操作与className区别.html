@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>19.jQuery类操作与className区别</title>
+    <script src="jQuery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(161, 65, 65);
+            margin: 100px auto;
+            transition: all .5s;
+        }
+        
+        .current {
+            background-color: rgb(42, 241, 132);
+            transform: rotate(720deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one"></div>
+    <script>
+        //原生js中的className会覆盖掉元素原先里面的类名
+        //jquery里面类操作只是对指定类进行操作 不会影响原先类名
+        var one = document.querySelector('.one');
+        // one.className = 'two';  two
+        $('.one').addClass('two'); //追加了two
+    </script>
+</body>
+
+</html>

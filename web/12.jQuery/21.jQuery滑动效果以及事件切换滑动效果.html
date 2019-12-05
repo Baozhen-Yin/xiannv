@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>21.jQuery滑动效果以及事件切换</title>
+    <script src="jQuery.min.js"></script>
+    <!-- 1.滑动 slideDown() slideUp() slideToggle() -->
+    <!-- 淡入淡出 fadeIn() fadeOut() fadeToggle() fadeTo() -->
+    <!-- 自定义动画 animate() -->
+
+    <!-- 2.事件切换 hover([over,]out)-->
+    <!-- (1)over：鼠标移到元素上要触发的函数（相当于mouseenter） -->
+    <!-- (2)out:鼠标移出元素要触发的函数（相当于mouseleave）-->
+
+    <!-- $('选择器').hover(function(移到元素触发),function(移出元素触发)) -->
+    <style>
+        div {
+            width: 200px;
+            height: 500px;
+            background-color: rgb(161, 65, 65);
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button>下拉滑动</button>
+    <button>上拉滑动</button>
+    <button>切换滑动</button>
+    <div></div>
+    <script>
+        $(function() {
+            $('button').eq(0).click(function() {
+                //下滑 slideDown()
+                $('div').slideDown();
+            });
+            $('button').eq(1).click(function() {
+                //上滑 slideUp()
+                $('div').slideUp();
+            });
+            $('button').eq(2).click(function() {
+                //切换滑动 slideToggle()
+                $('div').slideToggle();
+            });
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>17.jQuery修改样式操作类</title>
+    <script src="jQuery.min.js"></script>
+    <!-- 添加类 addClass() -->
+    <!-- 移除类 removeClass()-->
+    <!-- 切换类 toggleClass() -->
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(161, 65, 65);
+            margin: 100px auto;
+            transition: all .5s;
+        }
+        
+        .current {
+            background-color: rgb(42, 241, 132);
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="current"></div>
+    <script>
+        $(function() {
+            //1.添加类addClass();
+            // $('div').click(function() {
+            //         // $(this).addClass('current')
+            //     })
+            //     //2.删除类 removeClass()
+            // $('div').click(function() {
+            //     $(this).removeClass('current');
+            // })
+            $('div').click(function() {
+                $(this).toggleClass('current'); //当按钮点了一次加上这个背景再点一次去掉这个背景 如此称为切换
+            })
+        })
+    </script>
+</body>
+
+</html>

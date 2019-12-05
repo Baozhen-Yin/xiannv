@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>28.购物车模块-全选案例</title>
+    <script src="jQuery.min.js"></script>
+    <script>
+        //1.全选思路：里面的复选框按钮(j-checkbox) 选中状态跟着全选按钮(checkall)走
+        //2.因为checked是复选框的固有属性 我们可以使用prop()方法获取设置该属性
+        //3.把全选按钮状态赋值给复选框就可以了
+        //4.当我们每次点击效地复选框按钮，就判断：如果复选框被选中就把全选按钮选上，否则全选按钮不选
+        //5.
+        $('.checked').change(function() {
+            $('j-checkbox .checkall').prop('checked', $(this).prop('checked')) //赋值
+        })
+        $('.j-checkbox').change(function() {
+            // if(被选中复选框个数等于全部){
+            //     就要选中全部按钮
+            // }else{
+            //     不要选中全选按钮
+            // }
+            if ($('.j-checkbox:checked').length === $('.j-checkbox').length) {
+                $('.checkall').prop('checked', true);
+            } else {
+                $('.checkall').prop('checked', false);
+            }
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

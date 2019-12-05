@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>24.淡入淡出显示效果案例</title>
+    <script src="jQuery.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #111;
+        }
+        
+        .wrap {
+            width: 616px;
+            height: 416px;
+            margin: 100px auto;
+            border: solid #111 1px;
+        }
+        
+        .wrap ul li {
+            width: 200px;
+            height: 200px;
+            float: left;
+            border: 3px solid #eee;
+            list-style: none;
+        }
+        
+        .wrap img {
+            width: 200px;
+            height: 200px;
+            display: block;
+            border: 0;
+        }
+    </style>
+    <script>
+        //1.鼠标进入的时候 其他li标签透明度：0.5
+        //2.鼠标离开 其他li 改为1
+        $(function() {
+            $('.wrap li').hover(function() {
+                $(this).siblings().stop().fadeTo(400, 0.1);
+            }, function() {
+                $(this).siblings().stop().fadeTo(400, 1);
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <li>
+                <a href="#"><img src="image5/1.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="image5/2.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="image5/3.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="image5/4.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="image5/5.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="image5/6.jpg" alt=""></a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.localStorage</title>
+    <!-- 1.生命周期永远有效，除非手动删除 关闭页面也还在 -->
+    <!-- 2.可以多窗口下（页面）数据可以共享（同一浏览器可以共享） -->
+    <!-- 3.以键值对的形式存储使用 -->
+</head>
+
+<body>
+    <input type="text">
+    <button class="set">存储数据</button>
+    <button class="get">获取数据</button>
+    <button class="remove">清除数据</button>
+    <button class="del">清空所有数据</button>
+
+    <script>
+        var inp = document.querySelector('input');
+        var set = document.querySelector('.set');
+        var get = document.querySelector('.get');
+        var remove = document.querySelector('.remove');
+        var del = document.querySelector('.del');
+        set.addEventListener('click', function() {
+            var val = inp.value;
+            localStorage.setItem('username', val)
+        })
+        get.addEventListener('click', function() {
+            //当我们点击之后就可以把表单里面的值获取过来
+            localStorage.getItem('username');
+            console.log(localStorage.getItem('username'));
+
+        });
+        remove.addEventListener('click', function() {
+            //当我们点击之后就可以把表单里面的值移除
+            localStorage.removeItem('username');
+
+        });
+        del.addEventListener('click', function() {
+            localStorage.clear() //慎用
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.jQuery的基本使用</title>
+    <script src="jQuery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(161, 65, 65);
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        //等着页面DOM加载完毕之后再去执行js代码 第一种更简单 推荐使用
+        $(function() {
+            //1.此处页面DOM加载完成的入口 是等着页面加载完毕之后的入口
+            $('div').hide();
+        })
+        $(document).ready(function() {
+            //2.此处是页面DOM加载完成的入口
+        })
+
+        //1.等着DOM结构渲染完毕之后可执行内部代码，不必等到所有外部资源加载完成 jQuery帮我们完成了封装
+        //2.相当于原生js中的DOMContentLoaded（主要元素加载完毕） 和load是不一样的
+    </script>
+    <div></div>
+
+</body>
+
+</html>

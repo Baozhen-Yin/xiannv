@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>20.jQuery显示与隐藏效果</title>
+    <script src="jQuery.min.js"></script>
+    <!-- jQuery给我们封装了很多动画效果，最为常见的如下： -->
+    <!-- 显示隐藏 show() hide() toggle() -->
+    <!-- 滑动 slideDown() slideUp() slideToggle() -->
+    <!-- 淡入淡出 fadeIn() fadeOut() fadeToggle() fadeTo() -->
+    <!-- 自定义动画 animate() -->
+
+    <!-- 1.显示语法规范 -->
+    <!-- show([speed,[easing],[fn]])  1.参数都可以直接省略 -->
+    <!-- 2.speed:三种预定速度之一的字符串slow normal fast 或者毫秒  -->
+    <!-- 3.easing：（Optional）用来指定切换效果 默认是swing 可以用参数linear -->
+    <!-- 4.fn：回调函数，在动画完成时执行的函数，每个元素执行一次 -->
+    <style>
+        div {
+            width: 200px;
+            height: 500px;
+            background-color: rgb(161, 65, 65);
+        }
+    </style>
+</head>
+
+<body>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+    <div></div>
+    <script>
+        $(function() {
+            //一般情况下 不加参数直接隐藏  不加slow等 因为动画太丑了
+            $('button').eq(1).click(function() {
+                $('div').hide('slow', function() {
+                    alert('动画消失了，我是回调函数')
+                })
+            })
+            $('button').eq(0).click(function() {
+                $('div').show('slow', function() {
+                    alert('动画出现了，我是回调函数')
+                })
+            })
+            $('button').eq(2).click(function() {
+                $('div').toggle('slow')
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7.jQuery基本和层级选择器</title>
+    <script src="jQuery.min.js"></script>
+</head>
+
+<body>
+    <div>我是div</div>
+    <div class="nav">我是nav 的 div</div>
+    <p>我是p</p>
+    <ol>
+        <li>我是ol的li</li>
+        <li>我是ol的li</li>
+        <li>我是ol的li</li>
+    </ol>
+    <ul>
+        <li>我是ul的li</li>
+        <li>我是ul的li</li>
+        <li>我是ul的li</li>
+    </ul>
+    <script>
+        //原生JS获取元素方式很多，很杂，而且兼容性情况不一致，因此jQuery给我们做了封装，使得获取元素统一标准。
+        $('选择器') //里面直接写CSS选择器即可 但是要加引号
+        $(function() {
+            console.log($('.nav'));
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12.jQuery其他筛选方法</title>
+    <script src="jQuery.min.js"></script>
+</head>
+
+<body>
+    <ol>
+        <li>我是ol的li</li>
+        <li>我是ol的li</li>
+        <li class="item">我是ol的li</li>
+        <li>我是ol的li</li>
+        <li>我是ol的li</li>
+        <li>我是ol的li</li>
+    </ol>
+    <ul>
+        <li>我是ul的li</li>
+        <li>我是ul的li</li>
+        <li>我是ul的li</li>
+        <li>我是ul的li</li>
+        <li>我是ul的li</li>
+        <li>我是ul的li</li>
+    </ul>
+    <div class="current">我是current</div>
+    <div>我没有current</div>
+    <script>
+        //siblings(selector) $('.first').siblings('li') 查找亲兄弟节点 不包括自己本身
+        //nextAll([expr])    $('.first').nextAll()      查找当前元素之后所有的同辈元素
+        //prevtAll([expr])   $('.first').prevAll()      查找当前元素之前所有的同辈元素
+        //hasClass(class)    $('div').hasClass('protected') 查找当前元素是否含有某个特定的类，如果有返回true
+        //eq(index)          $('li').eq(2);             相当于 $('li:eq(2)') index从0开始
+        $(function() {
+            //1.兄弟元素
+            $('ol .item').siblings('li').css('color', 'red') //除了类是item的
+
+            //2.第n个元素
+            $('ul li').eq(1).css('color', 'blue')
+        })
+
+        //3.判断是否有某个类名
+        $('div:first').hasClass('current')
+        console.log($('div:first').hasClass('current')); //true
+    </script>
+</body>
+
+</html>

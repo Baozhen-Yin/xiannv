@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13.jQuery排他思想</title>
+    <script src="jQuery.min.js"></script>
+</head>
+
+<body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+
+    <script>
+        //1.想要多选一的效果，排他思想：当前元素设置样式，其余的兄弟元素清除样式
+        $(function() {
+            $('button').click(function() {
+                //2.当前的元素变化背景颜色
+                $(this).css('background', 'pink');
+                //3.其余兄弟去掉背景颜色
+                // siblings(selector)  $('.first').siblings('li') 查找亲兄弟节点 不包括自己本身
+                $(this).siblings('button').css('background', '')
+            })
+        })
+    </script>
+</body>
+
+</html>

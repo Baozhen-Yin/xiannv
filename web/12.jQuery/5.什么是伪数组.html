@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //首先什么是伪数组：
+        // 1、伪数组是一个对象
+        // 2、这个对象必须要有length属性
+        // 3、如果这个对象的length不为0，那么必须要有按照下标存储的数据
+
+        // 不是伪数组
+        // var obj = {};
+        // var obj2 = { lhengt: 3 };
+
+        // 是伪数组
+        // var obj3 = { length: 0 };
+        // var obj4 = { 0: '888', length: 1 };
+        // var obj5 = { 99: 'abc', length: 100 }
+
+        // 如何判断数据是不是伪数组：
+        // 1、首先他是个对象
+        // 2、是对象，有length属性
+        // 3、有length，值必须是number类型
+        // 4、length值是number类型，并且值不为0，这个对象还得按照下标存储数据
+
+        // 如何判断数据是不是真数组：
+        // 1、数据 instanceof Array
+        // 2、Object.prototype.toString.call( 数据 ) === '[object Array]'
+
+        // 伪数组转标准数组：
+        // 方法一、Array.prototype.slice.call( 数据 )
+        // 方法二、 声明一个空数组，通过遍历伪数组把它们重新添加到新的数组中
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14.淘宝服饰精品案例</title>
+    <script src="jQuery.min.js"></script>
+    <script>
+        //1.核心原理 ：鼠标经过左侧盒子的某个小li，就让内容区盒子相对应图片显示，其余的图片隐藏
+        //2.需要得到当前小li的索引号，就可以显示对应索引号的图片
+        //3.jQuery得到当前元素索引号 $(this).index() !!!
+        //4.中间对应的图片可以通过eq(index)方法去选择
+        //5.显示元素show(),隐藏元素hide();
+        // $(function() {
+        //     $('.wrapper ul li').mousemove(function() {
+        //         // 2.得到当前小li的索引号，就可以显示对应索引号的图片 
+        //         var index = $(this).index();
+        //         //3.右侧图片显示
+        //         //eq(index)   $('li').eq(2);   相当于 $('li:eq(2)') index从0开始
+        //         $('.current div').eq(index).show();
+        //         //4.其余的隐藏 就是除了他 其他的兄弟
+        //         $('.current div').eq(index).siblings().hide();
+        //     })
+        // })
+
+        $(function() { //链式编程 一行搞定
+            $('.wrapper ul li').mousemove(function() {
+                var index = $(this).index();
+                $('.current div').eq(index).show().siblings().hide()
+            })
+        })
+    </script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        .box {
+            width: 260px;
+            height: 250px;
+            margin: 100px auto;
+        }
+        
+        .wrapper {
+            float: left;
+            height: 250px;
+            width: 60px;
+            background-color: rgb(163, 22, 22);
+        }
+        
+        .wrapper ul li {
+            width: 60px;
+            height: 27.777px;
+            background-color: rgb(192, 153, 153);
+            line-height: 27.777px;
+            list-style: none;
+            border: blueviolet 1px solid;
+        }
+        
+        .wrapper ul li a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        .wrapper ul li:hover {
+            background-color: pink;
+        }
+        
+        .current {
+            float: right;
+            width: 200px;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .current img {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="wrapper">
+            <ul>
+                <li>
+                    <a href="#">女靴</a>
+                </li>
+                <li>
+                    <a href="#">雪地靴</a>
+                </li>
+                <li>
+                    <a href="#">冬裙</a>
+                </li>
+                <li>
+                    <a href="#">呢大衣</a>
+                </li>
+                <li>
+                    <a href="#">毛衣</a>
+                </li>
+                <li>
+                    <a href="#">棉裤</a>
+                </li>
+                <li>
+                    <a href="#">女裤</a>
+                </li>
+                <li>
+                    <a href="#">羽绒服</a>
+                </li>
+                <li>
+                    <a href="#">牛仔裤</a>
+                </li>
+            </ul>
+        </div>
+        <div class="current">
+            <div>
+                <a href="#"><img src="image5/1.jpg" alt="" width="200" height="250"></a>
+            </div>
+            <div>
+                <a href="#"><img src="image5/2.jpg" alt="" width="200" height="250"></a>
+            </div>
+            <div>
+                <a href="#"><img src="image5/3.jpg" alt="" width="200" height="250"></a>
+            </div>
+            <div>
+                <a href="#"><img src="image5/4.jpg" alt="" width="200" height="250"></a>
+            </div>
+            <div>
+                <a href="#"><img src="image5/5.jpg" alt="" width="200" height="250"></a>
+            </div>
+            <div>
+                <a href="#"><img src="image5/6.jpg" alt="" width="200" height="250"></a>
+            </div>
+            <div>
+                <a href="#"><img src="image5/7.jpg" alt="" width="200" height="250"></a>
+            </div>
+            <div>
+                <a href="#"><img src="image5/8.jpg" alt="" width="200" height="250"></a>
+            </div>
+            <div>
+                <a href="#"><img src="image5/9.jpg" alt="" width="200" height="250"></a>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

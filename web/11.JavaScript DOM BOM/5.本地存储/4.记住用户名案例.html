@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.记住用户名案例</title>
+    <!-- 要求：如果勾选记住用户名，下次用户打开浏览器，就在文本框显示上次登陆的用户名 -->
+
+    <!-- 案例分析： -->
+    <!-- 1.把数据存储起来 用到本地存储 -->
+    <!-- 2.关闭页面，也可以显示用户名，所以用到localStorage -->
+    <!-- 3.打开页面，先判断是否有这个用户名，如果有，就在表单显示用户名，并且勾选复选框 -->
+    <!-- 4.如果复选框发生改变时候的change事件 -->
+    <!-- 5.如果勾选就存储，不勾选就移除 -->
+</head>
+
+<body>
+    <input type="text" id="username">
+    <input type="checkbox" name="" id="remember">记住用户名
+    <script>
+        var username = document.querySelector('#username');
+        var remember = document.querySelector('#remember');
+        if (localStorage.getItem('username')) {
+            username.value = localStorage.getItem('username');
+            remember.checked = true;
+        }
+        remember.addEventListener('change', function() {
+            if (this.checked) {
+                localStorage.setItem('username', username.value)
+            } else {
+                localStorage.removeItem('username')
+            }
+        })
+    </script>
+</body>
+
+</html>

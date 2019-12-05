@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>26.王者荣耀手风琴案例</title>
+    <script src="jQuery.min.js"></script>
+    <script>
+        //1.鼠标经过小li有两种操作
+        //2.当前li宽度变为224px 同时里面的小图片淡出 大图片淡入
+        //3.其余兄弟宽度变为69px 小图片淡入 大图片淡出
+        $(function() {
+            $('.king li').mouseenter(function() {
+                //当前li宽度变为224px 同时里面的小图片淡出 大图片淡入
+                $(this).stop().animate({
+                    width: 224
+                }, 200).find('.small').stop().fadeOut().siblings('.big').stop().fadeIn();
+                //其余兄弟宽度变为69px 小图片淡入 大图片淡出
+                $(this).siblings('li').stop().animate({
+                    width: 69
+                }).find('.small').stop().fadeIn().siblings('.big').stop().fadeOut();
+            })
+
+
+        })
+    </script>
+    <style>
+        .king {
+            position: relative;
+            width: 900px;
+            height: 106px;
+            margin: 100px auto;
+            background-color: #204a85;
+        }
+        
+        .king ul li {
+            height: 69px;
+            width: 69px;
+            overflow: hidden;
+            position: relative;
+            float: left;
+            list-style: none;
+            margin-top: 15px;
+            padding-right: 4px;
+        }
+        
+        .king ul li.current {
+            width: 224px;
+        }
+        
+        .king ul li.current .big {
+            display: block;
+        }
+        
+        .king ul li.current .small {
+            display: none;
+        }
+        
+        .big {
+            display: none;
+            width: 224px;
+            height: 69px;
+        }
+        
+        .small {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 69px;
+            width: 69px;
+            z-index: 1;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="king">
+        <ul>
+            <li class="current">
+                <a href="#">
+                    <img src="image5/small1_lc.jpg" alt="" class="small">
+                    <img src="image5/liuchan.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="image5/small2_lfz.jpg" alt="" class="small">
+                    <img src="image5/laofuzi.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="image5/small3_llw.jpg" alt="" class="small">
+                    <img src="image5/lanlingwang.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="image5/small4_dhty.jpg" alt="" class="small">
+                    <img src="image5/houyi.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="image5/small5_dhty.jpg" alt="" class="small">
+                    <img src="image5/dhty.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="image5/small6_nvwa.jpg" alt="" class="small">
+                    <img src="image5/nvwa.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="image5/small7_yyh.jpg" alt="" class="small">
+                    <img src="image5/yyh.png" alt="" class="big">
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

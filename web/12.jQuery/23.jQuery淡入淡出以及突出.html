@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>23.jQuery淡入淡出以及突出显示案例</title>
+
+    <!-- 淡入淡出 fadeIn() fadeOut() fadeToggle() fadeTo() -->
+    <!-- 1.参数都可以省略 -->
+    <!-- 2.speed:三种预定速度之一的字符串slow normal fast 或者毫秒  -->
+    <!-- 3.easing：（Optional）用来指定切换效果 默认是swing 可以用参数linear  -->
+    <!-- 4.fn：回调函数，在动画完成时执行的函数，每个元素执行一次 -->
+
+    <!-- 效果参数fadeTo()透明度 -->
+    <!-- 1.opacity透明度必须写 0~1之间 -->
+
+    <style>
+        div {
+            width: 150px;
+            height: 300px;
+            background-color: rgb(6, 113, 235);
+            display: none;
+        }
+    </style>
+    <script src="jQuery.min.js"></script>
+
+</head>
+
+<body>
+    <button>淡入效果</button>
+    <button>淡出效果</button>
+    <button>淡入淡出切换</button>
+    <button>修改透明度</button>
+    <div></div>
+    <script>
+        $(function() {
+            $('button').eq(0).click(function() {
+                //淡入fadeIn()
+                $('div').fadeIn(1000);
+            })
+            $('button').eq(1).click(function() {
+                //淡入fadeOut()
+                $('div').fadeOut()
+            })
+            $('button').eq(2).click(function() {
+                //淡入fadeToggle()
+                $('div').fadeToggle()
+            })
+            $('button').eq(3).click(function() {
+                //淡入fadeTo()
+                $('div').fadeTo()
+            })
+        })
+    </script>
+</body>
+
+</html>

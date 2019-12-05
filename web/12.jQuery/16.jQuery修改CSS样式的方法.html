@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>16.jQuery修改CSS样式的方法</title>
+    <!-- 可以使用css方法修改简单元素样式，也可以操作多个类 -->
+    <script src="jQuery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(161, 65, 65);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        //1.参数只写属性名 则返回属性值
+        //2.参数是属性名，属性值，逗号分隔，是设置一组样式，属性必须加引号，值如果是数字可以不用跟单位和引号。
+        //3.参数可以是对象形式，方便设置多组样式。属性名和属性值用冒号隔开，属性可以不用加引号 键值对形式
+        $(function() {
+            $('div').css('width');
+            console.log($('div').css('width')); //200px 带单位的字符串
+            $('div').css('width', '300px');
+            $('div').css({
+                "width": "300px",
+                'height': '300px',
+                "backgroundColor": 'blue'
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10.jQuery选取父子元素</title>
+    <script src="jQuery.min.js"></script>
+</head>
+
+<body>
+    <div class="grandfather">
+        <div class="father">
+            <div class="son">儿子</div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <p>我是p</p>
+        <div>
+            <p>我是屁</p>
+        </div>
+    </div>
+    <script>
+        //jQuery筛选方法 都是方法或者函数 不要忘记加小括号()
+
+        //parent()           $('li').parent();          查找父级
+        //children(selector) $('ul').children('li')     相当于$('ul>li') 最近一级 亲儿子
+        //find(selector)     $('ul').find('li')         相当于$('ul li')后代选择器
+        //siblings(selector) $('.first').siblings('li') 查找兄弟节点 不包括自己本身
+        //nextAll([expr])    $('.first').nextAll()      查找当前元素之后所有的同辈元素
+        //prevtAll([expr])   $('.first').prevAll()      查找当前元素之前所有的同辈元素
+        //hasClass(class)    $('div').hasClass('protected') 查找当前元素是否含有某个特定的类，如果有返回true
+        //eq(index)          $('li').eq(2);             相当于 $('li:eq(2)') index从0开始
+
+        $(function() {
+            //1.父亲 parent() 
+            $('.son').parent();
+            console.log($('.son').parent()); //div.father 返回亲爸爸
+            //2.孩子 children()  亲儿子   find() 后代
+            //（1）只选亲儿子children()
+            // $('.nav').children('p').css('color', 'red')
+            // (2)儿子孙子都选出来 类似于后代选择器
+            $('.nav').find('p').css('color', 'red')
+        })
+    </script>
+</body>
+
+</html>
