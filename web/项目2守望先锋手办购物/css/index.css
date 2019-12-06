@@ -223,18 +223,46 @@
 /* <!-- 推荐模块 recommed 结束 --> */
 
 
+/* 电梯导航模块开始 */
+
+.fixedtool {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    margin-left: -703px;
+    width: 72px;
+    background-color: #fff;
+    display: none;
+}
+
+.fixedtool li {
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 12px;
+    border-bottom: 1px solid pink;
+}
+
+.current_tool {
+    background-color: rgba(151, 39, 134, 0.3);
+}
+
+
+/* 电梯导航模块结束 */
+
+
 /* 楼层区域制作开始 */
 
 .floor .w {
     margin-top: 30px;
 }
 
-.warcraft .box_hd {
+.floor .box_hd {
     height: 30px;
     border-bottom: 2px solid #211510;
 }
 
-.warcraft .box_hd h3 {
+.floor .box_hd h3 {
     float: left;
     font-size: 18px;
     color: #211510;

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>31.购物车模块-修改商品小计</title>
+    <script src="jQuery.min.js"></script>
+    <script>
+        //每次点击加号或者减号  就根据文本框内的数字 乘以单价
+        //注意1：只能增加本商品的小计 就是当前商品框的小计模块 不是全部商品
+        //修改普通元素内容是text()方法
+        //注意2：当前商品的价格，要把￥符号去掉在相乘 截取字符串 substr(1)
+        //parents('选择器')可以返回指定祖先元素
+        //最后计算的结果如果想要保留两位小数 通过toFixed(2) 方法 
+        //如果用户直接输入表单的值 表单change事件 用最新的表单内的值乘以单价即可
+        //获取表单的值val() (相当于原生value)
+        //要注意普通元素里面的内容要去掉￥ 并且转化为数字型才能相加
+        //核心思路 把商品remove()删除元素即可
+        //三个地方需要删除1.商品后面的删除按钮 2.删除选中的商品 3.清理购物车
+        //商品后面的删除按钮：一定是删除当前按钮 所以$(this)
+        $(function() {
+            $('.increment').click(function() {
+                var n = $(this).siblings('itix').val();
+                n++;
+                $(this).siblings('.itxt').val(n);
+                // 每次点击加号或者减号  就根据文本框内的数字 乘以单价
+                var p = $(this).parent().parent().siblings('.p-price').html(); //拿到文本框的值￥12.6
+                // console.log(p);
+                p = p.substr(1); //substr从第一个截取到最后一个 12.6 当前商品价格得到
+                var price = (p * n).toFixed(2)
+                    //小计模块
+                var sum = $(this).parent().parent().siblings('.p-sum').html('￥' + price);
+
+            });
+            $('.increment').click(function() {
+                var n = $(this).siblings('itix').val();
+                if (n === 1) {
+                    //程序返回return 底下的就不再执行了
+                    return false;
+                }
+                n--;
+                var p = $(this).parent().parent().siblings('.p-price').html(); //拿到文本框的值￥12.6
+                // console.log(p);
+                p = p.substr(1); //substr从第一个截取到最后一个 12.6 当前商品价格得到
+                //小计模块
+                var sum = $(this).parent().parent().siblings('.p-sum').html('￥' + (p * n).toFixed(2));
+                $(this).siblings('.itxt').val(n);
+            });
+            //4.用户修改文本框的值 计算 小计模块
+            $('.itxt').change(function() {
+                    //得到文本框的值 再乘以商品的单价 n变为自己输入的值了
+                    var n = $(this).val();
+                    var p = $(this).parent().parent().siblings('.p-price').html(); //拿到文本框的值￥12.6
+                    // console.log(p);
+                    p = p.substr(1); //substr从第一个截取到最后一个 12.6 当前商品价格得到
+                    var sum = $(this).parent().parent().siblings('.p-sum').html('￥' + (p * n).toFixed(2));
+                })
+                //5.计算购物车总额模块
+            getSum(); //提前调用
+
+            function getSum() {
+                var count = 0; //总件数
+                var money = 0; //总价钱
+                $('.itxt').each(function(index, element) {
+                    count += parseInt($(element).val()); //拿到了当前元素的值加到count里面
+
+                });
+                $('.p-sum').each(function(index, element) {
+                    money += parseFloat($(element).text().substr(1));
+                });
+                $('.price-sum em').text('￥' + money.toFixed(2))
+            }
+
+            //删除商品模块
+            //(1)商品后面的删除按钮
+            $('p-action a').click(function() {
+                    //点了删除当前商品
+                    $(this).parents('.cart-item').remove()
+                    getSum()
+                })
+                //（2）删除选中的商品
+            $('remove-batch').click(function() {
+                    //删除的是小的复选框选中的商品 j-checkbox:checked复选框被选中的
+                    $('.j-checkbox:checked').parents('.cart-item').remove();
+                    getSum()
+                })
+                //（3）清空购物车 删除全部商品
+            $('.clear-all').click(function() {
+                $('.cart-item').remove();
+                getSum()
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="cart-item">
+        <div class="p-checkbox">
+            <input type="checkbox" name="" id="" class="j-checkbox">
+        </div>
+        <div class="p-goods">
+            <div class="p-img">
+                <img src="image5/1.jpg" alt="">
+            </div>
+            <div class="p-msg">叛卖焦虑</div>
+        </div>
+
+        <div class="p-price">￥12.6</div>
+        <div class="p-num">
+            <div class="quantity-form">
+                <a href="javascript:;" class="decrement">-</a>
+                <input type="text" value="1" class="itxt">
+                <a href="javascript:;" class="increment">+</a>
+            </div>
+        </div>
+        <div class="p-sum">￥12.6</div>
+        <div class="p-action"><a href="javascript:;">删除</a></div>
+    </div>
+</body>
+
+</html>

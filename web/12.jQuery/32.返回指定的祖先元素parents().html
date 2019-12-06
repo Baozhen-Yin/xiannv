@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>32.返回指定的祖先元素</title>
+    <script src="jQuery.min.js"></script>
+    <script>
+        //parents() 所有祖先元素  parents('选择器')
+        // 最后计算的结果如果想要保留两位小数 通过toFixed(2) 方法 
+        $(function() {
+            console.log($('.four').parent().parent().parent().html());
+            console.log($('.four').parents('.one'));
+
+        })
+    </script>
+</head>
+
+<body>
+    <div class="one">
+        <div class="two">
+            <div class="three">
+                <div class="four">我不容易</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

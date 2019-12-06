@@ -9,12 +9,39 @@
     <script src="jQuery.min.js"></script>
     <script>
         //核心思路：声明一个变量，当我们点击加号（increment），就让这个值++，然后赋值给文本框
-        // 注意：只能增加本商品的数量，就是当前加号的兄弟文本框(itxt)的值
+        // 3.表单的值val() (相当于原生value)
+        $(function() {
+                $('.increment').click(function() {
+                    var n = $(this).siblings('itix').val();
+                    n++;
+                    $(this).siblings('.itxt').val(n);
+                });
+                $('.increment').click(function() {
+                    var n = $(this).siblings('itix').val();
+                    if (n === 1) {
+                        //程序返回return 底下的就不再执行了
+                        return false;
+                    }
+                    n--;
+                    $(this).siblings('.itxt').val(n);
+                });
+            })
+            //注意：只能增加本商品的数量，就是当前加号的兄弟文本框(itxt)的值(加号和数量在一个盒子里 是兄弟)
+            //修改表单的值是val()方法
+            //注意2：这个变量初始值应该是这个文本框的值，在这个值的基础上++。要获取表单的值。
+            //减号（decrement）思路同理，但是如果这个文本框的值是一就不能再减了。
     </script>
 </head>
 
 <body>
-
+    <div class="p-price">￥12.6</div>
+    <div class="p-num">
+        <div class="quantity-form">
+            <a href="javascript:;" class="decrement">-</a>
+            <input type="text" value="1" class="itxt">
+            <a href="javascript:;" class="increment">+</a>
+        </div>
+    </div>
 </body>
 
 </html>

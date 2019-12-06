@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>35.创建元素</title>
+    <script src="jQuery.min.js"></script>
+    <!-- 1.创建元素 语法 $('<li></li>') -->
+    <!-- 2.内部添加 element.append('内容') 放到最后面  prepend('内容')放到最前面 内部添加元素生成父子关系-->
+    <!-- 3.外部添加 element.after('内容') 放到后面  element.before('内容') 放到前面 外部元素兄弟关系-->
+    <!-- 4.删除元素 1.element.remove('内容') 删除匹配的元素（自身）自杀 ul拜拜-->
+    <!--           2.element.empty()删除匹配的元素集合中的子节点 ul还有 li没了-->
+    <!--           3.element.html('') 清空匹配的元素内容 -->
+</head>
+
+<body>
+    <ul>
+        <li>我是早就有的</li>
+    </ul>
+    <div class="text">我是原先的div</div>
+    <script>
+        $(function() {
+            //1.创建元素
+            var li = $('<li>我是后来的</li>');
+            //2.内部添加 element.append('内容') 放到后面
+            $('ul').append(li);
+            //3。内部添加 放到最前面
+            $('ul').prepend(li);
+            //4.外部添加 element.after('内容') 放到后面
+            var div = $('<div>我是后妈生的</div>');
+            $('.text').after(div);
+            //5.外部添加 element.before('内容') 放到前面
+            $('.text').before(div);
+            //5.element.remove('内容') 删除匹配的元素（自身）自杀
+            // $('ul').remove();
+            //6.element.empty()删除匹配的元素集合中的子节点 ul还有 li没了
+            // $('ul').empty();
+            //element.html('') 清空匹配的元素内容
+            $('ul').html('');
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>36.jQuery尺寸方法</title>
+    <script src="jQuery.min.js"></script>
+    <script>
+        //width()/height() 取得匹配元素宽度和高度值 只算width和height
+        //innerWidth()/innerHeight() 取得元素高度和宽度值 包括padding
+        //outerWidth()/outerHeight() 取得元素高度和宽度值 包含padding、border
+        //outerWidth(true)/outerHeight(true) 取得元素高度和宽度值 包含padding、border,margin
+        //以上参数为空则是获取相应值 返回的是数字型
+        //如果参数为数字 则是修改相应值 $('div').width(300)
+        //参数可以不必写单位
+        $(function() {
+            console.log($('div').width()); //200
+            // $('div').width(300); //修改为300
+            console.log($('div').innerWidth()); //220
+            console.log($('div').outerWidth()); //250
+
+
+        })
+    </script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(29, 212, 13);
+            padding: 10px;
+            border: 15px solid red;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

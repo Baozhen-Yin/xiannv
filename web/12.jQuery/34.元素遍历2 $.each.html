@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>34.遍历$.each</title>
+    <script src="jQuery.min.js"></script>
+    <!-- 语法2： -->
+    <!-- $.each(object,function(index,element){xxx;}) -->
+    <!-- 1. $.each()方法可以用于遍历任何对象。主要用于数据处理，比如数组，对象 -->
+    <!-- 2.里面的函数有两个参数：index是每个元素的索引号；element 遍历内容 -->
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        $(function() {
+
+            //1.each() 方法遍历元素
+            var sum = 0;
+            var arr = ['red', 'yellow', 'blue']
+            $('div').each(function(index, domEle) {
+
+            });
+
+            //2. $.each() 方法一般遍历数组对象
+            // $.each($('div'), function(index, element) {
+            //     console.log(index);
+            //     console.log(element);
+            // })
+
+            $.each(arr, function(index, element) {
+                console.log(index);
+                console.log(element);
+            })
+
+            $.each({
+                name: 'ybz',
+                age: 16
+            }, function(index, element) {
+                console.log(index);
+                console.log(element);
+            })
+        })
+    </script>
+</body>
+
+</html>

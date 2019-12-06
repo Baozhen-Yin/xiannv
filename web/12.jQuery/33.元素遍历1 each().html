@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>33.元素遍历创建添加删除each()</title>
+    <script src="jQuery.min.js"></script>
+    <!-- 隐式迭代是同一类元素做了同样的操作，如果要给不同元素做不同操作，就需要遍历 -->
+    <!-- 语法1： -->
+    <!-- $('div').each(function(index,domEle){xxx;}) -->
+    <!-- 1.each()方法遍历匹配的每一个元素。主要用DOM处理。each每一个-->
+    <!-- 2.里面的回调函数有两个参数：index是每个元素的索引号；demEle是每个DOM元素对象 不是jquery对象 -->
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        $(function() {
+            // $('div').css('color','red')
+            //如果针对同一类元素做不同操作 需要用到遍历元素（类似for，但是比for强大）
+            //1.each() 方法遍历元素
+            var sum = 0;
+            var arr = ['red', 'yellow', 'blue']
+            $('div').each(function(index, domEle) {
+                //1.第一个参数是索引号
+                console.log(index); //自动拍好了索引号 0 1 2
+                //2.回调函数第一个参数一定是 dom元素对象
+                // domEle.css('color') 报错 这是dom对象没有jquery方法
+                $(domEle).css('color', arr[index]) //转化为jq对象
+                sum += parseInt($(domEle).text());
+            });
+            console.log(sum); //0123  parseInt6
+
+        })
+    </script>
+</body>
+
+</html>
