@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>47.jquery事件对象</title>
+    <script src="jQuery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(145, 86, 240);
+            margin: 100px auto;
+        }
+    </style>
+    <script>
+        //事件被触发 就会有事件对象产生。
+        //element.on(events,[selector],function(event){})
+        //1.阻止默认行为：event.preventDefault() 或者 return false
+        //2.阻止冒泡:event.stopPropagation()
+
+        // DOM中，树状结构决定了子元素肯定在父元素里，所以点击子元素，就同时点击了子元素和父元素，以及父元素的父元素，以此类推，当然最终的根节点都是文档，以及window。
+
+        // 试想，当一个子元素被点击的时候，不仅仅这个元素本身被点击了，因为这个元素也在其上一级父元素中(属于父级元素的地盘)，所以相当于其父元素也被点击了，以此类推，一层一层往外推，最终整个文档也是被点击了，如果每个层级的节点元素都绑定了click事件，那么每个节点的click事件函数都会被执行。举个形象的例子，一个村里的人被打了（click），首先就要按照村里的规矩处理，同时这个村属于某个乡镇，当然也是相当于这个乡镇的人被打了，那么也要按照这个乡镇的规矩处理，以此一层一层往上报。这个例子不准确的地方就是，现实中一个人因为一个事件只会被处理一次，不会因为同一件事情多次处理。
+
+        $(function() {
+            $(document).on('click', function() {
+                console.log('点击了document');
+
+            })
+            $('div').on('click', function(e) {
+                // console.log(e);
+                console.log('点击了div');
+                e.stopPropagation(); //阻止冒泡 所以点击了document不再出来
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>41.on实现事件委派给动态元素绑定事件on</title>
+    <script src="jQuery.min.js"></script>
+    <!-- 可以事件委派操作.事件委派的定义就是,把原来加给子元素身上的事件绑定到父元素身上.
+         就是把事件委派给父元素  -->
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(145, 86, 240);
+            margin: 100px auto;
+        }
+        
+        .current {
+            background-color: rgb(21, 235, 164);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <ul>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+    </ul>
+    <script>
+        //2.on可以实现事件委托(委派) 
+        // $('ul li').click(); 利用隐式迭代给每个li都添加了一个点击事件 很麻烦
+        $('ul').on("click", "li", function() {
+            //li是子元素 selector:元素的子元素选择器 事件冒泡到父亲身上 把原来加给子元素li的点击事件绑定在父元素身上
+            //把事件委派给父元素
+            // 在此之前有bind(),live(),delegate()等方法处理时间或者事件委派 最新版本是on
+        });
+    </script>
+</body>
+
+</html>

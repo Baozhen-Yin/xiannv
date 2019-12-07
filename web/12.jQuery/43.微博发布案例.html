@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>43.微博发布案例</title>
+    <script src="jQuery.min.js"></script>
+    <style>
+        .box {
+            width: 600px;
+            height: 300px;
+            border: black 1px solid;
+            margin: 150px auto;
+        }
+        
+        span {
+            display: block;
+            width: 70px;
+            height: 10px;
+            margin: 0 auto;
+        }
+        
+        .txt {
+            width: 500px;
+            height: 150px;
+            margin-top: 15px;
+            resize: none;
+            margin-left: 20px;
+        }
+        
+        ul {
+            /* margin-top: 170px; */
+            width: 500px;
+            padding-left: 60px;
+        }
+        
+        ul li {
+            border-bottom: 1px dashed #eee;
+            line-height: 25px;
+            display: none;
+            list-style: none;
+        }
+        
+        input {
+            float: right;
+        }
+        
+        ul li a {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="weibo">
+        <span>微博发布</span>
+        <textarea name="" id="" cols="30" rows="10" class="txt"></textarea>
+        <button class="btn">发布</button>
+        <ul></ul>
+    </div>
+    <script>
+        //1.点击发布按钮，动态创建一个li 放入文本框的内容和删除按钮 并添加到ul中
+        //2.点击删除按钮就可以删除当前的微博留言
+        $(function() {
+            $('.btn').on('click', function() {
+                var li = $('<li></li>');
+                if ($('.txt').val()) {
+                    li.html($('.txt').val() + "<a href = 'javascript:;'>删除</a>");
+                    $('ul').prepend(li);
+                    li.slideDown();
+                    $('.txt').val('');
+                } else {
+                    alert('内容呢')
+                }
+            });
+            //2.点击当前留言可以删除 动态创建的元素绑定事件
+            $('ul').on('click', 'a', function() {
+                $(this).parent().slideUp(function() {
+                    $(this).remove();
+                });
+            })
+        })
+    </script>
+</body>
+
+</html>

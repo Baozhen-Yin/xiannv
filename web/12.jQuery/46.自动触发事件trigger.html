@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>46.自动触发事件trigger</title>
+    <script src="jQuery.min.js"></script>
+    <!-- 有些事情希望自动触发 比如轮播图自动播放功能和左右按钮一致。可以利用定时器自动触发右侧按钮点击事件不要鼠标 -->
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(145, 86, 240);
+            margin: 100px auto;
+        }
+    </style>
+    <script>
+        $(function() {
+            $('div').on('click', function() {
+                alert('11');
+            });
+            //自动触发事件
+            //1.元素.事件()
+            //$('div').click();自动点击div
+
+            //2.element.trigger('type')  第二种自动触发模式
+            // $('div').trigger('click');
+
+            //3.element.triggerHandler('type') 区别是不会触发元素的默认行为 表单有光标就是默认行为
+            $('div').triggerHandler('click');
+        })
+    </script>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

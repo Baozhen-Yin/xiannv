@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>45.事件只触发一次one()</title>
+    <!--  2.如果事件只想触发一次 之后不要了 可以用one()来绑定事件 -->
+    <script src="jQuery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(145, 86, 240);
+            margin: 100px auto;
+        }
+    </style>
+    <script>
+        $(function() {
+            $('p').one('click', function() {
+                alert('11'); //只弹出一次
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div></div>
+    <ul>
+        <li>hhahhahah </li>
+        <li>hhahhahah </li>
+        <li>hhahhahah </li>
+        <li>hhahhahah </li>
+        <li>hhahhahah </li>
+    </ul>
+    <p>我是p</p>
+</body>
+
+</html>

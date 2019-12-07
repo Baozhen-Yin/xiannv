@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>48.jQuery对象拷贝extend(选放)</title>
+    <script src="jQuery.min.js"></script>
+    <!-- 复制或者拷贝 $.extend(target,obj) -->
+    <!-- 语法 -->
+    <!-- $.extend([deep],target,object1,[objectN]) -->
+    <!-- 1.deep如果为true则为深拷贝 默认为false浅拷贝 -->
+    <!-- 2.target：要拷贝的目标对象 -->
+    <!-- 3.object1：待拷贝到第一个对象的对象 -->
+    <!-- 4.objectN：待拷贝到第N个对象的对象 -->
+    <!-- 5.浅拷贝是把拷贝的对象复杂数据类型中的""地址""拷贝给目标对象，修改目标对象会影响被拷贝对象 -->
+    <!-- 6.深拷贝 完全克隆（拷贝的是对象不是地址），修改目标对象不会影响被拷贝的对象 -->
+    <script>
+        $(function() {
+
+            //第一种情况 targetObj没数据
+            // var targetObj = {};
+            // var obj = {
+            //     id: 1,
+            //     name: 'ybz'
+            // }
+            // $.extend(targetObj, obj);
+            // console.log(targetObj);
+
+            //第二种情况 targetObj有数据 会覆盖原来targetObj的数据
+            // var targetObj = {
+            //     id: 0
+            // };
+            // var obj = {
+            //     id: 1,
+            //     name: 'ybz'
+            // }
+            // $.extend(targetObj, obj);
+            // console.log(targetObj);
+
+            //第三种情况 targetObj有数据 obj里面有复杂数据类型msg对象 也会全部拷贝过去
+            var targetObj = {
+                id: 0,
+                msg: {
+                    sex: '女'
+                }
+            };
+            var obj = {
+                    id: 1,
+                    name: 'ybz',
+                    msg: {
+                        age: 18
+                    }
+                }
+                // $.extend(targetObj, obj);
+                // console.log(targetObj);
+                // //1.浅拷贝 把原来对象里面的复杂数据类型地址拷贝给目标对象
+                // targetObj.msg.age = 20;
+                // console.log(targetObj);
+                // console.log(obj); //因为拷贝的是地址 所以两个的age都变成了20
+
+            //2.深拷贝 会把里面的数据完全复制一份给目标对象 如果里面有不冲突的属性，会合并到一起
+
+            $.extend(true, targetObj, obj);
+            console.log(targetObj);
+            targetObj.msg.age = 20;
+            console.log(targetObj);
+            console.log(obj);
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

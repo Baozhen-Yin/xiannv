@@ -6,12 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>40.jQuery事件导读</title>
+    <script src="jQuery.min.js"></script>
+
     <!-- on()方法在匹配元素上绑定一个或多个事件的处理函数 -->
+
     <!-- 语法 element.on(evens,[selector],fn) -->
+    <!-- 1.events：一个或者多个空格分割的事件类型 如"click" 或者"keydown" -->
+    <!-- 2.selector:元素的子元素选择器 -->
+    <!-- 3.fn 回调函数 事件的侦听函数 -->
+
+    <!-- 优势一:可以绑定多个事件 多个处理事件处理程序 -->
+    <!-- 优势二:可以事件委派操作.事件委派的定义就是,把原来加给子元素身上的事件绑定到父元素身上.
+         就是把事件委派给父元素 -->
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(145, 86, 240);
+            margin: 100px auto;
+        }
+        
+        .current {
+            background-color: rgb(21, 235, 164);
+        }
+    </style>
 </head>
 
 <body>
+    <div></div>
+    <script>
+        //1.单个事件注册
+        // $('div').click(function() {
+        //     $(this).css('background', 'red');
 
+        // });
+        // $('div').mouseenter(function() {
+        //     $(this).css('background', 'red');
+
+        // })
+
+        //2.多个事件注册 事件处理on
+        $(function() {
+            // $('div').on({
+            //     mouseenter: function() {
+            //         $(this).css('background', 'red');
+            //     },
+            //     click: function() {
+            //         $(this).css('background', 'skyblue');
+            //     },
+            //     mouseleave: function() {
+            //         $(this).css('background', 'purple');
+            //     }
+            // });
+            $('div').on('mouseenter mouseleave', function() {
+                $(this).toggleClass('current');
+            })
+        })
+    </script>
 </body>
 
 </html>

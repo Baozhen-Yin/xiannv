@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>49.jQuery多库共存</title>
+    <script src="jQuery.min.js"></script>
+    <!-- jQuery以$作为标识符 但是其他js库有些也会用$作为标识符 这样会引起冲突 -->
+    <!-- 需要一个解决方案 让库不再冲突 可以同时存在 就叫做多库共存 -->、
+    <!-- 解决方案： -->
+    <!-- 1.把里面$统一改为jQuery 比如jQuery('div') -->
+    <!-- 2.jQuery变量规定新的名称：$.noConflict()  var xx = $.noConflict() -->
+    <script>
+        $(function() {
+            function $(ele) {
+                return document.querySelector(ele)
+            }
+            $('div')
+            console.log($('div'));
+
+
+        })
+    </script>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

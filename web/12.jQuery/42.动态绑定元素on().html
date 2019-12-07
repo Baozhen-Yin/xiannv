@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>43.动态绑定元素on()</title>
+    <script src="jQuery.min.js"></script>
+
+    <!-- on的优势3 : -->
+    <!-- 动态创建的元素,click()没有办法绑定事件,on()可以给动态生成的元素绑定事件 -->
+</head>
+
+<body>
+    <ol></ol>
+    <script>
+        //3.on可以给动态生成的li创造点击事件
+        //1.老方法 并没有弹出
+        // $('ol li').click(function() {
+        //     alert('老方法点击事件')
+        // });
+        // var li = $('<li>我是后来创建的</li>');
+        // $('ol').append(li)
+
+        //2.on方法 可以给未来生成的元素绑定事件
+        $('ol').on('click', 'li', function() {
+            alert(11);
+        });
+        var li = $('<li>我是后来创建的</li>');
+        $('ol').append(li)
+    </script>
+</body>
+
+</html>

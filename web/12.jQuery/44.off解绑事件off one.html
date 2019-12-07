@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>44.off解绑事件off</title>
+    <script src="jQuery.min.js"></script>
+
+    <!-- off()方法可以移除通过on()方法添加的事件处理程序 -->
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(145, 86, 240);
+            margin: 100px auto;
+        }
+        
+        .current {
+            background-color: rgb(21, 235, 164);
+        }
+    </style>
+    <script>
+        $(function() {
+            $('div').on({
+                click: function() {
+                    console.log('我点击了');
+
+                },
+                mouseover: function() {
+                    console.log('鼠标经过了');
+
+                }
+            });
+            $('ul').on('click', 'li', function() {
+                alert('11');
+            })
+
+            //1.事件解绑 off
+            // $('div').off(); 解除了所有事件
+            $('div').off('click') //解除了点击事件
+            $('ul').off('click', 'li') //解除事件委托
+
+            //2.如果事件只想触发一次 之后不要了 可以用one()来绑定事件
+
+        })
+    </script>
+</head>
+
+<body>
+    <div></div>
+    <ul>
+        <li>hhahhahah </li>
+        <li>hhahhahah </li>
+        <li>hhahhahah </li>
+        <li>hhahhahah </li>
+        <li>hhahhahah </li>
+    </ul>
+</body>
+
+</html>
