@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>18.原型对象this指向</title>
+</head>
+
+<body>
+    <script>
+        function Star(uname, age, sex) {
+            this.uname = uname;
+            this.age = age;
+            this.sex = sex;
+        }
+        var that;
+        Star.prototype.sing = function(sang) {
+            console.log(sang);
+            that = this;
+        }
+        var xiannv = new Star('尹宝祯', 16, '女');
+        //1.在构造函数中 this指向的时对象实例 xiannv
+        xiannv.sing()
+        console.log(that === xiannv); //true
+        //2.原型对象函数里面的this 也是指向实例对象xiannv
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12.构造函数原型对象prototype</title>
+    <!-- 构造函数方法很好用但是存在浪费内存空间的问题 -->
+    <!-- 每创建一个对象 都会重新开辟一个空间来存放复杂数据类型方法 -->
+    <!-- 我们希望所有的对象使用同一个函数,这样就比较节省内存 -->
+    <!-- 构造函数原型 prototype -->
+    <!-- 构造函数通过原型分配的函数是所有对象共享的 不再单独开辟内存空间 -->
+    <!-- JS规定每一个构造函数都有一个prototype属性,指向另一个对象. -->
+    <!-- 注意这个prototype就是一个对象,这个对象的所有属性和方法,都会被构造函数所拥有 -->
+
+    <!-- 我们可以把那些不变得方法 直接定义在prototype对象上 这样所有的对象的实例就可以共享这些方法 -->
+    <!-- 包含可以由特定类型的所有实例共享的属性和方法，也就是让该函数所实例化的对象们都可以找到公用的属性和方法
+        。任何函数在创建的时候，其实会默认同时创建该函数的prototype对象。 -->
+</head>
+
+<body>
+    <script>
+        function Star(uname, age, sex) { //把公共部分创造出来
+            this.uname = uname;
+            this.age = age;
+            this.sex = sex;
+            // this.sing = function(sang) {
+            //     console.log(sang);
+
+            // }
+        }
+        Star.prototype.sing = function(sang) {
+            console.log(sang);
+        }
+        var xiannv = new Star('尹宝祯', 16, '女');
+        var chounan = new Star('xyk', 36, '男');
+        console.log(xiannv.sing == chounan.sing); //false  true
+        console.dir(Star); //prototype: {constructor: ƒ} object 原型对象
+        xiannv.sing('小跳蛙');
+        chounan.sing('哈哈哈');
+
+        //1.原型:一个对象 我们也称prototype为原型对象
+        //2.原型的作用是什么:共享方法
+        //3.一般情况下公共属性定义到构造函数里面 公共的方法放到原型对象上面
+    </script>
+</body>
+
+</html>

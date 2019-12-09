@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>19.利用原型对象扩展内置对象方法</title>
+    <!-- 可以通过原型对象，对原来的内置对象进行扩展自定义的方法。比如给数组增加自定义求偶数和功能 -->
+    <!-- 注意：数组和字符串内置对象不能给原型对象覆盖操作Array.prototype={},只能是Array.prototype.xxx=function(){} -->
+</head>
+
+<body>
+    <script>
+        // console.log(Array.prototype);
+        Array.prototype.sum = function() {
+            var sum = 0;
+            for (var i = 0; i < this.length; i++) {
+                sum += this[i];
+            }
+            return sum;
+        }
+        var arr = [34, 56, 34];
+        console.log(arr.sum()); //124
+        console.log(Array.prototype);
+        var arr1 = new Array(11, 22, 34);
+        console.log(arr1.sum());
+    </script>
+</body>
+
+</html>

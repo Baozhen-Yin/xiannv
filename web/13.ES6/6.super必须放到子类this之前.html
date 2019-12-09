@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6.super必须放到子类this之前</title>
+</head>
+
+<body>
+    <script>
+        //父亲有加法方法
+        class Father {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            sum() {
+                console.log(this.x + this.y);
+            }
+        }
+
+        //子类可以继承父类的加法方法 同时 扩展减法方法
+        class Son extends Father {
+            constructor(x, y) {
+                super(x, y);
+                this.x = x;
+                this.y = y;
+                //super 必须在子类this之前调用
+                //调用父类的构造函数 super
+                // super(x, y);
+            }
+            subtract() {
+                console.log(this.x - this.y);
+
+            }
+        }
+        var son = new Son(5, 3)
+        son.subtract(); //2 减法操作儿子独有
+        son.sum(); //8
+    </script>
+</body>
+
+</html>

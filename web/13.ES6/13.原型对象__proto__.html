@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13.原型对象__proto__</title>
+    <!-- 对象都会有一个属性 __proto__ 指向构造函数的prototype原型对象,之所以我们对象可以使用构造函数prototype
+         原型对象的属性和方法,就是因为对象有__proto__原型的存在-->
+    <!-- 其实我们平时调用的字符串方法、数组方法、对象方法、函数方法等都是靠__proto__继承而来的。 -->
+
+    <!-- __proto__对象原型的意义就在于为对象的查找机制提供一个方向,或者说一条路线,但他是一个非标准属性,
+        因此在实际开发中,不可以使用这个属性(赋值操作这些不可以的),他只是内部指向原型对象prototype -->
+
+</head>
+
+<body>
+    <script>
+        function Star(uname, age, sex) { //把公共部分创造出来
+            this.uname = uname;
+            this.age = age;
+            this.sex = sex;
+        }
+        Star.prototype.sing = function(sang) {
+            console.log(sang);
+        }
+        var xiannv = new Star('尹宝祯', 16, '女');
+        var chounan = new Star('xyk', 36, '男');
+        console.log(xiannv); //_proto__: sing: ƒ (sang) constructor: ƒ Star(uname, age, sex) __proto__: Object
+        //对象身上系统自动添加一个 __proto__指向我们构造函数的原型对象 prototype
+        //__proto__对象与原型对象prototype是等价的
+        console.log(xiannv.__proto__ === Star.prototype); //true
+        //方法的查找规则 :首先先看xiannv对象是否有sing这个方法 如果有就执行这个对象上的sing
+        //如果没有sing这个方法 因为有__proto__存在,就去构造函数原型对象prototype身上去查找
+    </script>
+</body>
+
+</html>

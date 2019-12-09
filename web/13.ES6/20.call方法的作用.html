@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>20.call方法的作用</title>
+    <!-- ES6之前没有给我们提供extends继承，我们可以通过构造函数+原型对象模拟实现继承，被称为组合继承 -->
+    <!-- call() -->
+    <!-- 1.可以调用这个函数 -->
+    <!-- 2.可以修改函数运行时的this指向 -->
+    <!-- function.call(thisArg，arg1，arg2，...) -->
+    <!-- thisArg:当前调用函数的this指向对象 -->
+    <!-- arg1，arg2：传递的其他参数 -->
+</head>
+
+<body>
+    <script>
+        //call方法
+        function fn(x, y) {
+            console.log('我是仙女');
+            console.log(this); //1.window 2.posi
+            console.log(x + y); //3
+
+        }
+        var posi = {
+            name: '小可爱'
+        }
+
+        // fn();
+        //1.call方法可以调用函数
+        // fn.call();
+        //2.可以修改fn的this指向
+        fn.call(posi, 1, 2) //此时函数指向posi这个对象
+    </script>
+</body>
+
+</html>

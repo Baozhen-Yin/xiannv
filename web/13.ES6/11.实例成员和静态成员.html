@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>11.实例成员和静态成员</title>
+    <!-- JS的构造函数中可以添加一些成员,可以在构造函数本身上添加,也可以在构造函数内部的this上添加.通过这两种方式添加的成员,就分别成为静态成员 和 实例成员 -->
+    <!-- 静态成员: 在构造函数本身上添加,只能由构造函数本身来访问-->
+    <!-- 实例成员: 在构造函数内部的this上添加,只能由实例化对象来访问-->
+</head>
+
+<body>
+    <script>
+        function Star(uname, age, sex) { //把公共部分创造出来
+            this.uname = uname;
+            this.age = age;
+            this.sex = sex;
+            this.sing = function(sang) {
+                console.log(sang);
+
+            }
+        }
+        var xiannv = new Star('尹宝祯', 16, '女');
+        // 1.uname age sex sing 都是实例成员 是this添加的 只能通过实例对象xiannv来访问
+        // console.log(Star.uname); 错误!!! 不可以通过构造函数来访问实例成员
+
+        // 2.静态成员  tall就是静态成员 静态成员只能通过构造函数访问
+        Star.tall = '168';
+        console.log(Star.tall); //168
+    </script>
+</body>
+
+</html>

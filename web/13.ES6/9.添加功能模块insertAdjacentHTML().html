@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.创建li元素和section元素 以前的做法:动态创建元素createElement 但是里面内容较多需要innerHTML赋值,在    
+        //appendChild追加到父元素
+        //现在做法 insertAdjacentHTML()可以之间把字符串格式元素追加到父元素中
+        //语法:element.insertAdjacentHTML(position,text); position是相对于元素的位置 并且必须是以下字符串之一:
+        //beforebegin 元素自身前面 afterbegin插入元素内部的第一个子节点之前 beforeend插入元素内部第一个子节点的之后
+        //afterend 元素自身的后面
+        //text是要被解析为HTML或XML,并插入到DOM树中的字符串
+        //appendChild不支持追加字符串的子元素,insertAdjacentHTML支持追加字符串的元素
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14.原型constructor构造函数</title>
+    <!-- 对象原型(__proto__)和构造函数(prototype)原型对象 里面 都有一个属性 constructor属性,constructor我们称为构造      函数,因为它指回构造函数本身 -->
+    <!-- constructor主要用于记录该对象引用于哪个构造函数,它可以让原型对象重新指向原来的构造函数 -->
+
+    <!-- 如果我们修改了原来的原型对象,给原型对象赋值的是一个对象,则必须手动的利用constructor指回原来的构造函数 -->
+</head>
+
+<body>
+    <script>
+        function Star(uname, age, sex) { //把公共部分创造出来
+            this.uname = uname;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        // Star.prototype.sing = function(sang) {
+        //     console.log(sang);
+        // }
+        // Star.prototype.movie = function() {
+        //     console.log('我会演电影');
+        // }
+        Star.prototype = {
+            //很多情况下我们需要手动的利用constructor指回原来的构造函数
+            constructor: Star,
+            sing: function(sang) {
+                console.log(sang);
+            },
+            movie: function() {
+                console.log('我会演电影');
+            }
+        }
+        var xiannv = new Star('尹宝祯', 16, '女');
+        var chounan = new Star('xyk', 36, '男');
+        // console.log(Star.prototype); //object
+        //console.log(xiannv.__proto__); //object
+
+        console.log(Star.prototype.constructor); //返回构造函数本身
+        console.log(xiannv.__proto__.constructor); //返回构造函数本身
+
+        //很多情况下我们需要手动的利用constructor指回原来的构造函数
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.类继承extends和super关键字</title>
+</head>
+
+<body>
+    <script>
+        //子承父业 继承
+        //程序中的继承 子类可以继承父类的一些""属性""和""方法"""
+        //继承的语法 class Father{ 父类}
+        //class Son extends Father{ 子类继承父类}
+        // class Father {
+        //     constructor() {
+
+        //     }
+        //     money() {
+        //         console.log(100);
+
+        //     }
+        // }
+        // class Son extends Father {
+
+        // }
+        // var son = new Son();
+        // son.money(); //100 躺着继承100块钱
+
+
+        class Father {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            sum() {
+                //this.x this.y是父类construtor的 
+                console.log(this.x + this.y);
+            }
+        }
+
+        class Son extends Father {
+            constructor(x, y) {
+                // this.x = x;
+                // this.y = y; 属于不一样的类 this指向是不同的
+                super(x, y) //调用了父类中的构造函数
+            }
+        }
+        var son = new Son(1, 2);
+        son.sum(); // 报错 super后3
+
+
+        // super关键字 用于访问和调用对象父类上的函数，可以调用父类的构造函数，也可以调用父类的普通函数
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>17.对象成员查找机制(规则)</title>
+    <!-- 1.当访问一个对象的属性(包括方法时),首先查找这个"""对象自身""" 有没有该属性-->
+    <!-- 2.如果没有就查找他的原型(也就是__proto__指向的prototype对象) -->
+    <!-- 3.如果还没有就查找原型对象的原型(Object原型对象) -->
+    <!-- 4.以此类推一直找的Object为止(null) -->
+</head>
+
+<body>
+    <script>
+        function Star(uname, age, sex) {
+            this.uname = uname;
+            this.age = age;
+            this.sex = sex;
+        }
+        Star.prototype.sing = function(sang) {
+            console.log(sang);
+        }
+        Star.prototype.tell = '167'; //第二次查找
+        Object.prototype.tell = '165' //第三次查找
+        var xiannv = new Star('尹宝祯', 16, '女');
+        xiannv.tell = '168'; //第一次查找
+        console.log(xiannv.tell); //168 就近原则
+        console.log(Object.prototype); //有 tostring这个方法
+        console.log(xiannv);
+        console.log(Star.prototype);
+        console.log(xiannv.toString()); //没有错误 因为父级Object有这个toString方法
+    </script>
+</body>
+
+</html>

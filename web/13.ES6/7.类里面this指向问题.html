@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7.类里面this指向问题</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <script>
+        // 注意点:
+        //1.在ES6中类没有变量提升,所以必须先定义类,才能通过实例化对象
+        //2.类里面的共有属性和方法一定要加this使用
+        //3.constructor里面的this指向实例对象,方法里面的this指向这个方法的调用者
+        //4.如果某个方法里面的this指向的不再是constructor里面的thisl,但是想要使用constructor里面的this
+        //  此时在外面声明一个全局变量,所有的都可以使用这个变量了
+        var that;
+        class Star {
+            constructor(uname, age) {
+                //constructor 里面的this指向的是 创建的实例对象
+                console.log(this); //Star
+                that = this;
+                this.uname = uname;
+                this.age = age;
+                this.btn = document.querySelector('button');
+                this.btn.onclick = this.sing //点击完才调用 所以不加()
+            }
+            sing() {
+                //这个sing方法里面的this 指向的是btn 这个按钮,因为这个按钮调用了这个函数 谁调用指向谁
+                console.log(this); //button
+
+                console.log(that.uname); //undifiend  因为btn里面没有uname
+                //that 里面存储的是constructor里面的this
+            }
+            dance() {
+                console.log(this);
+
+            }
+        }
+        var ybz = new Star('尹宝祯')
+        ybz.dance();
+    </script>
+</body>
+
+</html>

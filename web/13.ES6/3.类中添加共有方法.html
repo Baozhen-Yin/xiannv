@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.类中添加共有方法</title>
+</head>
+
+<body>
+    <script>
+        //添加一个明星类
+        class Star {
+            constructor(uname, age) {
+                    this.uname = uname;
+                    this.auge = age;
+                }
+                //多个函数方法之间不需要添加逗号分割
+            sing(song) {
+                // console.log('唱歌啦');
+                console.log(this.uname + song);
+
+
+            }
+        }
+
+        //2.利用类创建对象
+        var ybz = new Star('尹宝祯', 16)
+        console.log(ybz);
+        ybz.sing('小跳蛙');
+    </script>
+</body>
+
+</html>

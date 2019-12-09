@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10.利用构造函数创建对象</title>
+    <!-- 在典型OOP的语言中(面向对象语言 如Java)都会存在类的概念 类就是对象的模板,对象就是类的实例,在ES6之前没有引入类的   概念 -->
+    <!-- 但是目前浏览器js是ES5版本 大多数高版本的浏览器也支持ES6 不给只实现了ES6的部分特性和功能 -->
+    <!-- ES6之前 对象不是基于类创建的 而是用一种称为''构造函数''的''特殊函数''来定义对象和它们的特征 -->
+
+    <!-- js原生创建对象有三种方式 -->
+    <!-- 1.对象字面量 -->
+    <!-- 2.new Object() -->
+    <!-- 3.自定义构造函数 -->
+</head>
+
+<body>
+    <script>
+        //1.对象字面量创建对象
+        var obj1 = {};
+        //2.new Object() 
+        var obj2 = new Object();
+        //3.自定义构造函数
+        function Star(uname, age, sex) { //把公共部分创造出来
+            this.uname = uname;
+            this.age = age;
+            this.sex = sex;
+            this.sing = function(sang) {
+                console.log(sang);
+
+            }
+        }
+        var xiannv = new Star('尹宝祯', 16, '女');
+        console.log(typeof xiannv);
+        console.log(xiannv.uname);
+        xiannv.sing('打豆豆'); //实参传给形参 传给log
+        var chounan = new Star('邢昱恺', 80, '人妖');
+        console.log(chounan.uname);
+
+        //首字母要大写
+        //构造函数要和new一起使用才有意义
+        //执行构造函数里面的代码 给这个新对象添加属性和方法
+        //返回这个新对象(所以构造函数里面不需要return)
+    </script>
+</body>
+
+</html>

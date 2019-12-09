@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.创建类和生成实例</title>
+</head>
+
+<body>
+    <!-- 语法 -->
+    <!-- class name{
+    //class body
+} -->
+
+    <!-- 创建实例 var XX = new name() -->
+
+    <!-- 类 constructor 构造函数 -->
+    <!-- constructor()方法是类的构造函数（默认方法），用于传递参数，返回实例对象，通过New命令生成对象实例时，
+         自动调用该方法，如果没有显示定义，类内部会自动给我们搭建一个constructor() -->
+
+    <script>
+        class Star {
+            constructor(uname, age) {
+                this.uname = uname;
+                this.age = age;
+            }
+        };
+        var ybz = new Star('尹宝祯', 16)
+        console.log(ybz);
+        //（1）通过class关键字创建类 类名习惯定义首字母大写
+        //(2)类里面有个constructor 函数，可以接收传递过来的参数，同时返回实例对象
+        //(3)cnstrustor函数 只要new生成实例时就会自动调用这个函数，如果我们不写这个函数 类也会自动生成这个函数
+        //(4)生成实例 new不能省略
+        //(5)最后注意语法规范 类后面不要加小括号 构造函数不需要加function
+    </script>
+</body>
+
+</html>
