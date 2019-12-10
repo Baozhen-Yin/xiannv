@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>35.函数内部this指向问题</title>
+    <!-- 这些this指向，是当我们调用函数的时候确定的。调用方式不同决定了this指向不同，一般我们指向调用者 -->
+    <!-- 1.普通函数调用 this指向window -->
+    <!-- 2.构造函数调用 this指向实例对象 原型对象里面的方法也指向实例对象 -->
+    <!-- 3.对象方法调用 this指向该方法所属对象 -->
+    <!-- 4.事件绑定方法 this指向绑定事件对象 -->
+    <!-- 5.定时器函数   this指向window -->
+    <!-- 6.立即执行函数 this指向window -->
+</head>
+
+<body>
+    <button></button>
+    <script>
+        var btn = document.querySelector('button')
+            //1.普通函数调用方法 window
+        function fn() {
+            console.log('为啥我是普通函数指向：' + this);
+        }
+        // fn();
+        fn.call();
+
+
+
+        // 2.对象的方法调用 指向o这个对象
+        var o = {
+            sayHi: function() {
+                console.log('为啥我是方法指向：' + this);
+            }
+        }
+        o.sayHi();
+
+
+        //3.构造函数调用 指向ybz这个实例对象 原型对象里面的this指向的也是ybz这个实例对象
+        function Star() {
+            console.log('为啥我是构造函数指向：' + this);
+        }
+        Star.prototype.sing = function() {
+            console.log('为啥我是构造函数指向：' + this);
+        }
+        var ybz = new Star();
+
+
+        //4.绑定事件函数调用 点击按钮即可调用 this指向btn
+        btn.onclick = function() {
+            console.log('为啥我是绑定事件函数指向：' + this);
+        }
+
+
+        //5.定时器函数调用 每隔一秒自动调用 this指向window
+        window.setTimeout(function() {
+            console.log('为啥我是定时器指向：' + this);
+        }, 1000);
+
+        //6.立即执行函数 this指向window
+        (function() {
+            console.log('我自己执行函数指向：' + this);
+        }())
+    </script>
+</body>
+
+</html>

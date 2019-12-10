@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30.trim方法去除字符串两侧空格</title>
+    <!-- 语法 str.trim() -->
+    <!-- trim()方法不影响字符串本身 它返回的是一个新的字符串 -->
+</head>
+
+<body>
+    <input type="text"><button>点击</button>
+    <div></div>
+    <script>
+        var str = '   ybz   '
+        var newStr = str.trim();
+        console.log(newStr);
+        var input = document.querySelector('input')
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        btn.onclick = function() {
+            var str = input.value.trim();
+            if (str === '') {
+                alert('请输入内容')
+            } else {
+                div.innerHTML = str;
+                console.log(str);
+                console.log(str.length);
+
+
+            }
+        }
+    </script>
+</body>
+
+</html>

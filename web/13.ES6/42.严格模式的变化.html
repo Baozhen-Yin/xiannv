@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>42.严格模式的变化</title>
+    <!-- 1.在正常模式中 如果一个变量没有声明就赋值默认是全局变量。严格模式禁止这种用法 -->
+    <!-- 2.不能随意删除已经声明好的变量 例如 delete x;语法错误 -->
+
+    <!-- 3.以前全局作用域this指向window 严格模式下指向undefined -->
+
+    <!-- 4.以前构造函数不加new可以调用，当普通函数，this指向全局对象 -->
+    <!-- 5.new实例化的构造函数依然指向创建的对象实例 -->
+    <!-- 6.setTimeout 里的this依旧指向this-->
+    <!-- 7.事件,对象还是指向调用者 -->
+    <!-- 8.函数名不允许重名 -->
+    <!-- 9.函数必须声明在顶层,新版本JS会引入块级作用域(ES6已经引入),不允许在if for之类的非函数代码块声明函数 -->
+</head>
+
+<body>
+    <script>
+        'use strict';
+        var num = 10;
+        console.log(num); // num is not defined
+        // function fn() {
+        //     console.log(this);
+        // }
+        // fn()
+
+        // function Star() {
+        //     this.sex = '女'
+        // }
+        // var ybz = new Star();
+        // console.log(ybz.sex);
+
+        //setTimeout 里的this依旧指向window
+        // setTimeout(function() {
+        //     console.log(this); //window
+
+        // }, 1000)
+
+        function fn(a, a) {
+            console.log(a + a);
+        }
+        fn(1, 2)
+    </script>
+</body>
+
+</html>

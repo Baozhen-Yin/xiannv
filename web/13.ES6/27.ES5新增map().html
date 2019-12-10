@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>27.ES5新增map()</title>
+    <!-- map()方法定义在JavaScript的Array中，它返回一个新的数组，数组中的元素为原始数组调用函数处理后的值。 -->
+    <!-- map()不会对空数组进行检测 map()不会改变原始数组 -->
+    <!-- 语法：array.map(function(currentValue, index, arr), thisIndex) -->
+    <!-- 1.currentValue：必须。当前元素的的值。-->
+    <!-- 2.index：可选。当前元素的索引。 -->
+    <!-- 3.arr：可选。当前元素属于的数组对象。 -->
+    <!-- 4.thisValue：可选。对象作为该执行回调时使用，传递给函数，用作"this"的值 -->
+</head>
+
+<body>
+    <script>
+        var array = [1, 2, 3, 4, 5];
+        //返回一个新的数组
+        var newArray = array.map(function(currentValue) {
+            return currentValue * currentValue;
+        })
+
+        console.log(newArray) // [1, 4, 9, 16, 25]
+    </script>
+</body>
+
+</html>

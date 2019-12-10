@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>34.函数的调用方式</title>
+    <!-- 1.普通函数 -->
+    <!-- 2.对象的方法 -->
+    <!-- 3.构造函数 -->
+    <!-- 4.绑定事件函数 -->
+    <!-- 5.定时器函数 -->
+    <!-- 6.立即执行函数 -->
+</head>
+
+<body>
+    <script>
+        //1.普通函数调用方法
+        function fn() {
+            console.log('为啥我是普通函数');
+        }
+        // fn();
+        fn.call();
+
+        // 2.对象的方法调用
+        var o = {
+            sayHi: function() {
+                console.log('为啥我是方法');
+            }
+        }
+        o.sayHi();
+
+        //3.构造函数调用
+        function Star() {
+            console.log('为啥我是构造函数');
+        }
+        new Star();
+
+        //4.绑定事件函数调用 点击按钮即可调用
+        btn.onclick = function() {
+            console.log('为啥我是绑定事件');
+        }
+
+        //5.定时器函数调用 每隔一秒自动调用
+        setInterval(function() {
+            console.log('为啥我是定时器');
+        }, 1000)
+
+        //6.立即执行函数
+        (function() {
+            console.log('我自己执行函数');
+        }())
+    </script>
+</body>
+
+</html>

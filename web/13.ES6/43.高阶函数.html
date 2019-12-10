@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>43.高阶函数</title>
+    <script src="js/18.animate_callback.js"></script>
+    <script src="js/jQuery.min.js"></script>
+    <!-- 高阶函数是对其他函数进行操作的函数,他 接收函数 作为 参数 或 将函数作为 返回值 输出 -->
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(228, 58, 58);
+        }
+    </style>
+</head>
+
+<body>
+    <button>动起来</button>
+    <div></div>
+    <script>
+        //1.接收函数 作为 参数
+
+        // function fn(callback) {
+        //     callback && callback()
+        // }
+        // fn(function() {
+        //     alert('hi')
+        // })
+
+        function fn(a, b, callback) {
+            console.log(a + b);
+            callback && callback()
+        }
+        fn(1, 2, function() {
+            console.log('我是回调函数,我是最后调用的'); //3  我是回调函数,我是最后调用的
+        })
+
+        $(function() {
+            $('button').click(function() {
+                $('div').animate({
+                    left: 500,
+                    top: 300,
+                    opacity: .4
+
+                }, function() {
+                    $('div').css('backgroundColor', 'pink');
+                });
+            })
+        })
+    </script>
+    <script>
+        //2.将函数作为 返回值 输出
+        // function fn() {
+        //     return function() {}
+        // }
+        // fn();
+        //
+    </script>
+    <!-- 此时fn就是一个高阶函数 -->
+    <!-- 函数是一种数据类型 同样可以作为参数,传递给另外一个参数使用,最典型的就是回调函数 -->
+</body>
+
+</html>

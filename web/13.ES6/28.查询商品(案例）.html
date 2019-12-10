@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>27.查询商品(案例）</title>
+    <!-- 1.把数据渲染到页面中 -->
+    <!-- 2.根据价格显示数据 -->
+    <!-- 3.根据商品名称显示数据 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .search {
+            margin: 50px auto;
+            width: 700px;
+            /* height: 100px; */
+        }
+        
+        .start,
+        .end {
+            width: 70px;
+        }
+        
+        th,
+        td {
+            border: 1px solid rgb(19, 18, 18);
+            width: 100px;
+            height: 30px;
+            border-collapse: collapse;
+            text-align: center;
+            line-height: 30px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        按照价格查询：<input type="text" class="start">-<input type="text" class="end">
+        <button class="search-price">搜索</button> 按照商品名称查询：<input type="text" class="product">
+        <button class="search-pro">查询</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>商品价格</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>1</td>
+                <td>苹果</td>
+                <td>5999</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>oppo</td>
+                <td>999</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>华为</td>
+                <td>4999</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>小米</td>
+                <td>3999</td>
+            </tr> -->
+        </tbody>
+    </table>
+    <script>
+        var data = [{
+            id: 1,
+            pname: '苹果',
+            price: 5999
+        }, {
+            id: 2,
+            pname: 'oppo',
+            price: 999
+        }, {
+            id: 3,
+            pname: '华为',
+            price: 4999
+        }, {
+            id: 4,
+            pname: '小米',
+            price: 3999
+        }, {
+            id: 5,
+            pname: '小米',
+            price: 3999
+        }];
+        //1.获取相应的元素
+        var tbody = document.querySelector('tbody');
+        var search_price = document.querySelector('.search-price');
+        var start = document.querySelector('.start');
+        var end = document.querySelector('.end');
+        var product = document.querySelector('.product');
+        var search_pro = document.querySelector('.search-pro')
+        setDate(data);
+        //2.把数据渲染到页面中
+        function setDate(mydata) {
+            //在搜索完价格之后 先清空tbody里面的数据 再进行渲染
+            tbody.innerHTML = '';
+            mydata.forEach(function(value) {
+                //此时value是一个对象
+                var tr = document.createElement('tr');
+                //每一行创造三个td 遍历行
+                tr.innerHTML = '<td>' + value.id + '</td><td>' + value.pname + '</td><td>' + value.price + '</td>'
+                tbody.appendChild(tr)
+            });
+        }
+
+        //3.根据价格筛选商品 当点击了按钮
+
+        search_price.addEventListener('click', function() {
+            var newData = data.filter(function(value) {
+                // console.log(value); 对象
+                return value.price >= start.value && value.price <= end.value;
+            });
+            console.log(newData);
+            //把筛选完对象渲染到页面中 因为是筛选输入价格之后的
+            setDate(newData);
+        })
+
+        //3.根据商品名称筛选商品 当点击了按钮
+        search_pro.addEventListener('click', function() {
+            var newProduct = []
+            data.some(function(value) {
+                if (value.pname = product.value) {
+                    newProduct.push(value)
+                    return true;
+                };
+            });
+            //把拿到的数据渲染到页面中
+            setDate(newProduct);
+        })
+    </script>
+</body>
+
+</html>

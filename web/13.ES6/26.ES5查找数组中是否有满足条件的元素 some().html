@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>26.查找数组中是否有满足条件的数</title>
+    <!-- some() 检测数组中元素是否满足指定条件-->
+    <!-- 1.语法：array.some(function(currentValue,index,arr)) -->
+    <!-- 2.注意它返回的是布尔值 如果查找到这个元素返回true  没查到返回false -->
+    <!-- 3.crrentValue：数组当前项的值 -->
+    <!-- 4.index：数组当前的索引 -->
+    <!-- 5.arr：数组对象本身 -->
+    <!-- 6.如果找到第一个满足条件的元素 则终止循环不再查找 -->
+</head>
+
+<body>
+    <script>
+        //some查找数组中是否有满足条件的元素
+        var arr = [13, 45, 23, 45, 222, 9, 3, 21];
+
+        var flage = arr.some(function(value, index, array) {
+            // return value >= 20;
+            return value < 3;
+        })
+        console.log(flage); //true flase
+        var arr1 = ['red', 'pink', 'black']
+        var flag = arr1.some(function(value) {
+            // 如果找到第一个满足条件的元素 则终止循环不再查找
+            return value == 'pink';
+        })
+        console.log(flag); //true
+
+        //filter也是查找满足条件的元素 返回的是一个数组 而且是把所有满足条件的元素都存在新数组里面返回
+        //some也是查找满足条件的元素 返回布尔值 只是查找有无 找到立即返回终止循环 不会接下来继续
+    </script>
+
+</body>
+
+</html>

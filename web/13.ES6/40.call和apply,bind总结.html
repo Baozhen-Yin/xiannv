@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>40.call和apply,bind总结</title>
+</head>
+
+<body>
+    <script>
+        //1.相同点：可以改变函数内部this指向
+
+        //2.区别点：
+        //(1)call,apply 会调用函数，并且改变函数内部指向
+        //(2)call和apply传递的参数不一样 ，call传递参数aru1，aru2形式 apply必须以数组形式[arg1]
+        //(3)bind不会调用函数，只是改变内部函数this指向
+
+        // 3.主要应用场景
+        //(1)call用作继承 继承父构造函数属性 把父构造函数调用过来给子构造函数使用属性
+        //(2)apply经常和数组有关系 比如借助数学对象实现数组最大值最小值
+        //(3)bind 不调用函数但是还想改变this指向，比如改变定时器内部的this指向
+    </script>
+
+
+</body>
+
+</html>

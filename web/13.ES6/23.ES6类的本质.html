@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>23.ES6类的本质</title>
+</head>
+
+<body>
+    <script>
+        //ES6之前通过 构造函数+原型 实现面向对象编程
+        //1.构造函数都有一个原型对象 prototype
+        //2.构造函数原型对象prototype里面有constructor 指向构造函数本身
+        //3.构造函数可以通过原型对象添加方法
+        //4.构造函数创建的实例对象有 __proto__ 原型指向 构造函数的原型对象
+
+        //ES6通过类 实现面向对象编程
+        class Star {
+
+        }
+        console.log(typeof Star); //function
+        //1.类的本质是函数 我们可以简单的认为类时是构造函数的另外一种写法
+        console.log(Star.prototype); //（1）有原型对象 
+        //（2）有constructor指回类本身
+        console.log(Star.prototype.constructor); //class Star
+        Star.prototype.sing = function() {
+
+            //（3）也可以通过原型对象添加方法
+            console.log('唱个歌');
+        }
+
+        var ybz = new Star()
+        console.dir(ybz);
+        //(4)构造函数创建的实例对象也有__proto__ 原型指向 构造函数原型对象
+        console.log(ybz.__proto__ === Star.prototype); //true
+        //（5）ES6的类它的绝大部分功能 ES5都可以做到 新的class写法只是让对象原型的写法更加清晰、
+        //更像面向对象编程的语法而已
+
+        // （6）ES6的类其实就是语法糖 
+        // （7）语法糖：就是一种便捷写法，有两种方法可以实现同样的功能，但是一种写法更加清晰方便，那么这个方法就是语法糖
+    </script>
+</body>
+
+</html>

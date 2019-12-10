@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>38.改变this指向bind方法及其应用</title>
+    <!-- bind()不会取调用 只会改变指向 -->
+    <!-- fun.bind(thisArg,arg1,arg2,...) -->
+    <!-- 1.thisArg :在fun函数运行时指定的this值 -->
+    <!-- 2.arg1 ， arg2 传递其他的函数 -->
+    <!-- 3.返回由指定的this值初始化参数改造的 原函数 拷贝 -->
+</head>
+
+<body>
+    <button>点击1</button>
+    <button>点击2</button>
+    <button>点击3</button>
+    <script>
+        //3.bind()捆绑 
+        var o = {
+            name: 'ybz',
+
+        }
+
+        function fn(a, b) {
+            console.log(this); //window
+            console.log(a + b); //3
+
+        };
+        //1.不会调用原来的函数 可以改变函数内部this指向
+
+        var f = fn.bind(o, 1, 2); //{name: "ybz"}
+        f();
+        //2.返回的是原函数改变this之后产生的""新函数""  
+        //3.如果有的函数不需要立即调用 但是又想改变这个函数内部的this指向 此时用bind最合适
+        //4.我们有一个按钮 点击禁用 但是3秒之后再开启这个按钮
+        // var btn = document.querySelector('button');
+        // btn.onclick = function() {
+        //     this.disabled = true; //指向btn
+        //     //var that = this;
+        //     setTimeout(function() {
+        //         // that.disabled = false; //定时器this指向window 没有disable这个属性
+        //         this.disabled = false;
+        //     }.bind(this), 3000); //定时器函数绑定了bind()方法 以及this指向btn
+        // }
+
+        var btns = document.querySelectorAll('button');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].onclick = function() {
+                this.disabled = true;
+                setTimeout(function() {
+                    this.disabled = false;
+                }.bind(this), 2000)
+            }
+        }
+    </script>
+</body>
+
+</html>

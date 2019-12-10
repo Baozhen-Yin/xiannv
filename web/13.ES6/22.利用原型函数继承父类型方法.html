@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>22.利用原型函数继承方法</title>
+</head>
+
+<body>
+    <script>
+        //1.父构造函数
+        function Father(uname, age) {
+            //this指向父构造函数的对象实例
+            this.uname = uname;
+            this.age = age;
+        }
+        Father.prototype.money = function() {
+                //定义了一个共有的方法
+                console.log(10000000);
+
+            }
+            //2.子构造函数
+        function Son(uname, age, tall) {
+            Father.call(this, uname, age); //父构造函数的this指向子构造函数的this 父亲this改成孩子this
+            this.tall = tall;
+
+        }
+        // Son.prototype = Father.prototype; 这样直接赋值会有问题 如果修改了子原型对象 父原型对象也会被修改 就像父亲要考试
+        Son.prototype = new Father(); //创建了实例对象 子构造函数继承父构造函数原型里面的方法 而且不会影响父构造函数的原型，  new Father()是一个实例对象 执行一个对象就会把Son.prototype里面的对象覆盖 所以son没有prototype
+        //如果利用对象形式修改了原型对象 别忘了利用constructor指回构造函数
+        Son.prototype.constructor = Son;
+        Son.prototype.exam = function() {
+            console.log('我要考一百分');
+        }
+
+        var son = new Son('尹宝祯', 16, 168);
+        console.log(son); //已经实现子构造函数继承
+        console.log(Father.prototype); //父亲竟然也要考试 也添加了考试的这个方法
+        console.log(Son.prototype.constructor); //指向father 指向有问题    Son.prototype.constructor = Son;指回
+    </script>
+</body>
+
+</html>

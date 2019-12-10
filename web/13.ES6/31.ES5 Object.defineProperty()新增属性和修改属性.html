@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>31.Object.defineProperty()</title>
+    <!-- 语法：Object.defineProperty(obj,prop,descriptor) -->
+    <!-- 1.obj:必需 目标对象 -->
+    <!-- 2.prop：必需。需定义或修改属性的名字 -->
+    <!-- 3.descriptor：必需：目标属性所拥有的特性 -->
+
+    <!-- 第三个参数 descriptor 以对象形式{}书写 -->
+    <!-- 1.value：设置属性的值，默认为undefined -->
+    <!-- 2.writable：值是否可以重写 true|false 默认为false-->
+    <!-- 3.enumerable:目标属性是否可以被枚举   true|false 默认为false 不想让别人遍历出来-->
+    <!-- 4.configurable：目标属性是否可以被删除或者是否可以再次修改特性  true|false 默认为false -->
+</head>
+
+<body>
+    <script>
+        // Object.defineProperty()定义新属性或者修改原有属性
+        var obj = {
+            id: 1,
+            pname: '小米',
+            price: 1999
+        };
+        //1.以前的对象添加和修改属性的方式
+        // obj.num = 1000; //给对象增加属性
+        // obj.price = 998; //只要998 修改属性
+
+
+
+        //2.Object.defineProperty() 定义新属性或者修改原属性
+        Object.defineProperty(obj, 'number', {
+            value: 1000
+
+        })
+        console.log(obj);
+        Object.defineProperty(obj, 'price', {
+            value: 998
+        });
+        console.log(obj);
+        Object.defineProperty(obj, 'id', {
+            //不允许修改这个属性值 默认值flase
+            writable: false
+        });
+        obj.id = 2;
+        console.log(obj); //id还是1 不让修改
+    </script>
+</body>
+
+</html>

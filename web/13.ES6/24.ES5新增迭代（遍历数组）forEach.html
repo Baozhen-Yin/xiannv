@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>24.迭代（遍历数组）forEach</title>
+    <!-- 数组(遍历)方法： -->
+    <!-- forEach()  -->
+    <!-- array.forEach(function(currentValue,index,arr)) -->
+    <!-- currentValue:数组当前的值 -->
+    <!-- index：数组当前项的索引 -->
+    <!-- arr：数组对象本身 -->
+</head>
+
+<body>
+    <script>
+        var arr = [11, 33, 44];
+        var sum = 0;
+        arr.forEach(function(value, index, array) {
+            console.log(value); //数值11
+
+            console.log('每个数组元素' + value);
+            console.log('每个数组元素索引' + index);
+            console.log('数组本身' + array);
+            //每个数组元素11
+            //每个数组元素索引0
+            //数组本身11,33,44
+            sum += value;
+            console.log(sum); //88
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>36.call方法及其应用</title>
+    <!-- JS专门为我们提供了一些函数方法帮助我们更优雅的处理函数内部this指向问题，常用的是bind(),call(),apply() -->
+    <!-- 1.call()方法 -->
+    <!-- 1.可以调用这个函数 -->
+    <!-- 2.可以修改函数运行时的this指向 -->
+
+    <!-- function.call(thisArg，arg1，arg2，...) -->
+    <!-- thisArg:当前调用函数的this指向对象 -->
+    <!-- arg1，arg2：传递的其他参数 -->
+</head>
+
+<body>
+    <script>
+        //1.call()
+        var o = {
+            name: 'ybz',
+
+        }
+
+        function fn(a, b) {
+            console.log(this); //window
+            console.log(a + b); //68
+        }
+        //1.call 第一个可以调用函数 第二个可以改变函数内部this指向
+
+        fn.call(o, 23, 45); //this改变为指向o 对象name: 'ybz'
+
+        //2.call第二个作用是可以实现继承 继承父类构造函数的属性
+        function Father(uname, age, sex) {
+            this.uname = uname;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        function Son(uname, age, sex) {
+            Father.call(this, uname, age, sex) //this指向子类的this 就可以使用这三个属性了
+        }
+        var son = new Son('ybz', 16, '美女')
+        console.log(son);
+    </script>
+</body>
+
+</html>

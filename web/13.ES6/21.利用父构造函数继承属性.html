@@ -18,11 +18,15 @@
             this.age = age;
         }
         //2.子构造函数
-        function Son(uname, age) {
+        function Son(uname, age, tall) {
             //this指向子构造函数的对象实例
-            this.uname = uname;
-            this.age = age;
+            //借用父构造函数
+            Father.call(this, uname, age); //父构造函数的this指向子构造函数的this 父亲this改成孩子this
+            this.tall = tall; //可以自己申请属性
+
         }
+        var son = new Son('尹宝祯', 16, 168);
+        console.log(son); //已经实现子构造函数继承
     </script>
 </body>
 

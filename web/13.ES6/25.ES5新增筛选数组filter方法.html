@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>25.筛选数组filter方法</title>
+    <!--1. filter()方法创建一个新数组，新数组中的元素是通过检查指定数组中符合条件的所有元素，主要用于筛选数组 -->
+    <!-- 2.注意它直接返回一个新数组 -->
+    <!-- 3.crrentValue：数组当前项的值 -->
+    <!-- 4.index：数组当前的索引 -->
+    <!-- 5.arr：数组对象本身 -->
+    <!-- 语法：array.filter(function(crrrentValue,index,arr)) -->
+</head>
+
+<body>
+    <script>
+        //1.filter筛选数组
+        var arr = [13, 45, 23, 45, 222, 9, 3, 21];
+
+        var newArr = arr.filter(function(value, index, array) {
+            //返回的是一个新数组
+            // return value >= 20; 大于二十
+            return value % 2 === 0; //偶数
+
+        })
+        console.log(newArr);
+    </script>
+</body>
+
+</html>

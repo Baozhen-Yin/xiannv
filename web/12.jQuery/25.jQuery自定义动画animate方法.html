@@ -35,7 +35,9 @@
                     top: 300,
                     opacity: .4
 
-                }, 2000);
+                }, function() {
+                    $('div').css('backgroundColor', 'pink');
+                });
             })
         })
     </script>

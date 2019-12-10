@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>29.some和forEach的区别</title>
+    <!-- 在some里面遇到return true就会终止迭代 效率高 -->
+</head>
+
+<body>
+    <script>
+        var arr = ['red', 'green', 'blue', 'pink'];
+        //1.用forEach遍历数组
+        // arr.forEach(function(value) {
+        //     if (value == 'green') {
+        //         console.log('找到啦');
+        //         return true; //forEach这个ruturn并没有终止迭代或者循环
+        //     }
+        //     console.log(11); //red打印一此11 blue和pink又打印一次
+
+        // })
+        // arr.some(function(value) {
+        //     if (value == 'green') {
+        //         console.log('找到啦');
+        //         return true; //some终止遍历 只打印一遍11 效率高
+        //     }
+        //     console.log(11); //red打印一此11 blue和pink不打印了
+
+        // })
+        arr.filter(function(value) {
+            if (value == 'green') {
+                console.log('找到啦');
+                return true; //filter也不会终止迭代
+            }
+            console.log(11); //red打印一此11 blue和pink又打印一次
+
+        })
+    </script>
+</body>
+
+</html>

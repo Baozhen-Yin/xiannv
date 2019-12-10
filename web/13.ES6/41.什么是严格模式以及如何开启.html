@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>41.什么是严格模式以及如何开启</title>
+    <!-- JS除了提供正常模式外，还提供了严格模式。 -->
+    <!-- ES5的严格模式是采用具有限制性JS变体的一种方式，却在严格的条件下运行JS代码 IE10以上支持-->
+    <!-- 旧版本会被忽略 -->
+    <!-- 严格模式对JS语义做了一些更改： -->
+    <!-- 1.消除了JS语法不合理不严谨的地方 减少了怪异行为 -->
+    <!-- 2.消除代码一些不安全处，保证代码运行安全 -->
+    <!-- 3.提高编译器效率，增加运行速度 -->
+    <!-- 4.禁用了ECMAScript的未来版本中可能会定义的一些语法，为未来新版本的JS做好铺垫  -->
+
+    <!-- 开启严格模式 -->
+    <!-- 1.严格模式可以应用到""整个脚本""或者""个别函数"" 我们将严格模式分为 为脚本开启严格模式和为函数开启严格模式 -->
+
+    <!-- 1.为脚本开启严格模式 -->
+    <!-- 需要在所有语句之前放一个特定语句 "use strict" 或者 'use strict' -->
+</head>
+
+<body>
+    <!-- 为整个脚本SCRIPT开启严格模式 -->
+    <script>
+        'use strict';
+        //下面js代码就会按照严格模式执行代码
+    </script>
+    <script>
+        (function() {
+            'use strict';
+        })();
+    </script>
+
+    <!-- 为某个函数开启严格模式 -->
+    <script>
+        function fn() {
+            //只为fn函数开启严格模式
+            'use strict';
+        }
+
+        function fun() {
+            //里面普通模式执行
+        }
+    </script>
+</body>
+
+</html>
