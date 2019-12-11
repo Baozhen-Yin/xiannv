@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>62.数组解构赋值</title>
+    <!-- ES6允许从数组提取值，按照对应位置，为变量赋值。对象也可以实现解构 -->
+</head>
+
+<body>
+    <script>
+        //从数组提取值，按照对应位置，为变量赋值
+
+        //1.数组解构：按照一一对应关系从数组提取值为变量赋值
+        // let [a, b, c] = [1, 2, 3]
+        // console.log(a); //1
+        // console.log(b); //2
+        // console.log(c); //3
+
+        let ary = [1, 2, 3];
+        let [a, b, c, d, e] = ary;
+        console.log(a); //1
+        console.log(b); //2
+        console.log(c); //3
+
+        //2.如果解构不成功 变量的值为undefined
+        console.log(d); //undefined
+        console.log(e); //undefined
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>60.const关键字</title>
+    <!-- 作用：声明常量 常量就在值（内存地址） 不能变化的量 -->
+    <!-- 1.具有块级作用域 -->
+    <!-- 2.声明常量时必须赋值-->
+    <!-- 3.常量赋值后，值不能修改 可以更改复杂(引用)数据类型: Object、Array等里面的值可以更改 但是对应内存地址不可修改-->
+</head>
+
+<body>
+    <script>
+        //1.具有块级作用域
+        if (true) {
+            const a = 10;
+            if (true) {
+                const a = 20;
+                console.log(a); //20
+            }
+            console.log(a); //10
+        }
+        //console.log(a); //a is not defined
+
+        //2.声明常量时必须赋值
+        // const ybz; // Uncaught SyntaxError: Missing initializer in const declaration
+
+        //3.常量赋值后，值不能修改
+        const ybz = 'xiannv';
+        //ybz = 'meinv' //Assignment to constant variable.
+
+        const arr = [100, 200];
+        arr[0] = 'a';
+        arr[1] = 'b'; //这样没有改变地址
+        console.log(arr);
+        arr = ['a', 'b'] // Assignment to constant variable. 常量不可变
+    </script>
+</body>
+
+</html>

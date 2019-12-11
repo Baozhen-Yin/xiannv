@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>64.箭头函数t</title>
+    <!-- 箭头函数是用来简化函数定义语法的 -->
+    <!-- 1.如果函数体只有一句代码，且代码的执行结果就是返回值，可以省略大括号 -->
+    <!-- 2.如果形参只有1个 可以省略小括号 -->
+</head>
+
+<body>
+    <script>
+        // () => {
+        //函数体
+        // }
+        const fn = () => {
+            console.log(123); //123
+        }
+        fn()
+
+        //1.如果函数体只有一句代码，且代码的执行结果就是返回值，可以省略大括号 
+        // function sum(num1, num2) {
+        //     return num1 + num2
+        // }
+        // sum(1, 2);
+
+        const sum = (n1, n2) => n1 + n2;
+        const result = sum(10, 20)
+        console.log(result); //30
+
+        //2.如果形参只有1个 可以省略小括号
+        function ybz(v) {
+            return v
+        }
+
+        const xyk = v => {
+            alert(v)
+        }
+        xyk('小括号省略')
+    </script>
+</body>
+
+</html>

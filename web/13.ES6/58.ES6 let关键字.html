@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>58.ES6是什么</title>
+    <!-- 是由ECMA国际标准阻止创造的新的语法规范 是泛指ES2015之后的版本-->
+    <!-- 使用let声明的变量具有块级作用域 var关键字声明的变量不具备块级作用域特性-->
+    <!-- 1.好处：防止循环变量变成全局变量 -->
+    <!-- 2.不存在变量提升 -->
+    <!-- 3.暂时性死区 在块级作用域内使用let关键字声明的变量会被整体绑定在这个块级区，不再受外部代码影响 -->
+</head>
+
+<body>
+    <script>
+        //let 声明的变量只在所处的块级有效 块级 for if 等{}
+        if (true) {
+            let a = 10;
+            var num = 20;
+            console.log(a); //10
+            if (true) {
+                let c = 30;
+            }
+            //console.log(c); // c is not defined
+        }
+        // console.log(a); //a is not defined
+        console.log(num); //20
+
+        //1.好处：防止循环变量变成全局变量
+        for (let i = 0; i < 2; i++) {
+            //let 防止循环变量变成全局变量
+        }
+        // console.log(i); //2   i is not defined
+
+        //2.不存在变量提升
+        console.log(b);
+        var b = 10; //undefined
+        //console.log(a);
+        let a = 20; //Cannot access 'a' before initialization
+
+        //3.暂时性死区
+        var tmp = 123;
+        if (true) {
+            console.log(tmp); //Cannot access 'tmp' before initialization
+            let tmp = 20;
+        }
+    </script>
+</body>
+
+</html>

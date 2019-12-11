@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>59.ES6经典面试题</title>
+</head>
+
+<body>
+    <script>
+        //每一次循环都会产生一个块级作用域，每个块级作用域中的变量都是不同的，
+        //函数执行时输出的是自己上一级（循环产生的块级作用域） 作用域下的i值
+        //let是块作用域声明 经过for 循环后的arr  有 10 个 闭包 成员 
+        //arr[6](); //6  ;  i = 6
+        //console.log(arr[6]); //  arr[i] = function(){console.log(i)}  ;  i = 6 
+        //console.log(i); //   i is not defined   外包是无法访问到 let 内部成员的
+        //let是块作用域声明，出了for循环就失效了~
+        let arr = [];
+        for (let i = 0; i < 10; i++) {
+            arr[i] = function() {
+                console.log(i);
+                //在匿名函数作用域中log(i)引用了上层作用域的变量 i，构成闭包。
+                // arr[i]中保存了10个闭包，各自保留了构成闭包时变量 i的值。
+            }
+        }
+        arr[0](); //0
+        arr[1](); //1
+        arr[9](); //9
+        console.log(arr[0]); //ƒ () {console.log(i); }
+        console.log(arr[1]); //ƒ () {console.log(i); }
+    </script>
+</body>
+
+</html>

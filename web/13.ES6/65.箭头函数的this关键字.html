@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>65.箭头函数的this关键字</title>
+    <!-- 箭头函数不绑定this关键字，箭头函数中的this，指向的是 函数定义位置的上下文this 定义区域的this-->
+</head>
+
+<body>
+    <script>
+        const obj = {
+            name: 'ybz'
+        }
+
+        function fn() {
+            console.log(this); //name: "ybz" __proto__: Object
+
+            return () => {
+                console.log(this); //name: "ybz" __proto__: Object
+
+            }
+        }
+        const resFn = fn.call(obj); //把this内部指向改为obj
+        // const resFn = fn();
+        resFn(); //相当于指向obj的匿名函数
+    </script>
+</body>
+
+</html>

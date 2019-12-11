@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>66.箭头函数面试题</title>
+</head>
+
+<body>
+    <script>
+        //obj 是对象没有作用域  所以箭头函数指向的是window 但是在window下没有age这个属性
+        var obj = {
+            age: 20,
+            say: () => {
+                alert(this.age); //undefined
+            }
+        }
+        obj.say();
+    </script>
+</body>
+
+</html>
