@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>52.量词重复某个模式的次数</title>
+</head>
+
+<body>
+    <input type="text" class="uname"><span>请输入用户名</span>
+    <script>
+        // ""量词""是设定某个模式出现的次数
+        var reg = /^[a-zA-Z0-9_-]$/ //这个模式用户只能输入英文字母数字下划线短横线 但是有边界符和[] 限定了只能多选一
+        console.log(reg.test('a')); //true
+        console.log(reg.test('8')); //true
+        console.log(reg.test('aa')); //false
+
+        var reg1 = /^[a-zA-Z0-9_-]{6,16}$/
+        console.log(reg1.test('asafsafaf_-')); //true
+        console.log(reg1.test('sada879-')); //true
+        console.log(reg1.test('aa')); //false 不够6次
+    </script>
+</body>
+
+</html>

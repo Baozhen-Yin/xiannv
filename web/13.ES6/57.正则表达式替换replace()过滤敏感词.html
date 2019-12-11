@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>57.正则表达式替换</title>
+    <!-- replace()方法可以实现替换字符串，用来替换的参数可以是一个字符串或者是一个正则表达式 -->
+    <!-- stringObject.replace(regexp/substr,replacement) -->
+    <!-- 1.regexp 被替换的字符串 或者 正则表达式 -->
+    <!-- 2.replacement：替换为的字符串-->
+    <!-- 返回值是一个替换完毕的字符串 -->
+
+    <!-- 正则表达式参数 -->
+    <!-- /表达式/[switch] -->
+    <!-- [switch]也称为修饰符 按照什么样的模式来匹配 有三种值 -->
+    <!-- 1.g：全部匹配（global) -->
+    <!-- 2.i: 忽略大小写 -->
+    <!-- 3.gi：全局匹配和忽略大小写 -->
+    <style>
+        textarea {
+            width: 500px;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id="message"></textarea><button>提交</button>
+    <div></div>
+    <script>
+        //替换 replace
+        // var str = 'ybz和xyk'
+        //     // var newStr = str.replace('ybz', 'baby')
+        // var newStr = str.replace(/ybz/, 'baby')
+        // console.log(newStr); //baby和xyk
+
+        var text = document.querySelector('textarea');
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div')
+        btn.onclick = function() {
+            div.innerHTML = text.value.replace(/激情|gay|黑丝/g, '**') //g全局替换
+        }
+    </script>
+</body>
+
+</html>

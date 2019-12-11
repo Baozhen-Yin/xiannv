@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>44.闭包</title>
+    <!-- 变量作用域 -->
+    <!-- 变量根据作用域不同分为两种：全部变量和局部变量 -->
+    <!-- 1.函数内部可以使用全部变量 -->
+    <!-- 2.函数外部不可以使用局部变量 -->
+    <!-- 3.当函数执行完毕，本作用域的局部变量会销毁 -->
+
+    <!-- 闭包（closure）指有权访问 另一个函数作用域中变量 的函数 (闭包是函数)-->
+    <!-- 闭包的主要作用：衍生了变量的作用范围 -->
+
+    <!-- （1）由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，
+          在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。 -->
+    <!-- （2）闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作
+        它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，
+        不要随便改变父函数内部变量的值。 -->
+
+</head>
+
+<body>
+    <script>
+        // 1.我们fun这个 函数作用域 访问了另一个函数fn 里面的局部变量 num
+        //函数fun()就被包括在函数fn()内部，这时fn()内部的所有局部变量，对fun()都是可见的。
+        //但是反过来就不行，fun()内部的局部变量，对fn()就是不可见的。
+        function fn() {
+            var num = 10;
+
+            function fun() {
+                console.log(num); //10
+
+            }
+            //fun();
+            return fun; //函数也可以作为实参 也可以作为返回值
+        }
+        //fn(); //Closure (fn) num: 10 fn()就是一个闭包函数
+        var f = fn();
+        //类似于执行这样的操作 f存了这样一个函数 函数不调用自己不执行 所有f = fn()调用fn() 返回的是fun()函数给了f
+        // var f =function fun() {
+        //        console.log(num); }
+        f();
+
+        //2.我们fn()外面的作用域可以访问fn()内部的局部变量
+        function fn() {
+            var num = 10;
+            return function() {
+                console.log(num);
+            }
+        }
+        var f = fn();
+        f();
+    </script>
+</body>
+
+</html>

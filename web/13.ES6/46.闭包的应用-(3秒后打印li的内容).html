@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>46.闭包应用-(3秒后打印li的内容)</title>
+    <!-- 异步任务主要三种情况： -->
+    <!-- 1，回调函数 -->
+    <!-- 2.定时器里面的回调函数 -->
+    <!-- 3.事件中的回调函数（点击，经过） -->
+    <!-- 4.index回调函数 -->
+</head>
+
+<body>
+    <ul class="nav">
+        <li>仙女</li>
+        <li>可爱</li>
+        <li>美丽</li>
+        <li>漂亮</li>
+    </ul>
+    <script>
+        //三秒之后打印所有li元素内容
+        var lis = document.querySelector('.nav').querySelectorAll('li');
+        for (var i = 0; i < lis.length; i++) {
+            // setTimeout(function() {
+            //     //i又变成了4 没有4这个li 错误
+            //     console.log(lis[i].innerHTML);
+            // }, 1000)
+            (function(i) {
+                console.log(lis[i].innerHTML);
+            })(i)
+        }
+    </script>
+</body>
+
+</html>

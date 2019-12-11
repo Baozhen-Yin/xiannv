@@ -11,6 +11,7 @@
     <!-- 高阶函数是对其他函数进行操作的函数,他 接收函数 作为 参数 或 将函数作为 返回值 输出 -->
     <style>
         div {
+            position: relative;
             width: 100px;
             height: 100px;
             background-color: rgb(228, 58, 58);
@@ -21,6 +22,7 @@
 <body>
     <button>动起来</button>
     <div></div>
+    <div class="box"></div>
     <script>
         //1.接收函数 作为 参数
 
@@ -30,7 +32,8 @@
         // fn(function() {
         //     alert('hi')
         // })
-
+        // 默认情况下，所有 HTML 元素都有一个静态位置，且无法移动。
+        // 如需对位置进行操作，要记得首先把元素的 CSS position 属性设置为 relative、fixed 或 absolute！
         function fn(a, b, callback) {
             console.log(a + b);
             callback && callback()
@@ -42,16 +45,38 @@
         $(function() {
             $('button').click(function() {
                 $('div').animate({
-                    left: 500,
-                    top: 300,
-                    opacity: .4
-
+                    width: 300,
+                    height: 300,
+                    left: 100,
+                    top: 100
                 }, function() {
                     $('div').css('backgroundColor', 'pink');
                 });
             })
         })
+
+        // $('button').click(function() {
+        //         $('div').animate({
+        //             width: 300,
+        //             height: 300,
+        //             left: 100,
+        //             top: 100
+        //         }, 2000, function() {
+        //             $('div').animate({
+        //                 width: '+=100',
+        //                 height: '+=100',
+        //                 left: '+=100',
+        //                 top: '+=100'
+        //             }, 2000)
+
+        //     })
+
+        // })
+        //先让他运动到 width 300px, height 300px  left 100px  top 100px  ，运动完后， 执行回调函数，  再
+        // 让他运动， width: '+=100', height: '+=100', left: '+=100', top: '+=100'  所以你能明显的在中间看到有停顿
     </script>
+
+
     <script>
         //2.将函数作为 返回值 输出
         // function fn() {

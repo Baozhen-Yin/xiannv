@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>49.正则表达式的组成-边界符</title>
+    <!-- 一个正则表达式可以由简单的字符构成，比如/abc/，也可以是简单的特殊字符的组合，比如/ab*c/。 -->
+    <!-- 其中特殊字符也被称为元字符，在正则表达式中是具有特殊意义的专用符号，如^、$、+ 等 -->
+</head>
+
+<body>
+    <script>
+        //边界符 ^ $
+        var rg = /abc/; //正则表达式里面不需要加引号 不管是数字型还是字符串型
+        //  /abc/ 只要包含有abc这个字符串返回的都是true
+        console.log(rg.test('abc')); //true
+        console.log(rg.test('abcc')); //true
+        console.log(rg.test('abcads')); //true
+
+        console.log('----------------');
+
+        //1. ^ 开头 /^abc/以abc开头
+        var reg = /^abc/;
+        console.log(reg.test('abc')); //true
+        console.log(reg.test('abcc')); //true
+        console.log(reg.test('sdsdabcads')); //false
+        console.log('----------------');
+
+        //2.$ 结尾  /^abc$/ 精确匹配 以abc开头 以abc结尾
+        var reg = /^abc$/;
+        console.log(reg.test('abc')); //true
+        console.log(reg.test('abbc')); //false
+        console.log(reg.test('sdsdabcads')); //false
+        console.log(reg.test('abcabc')); //false
+    </script>
+</body>
+
+</html>

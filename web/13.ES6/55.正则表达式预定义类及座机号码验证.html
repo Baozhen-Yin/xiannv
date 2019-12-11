@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>55.正则表达式预定义类及座机号码验证</title>
+    <!-- 字符  等价类            含义 -->
+    <!-- \d    [0-9]             数字字符 -->
+    <!-- \D    [^0-9]           非数字字符 -->
+    <!-- \w    [a-zA-Zz_0-9]    单词字符（字母、数字下划线） -->
+    <!-- \W    [^a-zA-Zz_0-9]   非单词字符 -->
+    <!-- \s    [\t\n\x0B\f\r]   空白符 -->
+    <!-- \S    [^\t\n\x\0B\f\t] 非空白符 -->
+</head>
+
+<body>
+    <script>
+        //座机号码验证 ：全国座机号码 两种格式 ：010-12345678 或者 0530-1234567
+        // var reg = /^\d{3}-\d{8}|\d{4}-\d{7}$/
+        var reg = /^\d{3,4}-\d{7,8}$/
+    </script>
+</body>
+
+</html>

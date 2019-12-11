@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>53.用户名验证（案例）</title>
+    <!-- 功能需求 -->
+    <!-- 1.如果用户名输入合法，则后面提示信息为：用户名合法 并且颜色为绿色 -->
+    <!-- 2.如果用户名输入不合法 则后面提示信息为：用户名输入不合规范 并且颜色为红色 -->
+    <style>
+        span {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .right {
+            color: green;
+        }
+        
+        .wrong {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" class="uname"><span>请输入用户名</span>
+    <script>
+        //1.用户名只能英文数字，字母，下划线或者短横线组成 并且用户名长度6~16位
+        //2.首先准备好这种正则表达式模式/^[a-zA-Z0-9_-]{6,16}$/
+        //3.当表单失去焦点开始验证
+        //4.如果符合正则规范 然span添加right类 不符合添加wrong类
+        var reg = /^[a-zA-Z0-9_-]{6,16}$/
+        var uname = document.querySelector('.uname')
+        var span = document.querySelector('span')
+        uname.onblur = function() { //onblur移开表单
+            if ((reg.test(this.value))) {
+                span.className = 'right';
+                span.innerHTML = '用户名合法'
+
+            } else {
+                span.className = 'wrong';
+                span.innerHTML = '用户名输入不合规范 '
+            }
+        }
+    </script>
+</body>
+
+</html>

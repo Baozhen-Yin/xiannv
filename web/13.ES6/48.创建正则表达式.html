@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>48.创建正则表达式</title>
+    <!-- （1）在JS中 可以通过两种方式创建一个正则表达式 -->
+    <!-- 1.通过调用RegExp对象构造函数创建 -->
+    <!-- var 变量名 = new RegExp（/表达式/) -->
+
+    <!-- 2.利用字面量创建 -->
+    <!-- var 变量名  = /表达式/ -->
+
+    <!-- （2）测试正则表达式 test() -->
+    <!-- test()正则对象方法，用于监测字符串是否符合该规则，该对象会返回true或者false，其参数是测试字符串 -->
+    <!-- 语法：regexObj.test(str) -->
+    <!-- 1.regexObj 是写的正则表达式 -->
+    <!-- 2.str 我们要测试的文本 -->
+    <!-- 3.就是检测str文本是否符合我们写的正则表达式规范 -->
+</head>
+
+<body>
+    <script>
+        // 1.通过调用RegExp对象构造函数创建 
+        var regexp = new RegExp(/123/);
+        console.log(regexp); // /123/
+
+        //2.利用字面量创建
+        var regexp1 = /234/
+        console.log(regexp1.test(234)); //true
+        console.log(regexp1.test(456)); //false
+    </script>
+</body>
+
+</html>

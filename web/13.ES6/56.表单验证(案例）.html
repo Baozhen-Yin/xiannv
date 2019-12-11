@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>57.表单验证(案例）</title>
+    <!-- 手机号码：^(13[0-9]|14[5|7]|15[0|1|2|3|4|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$ -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .demo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px;
+        }
+        
+        .error {
+            color: #df3303;
+            margin-left: 10px;
+        }
+        
+        .success {
+            color: green;
+            margin-left: 10px;
+        }
+        /* .success-icon,
+        .error-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: rgb(197, 178, 178);
+            vertical-align: middle;
+            margin-top: -2px;
+        } */
+        
+        .demo-qq,
+        .demo-name {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+        <ul>
+            <li>
+                <label for="tel">手机号</label>
+                <input type="text" class="inp" id="tel">
+                <span class="error"><i>请输入手机号码</i></span>
+            </li>
+        </ul>
+    </div>
+    <div class="demo-qq demo">
+        <ul>
+            <li>
+                <label for="tel">QQ</label>
+                <input type="text" class="inp" id="qq">
+                <span class="error"><i>请输入QQ号</i></span>
+            </li>
+        </ul>
+    </div>
+    <div class="demo-name demo">
+        <ul>
+            <li>
+                <label for="tel">昵称</label>
+                <input type="text" class="inp" id="name">
+                <span class="error"><i>请输入昵称</i></span>
+            </li>
+        </ul>
+    </div>
+    <div class="demo-name demo">
+        <ul>
+            <li>
+                <label for="tel">密码</label>
+                <input type="text" class="inp" id="password">
+                <span class="error"><i>请设置密码</i></span>
+            </li>
+        </ul>
+    </div>
+    <div class="demo-name demo">
+        <ul>
+            <li>
+                <label for="tel">确认密码</label>
+                <input type="text" class="inp" id="rpassword">
+                <span class="error"><i>请确认密码</i></span>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            var regtel = /^(13[0-9]|14[5|7]|15[0|1|2|3|4|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+            var regqq = /^[1-9]\d{4,}$/
+            var regname = /^[\u4e00-\u9fa5]{2,8}$/
+            var regpad = /^[a-zA-Z0-9_-]{6,16}$/
+            var tel = document.querySelector('#tel');
+            var qq = document.querySelector('#qq');
+            // 昵称是中文
+            var name = document.querySelector('#name');
+            var psd = document.querySelector('#password')
+            var rpsd = document.querySelector('#rpassword')
+
+            function regexp(ele, regexp) {
+                ele.onblur = function() {
+                    if (regexp.test(this.value)) {
+                        this.nextElementSibling.className = 'success';
+                        this.nextElementSibling.innerHTML = '<i>格式正确</i>'
+                    } else {
+                        this.nextElementSibling.className = 'error';
+                        this.nextElementSibling.innerHTML = '<i>格式不正确</i>'
+                    }
+                }
+            }
+            regexp(tel, regtel);
+            regexp(qq, regqq);
+            regexp(name, regname);
+            regexp(psd, regpad);
+            rpsd.onblur = function() {
+                if (this.value == psd.value) {
+                    this.nextElementSibling.className = 'success';
+                    this.nextElementSibling.innerHTML = '<i>密码正确</i>'
+                } else {
+                    this.nextElementSibling.className = 'error';
+                    this.nextElementSibling.innerHTML = '<i>两次密码输入不一样</i>'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

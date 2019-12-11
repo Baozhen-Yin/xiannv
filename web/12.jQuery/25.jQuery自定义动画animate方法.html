@@ -31,6 +31,8 @@
         $(function() {
             $('button').click(function() {
                 $('div').animate({
+                    // 默认情况下，所有 HTML 元素都有一个静态位置，且无法移动。
+                    // 如需对位置进行操作，要记得首先把元素的 CSS position 属性设置为 relative、fixed 或 absolute！
                     left: 500,
                     top: 300,
                     opacity: .4

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>45.闭包的应用</title>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>仙女</li>
+        <li>可爱</li>
+        <li>美丽</li>
+        <li>漂亮</li>
+    </ul>
+    <script>
+        // 闭包应用 点击li输出当前li的索引号
+
+        //1.我么可以利用动态添加属性的方式（传统方式）
+        var lis = document.querySelector('.nav').querySelectorAll('li');
+        for (var i = 0; i < lis.length; i++) {
+            //js 执行的时候首先会先执行主线程,异步相关的会存到异步队列里,当主线程执行完毕开始执行异步队列, 
+            //主线程执行完毕后,此时 i 的值为 4,说以在执行异步队列的时候,打印出来的都是 4
+            lis[i].index = i; //在这里动态添加属性 就不会得4了
+            lis[i].onclick = function() { //onclick点击是异步任务 for循环时同步任务 立即执行 所以点击所有li都变成4
+                //console.log(i);//4444
+                console.log(this.index);
+            }
+        }
+
+        //2.利用闭包的方式 得到li的索引号
+        for (var i = 0; i < lis.length; i++) {
+            //利用for循环创建了 4个立即执行函数 立即执行函数也称为小闭包 
+            //因为立即执行函数里面的任何一个函数都可以使用它的变量
+            (function(i) {
+                lis[i].onclick = function() {
+                    console.log(i); //闭包是立即执行函数 因为我们这个函数在立即执行函数里面 function使用了变量i
+                }
+            })(i);
+        }
+
+        //3.计数器
+        function addCount() {
+            var conut = 0;
+            return function() {
+                count = count + 1;
+                console.log(count);
+            };
+        }
+        var fun1 = addCount();
+        fun1(); //1
+        fun1(); //2
+        var fun2 = addCount();
+        fun2(); //1
+        fun2(); //2
+        // addCount() 执行的时候, 返回一个函数, 函数是可以创建自己的作用域的, 但是此时返回的这个函数内部需要引用 
+        //addCount() 作用域下的变量 count, 因此这个 count 是不能被销毁的.接下来需要几个计数器我们就定义几个变量就可以,
+        //并且他们都不会互相影响,每个函数作用域中还会保存 count 变量不被销毁,进行不断的累加
+    </script>
+</body>
+
+</html>

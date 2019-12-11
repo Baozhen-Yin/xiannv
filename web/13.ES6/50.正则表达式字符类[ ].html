@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>50.正则表达式字符类</title>
+    <!-- 字符类：[] 表示有一系列字符可供选择 只要""匹配其中一个""就可以了 加了[]多选一-->
+    <!-- 1./[abc]/ 只要包含有a 或者包含有b 或者包含有c 都返回为true 匹配其中一个即可-->
+    <!-- 2 /^[abc]$/ 三选一 只有a 或者 b 或者c 三个字母才返回true-->
+    <!-- 3./^[a-z]$/ 26个英文字母任何一个英文字母返回的都是true -表示范围 -->
+    <!-- 4./^[a-zA-Z0-9_-]$/ 26个英文字母大写或者小写都可以 数字也可 -->
+    <!-- 5./^[^a-zA-Z0-9_-]$/  前一个^表示边界符 后一个表示内部取反^ -->
+
+    <!-- 例； -->
+    <!-- 用户名：/^[a-z0-9_-]{3,16}$/ -->
+</head>
+
+<body>
+    <script>
+        //1.只要包含有a 或者包含有b 或者包含有c 都返回为true 匹配其中一个即可
+        var rg = /[abc]/;
+        console.log(rg.test('ybz')); //true
+        console.log(rg.test('xyk')); //false
+        console.log(rg.test('beautiful')); //true
+        console.log('----------------');
+
+        //2.var rg1 = /^[abc]$/ 三选一 只有a 或者 b 或者c 三个字母才返回true
+        var rg1 = /^[abc]$/
+        console.log(rg1.test('a')); //true
+        console.log(rg1.test('b')); //true
+        console.log(rg1.test('c')); //true
+        console.log(rg1.test('e')); //false
+        console.log('----------------');
+
+        //3.var rg1 = /^[a-z]$/ 26个英文字母任何一个英文字母返回的都是true -表示范围
+        var rg1 = /^[a-z]$/
+        console.log(rg1.test('a')); //true
+        console.log(rg1.test('b')); //true
+        console.log(rg1.test('c')); //true
+        console.log(rg1.test('z')); //true
+        console.log('----------------');
+
+        //4.字符组合 var rg1 = /^[a-zA-Z0-9_-]$/ 26个英文字母大写或者小写都可以 数字也可
+        var rg2 = /^[a-zA-Z0-9_-]$/
+        console.log(rg2.test('_')); //true
+        console.log(rg2.test('Y')); //true
+        console.log('----------------');
+
+        //5./^[^a-zA-Z0-9_-]$/  前一个^表示边界符 后一个表示内部取反^ 不能包含这些的意思
+        var rg3 = /^[^a-zA-Z0-9_-]$/
+        console.log(rg3.test('Y')); //false
+        console.log(rg3.test('!')); //true
+
+        console.log('----------------');
+    </script>
+</body>
+
+</html>

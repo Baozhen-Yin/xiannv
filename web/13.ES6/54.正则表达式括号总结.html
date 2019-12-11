@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>54.正则表达式括号总结</title>
+    <!-- 1.大括号 量词符 里面表示重复次数 -->
+    <!-- 2.中括号 字符集合 匹配方括号中的任意字符 -->
+    <!-- 3.小括号 表示优先级 权重最高-->
+</head>
+
+<body>
+    <script>
+        //1.花括号 量词符 里面表示重复次数
+        var reg1 = /^[abc]{3}$/ //a或者b或者c 重复三次
+
+        console.log(reg1.test('aaa')); //true
+        console.log(reg1.test('bbb')); //true
+
+        var reg2 = /^abc{3}$/ //只让c重复3次
+
+        console.log(reg2.test('abc')); //false
+        console.log(reg2.test('abccc')); //true
+
+        //2.中括号 字符集合 匹配方括号中的任意字符 多选一
+        var reg = /^[abc]$/ //a 或者 b 或者 c
+
+        //3.小括号 表示优先级
+        var reg3 = /^(abc){3}$/
+        console.log(reg3.test('abcabcabc')); //true
+    </script>
+</body>
+
+</html>
