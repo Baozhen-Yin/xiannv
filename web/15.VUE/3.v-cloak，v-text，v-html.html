@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.v-cloak,v-text,v-html</title>
+    <style>
+        [v-cloak] {
+            /* 1.使用v-cloak能够解决 插值表达式闪烁问题 只会替换自己的占位符 ++++我是仙女-----*/
+            display: none;
+        }
+        /* 2.默认v-text是没有闪烁问题 会覆盖元素中原本的内容*/
+        /* 3.v-html可以把message里面的html标签识别 会覆盖元素中原本的内容 */
+        /* 4.v-bind时vue用绑定""属性""的指令 v-bind：要绑定的属性 指令可以被简写为  ：要绑定的属性 
+         里面可以写合法的JS表达式*/
+        /* 5.v-on 是用来绑定事件  让用户和应用进行交互 缩写 @*/
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p v-cloak>++++{{msg}}-----</p>
+        <h4 v-text="msg">=============</h4>
+        <div>{{msg2}}</div>
+        <div v-text="msg2"></div>
+        <div v-html="msg2">123435678</div>
+        <!-- <input type="button" value="按钮" v-bind:title="mytitle + '尹宝祯'"> -->
+        <input type="button" value="按钮" :title="mytitle + '尹宝祯'" v-on:click="show" @mouseover="show">
+        <!-- <div id="app-2"> -->
+        <span v-bind:title="message">
+              鼠标悬停几秒钟查看此处动态绑定的提示信息！
+            </span>
+        <!-- </div> -->
+    </div>
+
+    <script src="vue.min.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                // data属性中 存放的是el要用到的数据
+                msg: '我是仙女',
+                msg2: '<h1>我最可爱</h1>',
+                mytitle: '这是自定义',
+                // 将这个元素节点的 title 特性和 Vue 实例的 message 属性保持一致
+                message: '页面加载于 ' + new Date().toLocaleString()
+            },
+            methods: {
+                //这个methods的定义了当前vue实例所有可用的方法
+                show: function() {
+                    alert('尹宝祯仙女')
+                },
+
+            }
+        });
+    </script>
+</body>
+
+</html>

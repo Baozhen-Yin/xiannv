@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>11.v-for循环对象</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="添加数据" @click="add">
+        <button @click="remove">移除</button>
+        <p v-for="(val,key,i) in user">键是{{key}}--值是id{{val}}---索引{{i}}</p>
+        <p v-for="(val,key,i) in vegetables">键是{{key}}--值是id{{val}}---索引{{i}}</p>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                user: {
+                    id: 1,
+                    name: 'ybz',
+                    sex: 'woman'
+                },
+                vegetables: [{
+                    name: "青椒炒肉",
+
+                }, {
+                    name: "怪噜饭"
+                }]
+            },
+            methods: {
+                add: function() {
+                    this.vegetables.push({
+                        name: "xyk"
+                    })
+                },
+                remove: function() {
+                    this.vegetables.shift()
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

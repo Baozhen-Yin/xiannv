@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>67.剩余参数</title>
+    <!-- 剩余参数语法允许我们将一个不定数量的参数表示为一个""数组"""...args -->
+</head>
+
+<body>
+    <script>
+        // function sum(first, ...args) {
+        //     console.log(first); //10
+        //     console.log(args); //0: 20 1: 30 length: 2 __proto__: Array(0) 返回一个数组 [20,30]
+        // }
+        // sum(10, 20, 30)
+        const sum = (...args) => {
+            let total = 0;
+            args.forEach(item => total += item)
+            return total
+        }
+        console.log(sum(10, 20)); //30
+        console.log(sum(10, 20, 30)); //60
+
+        function func() {
+
+            console.log(...arguments);
+
+        }
+
+        func(1, 2, 3);
+
+        //执行结果是：1 2 3
+
+        //简洁地讲，扩展操作符可以将 arguments 展开成独立的参数。
+    </script>
+</body>
+
+</html>

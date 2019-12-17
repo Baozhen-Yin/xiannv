@@ -11,10 +11,11 @@
 <body>
     <script>
         //obj 是对象没有作用域  所以箭头函数指向的是window 但是在window下没有age这个属性
+        // var age = 100
         var obj = {
             age: 20,
             say: () => {
-                alert(this.age); //undefined
+                alert(this.age); //undefined 有 var age = 100则弹出100
             }
         }
         obj.say();

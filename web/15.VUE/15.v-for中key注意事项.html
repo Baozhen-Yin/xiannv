@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13.v-for中key注意事项</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 2.2.0版本里 当组件在使用v-for时 key属性是必须的 -->
+        <!-- 每次for循环的时候 使用key标识来表明唯一身份 -->
+        <div>
+            <label>id:<input type="text" v-model="id"></label>
+            <label>name: <input type="text" v-model="name"></label>
+            <input type="button" value="添加" @click="add">
+        </div>
+        <!-- 1.v-for循环的时候key属性只能使用number或string -->
+        <!-- 2.key在使用的时候必须使用v-bind 属性绑定的形式 指定key的值 -->
+        <!-- 3.key关键作用保证值得唯一性 把值和id强关联起来 -->
+        <p v-for="item in list" :key="item.id">
+            <input type="checkbox"> {{item.id}}---{{item.name}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                id: '',
+                name: '',
+                list: [{
+                    id: 1,
+                    name: 'ybz'
+                }, {
+                    id: 2,
+                    name: 'ybz2'
+                }, {
+                    id: 3,
+                    name: 'ybz3'
+                }, {
+                    id: 4,
+                    name: 'ybz4'
+                }, ]
+            },
+            methods: {
+                add() {
+                    this.list.unshift({
+                        id: this.id,
+                        name: this.name
+                    })
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

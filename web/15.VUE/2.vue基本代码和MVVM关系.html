@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.vue基本代码和MVVM关系</title>
+    <!-- 导入包之后 我们的浏览器内存中就多一个vue构造函数 -->
+    <!-- Vue.js 的核心是一个允许采用简洁的模板语法来声明式地将数据渲染进 DOM 的系统： -->
+    <script src="vue.min.js"></script>
+</head>
+
+<body>
+    <!-- el用来设置vue实例挂载管理的元素 -->
+    <!-- Vue会管理el选项命中的元素及其内部的后代元素 -->
+    <!-- 可以使用其他的选择器，但是建议只使用ID选择器 -->
+    <!-- 可以使用其他双标签 但是不要使用HTML和body -->
+
+    <!-- data：数据对象 -->
+    <!-- 1.Vue中用到的数据定义在data中 -->
+    <!-- 2.data中可以写复杂类型的数据 -->
+    <!-- 3.渲染复杂类型数据时，遵守js语法即可 -->
+
+    <!-- Vue 实例所控制的这个元素区域就是我们的V -->
+    <div id="app">
+
+        <p>{{msg}}</p>
+    </div>
+    <script>
+        //2.new出来的这个vm对象就是 我们 MVVM里面的 VM调度者
+        var vm = new Vue({
+            el: '#app', //表示当前new的 vue实例想要控制页面哪个区域
+            data: {
+                // -- msg就是MVVM里的model m  用来保存页面数据
+                //data属性中 存放的是el要用到的数据
+                msg: 'hello world' //通过vue提供的指令 很方便就能把数据渲染到页面上 程序员不再手动操作DOM 
+                    //框架不提倡再手动调用元素了
+            }
+        })
+
+        var ybz = new Vue({
+            // 选项
+        })
+    </script>
+</body>
+
+</html>

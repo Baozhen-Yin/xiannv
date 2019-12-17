@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10.v-for循环对象数组</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="添加数据" @click="add">
+        <button @click="remove">移除</button>
+        <p v-for="(user,i,arr) in list">id{{user.id}}---{{user.name}}--索引{{i}}</p>
+        <p v-for="(val,key,i) in vegetables">键是{{key}}--值是id{{val}}---索引{{i}}</p>
+
+    </div>
+    <div id="app-4">
+        <ol>
+            <li v-for="(doto,i) in dotos">id:---索引:{{i}}--内容:{{doto.text}}</li>
+        </ol>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: [{
+                    id: 1,
+                    name: 'ybz'
+                }, {
+                    id: 2,
+                    name: 'ybz2'
+                }, {
+                    id: 3,
+                    name: 'ybz3'
+                }, {
+                    id: 4,
+                    name: 'ybz4'
+                }],
+                vegetables: [{
+                    name: "青椒炒肉",
+
+                }, {
+                    name: "怪噜饭"
+                }]
+            },
+            methods: {
+                add: function() {
+                    this.vegetables.push({
+                        name: "xyk"
+                    })
+                },
+                remove: function() {
+                    this.vegetables.shift()
+                }
+            },
+        });
+        var app4 = new Vue({
+                el: "#app-4",
+                data: {
+                    dotos: [{
+                        text: '学习JS'
+                    }, {
+                        text: '学习VUE'
+                    }, {
+                        text: '加油'
+                    }]
+                },
+
+            })
+            // app4.dotos.push({text:'新项目'}) 4
+    </script>
+</body>
+
+</html>

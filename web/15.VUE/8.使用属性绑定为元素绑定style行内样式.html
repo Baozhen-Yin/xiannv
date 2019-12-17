@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8.使用属性绑定为元素绑定style行内样式</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 对象就是无序键值对集合 -->
+        <!-- 1.直接在元素上通过 ：style的形式书写样式对象 -->
+        <h1 :style="{color:'red','font-weight':200}">尹宝祯仙女</h1>
+
+        <!-- 2.将样式对象定义到data中 并引用到style中 -->
+        <h1 :style="styleobg1">尹宝祯仙女</h1>
+
+        <!-- 3.在 ：style中通过数组，引用多个data上的样式对象 -->
+        <h1 :style="[styleobg1, styleobg2]">尹宝祯仙女</h1>
+
+    </div>
+    <script>
+        //1.使用数组
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                styleobg1: {
+                    color: 'red',
+                    'font-weight': 200
+                },
+                styleobg2: {
+                    fontStyle: 'italic',
+                    color: 'blue',
+                }
+
+            },
+            methods: {
+
+            },
+        })
+    </script>
+</body>
+
+</html>

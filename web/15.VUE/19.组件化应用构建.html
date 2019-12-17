@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>16.组件化应用构建</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app-7">
+        <ol>
+            <ybz-item v-for="item in groceryList" v-bind:xyk="item" v-bind:key="item.id">
+                <!-- 创建一个ybz-item的组建的实例 -->
+                <!-- 但是这样就会为每一个代办项都渲染同样的文本,处理起来很麻烦
+                     我们应该能从父作用域将数据传到子组件才对 -->
+                <!-- 修改一下组件的定义,使之能接受一个prop -->
+                <!-- 现在我们为每个ybz-item提供xyk对象 xyk对象是变量,及内容可以是动态的,
+                    我们也需要为每一个组件提供key -->
+
+            </ybz-item>
+        </ol>
+    </div>
+    <div class="app-8">
+        <button-count></button-count>
+    </div>
+    <script>
+        //定义名为 ybz-item的新组建
+        Vue.component('ybz-item', {
+            //ybz-item 组件现在接收一个
+            //'prop' 类似于一个自定义属性
+            //这个prop名字为xyk
+            props: ['xyk'],
+            // 组件的模板内容 template
+            template: '<li>{{xyk.text}}</li>'
+        })
+        var app7 = new Vue({
+            el: "#app-7",
+            data: {
+                groceryList: [{
+                    id: 0,
+                    text: "饭饭"
+
+                }, {
+                    id: 1,
+                    text: "芝士"
+                }, {
+                    id: 2,
+                    text: '旺面'
+                }]
+            }
+        });
+        Vue.component('button-count', {
+            // props: [btn],
+            data: function() {
+                return {
+                    count: 0
+                }
+            },
+            template: "<button v-on:click='plus' >您已经点击了{{count}}次</button>",
+            methods: {
+                plus: function() {
+                    this.count++
+                }
+            },
+        });
+        var app8 = new Vue({
+            el: "#app-8",
+            data: {
+
+            },
+
+        })
+    </script>
+</body>
+
+</html>

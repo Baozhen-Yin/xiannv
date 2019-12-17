@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6.使用v-model实现计算器（案例）</title>
+    <script src="vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="n1">
+        <select v-model="opt">
+        <option value="0">+</option>
+        <option value="1">-</option>
+        <option value="2">*</option>
+        <option value="3">÷</option>
+    </select>
+        <input type="text" v-model="n2">
+        <input type="button" value="=" @click="getResult">
+        <input type="text" v-model="result">
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                n1: 0,
+                n2: 0,
+                result: 0,
+                opt: '-'
+            },
+            methods: {
+                getResult() {
+                    //计算器 算术方法
+                    // switch (this.opt) {
+                    //     case '+':
+                    //         this.result = parseInt(this.n1) + parseInt(this.n2)
+                    //         break;
+                    //     case '-':
+                    //         this.result = parseInt(this.n1) - parseInt(this.n2)
+                    //         break;
+                    //     case '*':
+                    //         this.result = parseInt(this.n1) * parseInt(this.n2)
+                    //         break;
+                    //     case '÷':
+                    //         this.result = parseInt(this.n1) / parseInt(this.n2)
+                    //         break;
+                    // }
+
+                    //通过计算 string 得到的值（如果有的话）。该方法只接受原始字符串作为参数，如果 string 参数不是原始
+                    //字符串，那么该方法将不作任何改变地返回。因此请不要为 eval() 函数传递 String 对象来作为参数。
+                    var codestr = 'parseInt(this.n1)' + this.opt + 'parseInt(this.n2)'
+                    this.result = eval(codestr)
+
+                    var x = 10
+                    document.write(eval(x + 17)) //27
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5.v-model实现双向数据绑定</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <h4>{{msg}}</h4>
+        <!-- v-bind只能实现数据的单项绑定 从 M 绑定到 V 无法实现数据双向绑定 -->
+        <!-- <input type="text" :value="msg"> -->
+        <!-- 使用v-model指令 可以实现 ""表单元素""" 和 ""model""" 中数据的双向数据 -->
+        <!-- 注意：v-model只能运用在表单元素中 （input select checkbox textarea）-->
+        <!-- Vue 还提供了 v-model 指令，它能轻松实现""表单输入""和""应用状态""之间的双向绑定 -->
+        <input type="text" v-model="msg" @keyup.enter="getMassage">
+        <input type="button" value="修改message" @click="setMessage">
+    </div>
+    <script>
+        //当在改变表单的值时 msg的值也在同步发生改变
+        //v-model指令的作用是便捷的设置和获取表单元素的值
+        //绑定的数据会和表单元素值相关联
+        //绑定的数据 ⬅➡ 表单元素的值 同步更新
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: '每个人都可爱'
+            },
+            methods: {
+                getMassage: function() {
+                    alert(this.msg)
+                },
+                setMessage: function() {
+                    this.msg = '尹宝祯仙女'
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

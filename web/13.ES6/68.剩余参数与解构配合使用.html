@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>68.剩余参数与解构配合使用</title>
+</head>
+
+<body>
+    <script>
+        let students = ['ybz', 'xyk', 'xiannv']
+        let [s1, ...s2] = students;
+        console.log(s1); //ybz
+        console.log(s2); //(2) ["xyk", "xiannv"] 是一个数组
+    </script>
+</body>
+
+</html>
