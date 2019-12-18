@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.VUE实例与数据绑定</title>
+    <script src="vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <div id="ybz"></div>
+    <script>
+        //通过构造函数Vue就可以创建一个Vue的根实例 比如
+
+        //app就代表了这个Vue的实例 几乎所有代码都是一个对象，写入Vue实例的选项内
+        //1.el：用于指定一个页面中已经存在的DOM元素来挂载Vue实例，可以实HTMLElement 也可以是CSS选择器
+        var app = new Vue({
+            el: "#app", //或者 el:"document.getElementById('app')" 这种HTMLElement
+            //挂载成功后 我们可以通过app.$el来访问该元素。Vue提供了很多常用的实例属性与方法都是$开头
+
+            //2.通过Vue实例的data选项 也可以声明应用内需要的双向绑定的数据。建议所有会用到的数据提前在data声明
+            data: {
+                a: 2,
+            }
+        });
+        //Vue实例本身也代理了data对象里面的属性 可以app.a这样访问 2
+        console.log(app.a);
+
+
+        //除了显式的声明数据外，也可以指向一个"""已有的变量"""，并且他们之间默认建立了""双向绑定"""
+        var myData = {
+            b: 1
+        }
+        var ybz = new Vue({
+            el: "#ybz",
+            data: myData
+        });
+        console.log(ybz.b); //1
+        //修改属性 原数据也会修改
+        ybz.b = 250;
+        console.log(myData.b); //250
+        //反之修改元数据 Vue属性也会修改
+        myData.b = 888;
+        console.log(ybz.b); //888
+    </script>
+</body>
+
+</html>

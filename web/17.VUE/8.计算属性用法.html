@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8.计算属性用法</title>
+    <!-- 1.每一个计算属性都包含getter 和 setter ， -->
+
+</head>
+
+<body>
+    <div id="app"> 总价{{prices}} </div>
+    <script src="vue.min.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                pg1: [{
+                    name: 'iphone7',
+                    price: 9999,
+                    count: 2
+                }, {
+                    name: 'iphone8',
+                    price: 999,
+                    count: 1
+                }],
+                pg2: [{
+                    name: 'apple',
+                    price: 9,
+                    count: 5
+                }, {
+                    name: 'banana',
+                    price: 6,
+                    count: 10
+                }]
+            },
+            computed: {
+                prices: function() {
+                    var prices = 0;
+                    for (var i = 0; i < pg1.length; i++) {
+                        prices += this.pg1[i].price * this.pg1[i].count
+                    }
+                    for (var i = 0; i < pg2.length; i++) {
+                        prices += this.pg2[i].price * this.pg2[i].count
+                    }
+                    return prices;
+
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

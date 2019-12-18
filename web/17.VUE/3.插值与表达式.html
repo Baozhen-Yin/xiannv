@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.插值与表达式</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">{{book}} </div>
+    <div id="time">{{date}} </div>
+    <script>
+        //1.{{}}是最基本的文本插值方法 它会将我们双向绑定的数据实时显示出来
+        var app = new Vue({
+            el: '#app',
+            data: {
+                book: '如何成为仙女'
+            }
+        });
+        var time = new Vue({
+            el: "#time",
+            data: {
+                date: new Date()
+            },
+            methods: function() {
+                //声明一个变量指向vue实例this 保证作用域一致
+                var _this = this;
+                this.timer = setInterval(() => {
+                    _this.date = new Date(); //修改数据date 
+                }, 1000);
+            },
+            beforeDestroy: function() {
+                if (this.timer) {
+                    clearInterval(this.timer); //在vue实例销毁前 清除定时器
+                }
+            },
+        })
+        console.log(new Date());
+    </script>
+</body>
+
+</html>

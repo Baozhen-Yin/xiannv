@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5.指令与事件</title>
+    <script src="vue.min.js"></script>
+
+    <!-- 带有前缀v- 职责就是当其表达式的值该表示相应的将某些行为应用到DOM上 以v-if为例 -->
+    <div id="app">
+        <p v-if="show">显示这段文本</p>
+        <!-- 2.v-bind:动态更新HTML元素上的属性 下面链接做了绑定。当各种方式改变数据时，链接和图片都会自动更新 -->
+        <!-- 渲染结果为  <a href='https://www.baidu.com'>链接</a> -->
+        <a v-bind:href="url">链接</a>
+        <!-- 3.给按钮绑定了一个点击事件 v-on可以监听普通的DOM事件，除click外还有dblclick，keyup等。表达式可以是一个方法名 写在vue实例的methods属性内，函数内的this指向的是当前Vue实例本身 -->
+        <button v-on:click="handleClose">点我</button>
+    </div>
+    <script>
+        //1.当show的值为true时 p元素会被插入 为false则会被移除。
+        //数据驱动DOM是vue核心理念 所以不到万不得已不要主动操作DOM 维护数据就行
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                show: true,
+                url: 'https://www.baidu.com',
+
+            },
+            methods: {
+                handleClose: function() {
+                    this.show = !this.show
+                }
+            },
+        })
+
+        //1.v-bind 动态更新HTML元素上的属性 比如id，class等，例如下面几个实例：
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>，

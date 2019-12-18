@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6.methods方法diaoy</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <p v-if="show">这是一段文本</p>
+        <button v-on:click="handleClose">点击转换</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                show: true
+            },
+            methods: {
+                handleClose: function() {
+                    // vue将methods里面的方法也代理了，所以可以像访问vue数据那样调动方法
+                    this.close()
+                },
+                close: function() {
+                    this.show = !this.show
+                },
+                init: function(text) {
+                    console.log(text);
+                },
+            },
+            mouted: function() {
+                this.init('在初始化时候调用')
+            }
+        });
+        //通过外部调用vue里面的methods
+        app.init('通过外部调用')
+    </script>
+</body>
+
+</html>

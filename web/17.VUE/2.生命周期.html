@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.生命周期</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        //每个Vue实例创建时 都会经历一系列初始化过程，同时也会调用相应的生命周期钩子，在合适的时机执行我们的业务逻辑
+        //1.created 实例创建完成后调用，此阶段完成了数据的观测等，但尚未挂载，$el还不可用，需要初始化处理一些数据时会比较有用
+        //2.mounted ： el挂载到实例上后调用 一般我们第一个业务逻辑会从这里开始
+        //3.beforeDestroy 实例销毁之前调用。主要解绑一些使用addEventListener监听的事件等
+
+        //这些钩子与el 和 data类似,也是作为选项写入Vue实例内的，钩子的this指向调用它的""Vue实例"""
+        var app = new Vue({
+            el: "#app",
+            data: {
+                a: 2
+            },
+            created: function() {
+                console.log(this.a); //2
+            },
+            mounted: function() {
+                console.log(this.$el); //   <div id="app"></div>
+
+            },
+        })
+    </script>
+</body>
+
+</html>
