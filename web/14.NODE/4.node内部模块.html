@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>nodejs系统自带的模块：
+        <li>http:协议请求模块；
+            <br> 创建服务器：http.createServer(function(req,res){})
+        </li>
+        <li>fs:读取和写入文件；
+            <br>读取文件内容：fs.readFile(path,function(err,data){});
+            <br>写入文件内容：fs.writeFile(path,data,function(err){});
+            <br>读取文件夹内容：fs.readdir(path,function(err,files){});
+            <br>读取文件的类型：fs.stat(path,function(err,stats){});
+            <br>修改文件的路径和名称；fs.rename(oldPath,newPath,function(err){});
+            <br>删除指定路径下的文件；不能是文件夹：fs.unlink(path,function(err){});
+            <br>删除指定路径下的文件夹：fs.undir(path,function(err){});
+            <br>在指定路径下新建文件夹：fs.mkdir(path,function(err){});
+        </li>
+        <li>querystring:用于将参数字符串格式转换为对象格式:
+            <br>将键值对形式转化为对象形式：querystring.parse(str)
+        </li>
+        <li>url：用于解析获取的req.url地址；获取pathname等其他参数；
+            <br>解析发送请求的地址为一个对象：var urlObj=url.parse(req.url,true);可以通过urlObj.query获取参数对象，通过urlObj.pathname获取pathname值；
+        </li>
+        <li>path:用于解析路径，获取文件的前缀和后缀名；也可用于拼接路径；
+            <br>获取文件后缀名：path.extname("tian.html");结果为.html;
+            <br>拼接两个路径：path.join(path1,path2)通过/拼接；
+            <br>将错误的地址变正常化：path.normalize(path)；
+            <br>将路径解析为对象：var pathObj=path.parse(path);可通过pathObj.ext获取整个路径中的文件的后缀名；可通过pathObj.name获取整个路径中的文件的名字；
+        </li>
+        <li>第三方模块：
+            <br>ejs: 设置模板引擎，可以不引入模块，但必须下载；
+            <br>express：node框架，创建服务器；
+            <br>mime:获取css,html,js文件的文档类型，用于设置页面头部；用于加载；代码：mime.getType(extname); 其中extname为.css或.html等；
+            <br>body-parser:用于获取post请求提交的小数据；
+        </li>
+
+    </ul>
+</body>
+
+</html>

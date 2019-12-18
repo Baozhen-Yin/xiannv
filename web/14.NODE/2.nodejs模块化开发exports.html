@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.nodejs模块化开发</title>
+</head>
+
+<body>
+    <!-- nodejs中的模块化开发规范 -->
+    <p>1.Node.js规定一个js文件就是一个模块，模拟""内部定义的变量和函数""默认情况下在""外部无法得到""</p>
+    <p>2.模块内部可以使用exports对象进行成员导出，使用require方法导入其他模块</p>
+    1.a模块（a.js) 里面包含了加法减法函数 exports.加法 = 加法 exports.减法 = 减法 ➡
+    <br> 2.b模块（b.js) A模块=require（A模块） A模块.加法() A模块.减法()
+
+    <script>
+        //a.js 模块成员导出
+        //在模块内部定义变量
+        let version = 1.0;
+        //在模块内部定义方法
+        const sayHi = name => `您好 ${name}`;
+        //向模块外部导出数据
+        exports.version = version;
+        exports.sayHi = sayHi;
+
+
+        //b.js 模块成员导入 在b.js里面导入模块a
+        let a = require('./b.js');
+        //输出b模块中的version变量
+        console.log(a.version);
+        //调用b模块中的sayHi方法 并输出其返回值
+        console.log(a.sayHi('尹宝祯'));
+    </script>
+</body>
+
+</html>

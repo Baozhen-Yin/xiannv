@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>69.模板字符串</title>
+    <script src="../12.jQuery/jQuery.min.js"></script>
+    <!-- ES6中的模板字符串(template string)是一种能在字符串文本中内嵌表达式的字符串字面量(string literal). -->
+    <!-- 通常称之为字符串内插或者叫变量内插 -->
+    <!-- 模板字符串可以包含有占位符(placeholder),占位符使用${ }这样的语法. -->
+    <!-- 占位符中表达式的值以及占位符两边的文本会一起传递给一个标签函数(Tag function). -->
+    <!-- 这个函数是由模板字符串开头(左边的反引号之前)的一个可选的表达式决定的.如果模板字符串开头没有任何表达式
+        则会使用默认的标签函数. -->
+    <!-- 模板字符串（template string）是增强版的字符串，用反引号（`）标识。它可以当作普通字符串使用，
+        也可以用来定义多行字符串，或者在字符串中嵌入变量。 -->
+</head>
+
+<body>
+    <script>
+        var x = 1;
+        var y = 2;
+        `${ x } + ${ y } = ${ x + y}`
+        console.log(`${ x } + ${ y } = ${ x + y}`); // "1 + 2 = 3"
+
+        $('#result').append(
+            'There are <b>' + basket.count + '</b> ' +
+            'items in your basket, ' +
+            '<em>' + basket.onSale +
+            '</em> are on sale!'
+        );
+
+        $('#result').append(`
+         There are <b>${basket.count}</b> items
+          in your basket, <em>${basket.onSale}</em>
+         are on sale!
+       `);
+        //+变量+ 变成了${} 而且引号也减少了
+    </script>
+</body>
+
+</html>
