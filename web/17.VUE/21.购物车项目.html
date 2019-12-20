@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购物车实战</title>
+    <link rel="stylesheet" type="text/css" href="22.index.css">
+    <script src="vue.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app" v-cloak>
+        <template v-if="context.length">
+            <table>
+                <thead >
+                    <tr>
+                        <th>全选<input type="checkbox" v-model="checked" @click="handlall()"></th>
+                        <th v-for="value in title">{{value}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template v-for="(values,indexs) in context">
+                        <tr v-for ="(value,index) in values">
+                                <td><input type="checkbox" v-model="value.check"></td>
+                                <td>{{nums(index,indexs)}}</td>
+                                <td>{{value.name}}</td>
+                                <td>{{value.price}}</td>
+                                <td>
+                                    <button @click="reduce(index,indexs);checks(index,indexs)" :disabled="value.amount=== 1">-</button>
+                                    {{value.amount}}
+                                    <button @click="add(index,indexs);checks(index,indexs)">+</button>
+                                </td>
+                                <td>
+                                    <button @click="del(index,indexs)">
+                                        移除
+                                    </button>
+                                </td>
+                            
+                        </tr>
+                        
+                    </template>
+        </tbody>
+        </table>
+        <div>总价：{{totals}}</div>
+        </template>
+        <div v-else>购物车为空</div>
+    </div>
+    <script src="22.index.js"></script>
+</body>
+
+</html>

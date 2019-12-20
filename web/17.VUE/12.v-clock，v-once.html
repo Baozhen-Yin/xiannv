@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12.内置指令</title>
+    <script src="vue.min.js"></script>
+    <style>
+        [v-clock] {
+            /* 这时虽然已经加载了指令v-clock 当时没有作用 因为网速慢的时候 页面时会显示{{meaasge}}字样 只要加一句css据可以解决 */
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-clock>
+        {{message}}
+    </div>
+    <div id="app1">
+        <p v-once>{{msg}}我不会改变了 我就是hello</p>
+        <p>{{msg}}</p>
+        <p>
+            <input type="text" v-model="msg" name="">
+        </p>
+    </div>
+    <script>
+        //1.v-clock 不需要表达式的指令 在vue接受编译时从绑定的HTML元素上移除
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '这是一段文本'
+            }
+        });
+        //2.v-once 不需要表达式的指令 定义它的元素或者组件只渲染一次，包括元素或组件的所有节点
+        //首次渲染后 不在随数据变化晕染 成为静态内容
+        //进一步优化性能时可能会用到
+        var app1 = new Vue({
+            el: '#app1',
+            data: {
+                msg: "hello"
+            }
+        });
+    </script>
+</body>
+
+</html>

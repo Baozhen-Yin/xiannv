@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>33.组件data选项</title>
+    <script src="vue.min.js"></script>
+
+    <!-- 与实例稍微有些区别 data必须是函数 然后将数据return出去 -->
+</head>
+
+<body>
+    <div id="app">
+        <my-ybz>
+            <!-- 渲染后是 <div>data里面的组件内容</div> -->
+        </my-ybz>
+    </div>
+    <script>
+        //my-ybz就是组件的名称 推荐使用小写加减号  以下就是全局注册语法 
+        //要在父实例中使用这个组件 必须要在实例前创建
+        Vue.component('my-ybz', {
+            //template的DOM结构必须被一个元素包含,如果直接写"""这里是组件的内容"""是不会被渲染的
+            template: '<div>{{message}}</div>',
+            data: function() {
+                return {
+                    message: 'data里面的组件内容'
+                }
+            }
+        });
+        var app = new Vue({
+            el: "#app",
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>23.v-model</title>
+    <!-- 表单类控件承载了一个网页的录入与交互 -->
+    <script src="vue.min.js"></script>
+    <!-- 使用v-model后,表单控件显示的值只依赖绑定的数据,不再关心初始化时的value属性,之前插入的值也不会生效 -->
+    <!-- v-model 在内部为不同的输入元素使用不同的属性并抛出不同的事件： -->
+    <!-- text 和 textarea 元素使用 value 属性和 input 事件；
+         checkbox 和 radio 使用 checked 属性和 change 事件；
+         select 字段将 value 作为 prop 并将 change 作为事件。 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- text 和 textarea 元素使用 value 属性和 input 事件； -->
+        <input type="text" v-model="message" placeholder="请输入">
+        <p>输入的内容是{{message}}</p>
+        <textarea v-model="msg" placeholder="请输入"></textarea>
+        <p>输入的内容是</p>
+        <p style="white-space: pre;">{{msg}}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                //因为v-model 在输入框输入的同时 message也会渲染在视图中
+                message: '',
+                msg: ''
+            }
+        })
+    </script>
+</body>
+
+</html>

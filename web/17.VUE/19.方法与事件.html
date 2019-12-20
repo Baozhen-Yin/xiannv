@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>19.方法与事件</title>
+    <!-- 类似原生的onclick等写法 -->
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        点击次数：{{ counter }}
+        <button v-on:click="handleAdd()">+1按钮</button>
+        <button @click="handleAdd(10)">+10</button>
+    </div>
+    <!-- vue提供了一个特殊变量$event 用于访问元素的Dom事件 例如下面实例可以防止链接打开 -->
+    <div id="app1">
+        <a href="http://www.apple.com" @click="handleClick('禁止打开',$event"></a>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                counter: 0
+            },
+            methods: {
+                handleAdd: function(count) {
+                    count = count || 1;
+                    //只要有一个条件为true时，结果就为true；2当两个条件都为false时，结果才为false；3当一个条件为true时，后面的条件不再判断
+                    //this指向当前Vue实例app
+                    this.counter += count;
+                }
+            },
+        });
+        var app1 = new Vue({
+            el: '#app1',
+            data: {
+                counter: 0
+            },
+            methods: {
+                handleClick: function(message, event) {
+                    event.preventDefault();
+                    window.alert(message)
+                }
+            }
+        }, )
+    </script>
+</body>
+
+</html>

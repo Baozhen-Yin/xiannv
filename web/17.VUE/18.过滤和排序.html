@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>17.过滤和排序</title>
+
+    <!-- 当年不想改变原数组，想通过一个数组的副本来做排序或者过滤的显示，可以使用计算属性来返回过滤或者排序后的数组 -->
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <template v-for="book in filterBooks">  
+        <li>书名：{{book.name}}</li>
+        <li>作者：{{book.author}}</li>
+       </template>
+        </ul>
+    </div>
+    <script src="vue.min.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                books: [{
+                    name: '<vue>实战y',
+                    author: 'ybz'
+                }, {
+                    name: 'ybz yzbyzbyzb',
+                    author: 'ybz'
+
+                }, {
+                    name: 'xyk ybz',
+                    author: 'xyk'
+                }]
+            },
+            methods: {
+                sortedBooks: function() {
+                    return this.books.sort(function(a, b) {
+                        return a.name.length < b.name.length
+                    })
+                }
+            },
+            computed: {
+                filterBooks: function() {
+                    return this.books.filter(function(book) {
+                        //把书名含有ybz的过滤出来
+                        return book.name.match(/y/)
+                    })
+                },
+
+            },
+
+        });
+    </script>
+
+</body>
+
+</html>

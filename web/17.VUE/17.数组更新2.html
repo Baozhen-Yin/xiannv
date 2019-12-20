@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="example">
+        <div>
+            <!-- 变异方法 会改变数组 -->
+            <button @click="push">push</button>
+            <button @click="pop">pop</button>
+            <button @click="shift">shift</button>
+            <button @click="unshift">unshift</button>
+            <button @click="splice">splice</button>
+            <button @click="sort">sort</button>
+            <button @click="reverse">reverse</button>
+        </div>
+        <ul>
+            <li v-for="item in items">
+                {{ item.message }}
+            </li>
+        </ul>
+    </div>
+    <!-- 非变异方法   filter(), concat(), slice() 。
+        这些不会改变原始数组，但总是返回一个新数组。当使用非变异方法时，可以用新数组替换旧数组-->
+    <div id="example1">
+        <div>
+            <button @click="concat">concat</button>
+            <button @click="slice">slice</button>
+            <button @click="map">map</button>
+            <button @click="filter">filter</button>
+        </div>
+        <ul>
+            <li v-for="item in items">
+                {{ item }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var example = new Vue({
+            el: '#example',
+            data: {
+                items: [{
+                    message: 'Foo'
+                }, {
+                    message: 'Bar'
+                }, {
+                    message: 'Baz'
+                }],
+                addValue: {
+                    message: 'match'
+                }
+            },
+            methods: {
+                push() {
+                    this.items.push(this.addValue)
+                },
+                pop() {
+                    this.items.pop()
+                },
+                shift() {
+                    this.items.shift()
+                },
+                unshift() {
+                    this.items.unshift(this.addValue)
+                },
+                splice() {
+                    this.items.splice(0, 1)
+                },
+                sort() {
+                    this.items.sort()
+                },
+                reverse() {
+                    this.items.reverse()
+                },
+            }
+        });
+
+        var example1 = new Vue({
+            el: '#example1',
+            data: {
+                items: ['Foo', 'Bar', 'Baz'],
+                addValue: 'match'
+            },
+            methods: {
+                concat() { //先创建当前数组一个副本，然后将接收到的参数添加到这个副本的末尾，最后返回新构建的数组
+                    this.items = this.items.concat(this.addValue)
+                },
+                slice() { //基于当前数组中一个或多个项创建一个新数组，接受一个或两个参数，即要返回项的起始和结束位置，最后返回新数组
+                    this.items = this.items.slice(1)
+                },
+                map() { //对数组的每一项运行给定函数，返回每次函数调用的结果组成的数组
+                    this.items = this.items.map(function(item, index, arr) {
+                        return index + item;
+                    })
+                },
+                filter() { //对数组中的每一项运行给定函数，该函数会返回true的项组成的数组
+                    this.items = this.items.filter(function(item, index, arr) {
+                        return (index > 0);
+                    })
+                }
+            }
+        });
+        // 由于JS的限制， Vue 不能检测以下变动的数组：
+        //1、利用索引直接设置一个项时，例如： vm.items[indexOfItem] = newValue
+        //2、修改数组的长度时，例如： vm.items.length = newLength
+    </script>
+
+</body>
+
+</html>

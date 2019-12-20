@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>20.修饰符</title>
+    <!-- @绑定的事件后加小圆点. 在跟一个后缀来使用修饰符 -->
+    <!-- 修饰符: -->
+
+    <!-- .stop 阻止单击事件冒泡 -->
+    <a @click.stop="handle"></a>
+    <!-- .prevent 提交时间不再重载页面 -->
+    <form @submit.prevent="handle"></form>
+    <!-- .captrue 添加事件侦听器时使用事件捕获模式 -->
+    <div @click.capture="handle"></div>
+    <!-- .self 只当事件在该元素本身(而不是子元素)触发时回调 -->
+    <div @click.self="handle"></div>
+    <!-- .once 只触发一次 -->
+    <div @click.once="handle"></div>
+    <!-- 在表单元素上监听键盘事件时,还可以使用按键修饰符,比如按下某个键才能调用 只有在keycode是13调用vm.submit() -->
+    <input @keyup.13="submit">
+
+</head>
+
+<body>
+
+</body>
+
+</html>

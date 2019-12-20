@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>25.v-model复选框</title>
+    <script src="vue.min.js"></script>
+
+    <!-- 复选框也分单独使用和组合使用,不过用法与单选不同.复选框单独使用时,也是v-bind绑定布尔值 -->
+</head>
+
+<body>
+    <!-- 1.复选框之单独使用 -->
+    <!-- for属性规定label与哪个表单元素绑定 用id进行绑定-->
+    <!-- <label>专为input元素服务，为其定义标记。 -->
+    <div id="app">
+        <input type="checkbox" v-model="msg" id="checked">
+        <label for="checked">选择状态: {{msg}} </label>
+    </div>
+    <!--组合使用时,v-model和value一起,多个勾选框绑定同一个数据类型的数据,
+        value值在数组当中,就会选择中这一项,这一过程也是双向的,在勾选时value的值也会自动push到这个数组中 -->
+    <!-- 在勾选时,数据chec值变为了true label中渲染的内容也会更新 -->
+    <div id="app1">
+        <!-- checked	预先选定复选框或单选按钮。 -->
+        <input type="checkbox" v-model="chec" value="html" id="html">
+        <label for="html">HTML</label>
+        <br>
+        <input type="checkbox" v-model="chec" value="js" id="js">
+        <label for="js">JS</label>
+        <br>
+        <input type="checkbox" v-model="chec" value="css" id="css">
+        <label for="css">CSS</label>
+        <br>
+        <p>选择的项是: {{chec}}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                msg: ''
+            }
+        });
+        var app1 = new Vue({
+            el: "#app1",
+            data: {
+                chec: []
+            }
+        })
+    </script>
+</body>
+
+</html>

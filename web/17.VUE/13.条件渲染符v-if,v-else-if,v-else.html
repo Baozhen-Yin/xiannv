@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13.条件渲染符v-if,v-else-if,v-else</title>
+    <script src="vue.min.js"></script>
+
+    <!-- 和js里面类似 vue.JS的条件指令可以根据表达式的值在DOM中渲染或者销毁元素/组件 -->
+</head>
+
+<body>
+    <div id="app">
+        <!--1. v-else-if 要紧跟v-if，v-else要紧跟v-else-if或者v-if，表达式为真时，当前元素/组件及所有子节点将被渲染，为假被移除  -->
+        <p v-if="status ===1">当status为1时显示改行</p>
+        <p v-else-if="status===2">当status为2时显示改行</p>
+        <p v-else>否则显示改行</p>
+    </div>
+    <!-- 2.如果一次判断多个元素 可以在内置template上使用条件指令 最终渲染结果不包括该元素 -->
+    <div id="app1">
+        <template v-if="num ===1">
+            <p>这是一组我想渲染的文本</p>
+            <p>这是一组我想渲染的文本</p>
+            <p>这是一组我想渲染的文本</p>
+        </template>
+    </div>
+    <!-- 3.VUe在渲染元素时，处于效率会尽可能复用已有的元素而非重新渲染 -->
+    <div id="app2">
+        <template v-if="type === 'name'">
+            <label>用户名</label>
+            <input placeholder="请输入用户名">
+        </template>
+        <template v-else>
+            <label>邮箱地址</label>
+            <input placeholder="请输入邮箱">
+        </template>
+        <button @click="handleToggleClick">切换输入类型</button>
+    </div>
+    <!-- 4.可以自己决定是否要复用元素 key的值必须是唯一的 添加了key就不会复用了 不过lable是被复用的因为没有添加key属性 -->
+    <div id="app3">
+        <template v-if="type === 'name'">
+            <label>用户名</label>
+            <input placeholder="请输入用户名" key="name-input">
+        </template>
+        <template v-else>
+            <label>邮箱地址</label>
+            <input placeholder="请输入邮箱" key="mail-input">
+        </template>
+        <button @click="handleToggleClick">切换输入类型</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                status: 1
+            }
+        });
+        var app1 = new Vue({
+            el: '#app1',
+            data: {
+                num: 1
+            }
+        });
+        var app2 = new Vue({
+            el: '#app2',
+            data: {
+                type: 'name'
+            },
+            methods: {
+                //点击切换按钮 虽然dom变了 但是之前在输入框键入的内容并没有变 比如我输入哈哈哈 只是替换了placeholder的内容 说明input被复用了
+                handleToggleClick: function() {
+                    this.type = (this.type === 'name' ? 'mail' : 'name')
+                }
+            },
+        });
+        var app3 = new Vue({
+            el: '#app3',
+            data: {
+                type: 'name'
+            },
+            methods: {
+                //点击切换按钮 虽然dom变了 但是之前在输入框键入的内容并没有变 比如我输入哈哈哈 只是替换了placeholder的内容 说明input被复用了
+                handleToggleClick: function() {
+                    this.type = (this.type === 'name' ? 'mail' : 'name')
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

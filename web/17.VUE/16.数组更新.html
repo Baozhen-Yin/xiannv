@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>16.数组更新</title>
+    <script src="vue.min.js"></script>
+
+    <!-- Vue的核心是数据与视图的双向绑定，当我们修改数组时，Vue会检测到数组变化 ，所以用v-for渲染的试图会立即更新 -->
+    <!-- vue包含快一组观察数组编译的方法，使用它们改变数组也会触发视图更新 -->
+    <!-- 1.push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。
+         2.pop()   方法用于删除并返回数组的最后一个元素。
+         3.shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。
+         4.unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度。 
+         5.splice()  方法向/从数组中添加/删除项目，然后返回被删除的项目
+         6.sort()   方法用于对数组的元素进行排序。
+         7.reverse() 方法用于颠倒数组中元素的顺序-->
+
+    <!-- 以上方法有些会改变这些方法调用的原始数组 有些不会，例如 filter()方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+         concat()方法用于连接两个或多个数组。  slice() 方法可从已有的数组中返回选定的元素。-->
+    <!-- 这三个函数返回的时新数组，在使用非异动方法时，可以用新数组替代原数组 -->
+
+    <!-- 以下变动的数组vue是不能检测到的，也不会触发视图更新 -->
+    <!-- 1.通过索引直接设置项：app.book[0] = ... -->
+    <!-- 2.修改数组长度 app.books.length = 1 -->
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="book in books">{{book.name}} -- {{book.author}}</li>
+        </ul>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                books: [{
+                    name: '<vue>实战',
+                    author: 'ybz'
+                }, {
+                    name: 'ybz ',
+                    author: 'ybz'
+
+                }, {
+                    name: 'xyk',
+                    author: 'ybz'
+                }]
+            }
+        });
+        //我们再books添加一项
+        app.books.push({
+            name: 'ybz2',
+            author: 'ybz'
+        });
+        //filter()方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+        app.books = app.books.filter(function(item) { //过滤掉书名不含ybz的
+                return item.name.match(/ybz/) //match() 方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配。
+            })
+            //1.通过索引直接设置项：app.book[0] = ... 不会被vue检测 以下方法可以
+            // Vue.set(app.books, 3, {
+            //     name: 'xyk2',
+            //     author: 'xykz'
+            // });
+        app.books.splice(3, 0, {
+            name: 'ybz2',
+            author: 'ybz1111'
+        })
+
+        // 2.修改数组长度 app.books.length = 1
+        app.books.splice(1)
+    </script>
+</body>
+
+</html>

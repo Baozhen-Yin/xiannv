@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>26.v-model选择列表</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 给select添加属性multiple就可以设置多选 -->
+        <select v-model="selected" multiple>
+            <option >HTML</option>
+            <option value="javascript">JS</option>
+            <!-- option是备选项 如果含有value属性 v-model会先匹配value的值;如果没有直接匹配option的text -->
+            <option value="先匹配我的">CSS</option>
+        </select>
+        <p>
+            您选择的项是:{{selected}}
+        </p>
+    </div>
+
+
+    <!-- 在业务中 optiopn经常绑定v-for动态输出 value和text也是用v-bind来动态输出的 -->
+    <div id="app1">
+        <select v-model="selected">
+            <option  v-for="option in options" :value="option.value">{{option.text}}</option>
+        </select>
+        <p>
+            您选择的项是:{{selected}}
+        </p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                selected: ''
+            }
+        })
+        var app1 = new Vue({
+            el: "#app1",
+            data: {
+                selected: "html",
+                options: [{
+                    text: 'HTML',
+                    value: 'html111'
+                }, {
+                    text: 'javascript',
+                    value: 'JS111'
+                }, {
+                    text: 'CSS',
+                    value: 'css111'
+                }]
+            }
+        });
+        // 如果 v-model 表达式的初始值未能匹配任何选项，<select> 元素将被渲染为“未选中”状态。在 iOS 中，这会使用户无法选择
+        //第一个选项。因为这样的情况下，iOS 不会触发 change 事件。因此，更推荐像上面这样提供一个值为空的禁用选项。
+    </script>
+</body>
+
+</html>

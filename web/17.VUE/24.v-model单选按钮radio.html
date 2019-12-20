@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>24.单选按钮</title>
+    <script src="vue.min.js"></script>
+    <!-- checkbox 和 radio 使用 checked 属性和 change 事件； -->
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 单选按钮在单独使用时 不需要v-model 直接使用v-bind绑定一个布尔类型的值 为真选中 为否不选 -->
+        <!-- 单选按钮是表示一组互斥选项按钮中的一个。当一个按钮被选中，之前选中的按钮就变为非选中的。 -->
+        <input type="radio" :checked="picked">
+        <label>单选按钮</label>
+    </div>
+    <!-- 如果是组合来实现互斥的效果就需要v-model配合value使用 -->
+    <!-- value	设置或返回单选按钮的 value 属性的值。 -->
+
+    <div id="app1">
+        <input type="radio" v-model="picked" value="html11" id="html">
+        <label for="html">HTML</label>
+        <br>
+        <input type="radio" v-model="picked" value="js11" id="js">
+        <label for="js">JS</label>
+        <br>
+        <input type="radio" v-model="picked" value="css11" id="css">
+        <label for="css">CSS</label>
+        <br>
+        <p>选择的项是: {{picked}}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                picked: true
+            }
+        });
+        var app1 = new Vue({
+            el: "#app1",
+            data: {
+                picked: ''
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>11.v-bind绑定style内联样式</title>
+    <script src="vue.min.js"></script>
+    <!-- 属性使用驼峰命名或者短横分割命名 -->
+</head>
+
+<body>
+    <div id="app">
+        <div :style="{'color':color,'fontSize':fontSize+'px'}">文本</div>
+    </div>
+    <div id="app1">
+        <div :style="styles">文本</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                color: 'red',
+                fontSize: 14
+            }
+        });
+        //直接写一串长的不方便维护 所以一般写在data或者computed里
+        //应用多个样式可以采用数组语法
+        //<div :style = "[styleA,styleB]"></div>
+        var app1 = new Vue({
+            el: '#app1',
+            data: {
+                styles: {
+                    color: 'red',
+                    fontSize: 14 + 'px'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

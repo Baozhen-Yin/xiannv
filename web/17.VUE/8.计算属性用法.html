@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>8.计算属性用法</title>
-    <!-- 1.每一个计算属性都包含getter 和 setter ， -->
+    <!-- 1.每一个计算属性都包含getter 和 setter ，在你需要时，可以提供一个setter函数，当手动修改计算属性的值就像修改一个普通数据那样时，就会触发setter函数，执行一些自定义的操作 -->
 
 </head>
 
 <body>
     <div id="app"> 总价{{prices}} </div>
+    <div id="name">姓名：{{fullname}}</div>
+    <div id="app1"></div>
+    <div id="app2">
+        {{reversedText}}
+    </div>
     <script src="vue.min.js"></script>
 
     <script>
@@ -34,20 +39,60 @@
                 }, {
                     name: 'banana',
                     price: 6,
-                    count: 10
+                    count: 9
                 }]
             },
             computed: {
                 prices: function() {
                     var prices = 0;
-                    for (var i = 0; i < pg1.length; i++) {
+                    for (var i = 0; i < this.pg1.length; i++) {
                         prices += this.pg1[i].price * this.pg1[i].count
                     }
-                    for (var i = 0; i < pg2.length; i++) {
+                    for (var i = 0; i < this.pg2.length; i++) {
                         prices += this.pg2[i].price * this.pg2[i].count
                     }
                     return prices;
 
+                }
+            },
+        });
+        var name = new Vue({
+            el: "#name",
+            data: {
+                firstname: 'Jack',
+                lastname: 'Green'
+            },
+            computed: {
+                fullname: {
+                    //getter 用于读取
+                    get: function() {
+                        return this.firstname + '' + this.lastname;
+                    },
+                    //setter写入时触发
+                    set: function(newValue) {
+                        var names = newValue.split(' ');
+                        this.firstname = names[0];
+                        this.lastname = names[names.length - 1]
+                    }
+                }
+            },
+            //当name.fullname = 'baozhen yin'时，setter就会被调用，数据firstname和lastName都会相对更新，视图同样也更新
+        });
+        //1.计算属性可以依赖其他的计算属性
+        //2.计算属性不仅可以依赖当前的Vue实例的数据，还可以依赖其他实例的数据
+        var app1 = new Vue({
+            el: '#app1',
+            data: {
+                text: '123,456'
+            }
+        });
+        var app2 = new Vue({
+            el: '#app2',
+            computed: {
+                reversedText: function() {
+                    //2.计算属性不仅ky依赖当前的Vue实例的数据，还可以依赖其他实例的数据
+                    //这里是依赖实例app1的数据text
+                    return app1.text.split(',').reverse().join(',')
                 }
             },
         })

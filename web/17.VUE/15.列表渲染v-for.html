@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>15.列表渲染v-for</title>
+    <script src="vue.min.js"></script>
+
+    <!-- 当需要将一个数组遍历或者枚举一个对象循环显示时，会用到列表渲染指令v-for 需要结合in来使用 -->
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- books是数据 book是当前数组元素的别名，循环出每个li内的元素都可以访问到对应的当前数据book -->
+            <!-- 列表渲染也支持用of代替in作为修饰符 -->
+            <li v-for="book in books">{{book.name}}</li>
+        </ul>
+    </div>
+
+    <div id="app1">
+        <ul>
+            <!-- 2.index 索引 -->
+            <li v-for="(book,index) of books">{{index +1}}-{{book.name}}</li>
+        </ul>
+    </div>
+
+    <div id="app2">
+        <ul>
+            <!-- 3.v-for也支持使用内置标签template上将多个元素进行渲染 -->
+            <template v-for="book in books">
+            <li>书名：{{book.name}}</li>
+            <li>作者：{{book.author}}</li>
+           </template>
+        </ul>
+    </div>
+
+    <!-- 4.除了数组外 对象的属性也是可以遍历的  ybz女168-->
+    <div id="app3">
+        <li v-for="(value,key,index) in user">
+            {{index}} - {{key}} : {{value}}
+        </li>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                books: [{
+                    name: '<vue>实战'
+                }, {
+                    name: 'ybz '
+                }, {
+                    name: 'xyk'
+                }]
+            }
+        });
+        var app1 = new Vue({
+            el: "#app1",
+            data: {
+                books: [{
+                    name: '<vue>实战'
+                }, {
+                    name: 'ybz '
+                }, {
+                    name: 'xyk'
+                }]
+            }
+        });
+        var app2 = new Vue({
+            el: "#app2",
+            data: {
+                books: [{
+                    name: '<vue>实战',
+                    author: 'ybz'
+                }, {
+                    name: 'ybz ',
+                    author: 'ybz'
+
+                }, {
+                    name: 'xyk',
+                    author: 'ybz'
+                }]
+            }
+        });
+        var app3 = new Vue({
+            el: "#app3",
+            data: {
+                user: {
+                    name: 'ybz',
+                    sex: '女',
+                    tall: 168
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

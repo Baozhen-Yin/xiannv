@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>9.计算属性缓存</title>
+    <script src="vue.min.js"></script>
+    <!-- 调用methods里的方法也可以与计算属性起到同样的作用 -->
+</head>
+
+<body>
+    <div id="app1">
+        {{reversedText()}} {{now()}}
+    </div>
+    <script>
+        var app1 = new Vue({
+            el: '#app1',
+            data: {
+                text: '123,456'
+            },
+            methods: {
+                //1.没有使用计算属性 在methods里定义了一个方法实现同样的效果，甚至该方法还可以接受参数更灵活
+                //2.既然methods就可以实现为什么要用computed呢？因为计算属性是基于它的依赖缓存的。
+                //一个计算属性所依赖的数据发生变化时它才会重新取值，所以只要text不改变，计算属性就不更新
+                reversedText: function() {
+                    return this.text.split(',').reverse().join(',')
+                },
+                now: function() {
+                    return Date.now()
+                }
+            },
+            computed: {
+                now: function() {
+                    //这里的Date.now()不是响应式依赖，所有计算属性now不会更新，但是methods不同，只要重新渲染就会被调用，
+                    //所以函数也会被执行
+                    //使用计算属性methods取决于你是否需要缓存，当遍历大量数组和做大量计算时，应当使用计算属性，除非不想缓存
+                    return Date.now()
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

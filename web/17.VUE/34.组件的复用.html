@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>34.组件的复用</title>
+    <script src="vue.min.js"></script>
+    <!-- javascript对象是引用关系,如果return出的对象引用了外部的一个对象,那这个对象就是共享的,任何一方修改都会同步 -->
+    <!-- a是对象，b=a是将a的引用地址赋值给b -->
+    <!-- a和b都指向与同一个对象，修改这个对象，a和b都会变化 -->
+    <!-- 1.只操作（修改，删除，添加）对象的属性，不会与之前对象断开连接
+         2.直接操作对象本身，也就是最外层，会和之前的对象断开连接 -->
+    <!-- 组件是可复用的Vue实例 -->
+</head>
+
+<body>
+    <div id="app">
+        <my-ybz></my-ybz>
+        <my-ybz></my-ybz>
+        <my-ybz></my-ybz>
+    </div>
+    <script>
+        // var data = {
+        //     // 这样的话三个按钮点击任意一个都会触发另外两个 是因为组件引用的是外部的对象
+        //     //这不是我们想要的结果 所以给组件返回一个新的data对象来独立
+        //     counter: 0
+        // }
+
+        Vue.component('my-ybz', {
+            template: '<button @click="counter++">{{counter}}</button>',
+            data: function() {
+                return {
+                    // 注意当点击按钮时，每个组件都会各自独立维护它的counter。因为你每用一次组件，就会有一个它的新实例被创建。
+                    // 这三个按钮 互不影响 这样就达到了复用的目的
+                    counter: 0
+                }
+            }
+        });
+        var app = new Vue({
+            el: "#app",
+
+        });
+    </script>
+</body>
+
+</html>

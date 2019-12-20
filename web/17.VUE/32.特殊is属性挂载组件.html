@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>32.特殊is属性挂载组件</title>
+    <script src="vue.min.js"></script>
+    <!-- Vue组件的模板会在某些情况下受HTML的限制,比如<table>内规定只允许tr,td和th这些表格元素 -->
+    <!-- 所以table内直接使用Vue组件是无效的 所以要使用特殊的is属性来挂载组件-->
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <tbody is="my-component"></tbody>
+            <!-- tbody在渲染时 会被替换为组件的内容 常见的还有ul ol select -->
+        </table>
+    </div>
+    <script>
+        Vue.component('my-component', {
+            template: '<div>这里是组件的内容在表格里</div>'
+        });
+        var app = new Vue({
+            el: "#app",
+
+        })
+    </script>
+</body>
+
+</html>

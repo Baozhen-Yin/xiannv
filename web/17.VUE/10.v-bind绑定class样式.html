@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10.v-bind</title>
+    <script src="vue.min.js"></script>
+
+    <!-- 动态更新HTML上的属性 -->
+    <!-- 最常见需求：元素样式名称class和内联样式style的动态绑定，他们也是HTML属性，所以可以有v-bind指令 -->
+    <!-- :class 可以与多个class共存 -->
+</head>
+
+<body>
+    <div id="app">
+        <a v-bind:href="url">链接</a>
+        <!-- 给class设置一个对象可以动态切换class -->
+        <div class="static" :class="{'active':isActive,'error':isError}"></div>
+    </div>
+    <div id="app1">
+        <div class="classes"></div>
+    </div>
+    <div id="app3">
+        <div :class="[activeCls,errorCls]"></div>
+    </div>
+    <div id="app4">
+        <!-- 样式error会始终应用 当数据isActive为真时 样式active才会被应用 -->
+        <div :class="[isActive?activeCls:'',errorCls]"></div>
+    </div>
+    <div id="app5">
+        <!-- 样式error会始终应用 当数据isActive为真时 样式active才会被应用 -->
+        <button :class="classes"></button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                //链接的href属性被动态设置了 当数据变化就会重新渲染
+                url: 'http://www.baidu.com',
+                //当为true时 div会拥有类名Active <div class="active"></div>
+                isActive: true,
+                // isError: false 为true时多个类名共存
+                isError: true
+            },
+        });
+        var app1 = new Vue({
+            el: '#app1',
+            data: {
+                isActive: true,
+                error: null
+            },
+            computed: {
+                //:class表达式过长或者逻辑复杂时，可以绑定计算属性。
+                classes: function() {
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-fail': this.error && this.error.type === 'fail'
+                    }
+                }
+            },
+        });
+        //3.当应用多个class时可以使用数组语法，给class绑定一个数组，应用一个class列表
+        var app3 = new Vue({
+            el: '#app3',
+            data: {
+                activeCls: 'active',
+                errorCls: 'error'
+                    //<div class="active error"></div>
+            },
+        });
+        //4.也可以使用三元表达式根据条件切换class
+        var app4 = new Vue({
+            el: '#app4',
+            data: {
+                isActive: true,
+                activeCls: 'active',
+                errorCls: 'error'
+                    //<div class="active error"></div>
+            },
+        });
+        //5.在写复用的组件时，在开发过程中，如果表达式较长或者逻辑复杂，应该尽可能的优先使用计算属性
+        var app5 = new Vue({
+            el: '#app5',
+            data: {
+                size: 'large',
+                disabled: true
+            },
+            computed: {
+                classes: function() {
+                    return [
+                        'btn', {
+                            // 当数据size不为空时 会采用样式前缀btn- 后加size的值
+                            //当数据disabled为真时 会引用样式btn-disabled
+                            ['btn-' + this.size]: this.size !== '',
+                            ['btn-disabled']: this.disabled
+                        }
+                    ]
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

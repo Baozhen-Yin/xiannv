@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14.v-show,v-if</title>
+    <script src="vue.min.js"></script>
+
+    <!-- 根据表达式的真假 切换元素的显示与隐藏 -->
+    <!-- v-show 每次不会进行Dom的删除或者创建操作 只是切换了元素的display：none样式 -->
+    <!-- v-show指令作用 根据元素真假切换元素的显示状态 原理是修改元素的display 实现显示或者隐藏 -->
+    <!-- 指令后面的内容 最终都会解析为布尔值 值为true元素显示 值为false元素隐藏  数据改变之后 对应元素显示状态会同步更新 -->
+    <!-- v-show不能再template上面使用 -->
+
+    <!-- v-if和v-show具有类似功能 不过v-if才是真正的条件渲染，会根据表达式适当的重建元素以及绑定事件或者子组件  -->
+    <!-- v-if在初始表达式为false，则一开始不会渲染，当条件有一次为真才开始编译 -->
+
+    <!-- v-show只是简单的css属性切换，无论真假都会被编译，相比之下v-if更适合条件不经常改变的场景，因为它的切换开销较大，v-show则适合更频繁的条件 -->
+</head>
+
+<body>
+    <div id="app">
+        <p v-show="status ===1">当status为1时显示改行</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                // <p style="display: none;">当status为1时显示改行</p>
+                status: 2
+            }
+        });
+    </script>
+</body>
+
+</html>

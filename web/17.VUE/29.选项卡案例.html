@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30.选项卡案例</title>
+    <script src="vue.min.js"></script>
+
+    <style>
+        .tab ul {
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .tab ul li {
+            box-sizing: border-box;
+            padding: 0;
+            float: left;
+            width: 100px;
+            height: 45px;
+            line-height: 45px;
+            list-style: none;
+            text-align: center;
+            border-top: 1px solid blue;
+            border-right: 1px solid blue;
+        }
+        
+        .tab ul li:first-child {
+            border-left: 1px solid blue;
+        }
+        
+        .tab ul li.active {
+            background-color: orange;
+        }
+        
+        .tab div {
+            width: 500px;
+            height: 300px;
+            display: none;
+            text-align: center;
+            font-size: 30px;
+            line-height: 300px;
+            border: 1px solid blue;
+            border-top: 0px;
+        }
+        
+        .tab div.current {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="tab">
+            <ul>
+                <!--  :class="currentIndex=index?active:''" 当前索引为这个元素则增加类 背景颜色改变 -->
+                <li v-on:click="change(index)" :class="currentIndex == index?'active': ''" :key="item.id" v-for="(item,index) in list">{{item.title}}</li>
+            </ul>
+
+            <div :class="currentIndex == index?'current': ''" :key="item.id" v-for="(item,index) in list">
+                <img :src="item.path">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="vue.min.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                currentIndex: 0, // 选项卡当前的索引 初始化为0
+                list: [{
+                    id: 1,
+                    title: 'apple',
+                    path: 'img/apple.png'
+                }, {
+                    id: 2,
+                    title: 'orange',
+                    path: 'img/orange.png'
+                }, {
+                    id: 3,
+                    title: 'lemon',
+                    path: 'img/lemon.png'
+                }]
+            },
+            methods: {
+                change: function(index) {
+                    //在这里实现选项卡切换操作 本质操作类名
+                    this.currentIndex = index
+                    console.log(this.currentIndex);
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

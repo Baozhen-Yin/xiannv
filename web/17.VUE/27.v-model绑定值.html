@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>27.v-model绑定值</title>
+    <script src="vue.min.js"></script>
+
+    <!--v-model 绑定的值通常是静态字符串 (对于复选框也可以是布尔值) -->
+    <!-- 在执行之前联编的属性称作静态的(static)，而只在执行期间联编的属性是动态的(dynamic) -->
+    <!-- 但是有时我们可能想把值绑定到 Vue 实例的一个动态属性上，这时可以用 v-bind 实现，并且这个属性的值可以不是字符串。 -->
+
+    <!-- 当选中时，`picked` 为字符串 "a" -->
+    <!-- <input type="radio" v-model="picked" value="a"> -->
+
+    <!-- `toggle` 为 true 或 false -->
+    <!-- <input type="checkbox" v-model="toggle"> -->
+
+    <!-- 当选中第一个选项时，`selected` 为字符串 "abc" -->
+    <!-- <select v-model="selected">
+  <option value="abc">ABC</option>
+</select> -->
+</head>
+
+<body>
+    <!-- 1.在单选按钮下: -->
+    <div id="app">
+        <input type="radio" v-model="picked" :value="value">
+        <label>单选按钮</label>
+        <p>{{picked}}</p>
+        <p>{{value}}</p>
+    </div>
+
+    <!-- 2.在复选框下 -->
+    <!-- 理论上，checkbox的值应该是boolean类型，true-value和false-value的意思是，用指定值替换选中使本来应该的true，反之亦然。
+        所以这个地方，的意思是，当选中后，变量toggle的值不再是true，而是a;当撤销选中后，变量toggle的值不再是false，而是b; -->
+    <div id="app1">
+        <input type="checkbox" v-model="toggle" :true-value="value1" :false-value="value2">
+        <label for="">复选框</label>
+        <p>{{toggle}}</p>
+        <p>{{value1}}</p>
+        <p>{{value2}}</p>
+    </div>
+
+    <!-- 3.在选择框下 -->
+    <div id="app2">
+        <select v-model="selected">
+        <!-- 内联对象字面量  当选中时 app2.selected是一个Object-->
+      <option v-bind:value="{ number: 123 }">123</option>
+      {{selected.number}}
+    </select>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                // 在选中时 app.picked === app.value
+                picked: false,
+                value: 123
+            }
+        });
+        var app1 = new Vue({
+            el: "#app1",
+            data: {
+                // 勾选时 app1.toggle === app1.value1 
+                //未勾选时 app1.toggle === app1.value2
+                toggle: false,
+                value1: 'a',
+                value2: 'b'
+            }
+        });
+        var app2 = new Vue({
+            el: "#app2",
+            data: {
+                // 当选中时 app2.selected是一个Object
+                //所以app2.selected.number === 123
+                selected: ''
+            }
+        });
+    </script>
+</body>
+
+</html>
