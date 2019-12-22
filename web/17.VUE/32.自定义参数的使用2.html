@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>31.自定义参数的使用</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div v-test:msg.a.b="message"></div>
+    </div>
+    <script>
+        Vue.directive('test', {
+            bind: function(el, binding, vnode) {
+                var key = [];
+                for (var i in vnode) {
+                    key.push(i)
+                }
+                el.innerHTML =
+                    'name: ' + s(binding.name) + '<br>' +
+                    'value: ' + s(binding.value) + '<br>' +
+                    'expression: ' + s(binding.expression) + '<br>' +
+                    'argument: ' + s(binding.arg) + '<br>' +
+                    'modifiers: ' + s(binding.modifiers) + '<br>' +
+                    'vnode keys: ' + Object.keys(vnode).join(', ')
+            }
+        });
+        new Vue({
+            el: '#hook-arguments-example',
+            data: {
+                message: 'hello!'
+            }
+        })
+    </script>
+</body>
+
+</html>

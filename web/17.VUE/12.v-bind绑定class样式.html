@@ -26,11 +26,10 @@
         <div :class="[activeCls,errorCls]"></div>
     </div>
     <div id="app4">
-        <!-- 样式error会始终应用 当数据isActive为真时 样式active才会被应用 -->
+        <!-- 样式errorCls会始终应用 当数据isActive为真时 样式active才会被应用 -->
         <div :class="[isActive?activeCls:'',errorCls]"></div>
     </div>
     <div id="app5">
-        <!-- 样式error会始终应用 当数据isActive为真时 样式active才会被应用 -->
         <button :class="classes"></button>
     </div>
     <script>

@@ -12,23 +12,23 @@
 <body>
 
     <div id="app">
-        {{reversedText}}
+        <div>{{text}}</div>
+        <div> {{reversedText}}</div>
     </div>
     <script>
         // 所有的计算属性都以函数的形式写在VUE实例内的computed选项内，最终计算返回的结果
         var app = new Vue({
             el: '#app',
             data: {
-                text: '123,456'
+                text: "ybzxyk"
             },
             computed: {
                 reversedText: function() {
                     //这里的this指向的是vue实例
-                    return this.text.split(',').reverse().join(',')
+                    return this.text.split('').reverse().join('')
                 }
             },
         })
-        console.log(app.reversedText); //456,123
     </script>
 </body>
 

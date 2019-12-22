@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>31.自定义指令使用1</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-color="msg">
+    </div>
+    <script>
+        // Vue.directive('color', {
+        //     bind: function(el, binding) { //binding是个形参
+        //         //console.log(binding); //name: "color" rawName: "v-color" value: "hello" expression: "msg"
+        //         console.log(binding.value) //hello
+        //             // el可以直接操作dom
+        //         el.style.backgroundColor = binding.value.color
+        //     }
+        // })
+        var app = new Vue({
+            el: "#app",
+            data: {
+                msg: {
+                    color: 'orange'
+                }
+            },
+            //局部组件使用
+            directives: {
+                color: {
+                    bind: function(el, binding) { //binding是个形参
+                        //console.log(binding); //name: "color" rawName: "v-color" value: "hello" expression: "msg"
+                        console.log(binding.value) //hello
+                            // el可以直接操作dom
+                        el.style.backgroundColor = binding.value.color
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

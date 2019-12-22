@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>9.计算属性与侦听器</title>
+    <script src="vue.min.js"></script>
+    <!-- 侦听器：数据一旦发生变化就通知侦听器所绑定方法 -->
+    <!-- Vue 提供了一种更通用的方式来观察和响应 Vue 实例上的数据变动：侦听属性。 -->
+    <!-- 当你有一些数据需要随着其它数据变动而变动时，你很容易滥用 watch。然而，
+    通常更好的做法是使用计算属性而不是命令式的 watch 回调。 -->
+    <!-- 在数据变化时执行异步或开销较大的操作只能用watch -->
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <span>名：</span>
+            <span>
+            <input type="text" v-model="firstName">
+          </span>
+        </div>
+        <div>
+            <span>姓：</span>
+            <span>
+            <input type="text" v-model= "lastName" >
+          </span>
+        </div>
+        <div>{{fullName}}</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'Foo',
+                lastName: 'Bar',
+                // fullName: 'Foo Bar'
+            },
+            // 侦听器
+            // watch: {
+            //     firstName: function(val) {
+            //         this.fullName = val + ' ' + this.lastName
+            //     },
+            //     lastName: function(val) {
+            //         this.fullName = this.firstName + ' ' + val
+            //     }
+            // },
+            computed: {
+                fullName: function() {
+                    return this.firstName + ' ' + this.lastName
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

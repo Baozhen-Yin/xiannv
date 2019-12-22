@@ -19,6 +19,10 @@
     <script>
         //some查找数组中是否有满足条件的元素
         var arr = [13, 45, 23, 45, 222, 9, 3, 21];
+        var arr2 = [
+            [13, 45, 23, 45, 222, 9, 3, 21],
+            [133, 4345, 2233, 4235, 22322, 19, 3233, 34]
+        ];
 
         var flage = arr.some(function(value, index, array) {
             // return value >= 20;
@@ -31,6 +35,24 @@
             return value == 'pink';
         })
         console.log(flag); //true
+
+        function Find(target, array) {
+            //注意： some() 不会对空数组进行检测。
+            //注意： some() 不会改变原始数组
+            return array.some(arr => arr.some(value => value === target))
+
+        }
+
+        function Find(target, array) {
+            //array.some(function(currentValue,index,arr),thisValue)
+            //arr	可选。当前元素属于的数组对象
+            return array.some(function(array) {
+                return array.some(function(value) {
+                    return value === target;
+                })
+            })
+        }
+        console.log(Find(133, arr2));
 
         //filter也是查找满足条件的元素 返回的是一个数组 而且是把所有满足条件的元素都存在新数组里面返回
         //some也是查找满足条件的元素 返回布尔值 只是查找有无 找到立即返回终止循环 不会接下来继续
