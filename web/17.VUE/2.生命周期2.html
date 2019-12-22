@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.生命周期2</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div>{{msg}}</div>
+        <button @click="update">更新</button>
+        <button @click="destroy">销毁</button>
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '生命周期'
+            },
+            methods: {
+                update: function() {
+                    this.msg = 'hello';
+                },
+                destroy: function() {
+                    this.$destroy();
+                }
+            },
+            //初始化相关属性4个 挂载阶段
+            beforeCreate: function() { //在实例初始化之后 数据观测和事件配置之前被调用
+                console.log('beforeCreate');
+            },
+            created: function() { //在实例创建完成之后被立即调用
+                console.log('created');
+            },
+            beforeMount: function() { //在挂载开始之前被调用
+                console.log('beforeMount');
+            },
+            mounted: function() { //el被新创建的vm.$el替换，并挂载到实力上去之后调用该钩子 第一个业务逻辑会从这里开始
+                console.log('mounted');
+            },
+
+
+            //更新（元素或者组件的变更操作）
+            beforeUpdate: function() { //数据更新时候调用 发生在虚拟DOM打补丁之前
+                console.log('beforeUpdate');
+            },
+            updated: function() { //由于数据更改导致的虚拟DOM重新渲染和打补丁，在这之后会调用该钩子
+                console.log('updated');
+            },
+
+            //销毁（销毁相关属性）
+            beforeDestroy: function() { //实例销毁之前调用
+                console.log('beforeDestroy');
+            },
+            destroyed: function() { //实例销毁之后调用
+                console.log('destroyed');
+            }
+        });
+    </script>
+</body>
+
+</html>
