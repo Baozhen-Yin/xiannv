@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>42.props传递数据</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div>{{pmsg}}</div>
+        <my-component title="这是来自父组件传递来的"></my-component>
+    </div>
+    <script>
+        Vue.component('my-component', {
+            // 这是一个数组 数组可以添加很多的属性
+            //在父组件中 直接通过属性的方式传递给子组件 
+            props: ['title'],
+            template: '<div>{{msg + "-----" + title}}</div>',
+            data: function() {
+                return {
+                    msg: '这里是子组件本身的数据'
+                }
+            }
+        });
+        var app = new Vue({
+            el: "#app",
+            data: {
+                //#app就是 组件的父组件
+                pmsg: '父组件的内容'
+            }
+        })
+    </script>
+</body>
+
+</html>

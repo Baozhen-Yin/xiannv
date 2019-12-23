@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>53.购物车(案例)</title>
+    <script src="vue.min.js"></script>
+    <style type="text/css">
+        .container .cart {
+            width: 300px;
+            margin: auto;
+        }
+        
+        .container .title {
+            background-color: lightblue;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            /*color: #fff;*/
+        }
+        
+        .container .total {
+            background-color: #FFCE46;
+            height: 50px;
+            line-height: 50px;
+            text-align: right;
+        }
+        
+        .container .total button {
+            margin: 0 10px;
+            background-color: #DC4C40;
+            height: 35px;
+            width: 80px;
+            border: 0;
+        }
+        
+        .container .total span {
+            color: red;
+            font-weight: bold;
+        }
+        
+        .container .item {
+            height: 55px;
+            line-height: 55px;
+            position: relative;
+            border-top: 1px solid #ADD8E6;
+        }
+        
+        .container .item img {
+            width: 45px;
+            height: 45px;
+            margin: 5px;
+        }
+        
+        .container .item .name {
+            position: absolute;
+            width: 90px;
+            top: 0;
+            left: 55px;
+            font-size: 16px;
+        }
+        
+        .container .item .change {
+            width: 100px;
+            position: absolute;
+            top: 0;
+            right: 50px;
+        }
+        
+        .container .item .change a {
+            font-size: 20px;
+            width: 30px;
+            text-decoration: none;
+            background-color: lightgray;
+            vertical-align: middle;
+        }
+        
+        .container .item .change .num {
+            width: 40px;
+            height: 25px;
+        }
+        
+        .container .item .del {
+            position: absolute;
+            top: 0;
+            right: 0px;
+            width: 40px;
+            text-align: center;
+            font-size: 40px;
+            cursor: pointer;
+            color: red;
+        }
+        
+        .container .item .del:hover {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <!-- my-cart就是全局组件 -->
+            <my-cart></my-cart>
+        </div>
+    </div>
+    <script>
+        // 设置为局部组件
+        var CartTitle = {
+            props: ['uname'],
+            template: `
+            <div class="title">{{uname}}商品</div>`
+        };
+        var CartList = {
+            props: ['list'],
+            template: `<div>
+          <div :key="item.id" v-for="item in list" class="item">
+            <img :src="item.img">
+            <div class="name">{{item.name}}</div>
+            <div class="change">
+              <a href="" @click.prevent="sub(item.id)">－</a>
+              <input type="text" class="num" :value="item.num" @blur="changeNum(item.id,$event)">
+              <a href="" @click.prevent="add(item.id)">＋</a>
+            </div>
+            <div class="del" @click="del(item.id)">×</div>
+          </div>
+        </div>`,
+            methods: {
+                del: function(id) {
+                    //删除操作应该在父组件处理 不推荐在子组件直接操作props数据
+                    //把id传给父组件
+                    this.$emit('cart-del', id)
+                },
+                // <button @click="show=true"> 中的 show=true 便是内联（到vue-html当中的）语句
+                // 有时也需要在内联语句处理器中访问原始的 DOM 事件。可以用特殊变量 $event 把它传入方法
+                //$event可以帮我们传入当前输入域最新的值
+                //原生 event 有 event.target.value, vue click 等事件的$event 是原生 event
+                changeNum: function(id, event) {
+                    //数量变更操作
+                    this.$emit('change-num', {
+                        id: id,
+                        num: event.target.value,
+                        type: 'change'
+                    })
+                },
+                // 因为要用一个change-num 所以要用type区分
+                sub: function(id) {
+                    this.$emit('change-num', {
+                        id: id,
+                        type: 'sub'
+                    })
+                },
+                add: function(id) {
+                    this.$emit('change-num', {
+                        id: id,
+                        type: 'add'
+                    })
+                }
+
+            },
+
+        };
+        var CartTotal = {
+                props: ['list'],
+                template: `
+                <div class="total">
+                <span>总价：{{total}}</span>
+               <button>结算</button>
+        </div>`,
+                computed: {
+                    total: function() {
+                        //计算商品总价  遍历数组把单价和数量相乘在累加
+                        var sum = 0;
+                        //利用forEach进行变量数组
+                        this.list.forEach(item => {
+                            sum += item.price * item.num
+                        });
+                        return sum
+                    }
+                },
+            }
+            // 购物车需要一个全局组件 下面包含三个子组件
+        Vue.component('my-cart', {
+            template: `
+            <div class="cart">
+                <cart-title :uname='uname'></cart-title>
+                <cart-list :list='list' @cart-del="delCart($event)" @change-num='changeNum($event)'></cart-list>
+                <cart-total :list='list'></cart-total>
+                </div>`,
+            components: {
+                'cart-title': CartTitle,
+                'cart-list': CartList,
+                'cart-total': CartTotal,
+            },
+            methods: {
+                changeNum: function(val) {
+                    //根据子组件传递过来的数据更新list的数据
+                    //分为三种情况 输入域变更 加号变更 减号变更
+                    if (val.type == 'change') {
+                        this.list.some(item => {
+                            if (item.id == val.id) {
+                                item.num = val.num
+                                    //终止遍历
+                                return true
+                            }
+                        })
+                    } else if (val.type == 'sub') {
+                        this.list.some(item => {
+                            if (item.id == val.id) {
+                                if (item.num > 0) {
+                                    item.num -= 1
+                                }
+                                //终止遍历
+                                return true
+                            }
+                        })
+                    } else if (val.type == 'add') {
+                        this.list.some(item => {
+                            if (item.id == val.id) {
+                                item.num += 1
+                                    //终止遍历
+                                return true
+                            }
+                        })
+                    }
+                },
+                delCart: function(id) {
+                    //根据id删除list中对应的数据
+                    //1.找到id所对应数据索引
+                    //2.根据索引删除对应数据
+                    var index = this.list.findIndex(item => {
+                        return item.id == id;
+                    });
+                    this.list.splice(index, 1)
+                }
+            },
+            data: function() {
+                return {
+                    uname: '尹宝祯',
+                    list: [{
+                        id: 1,
+                        name: 'TCL彩电',
+                        price: 1000,
+                        num: 1,
+                        img: 'img/a.jpg'
+                    }, {
+                        id: 2,
+                        name: '机顶盒',
+                        price: 1000,
+                        num: 1,
+                        img: 'img/b.jpg'
+                    }, {
+                        id: 3,
+                        name: '海尔冰箱',
+                        price: 1000,
+                        num: 1,
+                        img: 'img/c.jpg'
+                    }, {
+                        id: 4,
+                        name: '小米手机',
+                        price: 1000,
+                        num: 1,
+                        img: 'img/d.jpg'
+                    }, {
+                        id: 5,
+                        name: 'PPTV电视',
+                        price: 1000,
+                        num: 2,
+                        img: 'img/e.jpg'
+                    }]
+                }
+            }
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

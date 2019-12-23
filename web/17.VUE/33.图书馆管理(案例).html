@@ -52,13 +52,9 @@
                 <h1>图书管理</h1>
                 <div class="book">
                     <div>
-                        <label for="id">
-              编号：
-            </label>
+                        <label for="id">编号：</label>
                         <input type="text" id="id" v-model="id" :disabled="flag" v-focus>
-                        <label for="name">
-              名称：
-            </label>
+                        <label for="name">名称：</label>
                         <input type="text" id="name" v-model="name">
                         <button @click="handle" :disabled="submitFlag">提交</button>
                     </div>
@@ -164,7 +160,6 @@
                         this.flag = false;
                     } else {
                         // 添加图书
-                        var re = /^[0-9]+.?[0-9]*$/;
                         var book = {};
                         book.id = this.id;
                         book.name = this.name;

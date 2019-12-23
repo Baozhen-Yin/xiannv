@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>43.props传递数据(动态方式)</title>
+    <script src="vue.min.js"></script>
+    <!-- 规则 -->
+    <!-- 在子组件在通过props接收  -->
+    <!-- 你也知道 prop 可以通过 v-bind 动态赋值，例如： -->
+</head>
+
+<body>
+    <div id="app">
+        <div>{{pmsg}}</div>
+        <my-component></my-component>
+        <my-component title="这是来自父组件传递来的"></my-component>
+        <my-component :title="ptitle"></my-component>
+        <my-component :title="ptitle" content="hello"></my-component>
+
+
+    </div>
+    <script>
+        Vue.component('my-component', {
+            // 这是一个数组 数组可以添加很多的属性
+            //在父组件中 直接通过属性的方式传递给子组件 
+            props: ['title', 'content'],
+            template: '<div>{{msg + "-----" + title + "-----"  + content}}</div>',
+            data: function() {
+                return {
+                    msg: '这里是子组件本身的数据'
+                }
+            }
+        });
+        var app = new Vue({
+            el: "#app",
+            data: {
+                //#app就是 组件的父组件
+                pmsg: '父组件的内容',
+                ptitle: '动态绑定属性'
+            }
+        })
+    </script>
+</body>
+
+</html>

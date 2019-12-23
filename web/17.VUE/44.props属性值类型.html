@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>44.props属性值类型</title>
+    <script src="vue.min.js"></script>
+    <!-- v-bind给prop动态赋值 -->
+    <!-- props属性值类型 字符串string 数值Number 布尔值boolean 数组array 对象object Date Function Symbol-->
+</head>
+
+<body>
+    <div id="app">
+        <div>{{pmsg}}</div>
+        <!-- 当组件需要向父组件传递数据时 就要用到自定义事件 -->
+        <!-- 即便 `12` 是静态的，我们仍然需要 `v-bind` 来告诉 Vue -->
+        <!-- 这是一个 JavaScript 表达式而不是一个字符串。-->
+        <!-- 你也知道 prop 可以通过 v-bind 动态赋值，例如： -->
+        <menu-item :pstr="pstr" :pnum="12" :pboo="true" :parr="parr" :pobj="pobj"></menu-item>
+    </div>
+    <script type="text/javascript">
+        function Person(firstName, lastName) {
+            this.firstName = firstName
+            this.lastName = lastName
+        }
+        Vue.component('blog-post', {
+            props: {
+                author: Person
+            }
+        })
+        Vue.component("menu-item", {
+            props: ['pstr', 'pnum', 'pboo', 'parr', 'pobj'],
+            template: `
+          <div>
+            <div>{{pstr}}</div>
+            <div>{{12 + pnum}}</div>
+            <div>{{typeof pboo}}</div>
+            <ul>
+              <li :key='index' v-for='(item,index) in parr'>{{item}}</li>
+            </ul>
+              <span>{{pobj.name}}</span>
+              <span>{{pobj.age}}</span>
+            </div>
+          </div>
+        `
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                pmsg: '父组件中内容',
+                pstr: 'hello', //字符串形式
+                parr: ['apple', 'orange', 'banana'],
+                pobj: {
+                    name: 'lisi',
+                    age: 12
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

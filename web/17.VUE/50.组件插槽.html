@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>50.组件插槽</title>
+    <script src="vue.min.js"></script>
+    <!-- 组件插槽：父组件向子组件传递模板内容 -->
+    <!-- <slot> 元素作为承载分发内容的出口。 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- Somthing bad happened 是从 <slot></slot>传来的 -->
+        <alert-box>Somthing bad happened</alert-box>
+        <!-- <slot></slot>里面要是没有传递内容则显示它的默认内容 否则就传递内容覆盖默认内容 -->
+        <alert-box></alert-box>
+    </div>
+    <script>
+        Vue.component('alert-box', {
+            template: "<div class='demo-alert-box'>\
+            <strong>Error!</strong>\
+            <slot>默认内容</slot>\
+            </div>"
+        });
+        var app = new Vue({
+            el: "#app",
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

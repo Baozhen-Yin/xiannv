@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>51.具名插槽用法</title>
+    <script src="vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div>
+            <header><p>标题信息</p></header> 
+            <main><p>主要内容1</p> <p>主要内容2</p></main> 
+            <footer><p>底部信息信息</p></footer>
+        </div> -->
+        <base-layout>
+            <p slot="header">标题信息</p>
+            <p>主要内容1</p>
+            <p>主要内容2</p>
+            <p slot="footer">底部信息信息</p>
+        </base-layout>
+
+        <!-- 下面是没有匹配到的 直接放到   <slot></slot>-->
+        <!-- 现在 <template> 元素中的所有内容都将会被传入相应的插槽。
+            任何没有被包裹在带有 v-slot 的 <template> 中的内容都会被视为默认插槽的内容。 -->
+        <base-layout>
+            <template slot="header">
+            <p>标题信息1</p>
+            <p>标题信息2</p>
+          </template>
+            <!-- 没定义 直接匹配  <slot></slot>-->
+            <p>主要内容1</p>
+            <p>主要内容2</p>
+            <template slot="footer">
+            <p>底部信息信息1</p>
+            <p>底部信息信息2</p>
+          </template>
+        </base-layout>
+    </div>
+    <script type="text/javascript">
+        Vue.component('base-layout', {
+            template: `
+            <div>
+              <header>
+                <slot name='header'></slot>
+              </header>
+              <main>
+                <slot></slot>
+              </main>
+              <footer>
+                <slot name='footer'></slot>
+              </footer>
+            </div>
+          `
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

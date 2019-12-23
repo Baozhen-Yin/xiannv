@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>45.子组件向父组件传值</title>
+    <script src="vue.min.js"></script>
+    <!-- 只允许父组件变化时传递给子组件传递数据 而不允许 子组件随意修改父组件props值 -->
+    <!-- 需要子组件触发一个自定义事件 父组件监听这个自定义事件 -->
+</head>
+
+<body>
+    <!-- 1.子组件通过自定义事件向父组件传递信息 -->
+    <!-- 按钮时子组件的按钮 当事件被触发 会触发一个特定的方法$emit 固定的方法名 并且会携带一个参数（自定义名称） 父组件会监听 -->
+    <!-- <button v-on:click = '$emit("enlarge-text")'>扩大字体</button> -->
+    <!-- 父组件监听 -->
+    <!-- <menu-item v-on:enlarge-text="fontsize += 0.1"></menu-item> -->
+    <div id="app">
+        <div :style=" {fontSize: fontSize + 'px'}"> {{pmsg}} </div>
+        <menu-item :parr="parr" @enlarge-text="handle"></menu-item>
+    </div>
+
+    <script type="text/javascript">
+        //这里有两种常见的试图改变一个 prop 的情形：
+
+        // 1.这个 prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的 prop 数据来使用。
+        //在这种情况下，最好定义一个本地的 data 属性并将这个 prop 用作其初始值：
+        // props: ['initialCounter'],
+        // data: function () {
+        //   return {
+        //     counter: this.initialCounter
+        //   }
+        // }
+
+        //2.这个 prop 以一种原始的值传入且需要进行转换。在这种情况下，最好使用这个 prop 的值来定义一个计算属性：
+        //         props: ['size'],
+        // computed: {
+        //   normalizedSize: function () {
+        //     return this.size.trim().toLowerCase()
+        //   }
+        // }
+
+        Vue.component('menu-item', {
+            props: ['parr'],
+            template: `
+          <div>
+            <ul>
+              <li :key='index' v-for='(item,index) in parr'>{{item}}</li>
+            </ul>
+            <button @click='$emit("enlarge-text")'>扩大父组件中字体大小</button>
+          </div>
+        `
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                pmsg: '父组件中内容',
+                parr: ['apple', 'orange', 'banana'],
+                fontSize: 10
+            },
+            methods: {
+                handle: function() {
+                    // 扩大字体大小
+                    this.fontSize += 5;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

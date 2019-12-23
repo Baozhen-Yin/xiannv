@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>52.作用域插槽</title>
+    <script src="vue.min.js"></script>
+    <!-- 绑定在 <slot> 元素上的特性被称为插槽 prop -->
+    <!-- 现在在父级作用域中，我们可以给 v-slot 带一个值来定义我们提供的插槽 prop 的名字 -->
+    <!-- 有时让插槽内容能够访问子组件中才有的数据是很有用的。 -->
+
+    <!-- 应用场景：父组件对子组件的内容进行加工处理 -->
+    <!-- 我们可能想换掉备用内容，用名而非姓来显示。如下： {{ user.firstName }} -->
+    <style type="text/css">
+        .current {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <fruit-list :list="list">
+            <!-- slot-scope属性 可以得到子组件中绑定的属性 下例是info 通过它可以得到子组件中的数据 -->
+            <template slot-scope="slotProps">
+                <!-- {{slotProps.info.name}}得到了对应的水果的名称 如果是3 高亮-->
+            <strong v-if="slotProps.info.id==3" class="current">{{slotProps.info.name}}</strong>
+            <span v-else>{{slotProps.info.name}}</span>
+          </template>
+        </fruit-list>
+    </div>
+    <script>
+        Vue.component('fruit-list', {
+            props: ['list'],
+            template: `
+            <div>
+              <li :key='item.id' v-for='item in list'>
+                <slot :info='item'>{{item.name}}</slot>
+              </li>
+            </div>
+          `
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: [{
+                    id: 1,
+                    name: 'apple'
+                }, {
+                    id: 2,
+                    name: 'orange'
+                }, {
+                    id: 3,
+                    name: 'banana'
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>
