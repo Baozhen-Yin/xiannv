@@ -23,11 +23,23 @@
             num2 = 20; //没声明
         }
         fun1();
-        console.log(num1); //num1 is not defined
+        //console.log(num1); //num1 is not defined
         console.log(num2); //打印出来了20  如果在函数内部没有声明直接赋值的变量称为全局变量
         //3.从执行效率来看全局变量和局部变量
         //全局变量只有在浏览器关闭后才会被销毁 比较占内存资源
         //局部变量 当程序执行完毕就会被销毁,比较节约内存资源
+
+        function foo() {
+            function bar(a) {
+                // var i = 3;
+                console.log(a + i);
+
+            }
+            for (var i = 0; i < 10; i++) {
+                bar(i * 2) //无限循环了 因为函数内部的i=3 意外的覆盖了声明在foo内部循环的i 因为i永远小于0
+            }
+        }
+        foo()
     </script>
 </head>
 

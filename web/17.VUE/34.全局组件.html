@@ -15,14 +15,22 @@
 <body>
     <div id="app">
         <my-component>
+            <my-component>
+
+            </my-component>
+        </my-component>
+        <my-component>
 
         </my-component>
+        <!-- 在所有子组件中也是如此，也就是说这三个组件在各自内部也都可以相互使用。 -->
     </div>
     <script>
         //my-component就是组件的名称 推荐使用小写加减号  以下就是全局注册语法 
         //要在父实例中使用这个组件 必须要在实例前创建
         Vue.component('my-component', {
             //template的DOM结构必须被一个元素包含,如果直接写"""这里是组件的内容"""是不会被渲染的
+            //组件模板内容必须是有单个根元素
+            //组件模板内容可以实模板字符串 ES6语法 反引号
             template: '<div>这里是组件的内容</div>'
         });
         var app = new Vue({

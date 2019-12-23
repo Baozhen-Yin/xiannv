@@ -8,6 +8,7 @@
     <title>31.局部组件</title>
     <script src="vue.min.js"></script>
     <!-- 局部组件,注册后只有在该实例的作用域下有效, -->
+    <!-- 局部组件只能在注册他的父组件之内使用 -->
 </head>
 
 <body>
@@ -26,6 +27,9 @@
                 'my-component': Child
             }
         })
+
+        // 2.局部组件只在#app中被渲染出来，也就是说只有在实例中使用componentsAPI
+        //声明    <my-component> </my-component>
     </script>
 </body>
 
