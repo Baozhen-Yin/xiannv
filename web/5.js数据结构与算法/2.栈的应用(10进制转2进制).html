@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.栈的应用(10进制转2进制)</title>
+</head>
+
+<body>
+    <script>
+        function Stark() {
+            this.items = []; //栈中的属性
+            //1.元素压入栈 构造函数原型 prototype 构造函数通过原型分配的函数是所有对象共享的 不再单独开辟内存空间
+            Stark.prototype.push = function(element) {
+                this.items.push(element)
+            }
+
+            //2.在栈中取元素 栈顶
+            Stark.prototype.pop = function() {
+                return this.items.pop()
+            }
+
+            //3.查看栈顶元素
+            Stark.prototype.peek = function() {
+                return this.items[this.items.length - 1]
+            }
+
+            //4.判断是否为空
+            Stark.prototype.isEmpty = function() {
+                return this.items.length == 0
+            }
+
+            //5.获取栈的元素
+            Stark.prototype.size = function() {
+                return this.items.length
+            }
+
+            //6.toString方法
+            Stark.prototype.toString = function() {
+                var resultString = ''
+                for (var i = 0; i < this.items.length; i++) {
+                    resultString += this.items[i] + ' '
+                }
+                return resultString
+            }
+
+        };
+        //栈的使用
+        // var s = new Stark()
+        // s.push(20)
+        // s.push(203)
+        // s.push(204)
+        // s.push(205)
+        // s.push(202)
+        // s.push(2032)
+        // alert(s)
+
+        // s.pop()
+        // s.pop()
+        // alert(s)
+        // alert(s.peek())
+
+        function dec2bin(decNumber) {
+            //1.定义一个栈对象
+            var stark = new Stark()
+                //2.循环操作
+            while (decNumber > 0) {
+                //2.1 获取余数放入栈
+                stark.push(decNumber % 2)
+
+                //2.2获取整除的结果 作为下一次运算
+                decNumber = Math.floor(decNumber / 2) //floor 向下取整 34.5==34    
+            }
+            //3.从栈中取出0 和 1
+            var binaryString = '';
+            while (!stark.isEmpty()) {
+                binaryString += stark.pop()
+            }
+            return binaryString
+        }
+        alert(dec2bin(10));
+        alert(dec2bin(100));
+        alert(dec2bin(1000));
+    </script>
+</body>
+
+</html>

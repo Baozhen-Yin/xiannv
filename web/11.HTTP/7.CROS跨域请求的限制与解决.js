@@ -3,10 +3,10 @@ http.createServer(function(req, res) {
     console.log('request come', req.url);
 
     //改了下面一步操作就可以跨域请求被server接受
-    response.writeHead(200, {
+    res.writeHead(200, {
         'Access-Control-Allow-Origin': '*'
     })
-    response.end('123')
+    res.end('123')
 }).listen(8887);
 console.log('server listening on 8887');
 

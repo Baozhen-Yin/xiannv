@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.队列（击鼓传花）</title>
+    <!-- 几个朋友一起玩游戏 围成一圈开始数数 数到某个数字的人自动淘汰 -->
+    <!-- 最后剩下这几个人会取得胜利 请问最后剩下的是原来在哪一个位置的人 -->
+</head>
+
+<body>
+    <script>
+        function Queue() {
+            this.items = [];
+            //1.将元素添加到队列
+            Queue.prototype.enqueue = function(elements) {
+                this.items.push(elements)
+            }
+
+            //2.从队列删除前端元素
+            Queue.prototype.dequeue = function() {
+                return this.items.shift()
+            }
+
+            //3.查看前端元素
+            Queue.prototype.front = function() {
+                return this.items[0]
+            }
+
+            //4.查看队列是否为空
+            Queue.prototype.isEmpty = function() {
+                return this.items.length == 0
+            }
+
+            //5.查看队列中的元素的个数
+            Queue.prototype.size = function() {
+                return this.items.length
+            }
+
+            //6.toString方法
+            Queue.prototype.toString = function() {
+                var queueString = ''
+                for (var i = 0; i < this.items.length; i++) {
+                    queueString += this.items[i] + ' '
+                }
+                return queueString
+            }
+        }
+
+        //nameList 数组传过去 num需要删除的数传过去
+        function passGame(nameList, num) {
+            //1.创建一个队列结构
+            var queue = new Queue()
+
+            //2.把所有人依次加入队列
+            for (var i = 0; i < nameList.length; i++) {
+                queue.enqueue(nameList[i])
+            }
+
+            //3.让这些人开始数数,不是num重新加入队列末尾 是 末尾删除
+            while (queue.size() > 1) {
+                for (var i = 0; i < num - 1; i++) {
+                    //3.1 先删除再加到末尾
+                    queue.enqueue(queue.dequeue())
+                }
+                //3.2 num 对应的这个人直接从队列删除
+                queue.dequeue()
+            }
+
+            //获取最后剩下的那个人
+            alert(queue.size());
+            var endName = queue.front();
+            alert('最后获胜这个人是' + endName);
+            return nameList.indexOf(endName)
+        }
+
+        names = ['ls', 'sjslfd', 'djsad', 'sajd1', 'sadj2']
+        passGame(names, 3)
+    </script>
+</body>
+
+</html>

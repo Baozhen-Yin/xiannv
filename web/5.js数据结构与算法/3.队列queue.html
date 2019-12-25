@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.队列queue</title>
+</head>
+
+<body>
+    <script>
+        //队列：先进先出
+        //受限：只允许在表的前端进行删除操作 而在表的后端进行插入操作
+        function Queue() {
+            this.items = [];
+            //1.将元素添加到队列
+            Queue.prototype.enqueue = function(elements) {
+                this.items.push(elements)
+            }
+
+            //2.从队列删除前端元素
+            Queue.prototype.dequeue = function() {
+                return this.items.shift()
+            }
+
+            //3.查看前端元素
+            Queue.prototype.front = function() {
+                return this.items[0]
+            }
+
+            //4.查看队列是否为空
+            Queue.prototype.isEmpty = function() {
+                return this.items.length == 0
+            }
+
+            //5.查看队列中的元素的个数
+            Queue.prototype.size = function() {
+                return this.items.length
+            }
+
+            //6.toString方法
+            Queue.prototype.toString = function() {
+                var queueString = ''
+                for (var i = 0; i < this.items.length; i++) {
+                    queueString += this.items[i] + ' '
+                }
+                return queueString
+            }
+        }
+        var queue = new Queue()
+
+        queue.enqueue('abd')
+        queue.enqueue('asad')
+        queue.enqueue('af')
+        queue.enqueue('aew')
+        alert(queue);
+
+        queue.dequeue()
+        alert(queue)
+
+        alert(queue.front());
+        alert(queue.isEmpty());
+        alert(queue.size());
+    </script>
+</body>
+
+</html>

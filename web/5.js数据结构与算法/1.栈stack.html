@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.栈stack</title>
+</head>
+
+<body>
+    <script>
+        //我们知道数组是一种线性结构 可以在任意位置插入和删除数据 但是有时候为了实现某些功能 必须对这种任意性加以限制
+        // 栈 和  队列就是比较常见的受限的线性结构
+
+        //栈 （后进先出 LIFO）
+        //仅允许在表的一段 进行插入（进栈）和删除（出栈）运算 这一段被称为栈顶 另一端为栈底
+
+        // 栈面试题
+        //有六个元素 6 5 4 3 2 1的顺序进栈（不是一次性进可以一边出一边进），不合法的出栈序列  (c)
+        // A.5 4 3 6 1 2   B.4 5 3 2 1 6    C.3 4 6 5 2 1   D.2 3 4 1 5 6
+
+        //封装栈类
+        //方法：和某一个对象实例有联系
+        function Stark() {
+            this.items = []; //栈中的属性
+            //1.元素压入栈 构造函数原型 prototype 构造函数通过原型分配的函数是所有对象共享的 不再单独开辟内存空间
+            Stark.prototype.push = function(element) {
+                this.items.push(element)
+            }
+
+            //2.在栈中取元素 栈顶
+            Stark.prototype.pop = function() {
+                return this.items.pop()
+            }
+
+            //3.查看栈顶元素
+            Stark.prototype.peek = function() {
+                return this.items[this.items.length - 1]
+            }
+
+            //4.判断是否为空
+            Stark.prototype.isEmpty = function() {
+                return this.items.length == 0
+            }
+
+            //5.获取栈的元素
+            Stark.prototype.size = function() {
+                return this.items.length
+            }
+
+            //6.toString方法
+            Stark.prototype.toString = function() {
+                var resultString = ''
+                for (var i = 0; i < this.items.length; i++) {
+                    resultString += this.items[i] + ' '
+                }
+                return resultString
+            }
+
+        };
+        //栈的使用
+        var s = new Stark()
+        s.push(20)
+        s.push(203)
+        s.push(204)
+        s.push(205)
+        s.push(202)
+        s.push(2032)
+        alert(s)
+
+        s.pop()
+        s.pop()
+        alert(s)
+        alert(s.peek())
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7.双向链表</title>
+    <!-- 1.既可以从头遍历到尾 又可以从尾遍历到头 -->
+    <!-- 2.一个节点既有向前连接的引用,也有一个向后连接的引用 -->
+
+    <!-- 缺点1.每次再插入或者删除某个节点的时候 需要处理四个节点的引用而不是两个 -->
+    <!-- 2.占用内存空间大一点 -->
+
+    <!-- 双向链表的特点 -->
+    <!-- 1.可以使用一个head 和一个tail分别指向头部和尾部的节点 -->
+    <!-- 2.每个节点由三部分组成:前一个节点的指针(prev)/保存的元素(item)/后一个节点的指针(next) -->
+    <!-- 3.双向链表第一个节点prev指向null 最后的节点next指向null -->
+</head>
+
+<body>
+    <script>
+        function DoublyLinkedList() {
+            //属性
+            this.head = null;
+            this.tail = null;
+            this.length = 0;
+
+            function Node(data) {
+                this.data = data
+                this.prev = null
+                this.next = null
+            }
+        }
+    </script>
+</body>
+
+</html>

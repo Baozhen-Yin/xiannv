@@ -26,8 +26,10 @@
         // Star.prototype.movie = function() {
         //     console.log('我会演电影');
         // }
+
+        //Star.prototype  等于了下面的一个对象  相当于把prototype的对象覆盖掉了 他就没有constructor这个属性了
+        //很多情况下我们需要手动的利用constructor指回原来的构造函数
         Star.prototype = {
-            //很多情况下我们需要手动的利用constructor指回原来的构造函数
             constructor: Star,
             sing: function(sang) {
                 console.log(sang);
@@ -45,6 +47,7 @@
         console.log(xiannv.__proto__.constructor); //返回构造函数本身
 
         //很多情况下我们需要手动的利用constructor指回原来的构造函数
+        //如果我们修改了原型对象 且赋值的是一个对象 则必须手动利用constructor
     </script>
 </body>
 

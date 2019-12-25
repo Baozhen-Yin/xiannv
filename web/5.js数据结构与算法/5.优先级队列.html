@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5.优先级队列</title>
+    <!-- 普通一个队列插入一个元素 数据会被放在后端，并且需要前面所有的元素都处理完才会处理 -->
+    <!-- 优先级队列：再插入一个元素的时候会考虑它的优先级 -->
+    <!-- 和其他数据优先级进行比较 比较完成后可以得出这个元素再队列中正确的位置 -->
+    <!-- 例如：老弱病残优先 -->
+    <!-- 数字越小优先级越高 -->
+</head>
+
+<body>
+    <script>
+        //封装优先级队列
+        function PriorityQueue() {
+            //element元素 priority元素优先级
+            //重新创建一个类 内部类
+            function QueueElement(element, priority) {
+                this.element = element;
+                this.priority = priority;
+            }
+            //封装属性
+            this.items = [];
+
+
+
+            //2.将元素添加到队列
+            //插入方法
+            //1.原来这个队列为空 不需要和别人比较
+            //2.不为空 需要比较之后才插入
+            PriorityQueue.prototype.enqueue = function(element, priority) {
+                    var queueElement = new QueueElement(element, priority)
+
+                    //判断队列是否为空 为空直接插在末尾
+                    if (this.items.length == 0) {
+                        this.items.push(queueElement)
+                    } else {
+                        var added = false
+                        for (var i = 0; i < this.items.length; i++) {
+                            if (queueElement.priority < this.items[i].priority) {
+                                this.items.splice(i, 0, queueElement)
+                                added = true
+                                break
+                            }
+                        }
+                        if (!added) {
+                            this.items.push(queueElement)
+                        }
+                    }
+                }
+                //3.从队列删除前端元素
+            PriorityQueue.prototype.dequeue = function() {
+                return this.items.shift()
+            }
+
+            //4.查看前端元素
+            PriorityQueue.prototype.front = function() {
+                return this.items[0]
+            }
+
+            //5.查看队列是否为空
+            PriorityQueue.prototype.isEmpty = function() {
+                return this.items.length == 0
+            }
+
+            //6.查看队列中的元素的个数
+            PriorityQueue.prototype.size = function() {
+                return this.items.length
+            }
+
+            //7.toString方法
+            PriorityQueue.prototype.toString = function() {
+                var queueString = ''
+                for (var i = 0; i < this.items.length; i++) {
+                    queueString += this.items[i].element + '- ' + this.items[i].priority + ' '
+                }
+                return queueString
+            }
+
+        }
+        var pq = new PriorityQueue()
+        pq.enqueue('abc', 111)
+        pq.enqueue('sfd', 12)
+        pq.enqueue('sda', 167)
+        pq.enqueue('ssad', 125)
+        pq.enqueue('ew', 123)
+        pq.enqueue('uyk', 142)
+        pq.enqueue('qe', 1)
+        alert(pq);
+    </script>
+</body>
+
+</html>
