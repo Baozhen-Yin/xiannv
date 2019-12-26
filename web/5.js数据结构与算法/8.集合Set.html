@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8.集合</title>
+    <!-- 集合通常是一组无序的 不能重复的元素构成 -->
+    <!-- 和数学中的集合名词比较相似 但是数学中集合范围更大也允许重复 -->
+    <!-- 通常集合表示的元素""不允许重复""" -->
+    <!-- 没有顺序意味着""不能通过下标值访问"""  -->
+    <!-- 不能重复意味着 相同的对象 集合里面 只有一份 -->
+    <!-- ES5包含了Array类 -->
+    <!-- ES6包含了Set类 我们自己封装一下set类 -->
+    <!-- 方法：add() remove() has():检查值是否在集合 clear()移除集合所有项 size()返回数量 values()返回一个包含集合中所有值的数组 -->
+</head>
+
+<body>
+    <script>
+        function Set() {
+            //集合里面属性 不用数组是因为数组可以重复 而对象的key是不允许的 但是可以用数组但是麻烦
+            this.items = {}
+
+            //集合方法
+            //1.add()
+            Set.prototype.add = function(data) {
+                if (!this.has(data)) {
+                    this.items[data] = data;
+                    return true;
+                }
+                return false;
+            }
+
+            //2.has():检查值是否在集合
+            Set.prototype.has = function(data) {
+                // Object的hasOwnProperty()方法返回一个布尔值，判断对象是否包含特定的自身（非继承）属性。
+                return this.items.hasOwnProperty(data)
+            }
+
+            //3.remove()
+            Set.prototype.remove = function(data) {
+                //1.判断该集合中有没有改元素 没有直接return
+                if (!this.has(data)) {
+                    return false
+                }
+                // delete 操作符用于删除对象的某个属性；如果没有指向这个属性的引用，那它最终会被释放。
+                delete this.items[data]
+                return true
+            }
+
+            //4.clear()移除集合所有项
+            Set.prototype.clear = function() {
+                //想要把集合清空 直接给他赋值一个对象
+                this.items = {};
+                return true
+            }
+
+            //5.size()
+            Set.prototype.size = function() {
+                //Object.keys(obj) 参数：要返回其枚举自身属性的对象 返回值：一个表示给定对象的所有可枚举属性的字符串数组
+                //例： var obj = { 0: 'a', 1: 'b', 2: 'c' };
+                //console.log(Object.keys(obj)); // console: ['0', '1', '2']
+                return Object.keys(this.items).length
+            }
+
+            //6.values()获取集合中所有的值
+            Set.prototype.values = function() {
+                return Object.keys(this.items);
+            }
+
+            //集合间的操作
+            //1.并集 一个集合包含a集合元素又包含b集合元素
+            Set.prototype.union = function(otherSet) {
+                // this.items 集合对象A
+                // otherSet 集合对象B
+                //1.创建一个新的集合
+                var unionSet = new Set()
+
+                //2.将所有元素都加到新集合中 this.values()全部元素
+                var values = this.values()
+                for (var i = 0; i < values.length; i++) {
+                    unionSet.add(values[i])
+                }
+
+                //3.取出b集合中的元素otherSet.values()  判断需不需要加到新集合
+                values = otherSet.values()
+                for (var i = 0; i < values.length; i++) {
+                    unionSet.add(values[i])
+                }
+                return unionSet
+
+            }
+
+            //2.交集
+            Set.prototype.intersection = function(otherSet) {
+                var intersectionSet = new Set(); //存放结果
+                var values = this.values();
+                for (var i = 0; i < values.length; i++) {
+                    if (otherSet.has(values[i])) { //只放入两个集合共有的元素
+                        intersectionSet.add(values[i])
+                    }
+                }
+                return intersectionSet;
+            }
+
+            //3.差集
+            Set.prototype.difference = function(otherSet) {
+                var differenceSet = new Set(); //存放结果
+                var values = this.values();
+                for (var i = 0; i < values.length; i++) {
+                    if (!otherSet.has(values[i])) { //只放入集合otherSet中没有的
+                        differenceSet.add(values[i])
+                    }
+                }
+                return differenceSet;
+            }
+        }
+
+
+        //测试
+        var set = new Set()
+            // alert(set.add('abc'));
+            // alert(set.add('abc'));
+            // alert(set.add('ybz'));
+            // alert(set.values());
+            // alert(set.remove('abc'));
+            // alert(set.remove('abc'));
+            // alert(set.values());
+            // alert(set.size());
+            // alert(set.clear());
+            // alert(set.size());
+
+        //并集测试
+        //1.创建两个集合并且添加元素
+        var setA = new Set()
+        setA.add('adv')
+        setA.add('as')
+        setA.add('abc')
+        setA.add('ybz')
+        var setB = new Set()
+        setB.add('xyk')
+        setB.add('xiannv')
+        setB.add('abc')
+        setB.add('ybz')
+
+        //2.求AB并集
+        unionSet = setA.union(setB)
+        alert(unionSet.values());
+
+        //3.求ab交集
+        var intersectionSet = setA.intersection(setB)
+        alert(intersectionSet.values());
+
+        //4.求ab差集
+        var differenceSet = setA.difference(setB)
+        alert(differenceSet.values());
+    </script>
+</body>
+
+</html>

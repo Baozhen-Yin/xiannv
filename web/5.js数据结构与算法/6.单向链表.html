@@ -51,9 +51,9 @@
                 this.length += 1;
             }
 
-            //2.toString方法 将链表转化为字符串
+            // 2.toString方法 将链表转化为字符串 由于列表项使用了Node类，需要重写toString方法，让其只输出元素的值。
             LinkedList.prototype.toString = function() {
-                var current = this.head;
+                var current = this.head; //自动调用
                 var listString = '';
                 while (current) {
                     listString += current.data + ' ';
@@ -212,6 +212,7 @@
         alert(list);
         alert(list.isEmpty());
         alert(list.size());
+        console.log(list);
     </script>
 </body>
 

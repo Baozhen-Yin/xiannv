@@ -18,6 +18,17 @@
         console.log(4 >= 6 || '人' != '仙女' && !(12 * 2 == 144) && true); //true
         var num = 10;
         console.log(5 == num / 2 && (2 + 2 * num).toString() === '22'); //true
+
+        var a = 10
+        console.log(a); //10
+
+        function fn() {
+            console.log(a); //10
+            var b = 100
+            a = a + b
+        }
+        fn()
+        console.log(a); //110
     </script>
 </head>
 
