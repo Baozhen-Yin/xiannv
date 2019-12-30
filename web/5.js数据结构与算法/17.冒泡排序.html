@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>17.冒泡排序</title>
+    <!-- 1.对未排序的各个元素从头到尾进行排序 每一轮都找出最大的放到最后面-->
+    <!-- 2.循环嵌套循环 -->
+    <!-- 3.时间复杂度o(n²) -->
+</head>
+
+<body>
+    <script>
+        function BubbleSort(arr) {
+            for (var i = 0; i <= arr.length - 1; i++) { //行 找到最高的
+                for (var j = 0; j <= arr.length - 1 - i; j++) { //列  进行比较
+                    if (arr[j] > arr[j + 1]) {
+                        var temp
+                        temp = arr[j]
+                        arr[j] = arr[j + 1]
+                        arr[j + 1] = temp
+                    }
+                }
+            }
+        }
+        var arr1 = [1, 5, 43, 2, 34, 5, 21, 324, 4353, 321, 3343, 11, 33, 234];
+        BubbleSort(arr1)
+        console.log(arr1);
+    </script>
+</body>
+
+</html>

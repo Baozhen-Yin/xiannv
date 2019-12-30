@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>11.hush</title>
+</head>
+
+<body>
+    <script>
+        //1.将字符串转成比较大的数字:hashcode
+        //2.大的数字压缩到数组范围(大小)之内
+        function hashFunc(str, size) {
+            //1.定义hashcode变量 用于保存比较大的那个数字
+            var hashCode = 0
+
+            //2.霍纳算法来计算hashCode的值
+            //charCodeAt获取unicode编码 比如第一次传入字符串cats i是c的unicode码
+            for (var i = 0; i < str.length; i++) {
+                hashCode = 37 * hashCode + str.charCodeAt(i) // 幂的底数最好用质数 一般情况下用37比较多
+            }
+            //3.取余操作
+            index = hashCode % size
+            return index
+        }
+
+        // var fun = abc
+        // console.log(fun.charCodeAt(a));
+        // console.log(fun.charCodeAt(b));
+        // console.log(fun.charCodeAt(c));
+
+        alert(hashFunc('abg', 7)) //1
+        alert(hashFunc('ybz', 7)) //4
+        alert(hashFunc('nba', 7)) //5
+    </script>
+</body>
+
+</html>

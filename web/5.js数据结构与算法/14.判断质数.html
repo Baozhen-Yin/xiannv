@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14.判断质数</title>
+</head>
+
+<body>
+    <script>
+        // 只能被1和自己整除 不能被2~num之间的数整除
+        //方法1:
+        function isPrime(num) {
+            for (var i = 2; i < num; i++) {
+                if (num % i == 0) {
+                    return false
+                }
+            }
+            return true
+        }
+
+        alert(isPrime(3));
+        alert(isPrime(33));
+        alert(isPrime(31));
+        alert(isPrime(2));
+
+        //方法2:
+        //一个数若可以进行因数分解 那么分解得到的两个数一定是一个小与sqrt(n) 一个大于等于sqrt(n) sqrt:平方根
+        //比如16可以被分解为 2*8 2<sqrt(16) 2<4 但是8>4 而4*4都是等于sqrt(n)
+        //所以遍历到sqrt(n) 即可
+        function isPrimes(num) {
+            //1.获取平方根
+            var temp = parseInt(Math.sqrt(num))
+
+            //2.循环判断
+            for (var i = 2; i <= temp; i++) {
+                if (num % i == 0) {
+                    return false
+                }
+            }
+            return true
+        }
+    </script>
+</body>
+
+</html>

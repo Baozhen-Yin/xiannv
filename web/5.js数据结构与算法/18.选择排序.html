@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>18.选择排序</title>
+    <!-- 1.时间复杂度o(n²) -->
+    <!-- 2.选定第一个索引位置,然后和后面元素依次比较 -->
+    <!-- 3.如果后面的数值 小于第一个索引位置交换位置 -->
+    <!-- 4.每一轮找出最小的依次放在开头 第一轮选出最小的 第二轮选出第二小的 -->
+</head>
+
+<body>
+    <script>
+        function selectionSort(arr) {
+            var len = arr.length;
+            var minIndex, temp;
+            for (var i = 0; i <= len - 2; i++) {
+                //外层循环 len-2为倒数第一个 因为索引要比长度小1 然后最后一个数就剩他一个了并不需要""主动""比较
+                minIndex = i; //假设最小的就是第一位
+                for (var j = i + 1; j <= len - 1; j++) { //最后一个数的索引也得""被""比较 看是不是最小的
+                    if (arr[j] < arr[minIndex]) { // 寻找最小的数
+                        minIndex = j; // 将最小数的索引保存
+                    }
+                }
+                temp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = temp;
+            }
+            return arr;
+        }
+        var arr1 = [1, 5, 43, 2, 34, 5, 21, 324, 4353, 321, 3343, 11, 33, 234];
+        selectionSort(arr1)
+        console.log(arr1);
+    </script>
+</body>
+
+</html>

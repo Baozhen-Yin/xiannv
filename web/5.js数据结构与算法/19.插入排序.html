@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>19.插入排序</title>
+    <!-- 对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。 -->
+    <!-- 核心思想:局部有序  (有一部分已经被排序好了 有一部分还没有)-->
+    <!-- 1.从第一个元素开始，该元素可以认为已经被排序；
+         2.取出下一个元素，在已经排序的元素序列中从后向前扫描；
+         3.如果该元素（已排序）大于新元素，将该元素移到下一位置；
+         4.重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；
+         5.将新元素插入到该位置后；
+         6.重复步骤2~5。 -->
+    <!-- 比较次数是选择排序的一半 o(n²) -->
+</head>
+
+<body>
+    <script>
+        function insertionSort(arr) {
+            var len = arr.length;
+            //1.外层循环 从第一个位置开始获取 向前面局部有序进行插入
+            for (var i = 1; i <= len - 1; i++) { //var i = 1 默认当i等于0是有序的 从1开始
+                preIndex = i;
+                var current = arr[i];
+                //2.内层循环 获取i位置元素 和前面依次进行比较
+                while (preIndex >= 0 && arr[preIndex - 1] > current) {
+                    arr[preIndex] = arr[preIndex - 1]; // i-1位置数据赋值给i
+                    preIndex--;
+                }
+                arr[preIndex] = current; //当当前i数据放到current
+            }
+            return arr;
+        }
+        var arr1 = [1, 5, 43, 2, 34, 5, 21, 324, 4353, 321, 3343, 11, 33, 234];
+        insertionSort(arr1)
+        console.log(arr1);
+    </script>
+</body>
+
+</html>
