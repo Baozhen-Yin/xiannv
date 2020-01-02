@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--1. PS C:\Users\Kiwi\Desktop\YBZ\xiannv\web\15.description> npm init -y   -->
+    <!--2.传项目给别人 别人需要npm install 下载他没有的第三方包 -->
+    <!--3.开发依赖：项目在本地运行还是线上运行都需要依赖的第三方模块 使用npm install + 包名 
+        将包添加到package.json文件的devDependencies中  --sava-dev 这个命令把你当前安装的模块安装devDependencies中
+        区分项目依赖与开发依赖-->
+    <!--4.\web\15.description> npm install --production 只会下载项目运行依赖  -->
+    <!--5. package-lock.json ①记录模块与模块依赖关系 版本 确保下载的时候不会因包版本不同而产生问题-->
+    <!--6. package-lock.json ②加快下载速度 因为该文件中已经记录了项目所依赖第三方包的树状结构和包的下载地址，
+        需要重新安装时只需重新下载即可，不需要做额外的工作-->
+    <!--7.别名 "bulid": "nodemon app.js"   \Kiwi\Desktop\YBZ\xiannv\web\15.description  > nodemon app.js -->
+
+    <!--8.Node.js 中模块加载机制 Node.js规定一个js文件就是一个模块-->
+    <!-- 8.1 模块查找规则 当模块拥有路径但没有后缀时  require('./find.js')  require('./find') -->
+    <!--    8.1.1 require方法根据路径查找模块 如果是完整路径 直接引入模块 -->
+    <!--    8.1.2 如果模块后缀省略 先在当前文件夹找同名js文件再找同名js文件夹 -->
+    <!--    8.1.3 如果找到了find同名文件夹 找文件夹中的index.JS -->
+    <!--    8.1.4 如果文件夹没有index.js就会去当前文件夹的package.json文件中查找main选项的入口文件 -->
+    <!--    8.1.5 如果指定的入口文件不存在或者没有指定的入口文件就会报错，模块没有被找到 -->
+
+    <!-- 8.2 模块查找规则 当模块没有路径而且没有后缀时  require('find')   -->
+    <!--    8.2.1 Node.js会假设他是系统模块-->
+    <!--    8.2.2 Node.js会去node_modules文件夹中-->
+    <!--    8.2.3 查看是否有改名字的js文件-->
+    <!--    8.2.4 查看是否有该名字的文件夹-->
+    <!--    8.2.5 如果有同名文件夹会看看里面是否有index.js 执行-->
+    <!--    8.2.6 如果没有index.js 查看该文件夹中的package.json的main选项确定模块入口文件 否则报错-->
+
+
+
+</body>
+
+</html>
