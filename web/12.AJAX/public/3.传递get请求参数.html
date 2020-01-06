@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.传递get请求参数</title>
+    <!-- 在真实的项目中，服务端大多数情况下会以 JSON对象作为响应数据的格式，当客户端拿到响应数据时，要将JSON
+        数据和HTML字符串进行拼接，然后将拼接结果使用DOM方式展示到页面中 -->
+</head>
+
+<body>
+    <p>
+        <input type="text" name="" id="username">
+    </p>
+    <p>
+        <input type="text" name="" id="age">
+    </p>
+    <p>
+        <input type="button" value="提交" id="btn">
+    </p>
+    <script>
+        var btn = document.querySelector('#btn')
+        var username = document.querySelector('#username')
+        var age = document.querySelector('#age')
+        btn.onclick = function() {
+            //1.创建ajax对象 内置构造函数
+            var xhr = new XMLHttpRequest();
+
+            //2.获取用户在文本框输入的值
+            var nameValue = username.value
+            var ageValue = age.value
+
+            //3.拼接请求参数
+            var params = 'username=' + nameValue + "&age=" + ageValue
+
+            //4.配置ajax对象
+            xhr.open('get', 'http://localhost:3000/get?' + params);
+
+            //5.发送请求
+            xhr.send()
+
+            //6.获取服务端响应的数据
+            xhr.onload = function() {
+                console.log(xhr.responseText);
+            }
+        }
+    </script>
+</body>
+
+</html>

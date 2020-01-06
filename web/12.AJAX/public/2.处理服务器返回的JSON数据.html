@@ -4,17 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <title>2.处理服务器返回的JSON数据</title>
+    <style>
+        div {
+            width: 200px;
+            height: 100px;
+            background-color: red;
+            margin: 100px auto;
+            color: pink;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
 </head>
 
 <body>
+    <div></div>
     <script>
-        //1.创建ajax对象
+        var div = document.querySelector('div')
+            //1.创建ajax对象
         var xhr = new XMLHttpRequest();
+
         //2.告诉ajax对象要向哪儿发送请求 以什么方式发送
-        //1）请求方式 2）请求地址  first第一次
+        //1）请求方式 2）请求地址  responseData
+        //html一运行 请求就会发往服务器端 才会响应
         xhr.open('get', 'http://localhost:3000/responseData')
 
-        //3.发送请求r
+        //3.发送请求
         xhr.send()
 
         //4.获取服务器端响应到客户端的数据 onload接收完服务器端的响应
@@ -22,8 +37,7 @@
             //将json字符串转化为json对象
             var responseText = JSON.parse(xhr.responseText)
             console.log(responseText);
-            var str = "<h2>" + responseText.name + "</h2>"
-            document.body.innerHTML = str
+            div.innerHTML = responseText.name
         }
     </script>
 </body>

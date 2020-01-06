@@ -1,0 +1,21 @@
+{
+    "name": "15.description",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "bulid": "nodemon app.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "formidable": "^1.2.1",
+        "mime": "^2.4.4",
+        "util": "^0.12.1"
+    },
+    "devDependencies": {
+        "gulp": "^4.0.2"
+    }
+}

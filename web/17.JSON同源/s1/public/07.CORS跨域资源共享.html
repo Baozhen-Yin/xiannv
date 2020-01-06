@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>07.CORS跨域资源共享</title>
+    <!-- 第二种实现跨域的方法 -->
+    <!-- CORS：Cross-origin-resource-sharing 跨域资源共享 它允许浏览器向跨域服务器发送ajax请求，克服了ajax只能同源的限制 -->
+    <!-- jsonp是绕过了ajax 发送的也不是ajax请求 这个是直接发送ajax请求 -->
+
+    <!-- 浏览器端 请求 服务器端 -->
+    <!-- 请求头origin -->
+    <!-- origin：http://localhost:3000 -->
+    <!-- 浏览器端 响应 服务器端  -->
+    <!-- 响应头（Access-Control-Allow-Origin) -->
+
+    <!-- Access-Control-Allow-Origin:"http://localhost:3000" 或者Access-Control-Allow-Origin:"*"  -->
+    <!-- Access-Control-Allow-Methods:"get,post"   -->
+
+</head>
+
+<body>
+    <button id="btn">点我发送请求</button>
+    <script src="/js/ajax.js"></script>
+    <script>
+        // 获取按钮
+        var btn = document.getElementById('btn');
+        // 为按钮添加点击事件
+        btn.onclick = function() {
+            ajax({
+                type: 'get',
+                url: 'http://localhost:3001/cross',
+                success: function(data) {
+                    console.log(data)
+                }
+            })
+        };
+    </script>
+</body>
+
+</html>

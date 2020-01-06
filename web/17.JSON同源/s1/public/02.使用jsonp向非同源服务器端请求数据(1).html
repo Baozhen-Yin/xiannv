@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>02.使用jsonp向非同源服务器端请求数据(1)</title>
+    <!-- 第一种跨域的方法 -->
+</head>
+
+<body>
+    <script>
+        // 必须在客户端""全局""作用域下面定义函数fn
+        //要写到script标签上面
+        function fn(data) {
+            console.log('客户端的fn函数被调用了')
+            console.log(data);
+        }
+    </script>
+    <!-- 1.将""非同源""服务器端的请求地址写在script标签的src属性中 -->
+    <!-- src属性拥有发送请求的能力，不受同源政策影响 -->
+    <script src="http://localhost:3001/test"></script>
+
+    <!-- 服务器端响应数据必须是一个""函数的调用""，真正要发送给客户端的数据需要作为函数调用的参数 -->
+    <!-- const data = 'fn({name:'ybz',age:'16'})' -->
+    <!-- res.send(data) -->
+</body>
+
+</html>

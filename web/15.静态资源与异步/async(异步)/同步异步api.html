@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8.同步异步api</title>
+    <!-- 1.路径拼接 -->
+    <!-- const public = path.join(__dirname,'public') -->
+
+    <!-- 2.请求地址解析 -->
+    <!-- const urlObj = url.parse(req.url) -->
+
+    <!-- 3.读取文件 -->
+    <!-- fs.readFile('./demo.txt','utf8',(err,result)=>{
+        log(result)}) -->
+
+    <!-- 为什么读取结果是用函数拿到呢？ -->
+
+    <!-- 同步api：只有当前api执行完成后 才能执行下一个api -->
+    <!--async  异步api：当前api执行不会阻塞后续代码执行 -->
+
+    <!-- 区别： -->
+    <!-- 1.同步api可以从返回值中拿到api执行的结果，但是异步api是拿不到结果的 -->
+
+    <!-- 我们无法在异步api里面通过返回值的方式去拿到异步api的执行结果的 -->
+    <!-- 应该通过回调函数的方式拿到 -->
+    <!-- 回调函数：自己定义函数让别人去拿到 -->
+    <!-- 函数定义：function getData(callback) {} -->
+    <!-- 函数调用：getData(()=>{})  传一个函数当实参-->
+
+    <!-- 2.代码执行顺序不一样 -->
+
+    <!-- 同步api依次从上到下执行 上面代码会影响下面代码 阻塞 -->
+    <!-- 先将同步api执行完再去执行异步api  -->
+    <!-- node.js会从上到下执行函数 遇到同步api会拿到同步代码执行区去执行,遇到异步api先不执行 而是放到异步代码执行区当中 -->
+    <!-- 当同步代码执行区所有代码都执行完之后,再到异步代码执行区去依次执行代码,带异步代码执行完成之后,系统会回调函数数列 -->
+    <!-- 找异步api所对应的回调函数,把回调函数放到同步代码执行区当作再去执行. -->
+
+    <!-- 如果异步api后面的代码执行依赖异步api的执行结果,但实际上后续代码在执行的时候异步api还没有返回结果,怎么办? -->
+
+</head>
+
+<body>
+
+</body>
+
+</html>

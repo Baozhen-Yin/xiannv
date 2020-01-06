@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.传递post请求参数</title>
+    <!-- get请求方式 -->
+    <!-- xhr.open('get','http://www.example.com?name=zhangsan&age=20') -->
+
+    <!-- post请求方式 在请求报文中必须明确请求参数内容类型-->
+    <!-- xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded') -->
+    <!-- xhr.send('name=zhangsan&age=20') -->
+</head>
+
+<body>
+    <p>
+        <input type="text" name="" id="username">
+    </p>
+    <p>
+        <input type="text" name="" id="age">
+    </p>
+    <p>
+        <input type="button" value="提交" id="btn">
+    </p>
+    <script>
+        var btn = document.querySelector('#btn')
+        var username = document.querySelector('#username')
+        var age = document.querySelector('#age')
+        btn.onclick = function() {
+            //1.创建ajax对象 内置构造函数
+            var xhr = new XMLHttpRequest();
+
+            //2.获取用户在文本框输入的值
+            var nameValue = username.value
+            var ageValue = age.value
+
+            //3.拼接请求参数
+            var params = 'username=' + nameValue + "&age=" + ageValue
+
+            //4.配置ajax对象
+            xhr.open('post', 'http://localhost:3000/post?');
+
+            //5.设置请求参数格式类型 （post请求必须明确设置请求参数内容类型）
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+
+            //6.发送请求 post请求不需要拼接地址而是放在sent里面
+            xhr.send(params)
+
+            //7.获取服务端响应的数据
+            xhr.onload = function() {
+                console.log(xhr.responseText)
+            }
+        }
+    </script>
+</body>
+
+</html>

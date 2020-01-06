@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5.请求参数的格式</title>
+    <!--1.application/x-www-form-urlencoded  -->
+    <!-- name=ybz&age=16 -->
+
+    <!-- 2.application/json -->
+    <!-- {name:"ybz",age:'16',sex:'仙女'} -->
+
+    <!-- 请求头中指定的Content-Type属性的值是application/json 告诉服务器当前请求参数的格式是json -->
+    <!-- 客户端传递不同请求的参数格式 服务器端的接收方式也是不一样的 -->
+    <!-- 需要将json对象参数转换为json字符串 再放置在sent()方法当中 -->
+    <!-- 因为规定在传递对象参数 必须以字符串的形式传递 -->
+    <!-- JSON.stringify()  将json对象转换为json字符串 -->
+
+    <!-- get请求不支持提交json对象数据格式的，传统网站的表单提交也是不支持json对象数据格式的 -->
+</head>
+
+<body>
+    <script>
+        var xhr = new XMLHttpRequest();
+
+        //1.请求方式必须是post
+        xhr.open('post', 'http://localhost:3000/json')
+
+        //2.通过请求头告诉服务器端 客户端向服务器端传递的请求参数的格式是什么
+        xhr.setRequestHeader('Content-Type', 'application/json')
+
+        //3.转换json格式数据 与(JSON.parse相反 这个是把字符串转为对象）
+        //JSON.stringify()
+
+        xhr.send(JSON.stringify({
+            name: 'ybz',
+            age: '16'
+        }))
+        xhr.onload = function() {
+            console.log(xhr.responseText);
+        }
+    </script>
+</body>
+
+</html>

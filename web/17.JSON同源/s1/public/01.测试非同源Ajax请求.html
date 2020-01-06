@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 其本质是利用了标签具有可跨域的特性，由服务端返回预先定义好的javascript函数的调用，
+		并且将服务端数据以该函数参数的形式传递过来。 -->
+    <script type="text/javascript" src="/js/ajax.js"></script>
+    <script type="text/javascript">
+        ajax({
+            url: 'http://localhost:3001/test',
+            type: 'get',
+            success: function(result) {
+                console.log(result);
+            }
+        })
+    </script>
+</body>
+
+</html>

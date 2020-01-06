@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6.获取服务端的响应数据的另一种方式</title>
+    <!-- AJAX状态码 -->
+    <!-- 创建ajax对象，配置ajax对象，发送请求，以及接收完服务器端的响应数据，这个过程中的每一个步骤都会对应一个数值，
+         这个数值就是ajax状态码 -->
+    <!-- 0：请求未初始化（还没有调用open()方法) -->
+    <!-- 1：请求已经建立，但是还没有发送(还没有调用send()) -->
+    <!-- 2: 请求已经发送(已经调用了send()方法) -->
+    <!-- 3：请求正在处理中 通常响应中已经有部分数据可以使用了 -->
+    <!-- 4：响应已经完成 可以获取并使用服务器了 -->
+
+    <!-- xhr.readyState 获取ajax状态码 -->
+
+    <!-- 获取服务端响应方式 -->
+    <!-- onreadystatechange事件 当ajax状态码发生变化时会自动出发该事件 -->
+
+    <!-- 两种方式的区别： -->
+    <!-- onload事件 不兼容IE 不需要判断ajax状态码 被调用次数一次 -->
+    <!-- onreadystatechange事件 兼容IE 需要判断ajax状态码 被调用次数多次 -->
+    <!-- 推荐使用onload 如果需要兼容IE用onreadystatechange -->
+</head>
+
+<body>
+    <script>
+        //1.创建ajax对象
+        var xhr = new XMLHttpRequest()
+        console.log(xhr.readyState); //0 已经创建了Ajax对象 但是没有对其进行配置
+
+        xhr.open('get', 'http://localhost:3000/readystate')
+        console.log(xhr.readyState); //1 已经对ajax对象进行配置但是还没发送请求
+
+        //当ajax状态码发生变化的时候触发
+        xhr.onreadystatechange = function() {
+            //2 请求已经发送了
+            //3 已经接收到服务器端的部分数据了
+            //4 服务器端的响应数据已经接收完成
+            console.log(xhr.readyState);
+            if (xhr.readyState == 4) {
+                console.log(xhr.responseText);
+            }
+        }
+
+        xhr.send();
+    </script>
+</body>
+
+</html>

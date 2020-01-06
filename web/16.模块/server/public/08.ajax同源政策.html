@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08.ajax同源政策</title>
+    <!-- Ajax只能向自己的服务器发送请求，比如现在有一个A网站，有一个B网站，A网站中的HTML文件只能向A网站服务器中发送Ajax请求
+         B网站的HTML文件也只能向B网站发送ajax请求，但是A网站不能像B网站发送ajax请求。同理B也不能向A发送 -->
+
+    <!-- 什么是同源？ -->
+    <!-- 如果两个页面有相同的协议、域名和端口，那么这两个页面就属于同一个源。其中只要有一个不同就不是同源 -->
+    <!-- http://www.example.com/dir/page.html -->
+
+    <!-- http://www.example.com/dir2/other.html  同源 端口没写默认80-->
+    <!-- http://example.com/dir2/other.html  不同源 域名不同 -->
+    <!-- http://v2.www.example.com/dir2/other.html  不同源 域名不同-->
+    <!-- http://www.example.com:81/dir/page.html  不同源端口不同-->
+    <!-- https://www.example.com/dir/page.html  不同 协议不同-->
+
+    <!-- 同源政策是为了保护用户信息的安全，防止恶意的网站窃取数据。最初的同源政策是指A网站在客户端设置的cookie，B网站是不能访问的 -->
+    <!-- cookie：用来保存用户的登录状态 -->
+    <!-- ajax无法向非同源地址发送ajax请求。浏览器会报错 -->
+
+</head>
+
+<body>
+
+</body>
+
+</html>
