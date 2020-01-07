@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>08.restful风格的api</title>
+    <!-- GET http://www.example.com/getUsers  //获取用户列表 -->
+    <!-- GET http://www.example.com/getUsers?id=1  //获取某一个用户信息 -->
+    <!-- POST http://www.example.com/modifyUser  //修改用户信息 -->
+    <!-- GET http://www.example.com/deleteUser?id=1  //删除用户信息 -->
+
+</head>
+
+<body>
+    <script src="/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        // 获取用户列表信息
+        $.ajax({
+            type: 'get',
+            url: '/users',
+            success: function(response) {
+                console.log(response)
+            }
+        })
+
+        // 获取id为1的用户信息
+        $.ajax({
+            type: 'get',
+            url: '/users/1',
+            success: function(response) {
+                console.log(response)
+            }
+        })
+
+        // 获取id为1的用户信息
+        $.ajax({
+            type: 'delete',
+            url: '/users/10',
+            success: function(response) {
+                console.log(response)
+            }
+        })
+
+        // 获取id为1的用户信息
+        $.ajax({
+            type: 'put',
+            url: '/users/10',
+            success: function(response) {
+                console.log(response)
+            }
+        })
+    </script>
+</body>
+
+</html>

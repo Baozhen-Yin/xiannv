@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07.jQuery中的ajax全局事件</title>
+    <!-- 只有页面中有ajax请求被发送 对应的全局事件就会被触发 -->
+    <!-- .ajaxStart() 请求开始发送时触发 -->
+    <!-- .ajaxComplete() 当请求完成时触发 -->
+</head>
+
+<body>
+    <script>
+        //当页面中有ajax请求发送时触发
+        $(document).on('ajaxStart', function() {
+            console.log('start');
+
+        })
+
+        //当页面中有ajax请求完成时触发
+        $(document).on('ajaxComplete', function() {
+            console.log('complete');
+
+        })
+    </script>
+</body>
+
+</html>

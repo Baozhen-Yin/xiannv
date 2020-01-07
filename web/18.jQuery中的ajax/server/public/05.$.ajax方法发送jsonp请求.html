@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>$.ajax方法基本使用</title>
+</head>
+
+<body>
+    <button id="btn">发送请求</button>
+    <script src="/js/jquery.min.js"></script>
+    <script>
+        // jsonp请求属于get请求 
+        function fn(response) {
+            console.log(response)
+        }
+
+        $('#btn').on('click', function() {
+            $.ajax({
+                url: '/jsonp',
+                // 向服务器端传递函数名字的参数名称 callback cb=fn&_=1578385890122
+                jsonp: 'cb',
+                //指定参数名称
+                //jsonpCallback: 'fn', //fn({name: 'ybz'}) 服务器端返回的函数调用
+                // 代表现在要发送的是jsonp请求 在内部会采取创建script标签来创建jsonp请求
+                dataType: 'jsonp',
+                success: function(response) {
+                    console.log(response)
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>
