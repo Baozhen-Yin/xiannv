@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>10-axios基本用法</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        axios.get('http://localhost:3000/adata').then(function(ret) {
+            // 注意data属性是固定的用法，用于获取后台的实际数据
+            console.log(ret.data) //hello axios!!
+            console.log(ret) //{data: "hello axios!!", status: 200, statusText: "OK", headers: {…}, config: {…}, …}
+        })
+    </script>
+</body>
+
+</html>

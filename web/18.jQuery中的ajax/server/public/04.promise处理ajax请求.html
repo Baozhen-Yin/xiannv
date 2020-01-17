@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="favicon.ico" rel="shortcut icon">
+    <title>04.promise处理ajax请求</title>
+</head>
+
+<body>
+    <script>
+        function queryData(url) {
+            return new Promise(function(resolve, reject) {
+                var xhr = new XMLHttpRequest()
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState != 4) return
+                    if (xhr.readyState == 4 || xhr.status == 200) {
+                        resolve(xhr.responseText)
+                    } else {
+                        reject('出错啦！！')
+                    }
+                }
+                xhr.open('get', url)
+                xhr.send(null)
+            })
+        }
+
+        //发送多次ajax请求 并且保证顺序
+
+        //then参数中的函数返回值
+        //1.返回promise实例对象
+        //返回的该实例对象会调用下一个then
+
+        //2.返回普通值
+        //返回的普通值会直接传递给下一个then 通过then参数中的函数的参数接收该值
+        queryData('http://localhost:3000/data')
+            .then(function(data) {
+                // console.log(data);
+                //调用下一个任务 /data1
+                return queryData('http://localhost:3000/data1')
+            })
+            .then(function(data) {
+                //1. 上面的返回值 promise对象
+                console.log(data); //hello tom
+
+                return new Promise(function(resolve, reject) {
+                    setTimeout(() => {
+                        resolve(123)
+                    }, 1000);
+                })
+            })
+            .then(function(data) {
+                //2.返回普通值 就会产生默认的Promise实例对象
+                console.log(data); //123
+
+                //  return "hello"
+            })
+            .then(function(data) {
+                console.log(data); //hello
+            })
+    </script>
+</body>
+
+</html>

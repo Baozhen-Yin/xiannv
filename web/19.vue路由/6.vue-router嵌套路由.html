@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.min.js"></script>
+    <script src="vue-router_3.0.2.js"></script>
+    <title>6.vue-router嵌套路由</title>
+    <!-- 嵌套路由功能分析 -->
+    <!-- 1.点击父级路由链接显示模板内容 -->
+    <!-- 2.模板内容中又有子级路由链接 -->
+    <!-- 3.点击子级路由链接显示子级模板内容 -->
+    <!-- 4.通过在路由规则里面 children属性 为/register添加子路由规则 -->
+</head>
+
+<body>
+
+    <div id="app">
+        <router-link to="/user">User</router-link>
+        <router-link to="/register">Register</router-link>
+        <!--控制组件显示位置 -->
+        <router-view></router-view>
+    </div>
+    <script>
+        // 4.定义路由组件 
+        const User = {
+            template: '<h1>User 组件</h1>'
+        }
+
+        const Register = {
+            template: `<div>
+                <h1> Register 组件</h1>
+                <hr>
+                <!--子路由链接 -->
+                <router-link to="/register/tab1">tab1</router-link>
+                <router-link to="/register/tab2">tab2</router-link>
+
+                <!-- 子路由占位符 -->
+                <router-view></router-view>
+                </div>`
+        }
+        const tab1 = {
+            template: '<h3>我是子路由tab1</h3>'
+        }
+
+        const tab2 = {
+            template: '<h3>我是子路由tab2</h3>'
+        }
+
+        //5.配置路由规则并创建路由实例
+        var routerybz = new VueRouter({
+            //routes是（路由规则）"""数组"""
+            routes: [
+                //每个路由规则都是一个配置对象 其中至少包含 path 和 component两个属性
+                //path表示当前路由规则匹配的""hash地址"""
+                //component 表示当前路由规则对应要展示的""组件""" ,只接受组件对象 不接受字符串
+                {
+                    //路由重定向
+                    path: '/',
+                    redirect: '/user'
+                }, {
+                    path: '/user',
+                    component: User
+                }, {
+                    //children[]数组表示子路由规则
+                    path: '/Register',
+                    component: Register,
+                    children: [{
+                        path: '/register/tab1',
+                        component: tab1
+                    }, {
+                        path: '/register/tab2',
+                        component: tab2
+                    }]
+                }
+            ]
+        })
+
+        // 创建vm实例对象
+        let vm = new Vue({
+            el: '#app',
+            data: {},
+            //6.把路由挂载到Vue根实例中
+            router: routerybz
+        })
+    </script>
+
+</body>
+
+</html>

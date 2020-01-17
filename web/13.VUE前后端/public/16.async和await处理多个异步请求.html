@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>16.async和await处理多个异步请求</title>
+    <!-- 只需要在aysnc函数当中顺序的处理await任务就可 会自动保持顺序 -->
+</head>
+
+<body>
+    <script>
+        //处理多个异步任务
+        axios.defaults.baseURL = 'http://localhost:3000'
+        async function queryData() {
+            //对于多个异步请求 只需要在async函数当中 用await函数关键字顺序的处理 异步任务
+            //自动保持顺序
+            //info的info.data需要用到下一个异步任务
+            var info = await axios.get('async1')
+            var ret = await axios.get('async2?info=' + info.data)
+            return ret.data
+        }
+        queryData().then(function(data) {
+            console.log(data); //ybzybzybz
+        })
+        console.log('第一'); //同步任务
+    </script>
+</body>
+
+</html>

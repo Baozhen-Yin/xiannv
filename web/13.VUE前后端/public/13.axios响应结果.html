@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>13.axios响应结果格式</title>
+    <!-- 响应结果的主要属性 -->
+    <!-- data:实际响应回来的数据 -->
+    <!-- headers:响应头信息 -->
+    <!-- status:响应状态码 -->
+    <!-- statusText:响应状态信息 -->
+
+    <!-- axios的全局配置 -->
+    <!-- axios.defaults.timeout=3000  超时时间-->
+    <!-- axios.defaults.baseURL = 'http://localhost:3000/app'  默认地址 -->
+    <!-- axios.defaults.headers['mytoken']='qwertyuio'  设置请求头 -->
+</head>
+
+<body>
+    <script>
+        // axios.get('/axios-json').then(ret => {
+        //     console.log(ret.data);
+        // })
+
+        //配置请求的基准URL地址
+        axios.defaults.baseURL = 'http://localhost:3000/'
+
+        //配置请求头信息
+        axios.defaults.headers['mytoken'] = 'hello' //mytoken: hello
+        axios.get('axios-json').then(ret => {
+            console.log(ret.data);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>14.axios拦截器</title>
+    <!-- 1.请求拦截器 -->
+    <!-- 在请求发出之前设置一些信息 请求之前 通过 (axios请求拦截器) 通过url 访问服务器接口 -->
+    <!-- 主要作用 在发送之前设置一些信息 比如请求头什么的-->
+
+    <!-- 2.响应拦截器 -->
+    <!-- 数据返回之前 做一些加工处理 -->
+    <!-- 服务器 返回响应结果 axios响应拦截器 返回 客户端 -->
+    <!-- 主要作用 获取数据之前 对数据做一些加工处理 比如在响应拦截器做了data处理 then中直接拿到数据 不再需要.data的方式 -->
+</head>
+
+<body>
+    <script>
+        //配置请求拦截器
+        axios.interceptors.request.use(function(config) {
+            console.log(config.url);
+            //配置请求头
+            config.headers.mytoken = 'nihao'
+            return config
+        }, function(err) {
+            //第二个函数用于处理错误的信息
+            console.log(err);
+        })
+
+        //配置响应拦截器
+        axios.interceptors.response.use(function(res) {
+            //console.log(res)
+            var data = res.data
+            return data
+        }, function(err) {
+            //第二个函数用于处理错误的信息
+            console.log(err);
+        })
+
+        axios.get('http://localhost:3000/adata').then(function(data) {
+            console.log(data); //hello axios!!
+        })
+    </script>
+</body>
+
+</html>

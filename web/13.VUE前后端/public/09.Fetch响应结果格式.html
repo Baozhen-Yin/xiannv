@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>09.fetch响应结果</title>
+    <!-- 响应数据格式  -->
+    <!-- 1.text():将返回体处理成字符串类型 -->
+    <!-- 2.json():返回结果和JSON.parse(resposeText)一样 -->
+</head>
+
+<body>
+    <script>
+        fetch('http://localhost:3000/json').then(function(data) {
+            //return data.json() //返回一个json对象
+            return data.text() //返回字符串
+        }).then(function(data) {
+            //console.log(data);
+            //console.log(data.uname);
+
+            //要想将字符串转为对象 如果上面text()
+            var obj = JSON.parse(data);
+            console.log(obj.uname);
+            console.log(obj.age);
+            console.log(obj.gender);
+        })
+
+        // JSON要更方便
+    </script>
+</body>
+
+</html>

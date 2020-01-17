@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>12.axios参数传递(post put)</title>
+    <!-- POST传递参数 默认传递的是JSON格式 -->
+    <!-- PUT POST都支持两种格式的传递 JSON 和 传统的表单形式数据  -->
+    <!-- 对于JSON数据来说 直接在url后面添加一个params对象 在对象中传递参数 默认就是JSON  -->
+    <!-- 对于传统表单格式来说 URLSearchParams() 把实例对象作为整体第二个参数来进行传递 -->
+    <!-- 推荐JSON 更加方便 -->
+</head>
+
+<body>
+    <script>
+        //1.传统形式 JSON对象
+        axios.post('http://localhost:3000/axios', {
+            uname: 'ybz',
+            pwd: 123455
+        }).then((ret) => {
+            console.log(ret.data); //通过axios post传递参数 JSON形式ybz123455
+        })
+
+        //2.通过URLSearchParams API传递参数(application/x-www-form-urlencoded)
+        const params = new URLSearchParams()
+
+        // params.append('param1', 'value1') 添加参数
+        params.append('uname', 'ybz')
+        params.append('pwd', '1234567')
+        axios.post('http://localhost:3000/axiosxyk', params).then((ret) => {
+            console.log(ret.data); //通过axios post传递参数 字符串形式ybz1234567
+        })
+
+
+        //2.PUT传递参数
+        axios.put('http://localhost:3000/axios/250', {
+            uname: 'ybz',
+            pwd: 123455
+        }).then((ret) => {
+            console.log(ret.data); //通过axios put 传递参数 id=250name=ybzpwd=123455
+        })
+    </script>
+</body>
+
+</html>

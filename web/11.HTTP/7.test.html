@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7.跨域解决</title>
+</head>
+
+<body>
+    <!-- <script>
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', 'http://127.0.0.1:8887/')
+        xhr.send()
+    </script> -->
+
+    <!-- 在标签上写路径加载内容 允许跨域 并不在乎服务器是否有允许跨域的头 -->
+    <!-- <script src="http://localhost:8887/"></script> -->
+
+
+
+    <script>
+        //cors预请求
+        fetch('http://127.0.0.1:8887', {
+            method: 'PUT',
+            headers: {
+                //自定义头
+                'X-Test-Cors': "123"
+                    //并不一定是浏览器限制了发起跨站请求，也可能是跨站请求可以正常发起，但是返回结果被浏览器拦截了。
+            }
+        })
+    </script>
+</body>
+
+</html>

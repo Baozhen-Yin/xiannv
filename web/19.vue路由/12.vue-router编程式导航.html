@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.min.js"></script>
+    <script src="vue-router_3.0.2.js"></script>
+    <title>12.vue-router编程式导航</title>
+    <!-- 1.声明式导航:通过点击链接实现导航的方式,叫做声明式导航 -->
+    <!-- 例如:网页中的<a></a>链接 或者 Vue中的<router-link></router-link>  -->
+
+    <!-- 2.编程式导航:通过调用JS的Api来实现跳转 -->
+    <!-- 例如:普通网页中的location.href -->
+    <!-- 常见的编程式导航API如下: -->
+
+    <!-- this.$router.push('hash地址') 跳转到指定组件页面 -->
+    <!-- 1.字符串(路径名称)  router.push('/home)-->
+    <!-- 2.对象 router.push({path:'/home'}) -->
+    <!-- 3.命名的路由(传递参数) router.push({name:'/user',params:{userId:123}}) -->
+    <!-- 4.带查询参数,变成 /register?uname=ybz    router.push({path:'/register',query:{uname:'ybz'}}) -->
+
+    <!-- this.$router.go(n)  实现前进和后退-->
+</head>
+
+<body>
+    <!-- 被vm实例所控制的区域 -->
+    <div id="app">
+        <!-- 2.添加路由连接 -->
+        <router-link to="/user/1">User1</router-link>
+        <router-link :to="{name:'user',params:{id:250}}">User2</router-link>
+        <!-- 命名路由  name代表路由名称 params代表要传的参数 -->
+        <router-link :to="{name:'user',params:{id:3}}">User3</router-link>
+        <router-link to="/register">Register</router-link>
+
+        <!-- 3.添加路由填充位 -->
+        <router-view></router-view>
+    </div>
+
+    <script>
+        // 4.定义路由组件 
+        const User = {
+            //第一种情况 使用props接收路由参数
+            //props: ["ybzid"],
+            //第二种情况 props是对象l
+            props: ['id', 'uname', 'age'],
+            template: `<div>
+                <h1>User 组件 用户id为{{id}}---用户信息为{{uname}}+++{{age}}</h1>
+                <button @click="goRegister">跳转到注册页面</button>
+                </div>`,
+            methods: {
+                goRegister() {
+                    this.$router.push('/register')
+                }
+            },
+        }
+
+        const Register = {
+            template: `<div>
+                <h1>Register 组件</h1>
+                <button @click="goBack">跳转到注册页面</button>
+                </div>`,
+            methods: {
+                goBack() {
+                    this.$router.go(-1)
+                }
+            },
+        }
+
+        //5.配置路由规则并创建路由实例
+        var routerybz = new VueRouter({
+            routes: [{
+                path: '/',
+                redirect: '/user'
+            }, {
+                //给路由起名字 命名路由
+                name: 'user',
+                path: "/user/:id",
+                component: User,
+                props: route => ({
+                    uname: 'ybz',
+                    age: 20,
+                    id: route.params.id
+                })
+            }, {
+                path: '/Register',
+                component: Register
+            }]
+        })
+
+        // 创建vm实例对象
+        let vm = new Vue({
+            el: '#app',
+            data: {},
+            //6.把路由挂载到Vue根实例中
+            router: routerybz
+        })
+    </script>
+
+</body>
+
+
+</html>

@@ -82,10 +82,38 @@ app.put('/users/:id', (req, res) => {
 });
 
 app.get('/xml', (req, res) => {
+    //设置响应头
     res.header('content-type', 'text/xml');
     res.send('<message><title>消息标题</title><content>消息内容</content></message>')
 });
 
+app.get('/a1', (req, res) => {
+    setTimeout(function() {
+        res.send('Hello TOM!')
+    }, 1000);
+})
+app.get('/a2', (req, res) => {
+    setTimeout(function() {
+        res.send('Hello JERRY!')
+    }, 2000);
+})
+app.get('/a3', (req, res) => {
+    setTimeout(function() {
+        res.send('Hello SPIKE!')
+    }, 3000);
+})
+app.get('/data', (req, res) => {
+    res.send('Hello World!')
+})
+
+app.get('/data1', (req, res) => {
+    setTimeout(function() {
+        res.send('Hello TOM!')
+    }, 1000);
+})
+app.get('/data2', (req, res) => {
+    res.send('Hello JERRY!')
+})
 
 // 监听端口
 app.listen(3000);

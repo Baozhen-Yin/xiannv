@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8.HTTP预请求</title>
+    <!-- 跨域资源共享标准新增了一组 HTTP 首部字段，允许服务器声明哪些源站通过浏览器有权限访问哪些资源。 -->
+    <!--1. 对那些可能对服务器数据产生副作用的 HTTP 请求方法（特别是 GET 以外的 HTTP 请求，或者搭配某些 MIME 类型的 POST 请求），
+        浏览器必须首先使用 OPTIONS 方法发起一个预检请求（preflight request），从而获知服务端是否允许该跨域请求。 -->
+    <!--2. 服务器确认允许之后，才发起实际的 HTTP 请求。
+            在预检请求的返回中，服务器端也可以通知客户端，是否需要携带身份凭证（包括 Cookies 和 HTTP 认证相关数据） -->
+</head>
+
+<body>
+    <script>
+        // 出于安全原因，浏览器限制从脚本内发起的跨源HTTP请求。
+        // 而在页面中通过src或者href嵌入cdn文件或者图片之类的可以直接引入不会遵循CORS。
+        // 跨域资源共享标准新增了一组 HTTP 首部字段，允许服务器声明哪些源站通过浏览器有权限访问哪些资源。
+        // 对那些可能对服务器数据产生副作用的 HTTP 请求方法（特别是 GET 以外的 HTTP 请求，或者搭配某些 MIME 类型的 POST 请求），
+        // 浏览器必须首先使用 OPTIONS 方法发起一个预检请求（preflight request），
+        // 从而获知服务端是否允许该跨域请求。服务器确认允许之后，才发起实际的 HTTP 请求。
+        // 简单请求不会触发CORS预检请求，而非简单请求则会触发
+        //Fetch 与 CORS 的一个有趣的特性是，可以基于  HTTP cookies 和 HTTP 认证信息发送身份凭证
+
+        //大致说明一下,有五种方式会导致这种现象:
+        // 1:请求的方法不是GET/HEAD/POST
+        // 2:POST请求的Content-Type并非application/x-www-form-urlencoded, multipart/form-data, 或text/plain
+        // 3:请求设置了自定义的header字段
+        // 4.请求中的XMLHttpRequestUpload 对象注册了任意多个事件监听器。
+        // 5.请求中使用了ReadableStream对象。
+
+        //简单请求不会触发 CORS 预检请求。（GET HEAD POST)
+        //Fetch 规范定义了对 CORS 安全的首部字段集合，不得人为设置该集合之外的其他首部字段。
+        //Content-Type 的值仅限于下列三者之一： text/plain multipart/form-data application/x-www-form-urlencoded
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>前后端交互</div>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        // var ret = '---';
+        // $.ajax({
+        //     url: 'http://localhost:3000/data',
+        //     success: function(data) {
+        //         ret = data;
+        //         console.log(ret)
+        //     }
+        // });
+        // console.log(ret) ---
+
+        // ----------------------------
+
+        //ajax多次异步调用""结果顺序不确定"""
+        // $.ajax({
+        //   url: 'http://localhost:3000/data',
+        //   success: function(data) {
+        //     console.log(data)
+        //   }
+        // });
+        // $.ajax({
+        //   url: 'http://localhost:3000/data1',
+        //   success: function(data) {
+        //     console.log(data)
+        //   }
+        // });
+        // $.ajax({
+        //   url: 'http://localhost:3000/data2',
+        //   success: function(data) {
+        //     console.log(data)
+        //   }
+        // });
+        // -----------------------------------
+
+        //异步调用结果顺序如果存在依赖 就必须要嵌套
+        $.ajax({
+            url: 'http://localhost:3000/data',
+            success: function(data) {
+                console.log(data)
+                $.ajax({
+                    url: 'http://localhost:3000/data1',
+                    success: function(data) {
+                        console.log(data)
+                        $.ajax({
+                            url: 'http://localhost:3000/data2',
+                            success: function(data) {
+                                console.log(data)
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>15.async和await</title>
+    <!-- async/await是ES7引入的新语法 可以更加方便进行异步操作 -->
+    <!-- async关键字用于函数上 (async函数的返回值是""Promise实例对象""") -->
+    <!-- await关键字用于async函数当中(await可以得到异步的结果) -->
+</head>
+
+<body>
+    <script>
+        //传统的axios方式调用接口
+        // axios.defaults.baseURL = 'http://localhost:3000';
+        // axios.get('adata').then(function(ret) {
+        //     console.log(ret.data);
+        // })
+
+        //async和await方式调用接口
+        async function queryData(id) {
+            //处理异步任务
+            //promise实例对象 axios.get('/data')
+            const ret = await axios.get('/adata')
+                //console.log(ret.data);
+            return ret.data
+        }
+        //async函数的返回值是""Promise实例对象""" 调用的时候可以直接then得到返回值
+        queryData().then(function(data) {
+            console.log(data); //hello axios!!
+        })
+
+
+        //await后面要跟promise实例对象 在promise当中可以处理异步任务
+        async function queryData1(id) {
+            const ret1 = await new Promise(function(resolve, reject) {
+                setTimeout(function() {
+                    resolve('尹宝祯小仙女')
+                }, 1000)
+            })
+            return ret1
+        }
+        queryData1().then(function(data) {
+            console.log(data); //尹宝祯小仙女
+        })
+    </script>
+</body>
+
+</html>

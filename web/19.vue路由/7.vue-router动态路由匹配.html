@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.min.js"></script>
+    <script src="vue-router_3.0.2.js"></script>
+    <title>7.vue-router动态路由匹配</title>
+    <!-- 动态路径参数 以冒号:开头 -->
+    <!-- 路由组件中通过$route.params获取路径参数 -->
+</head>
+
+<body>
+    <!-- 被vm实例所控制的区域 -->
+    <div id="app">
+        <!-- 2.添加路由连接 -->
+        <router-link to="/user/1">User1</router-link>
+        <router-link to="/user/2">User2</router-link>
+        <router-link to="/user/3">User3</router-link>
+        <router-link to="/register">Register</router-link>
+
+        <!-- 3.添加路由填充位 -->
+        <router-view></router-view>
+    </div>
+
+    <script>
+        // 4.定义路由组件 
+        const User = {
+            //路由组件中通过$route.params获取路径参数
+            template: '<h1>User 组件---用户id为:{{$route.params.ybzid}}</h1>'
+        }
+
+        const Register = {
+            template: '<h1>Register 组件</h1>'
+        }
+
+        //5.配置路由规则并创建路由实例
+        var routerybz = new VueRouter({
+            routes: [{
+                // 动态参数路径以:开头
+                path: '/user/:ybzid',
+                component: User
+            }, {
+                path: '/Register',
+                component: Register
+            }]
+        })
+
+        // 创建vm实例对象
+        let vm = new Vue({
+            el: '#app',
+            data: {},
+            //6.把路由挂载到Vue根实例中
+            router: routerybz
+        })
+    </script>
+
+</body>
+
+</html>

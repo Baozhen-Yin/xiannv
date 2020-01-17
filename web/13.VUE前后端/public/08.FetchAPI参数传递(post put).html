@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08.接口调用fetch方法(post put)</title>
+    <!-- 这两种需要通过body来传递实际的数据 -->
+    <!-- 需要设置headers 支持传统表单形式和JSON 需要后台提供支持 -->
+    <!-- put一般用于修改 -->
+</head>
+
+<body>
+    <script>
+        //第一种POST传递参数方法
+        fetch('http://localhost:3000/books', {
+            method: 'post',
+            body: 'uname=ybz&age=16',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(function(data) {
+            return data.text()
+        }).then(function(data) {
+            //这里得到最终数据
+            console.log(data); //传统的URL传递参数123
+        })
+
+        //第二种POST传递参数方法 JSON 后台接口不发生变化
+        fetch('http://localhost:3000/books', {
+            method: 'post',
+            body: JSON.stringify({
+                uname: 'ybz',
+                age: 16
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function(data) {
+            return data.text()
+        }).then(function(data) {
+            //这里得到最终数据
+            console.log(data); //传统的URL传递参数123
+        })
+
+        //put传递参数
+        fetch('http://localhost:3000/books/123', {
+            method: 'put',
+            body: JSON.stringify({
+                uname: 'ybz',
+                age: 25
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function(data) {
+            return data.text()
+        }).then(function(data) {
+            //这里得到最终数据
+            console.log(data); //PUT请求的URL传递参数id=123---ybz---25
+        })
+    </script>
+</body>
+
+</html>

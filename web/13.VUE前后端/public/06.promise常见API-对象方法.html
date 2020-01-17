@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>06.promise常见API-对象方法</title>
+    <!-- 2.对象方法 -->
+    <!-- Promise.all() 并发处理多个异步任务 ""所有任务""都执行完成才能的到结果-->
+    <!-- Promise.race() 并发处理多个异步任务，""只要有一个任务""完成就能得到执行结果 -->
+</head>
+
+<body>
+    <script>
+        function queryData(url) {
+            return new Promise(function(resolve, reject) {
+                var xhr = new XMLHttpRequest()
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState != 4) return
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        resolve(xhr.responseText)
+                    } else {
+                        reject('服务器错误')
+                    }
+                }
+                xhr.open('get', url)
+                xhr.send(null)
+            })
+        }
+
+        //三个异步任务
+        var p1 = queryData("http://localhost:3000/a1")
+        var p2 = queryData("http://localhost:3000/a2")
+        var p3 = queryData("http://localhost:3000/a3")
+
+        // Promise.all([p1, p2, p3]).then(function(result) {
+        //     console.log(result); //["Hello TOM!",'Hello JERRY!','Hello SPIKE!']
+        // })
+        Promise.race([p1, p2, p3]).then(function(result) {
+            console.log(result); //Hello TOM!
+        })
+    </script>
+</body>
+
+</html>

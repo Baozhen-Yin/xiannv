@@ -13,10 +13,11 @@
 
 <body>
     <div id="app">
-        <!--1. v-else-if 要紧跟v-if，v-else要紧跟v-else-if或者v-if，表达式为真时，当前元素/组件及所有子节点将被渲染，为假被移除  -->
-        <p v-if="status ===1">当status为1时显示改行</p>
-        <p v-else-if="status===2">当status为2时显示改行</p>
-        <p v-else>否则显示改行</p>
+        <!--1. v-else-if 要紧跟v-if，v-else要紧跟v-else-if或者v-if，表达式为真时，
+            当前元素/组件及所有子节点将被渲染，为假被移除  -->
+        <p v-if="status ===1">当status为1时显示该行</p>
+        <p v-else-if="status===2">当status为2时显示该行</p>
+        <p v-else>否则显示该行</p>
     </div>
     <!-- 2.如果一次判断多个元素 可以在内置template上使用条件指令 最终渲染结果不包括该元素 -->
     <div id="app1">

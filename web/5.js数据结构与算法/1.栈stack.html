@@ -24,6 +24,7 @@
         //方法：和某一个对象实例有联系
         function Stark() {
             this.items = []; //栈中的属性 数组
+
             //1.元素压入栈 构造函数原型 prototype 构造函数通过原型分配的函数是所有对象共享的 不再单独开辟内存空间
             Stark.prototype.push = function(element) {
                 this.items.push(element)

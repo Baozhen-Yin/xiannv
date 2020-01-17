@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>11.axios参数传递</title>
+    <!-- GET -->
+    <!-- 1.通过url传递参数 -->
+    <!-- 2.通过params传递参数 -->
+
+    <!-- DELETE 方式与get类似 -->
+</head>
+
+<body>
+    <script>
+        //1.通过url传递参数
+        axios.get('http://localhost:3000/axios?id=ybz').then(function(ret) {
+            console.log(ret); //返回了一个对象
+            console.log(ret.data); //通过axios get传递参数ybz
+        })
+
+        //2.通过params传递参数
+        axios.get('http://localhost:3000/axioss/xyk').then(function(ret) {
+            console.log(ret); //返回了一个对象
+            console.log(ret.data); //通过axios get(Restful)传递参数xyk
+        })
+
+        axios.get('http://localhost:3000/axiosybz', {
+            //params传递多个参数
+            params: {
+                uname: "ybz",
+                id: 789
+            }
+        }).then(function(ret) {
+            console.log(ret); //返回了一个对象
+            console.log(ret.data); //通过axios get传递参数id=789name=ybz
+        })
+
+        //2.delete
+        axios.delete('http://localhost:3000/deletedata', {
+            params: {
+                id: 250,
+                uname: 'xyk'
+            }
+        }).then(function(ret) {
+            console.log(ret.data); //通过axios delete传递参数id=250name=xyk
+        })
+    </script>
+</body>
+
+</html>

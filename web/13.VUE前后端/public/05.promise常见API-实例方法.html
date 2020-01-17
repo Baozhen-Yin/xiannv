@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05.promise常见API</title>
+    <!-- 1.实例方法 -->
+    <!-- p.then() 得到异步任务的正确结果 -->
+    <!-- p.catch() 获取异常信息 -->
+    <!-- p.finally() 成功与否都会执行(尚且不是正式标准) -->
+
+
+</head>
+
+<body>
+    <script>
+        function foo() {
+            return new Promise(function(resolve, reject) {
+                setTimeout(() => {
+                    // resolve(123)
+                    reject('error')
+                }, 1000);
+            })
+        }
+        foo()
+            .then(function(data) {
+                console.log(data); //123
+            })
+            .catch(function(data) {
+                //当错误的时候 异常数据
+                console.log(data); //error
+            })
+            .finally(function() {
+                console.log('finished'); //finished
+            })
+    </script>
+</body>
+
+</html>z

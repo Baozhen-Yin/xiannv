@@ -21,6 +21,7 @@
     <script>
         //自定义过滤器 Vue.filter('过滤器名称'，function(value){//业务逻辑})
         //经常用于格式化文本，比如字母全部大写，货币千位使用逗号分割等等。
+
         //2.过滤的规则是自定义的，通过给Vue实例添加（filters）来设置
         //3.过滤器可以串联 可以接收参数 {{message|filterA|filterB}}
         //4.接收参数 {{message|filter('arg1','arg2')}} 这里的arg1 arg2 分别传给过滤器的第二个和第三个参数 因为第一个参数是数据本身
@@ -33,6 +34,7 @@
         Vue.filter('lower', function(val) {
             return val.charAt(0).toLowerCase() + val.slice(1);
         });
+
         var app1 = new Vue({
             el: "#app1",
             data: {

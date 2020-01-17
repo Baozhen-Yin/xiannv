@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07.接口调用fetch方法</title>
+    <!-- 1.基本特性 -->
+    <!-- 更加简单的数据获取方式 功能更强大 更灵活 可以看作是xhr的升级版 -->
+    <!-- 基于Promise实现 -->
+    <!-- 比ajax更加简单 -->
+
+    <!-- 2.语法结构 -->
+    <!-- fetch(url).then(fn2).then(fn3).then(fn4)....catch(fn) -->
+    <!-- https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API -->
+
+    <!-- 3.常用配置选项 -->
+    <!-- method(String):HTTP请求方法，默认为GET请求 (GET POST PUT DELETE) -->
+    <!-- body(String):HTTP的请求参数 -->
+    <!-- headers(Object)：HTTP的请求头 默认为{} -->
+</head>
+
+<body>
+    <script>
+        //1.GET请求方式的参数传递
+
+        //第一种传统方式 books?id=123
+        fetch('http://localhost:3000/books?id=123', {
+            method: 'get'
+        }).then(function(data) {
+            //fetch提供的API  text()获取对应的数据 返回promise实例对象 用于获取后台返回的数据
+            return data.text()
+        }).then(function(data) {
+            //这里得到最终数据
+            console.log(data); //传统的URL传递参数123
+        })
+
+        //第二种restful形式的URL传递  books/456 后台也改变
+        fetch('http://localhost:3000/books/456', {
+            method: 'get'
+        }).then(function(data) {
+            //fetch提供的API  text()获取对应的数据 返回promise实例对象 用于获取后台返回的数据
+            return data.text()
+        }).then(function(data) {
+            //这里得到最终数据
+            console.log(data); //restful形式的URL传递参数456
+        })
+
+        //2.DELETE请求方式进行传参
+        fetch('http://localhost:3000/books/789', {
+            method: 'delete'
+        }).then(function(data) {
+            //fetch提供的API  text()获取对应的数据 返回promise实例对象 用于获取后台返回的数据
+            return data.text()
+        }).then(function(data) {
+            //这里得到最终数据
+            console.log(data); //delete请求的URL传递参数789
+        })
+    </script>
+</body>
+
+</html>

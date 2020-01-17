@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03.promise的基本使用</title>
+    <!-- 是异步编程的一种解决方案 从语法上讲promise是一个对象  -->
+    <!-- 实例化Promise对象 构造函数中传递参数 该函数用于处理异步任务 -->
+    <!-- resolve和reject 两个参数用于处理成功和失败两种情况 并通过p.then获取处理结果 -->
+</head>
+
+<body>
+    <script>
+        console.log(typeof Promise);
+        console.dir(Promise)
+        var p = new Promise(function(resolve, reject) {
+            //这里实现异步任务
+
+            //成功了就调用resolve
+            //失败了调用 reject
+            setTimeout(() => {
+                var flag = true
+                if (flag) {
+                    //正常情况
+                    resolve('hello ybz')
+                } else {
+                    reject('ybz error')
+                }
+            }, 1000);
+        })
+
+        //接收结果
+        p.then(function(ret) {
+            //从resolve得到正常结果
+            console.log(ret); //hello ybz
+        }, function(ret) {
+            //从reject得到错误信息
+            console.log(ret);
+        })
+    </script>
+</body>
+
+</html>
