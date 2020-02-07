@@ -10,10 +10,21 @@
 
 <body>
     <script>
-        let students = ['ybz', 'xyk', 'xiannv']
-        let [s1, ...s2] = students;
-        console.log(s1); //ybz
-        console.log(s2); //(2) ["xyk", "xiannv"] 是一个数组
+        // let students = ['ybz', 'xyk', 'xiannv']
+        // let [s1, ...s2] = students;
+        // console.log(s1); //ybz
+        // console.log(s2); //(2) ["xyk", "xiannv"] 是一个数组
+        var name = "The Window";　　
+        var object = {　　　　
+            name: "My Object",
+            　　　　getNameFunc: function() {　　　　　　
+                var that = this;　　　　　　
+                return function() {　　　　　　　　
+                    return that.name;　　　　　　
+                };　　　　
+            }　　
+        };　　
+        alert(object.getNameFunc()());
     </script>
 </body>
 

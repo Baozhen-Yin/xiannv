@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10.缓存验证头</title>
+    <!-- 缓存校验在缓存中，我们需要一个机制来验证缓存是否有效。
+        1.比如服务器的资源更新了，客户端需要及时刷新缓存；
+        2.又或者客户端的资源过了有效期，但服务器上的资源还是旧的，此时并不需要重新发送。
+        缓存校验就是用来解决这些问题的，在http 1.1 中，我们主要关注下
+        1.Last-Modified 和 2.etag 这两个字段。-->
+
+
+    <!-- 1.Last-Modified:上次修改时间
+        服务端在返回资源时，会将该资源的最后更改时间通过Last-Modified字段返回给客户端。 -->
+    <!-- ""客户端""下次请求时通过""If-Modified-Since""或者""If-Unmodified-Since""带上Last-Modified，对比上次修改时间验证资源是否需要更新 -->
+    <!-- 服务端检查该时间是否与服务器的最后修改时间一致：
+            如果一致，则返回304状态码，不返回资源；如果不一致则返回200和修改后的资源，并带上新的时间。 -->
+
+    <!-- 2.etag：数据签名 
+    单纯的以修改时间来判断还是有缺陷，比如文件的最后修改时间变了，但内容没变。对于这样的情况，我们可以使用etag来处理。 -->
+    <!--etag的方式是这样：服务器通过某个算法对资源进行hash计算，取得一串唯一值(类似于文件的md5值)，之后将该值通过etag返回给客户端，
+        客户端下次请求时通过"If-None-Match"或"If-Match"带上该值，服务器对该值进行对比校验：如果一致则不要返回资源。 -->
+    <!-- If-None-Match：告诉服务器如果一致，返回状态码304，不一致则返回资源
+        If-Match：告诉服务器如果不一致，返回状态码412 -->
+</head>
+
+<body>
+
+</body>
+
+</html>

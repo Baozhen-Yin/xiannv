@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>71.测试promise</title>
+    <script src="70.手写PROMISE.js"></script>
+
+</head>
+
+<body>
+    <script>
+        let ybz1 = new HD((resolve, reject) => {
+            setTimeout(() => {
+                resolve('尹宝祯成功')
+            }, 2000);
+        })
+        let ybz2 = new HD((resolve, reject) => {
+            // reject('尹宝祯失败')
+            setTimeout(() => {
+                resolve('尹宝祯失败')
+            }, 1000);
+        })
+
+        HD.race([ybz1, ybz2]).then(value => {
+            console.log(value);
+
+        }, reason => {
+            console.log(reason);
+
+        })
+
+
+        // let ybz1 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve('尹宝祯成功')
+        //     }, 2000);
+        // })
+        // let ybz2 = new Promise((resolve, reject) => {
+        //     // reject('尹宝祯失败')
+        //     setTimeout(() => {
+        //         resolve('尹宝祯失败')
+        //     }, 1000);
+        // })
+
+        // Promise.race([ybz1, ybz2]).then(value => {
+        //         console.log(value);
+
+        //     }, reason => {
+        //         console.log(reason);
+
+        //     })
+    </script>
+</body>
+
+</html>

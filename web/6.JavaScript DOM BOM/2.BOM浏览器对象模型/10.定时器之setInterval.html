@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <button onclick="func()">内联模型绑定</button>
     <script>
         //1.setInterval() window.setInterval(回调函数，[间隔的毫秒数])
         setInterval(function() {
@@ -23,6 +24,89 @@
             //2.setTimeout 延时时间到了 就去回调这个函数,只调用了一次 就结束了这个定时器
             //3.setInterval 每隔这个延时时间,就去调用这个回调函数,会调用很多次,重复调用这个函数
     </script>
+    <script type="text/javascript">
+        let websocket = new WebSocket("ws://localhost:8181");
+        websocket.onopen = function() {
+            //onopen属性用来指定连接成功之后的回调函数
+            console.log("客户端：打开连接");
+            //我们在连接成功之后打印一个连接成功，并且调用send方法。
+            //用来发送数据，不仅仅是普通字符串文本，也可以是其他类型的数据
+            //这里如果要是指定多个回调函数，需要使用addEventListener方法。
+            websocket.send("客户端：hello，服务端");
+        };
+        websocket.onmessage = function(e) {
+            console.log("客户端：接收到服务端的消息 " + e.data);
+            setTimeout(() => {
+                websocket.close();
+            }, 5000);
+        };
+        websocket.onclose = function(params) {
+            //onclose和onopen一样的使用，用来指定关闭连接的回调
+            console.log("客户端：关闭连接");
+        };
+    </script>
+    <script>
+        var WebSocket = require('ws');
+        var wss = new WebSocket.Server({
+            port: 8181
+        });
+
+        wss.on('connection', function(ws) {
+            console.log('服务器: 收到连接');
+            ws.on('message', function(message) {
+                console.log('服务器: 收到消息', message);
+            });
+            ws.send('服务器: hi，客户端');
+        });
+    </script>
+    <script>
+        function async() {    
+            $.ajax({         
+                url: 'http://api.3g.qq.com',
+                success: function() {
+                    async(); //code from here }      
+                }
+            })
+        }
+    </script>
+    <script>
+        var source = new EventSource('http://localhost:8080');
+        source.addEventListener('message', function(e) { 
+            console.log(e.data);
+        }, false);
+        source.addEventListener('open', function(e) {  // Connection was opened.}, false);
+            source.addEventListener('error', function(e) { 
+                if (e.readyState == EventSource.CLOSED) {   // Connection was closed.  }}, false);
+                    source.addEventListener('userlogin', function(e) { 
+                        console.log(e.data);
+                    }, false)
+                }
+            })
+        })
+
+
+        document.getElementById("btn2").onclick = show;
+        document.getElementById("btn2").onclick = print;
+
+        document.getElementById("btn1") = function() {}
+
+        document.getElementById("btn1").onclick = function() {
+            alert(1234);
+        }
+        document.getElementById("btn1").onclick = function() {
+                alert(234);
+            } //重复的只能出现最近的一次
+
+        var img = new Image(); //创建一个image的实例
+        img.onload = img.onerror = function() {
+            //将onload和onerror指定为同一个函数
+            //这样无论是什么响应只要接收到就能得到通知
+            alert('加载完毕');
+        };
+        //请求从设置src开始,这个例子在请求中发送了一个name参数
+        img.src = 'http://www.example.com/test?name=YBZ'
+    </script>
 </body>
+
 
 </html>

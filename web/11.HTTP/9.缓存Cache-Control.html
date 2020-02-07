@@ -6,9 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>8.缓存Cache-Control</title>
+    <!-- 浏览器发送请求到缓存过程 -->
+    <!-- 1.浏览器 创建请求 发送至 本地缓存  /// 如果本地缓存命中 发还给浏览器 -->
+    <!-- 2.本地缓存未命中 发送给 代理缓存 ///如果代理缓存命中  发送给本地缓存 然后发给浏览器-->
+    <!-- 3.如果代理缓存未命中 发送给 源服务器  -->
+
+    <!-- 第一部分General是概要，包含请求地址，请求方式，状态码，服务器地址以及Referrer 策略。 -->
+    <!-- 第二部分是应答头部，是服务器返回的。 -->
+    <!-- 第三部分是请求头部，是客户端发送的。 -->
+
+    <!-- 缓存控制：控制缓存的开关，用于标识请求或访问中是否开启了缓存，使用了哪种""缓存方式""。 -->
+    <!-- 缓存校验：如何校验缓存，比如怎么定义缓存的有效期，怎么确保缓存是""最新的""。 -->
+
+    <!-- 在http中，控制缓存开关的字段有两个：Pragma 和 Cache-Control。 -->
+
+    <!-- 1.符合缓存策略时，服务器不会发送新的资源，但不是说客户端和服务器就没有会话了，客户端还是会发请求到服务器的。 -->
+    <!-- Cache-Control除了在响应中使用，在请求中也可以使用。
+        我们用开发者工具来模拟下请求时带上Cache-Control：勾选Disable cache，刷新页面，
+        可以看到Request Headers中有个字段Cache-Control: no-cache。
+        同时在Response Headers中也能到Cache-Control字段，它的值是must-revalidate，这是服务端设置的。 -->
+
+    <!-- 可缓存性 -->
+    <!-- 1.public表明响应可以被http经过的""任何""对象
+     （包括：发送请求的客户端，代理服务器，等等）缓存，即使是通常不可缓存的内容（例如，该响应没有max-age指令或Expires消息头）。 -->
+    <!-- 2.private 表明响应只能被单个用户缓存(发起请求的浏览器），不能作为共享缓存（即代理服务器不能缓存它）。私有缓存可以缓存响应内容。 -->
+    <!-- no-cache 在发布缓存副本之前，本地可以缓存，强制要求缓存把请求提交给""原始服务器进行验证""。-->
+    <!-- no-store 缓存不应存储有关客户端请求或服务器响应的任何内容。 -->
+
+    <!-- 到期 -->
+    <!-- 1.max-age=<seconds>设置缓存存储的最大周期，超过这个时间缓存被认为过期(单位秒)。 -->
+    <!-- 2.s-maxage=<seconds>覆盖max-age或者Expires头，但是仅适用于共享缓存(比如各个代理)，私有缓存会忽略它。 -->
+    <!-- 3.max-stale[=<seconds>]表明客户端愿意接收一个已经过期的资源。可以设置一个可选的秒数，表示响应不能已经过时超过该给定的时间。 -->
+    <!-- 4.min-fresh=<seconds> 表示客户端希望获取一个能在指定的秒数内保持其最新状态的响应。 -->
+
+    <!-- 重新验证和重新加载 -->
+    <!-- 1.must-revalidate 一旦资源过期（比如已经超过max-age），在成功向""原始服务器""验证之前，缓存不能用该资源响应后续请求。 -->
+    <!-- 2.proxy-revalidate 与must-revalidate作用相同，但它仅适用于共享缓存（例如代理），并被私有缓存忽略。 -->
+
+    <!-- 发送如下指令可以关闭缓存。
+        Cache-Control: no-cache, no-store, must-revalidate -->
+
 </head>
 
 <body>
+    <script>
+        function fn() {
+            //arguments是函数内部的一个局部变量，
+            //arguments.length表示函数的实参的个数
+            console.log(arguments.length);
+            for (var i = 0; i < arguments.length; i++) {
+                console.log(arguments[i]);
+            }
+        }
+        fn(1, 3, 5) //3
+            // fn("a","b","c","d","e") //5
+    </script>
 
 </body>
 
