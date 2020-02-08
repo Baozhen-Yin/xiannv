@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!--  过滤器的定义语法
+        Vue.filter('过滤器的名称', function(){})
+         过滤器中的 function ，第一个参数，已经被规定死了，永远都是 过滤器 管道符| 前面 传递过来的数据
+        /* Vue.filter('过滤器的名称', function (data) {
+          return data + '123'
+         */
+        document.getElementById('search').focus() -->
+    <div id="app">
+        <p>{{ msg | msgFormat('疯狂', '尹宝祯') | test }}</p>
+    </div>
+
+    <script>
+        // 定义一个 Vue 全局的过滤器，名字叫做  msgFormat 可以传递多个参数 也可以多次调用
+        Vue.filter('msgFormat', function(msg, arg, arg2) {
+            // 字符串的  replace 方法，第一个参数，除了可写一个 字符串之外，还可以定义一个正则
+            return msg.replace(/单纯/g, arg + arg2)
+        })
+
+        Vue.filter('test', function(msg) {
+            return msg + '====这是结尾'
+        })
+
+
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '曾经，我也是一个单纯的少年，单纯的我，傻傻的问，谁是世界上最单纯的男人'
+            },
+            methods: {}
+        });
+
+
+        // 如何自定义一个私有的过滤器（局部）
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {
+                dt: new Date()
+            },
+            methods: {},
+            // 定义私有过滤器
+            filters: { //过滤器有两个 条件  【过滤器名称 和 处理函数】
+                // 过滤器调用的时候，采用的是就近原则，如果私有过滤器和全局过滤器名称一致了，这时候 优先调用私有过滤器
+                dateFormat: function(dateStr, pattern = '') {
+                    // 根据给定的时间字符串，得到特定的时间
+                    var dt = new Date(dateStr)
+
+                    //   yyyy-mm-dd
+                    var y = dt.getFullYear()
+                    var m = (dt.getMonth() + 1).toString().padStart(2, '0')
+                    var d = dt.getDate().toString().padStart(2, '0')
+
+                    if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+                        return `${y}-${m}-${d}`
+                    } else {
+                        var hh = dt.getHours().toString().padStart(2, '0')
+                        var mm = dt.getMinutes().toString().padStart(2, '0')
+                        var ss = dt.getSeconds().toString().padStart(2, '0')
+
+                        return `${y}-${m}-${d} ${hh}:${mm}:${ss} ~~~~~~~`
+                    }
+                }
+            },
+            directives: { // 自定义私有指令
+                'fontweight': { // 设置字体粗细的
+                    bind: function(el, binding) {
+                        el.style.fontWeight = binding.value
+                    }
+                },
+                'fontsize': function(el, binding) { // 注意：这个 function 等同于 把 代码写到了 bind 和 update 中去
+                    el.style.fontSize = parseInt(binding.value) + 'px'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

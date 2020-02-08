@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6.手写jsonp</title>
+    <!-- 由于浏览器的安全性限制 不许ajax访问 域名不同 端口号不同 协议不同的数据接口 -->
+    <!-- 1.可以使用标签script标签的形式 把script标签的src属性，指向数据接口的地址 因为script标签不存在跨域限制 -->
+    <!-- 原理：srcipt标签来请求脚本，把src脚本情求过来   (只支持get请求) -->
+    <!--1.先在客户端定义一个回调方法，预定义对数据的操作；
+        2.再把这个回调方法的名称，通过URL传参的形式，提交到服务器的数据接口；
+        3. 服务器数据接口组织好要发送给客户端的数据，再拿着客户端传递过来的回调方法名称，
+           拼接出一个调用这个方法的字符串，发送给客户端去解析执行；
+        4.客户端拿到服务器返回的字符串之后，当作Script脚本去解析执行，这样就能够拿到JSONP的数据了； -->
+</head>
+
+<body>
+    <script>
+        function showInfo(data) {
+            console.log(data);
+
+        }
+    </script>
+    <!-- -1.先在客户端定义一个回调方法，预定义对数据的操作； -->
+    <script src="http://localhost:3000/getscript?callback=showInfo"></script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+    <title>3.自定义指令</title>
+</head>
+
+<body>
+    <div id="app">搜索名称关键字：
+        <!-- 注意： Vue中所有的指令，在调用的时候，都以 v- 开头 -->
+        <input type="text" v-focus v-color="'blue'"></div>
+
+    <!-- 一个指令定义对象可以提供如下几个钩子函数 (均为可选)：
+     1.bind：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。
+     2.inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。
+     3.update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，
+       也可能没有。但是你可以通过比较更新前后的值来忽略不必要的模板更新 -->
+
+    <script>
+        //除了核心功能默认内置的指令 (v-model 和 v-show)，Vue 也允许注册自定义指令
+        // 注册一个全局自定义指令 `v-focus`
+        Vue.directive('focus', {
+                bind: function(el) {
+                    // 每当指令绑定到元素上的时候，会'立即"执行这个 bind 函数，只执行一次
+                    //注意：在每个函数中，第一个参数，永远是el，表示'被绑定'了指令的那个元素，这个el参数，是一个原生的JS对象,DOM对象
+                    // 在元素 刚绑定了指令的时候，还没有 插入到 DOM中去，这时候，调用 focus 方法没有作用
+                    //  因为，一个元素，只有插入DOM之后，才能获取焦点
+                    // el.focus()
+                },
+                inserted: function(el) {
+                    // inserted 表示元素 插入到DOM中的时候，会执行 inserted 函数【触发1次】
+                    el.focus()
+                        // 和JS行为有关的操作，最好在 inserted 中去执行，否则 JS行为不生效
+                },
+                updated: function(el) {
+                    // 当VNode更新的时候，会执行 updated， 可能会触发多次
+                }
+            })
+            // 自定义一个 设置字体颜色的 指令函数
+        Vue.directive('color', {
+            // 样式，只要通过指令绑定给了元素，不管这个元素有没有被插入到页面中去，这个元素肯定有了一个内联的样式
+            // 将来元素肯定会显示到页面中，这时候，浏览器的渲染引擎必然会解析样式，应用给这个元素
+            bind: function(el, binding) {
+                // el.style.color = 'red'
+                // console.log(binding.name)
+                // 和""样式""相关的操作，一般都可以在 bind 执行
+
+                // console.log(binding.value)
+                // console.log(binding.expression)
+                //binding：一个对象，包含以下属性：
+                //1.name：指令名，不包括 v- 前缀。
+                //2.value：指令的绑定值，例如：v-my-directive="1 + 1" 中，绑定值为 2。
+                //3.oldValue：指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。
+                //4.expression：字符串形式的指令表达式。例如 v-my-directive="1 + 1" 中，表达式为 "1 + 1"。
+                //5.arg：传给指令的参数，可选。例如 v-my-directive:foo 中，参数为 "foo"。
+                //6.modifiers：一个包含修饰符的对象。例如：v-my-directive.foo.bar 中，修饰符对象为 { foo: true, bar: true }。
+
+                el.style.color = binding.value
+            }
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            // 如果想注册局部指令，组件中也接受一个 directives 的选项：
+            directives: {
+                focus: {
+                    // 指令的定义
+                    inserted: function(el) {
+                        el.focus()
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
