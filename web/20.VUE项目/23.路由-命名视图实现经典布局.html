@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>23.路由-命名视图实现经典布局</title>
+    <script src="vue.js"></script>
+    <script src="vue-router_3.0.2.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background-color: orange;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+        
+        .container {
+            /* display: flex; */
+            height: 600px;
+        }
+        
+        .left {
+            background-color: lightgreen;
+            /* flex: 2; */
+            float: left;
+            width: 100px;
+            height: 400px;
+        }
+        
+        .main {
+            background-color: lightpink;
+            /* flex: 8; */
+            height: 400px;
+            overflow: hidden
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 命名视图就是 页面上的router-view可以取个名字name 防止对应名称的组件-->
+        <router-view name="defaultybzybzybz"></router-view>
+        <div class="container">
+            <router-view name="leftxykxykxyk"></router-view>
+            <router-view name="main111"></router-view>
+        </div>
+
+    </div>
+
+    <script>
+        var header = {
+            template: '<h1 class="header">Header头部区域</h1>'
+        }
+
+        var leftBox = {
+            template: '<h1 class="left">Left侧边栏区域</h1>'
+        }
+
+        var mainBox = {
+            template: '<h1 class="main">mainBox主体区域</h1>'
+        }
+
+        // 创建路由对象
+        var router = new VueRouter({
+            routes: [
+                /* { path: '/', component: header },
+                { path: '/left', component: leftBox },
+                { path: '/main', component: mainBox } */
+
+
+                {
+                    path: '/',
+                    // 一个路径对应多个组件
+                    components: {
+                        //这就是命名视图 给router-view 一个name 根据name来寻找相关组件
+                        //通过name defaultybzybzybz 来寻找 header组件
+                        'defaultybzybzybz': header,
+                        'leftxykxykxyk': leftBox,
+                        'main111': mainBox
+                    }
+                }
+            ]
+        })
+
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            router
+        });
+    </script>
+</body>
+
+</html>

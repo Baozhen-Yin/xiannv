@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>19.路由-路由的基本使用</title>
+    <script src="vue.js"></script>
+    <!-- 1. 安装 vue-router 路由模块 -->
+    <script src="vue-router_3.0.2.js"></script>
+    <!--什么是路由？
+        后端路由：对于普通的网站，所有的超链接都是url地址，所有的url地址都对应服务器上对应的资源
+        前端路由：对于单页面应用程序来说，主要通过URL中的hash(#)来实现不同页面之间的切换，同时，hash有一个特点：HTTP请求中不会
+                 包含hash相关的内容；所以，单页面程序中的页面跳转主要用hash实现
+        在单页面应用程序中，这种通过hash改变来切换页面的方式，称作前端路由（区别于后端路由）-->
+    <style>
+        .router-link-active,
+        .myactive {
+            color: red;
+            font-weight: 800;
+            font-style: italic;
+            font-size: 80px;
+            text-decoration: underline;
+            background-color: green;
+        }
+        
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            transform: translateX(140px);
+        }
+        
+        .v-enter-active,
+        .v-leave-active {
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 首先点击登录 地址栏变了#/login  然后组件也变了 过程：
+             第一步，点击对应超链接 修改url地址 -->
+        <!-- 第二步：路由对象注册到vm身上 路由就会监听到url的改变 进行路由规则的匹配 检测有没有匹配到的path-->
+        <!-- 第三步：展示path所对应的组件 在router-view占位符里面-->
+
+        <!-- <a href="#/login">登录</a> -->
+        <!-- <a href="#/register">注册</a> -->
+
+        <!-- router-link 默认渲染为一个a 标签  tag="span"默认渲染为span标签-->
+        <router-link to="/login" tag="span">登录</router-link>
+        <router-link to="/register">注册</router-link>
+
+
+        <!-- 这是vue-router提供的元素，专门用来当作""占位符""的，将来，路由规则，匹配到的组件，就会展示到这个router-view中去 -->
+        <!-- 所以： 我们可以把 router-view 认为是一个占位符 -->
+        <!-- transition 动画  模式mode="out-in" 先out 再in-->
+        <transition mode="out-in">
+            <router-view></router-view>
+        </transition>
+
+    </div>
+
+    <script>
+        // 组件的模板对象
+        var login11111 = {
+            template: '<h1>登录组件</h1>'
+        }
+
+        var register = {
+            template: '<h1>注册组件</h1>'
+        }
+
+
+        /*  Vue.component('login', {
+           template: '<h1>这里的login名称仅限于在html作为标签引用 不能作为路由component的属性值</h1>'
+         }) */
+
+        // 2.创建一个路由对象，当导入 vue-router 包之后，在window全局对象中，就有了一个 ""路由的构造函数""，叫做 VueRouter
+        // 在 new 路由对象的时候，可以为 构造函数，传递一个配置对象
+        var routerObj = new VueRouter({
+            // route // 这个配置对象中的 route 表示 【路由匹配规则】 的意思
+            routes: [ // route === 路由匹配规则 
+                // 每个路由规则，都是一个对象，这个规则对象，身上，有两个必须的属性：
+                //  属性1 是 path， 表示监听 哪个路由链接地址；
+                //  属性2 是 component， 表示，如果 路由是前面匹配到的 path ，则展示 component 属性对应的那个组件
+                // 注意： component 的属性值，必须是一个"组件的模板对象"， 不能是 组件的引用名称；
+                // { path: '/', component: login },
+                {
+                    path: '/',
+                    // 这里的 redirect(重定向) 和 Node 中的 redirect(302) 完全是两码事
+                    redirect: '/login'
+                }, {
+                    path: '/login',
+                    component: login11111
+                }, {
+                    path: '/register',
+                    component: register
+                }
+            ],
+            //设置链接激活时使用CSS类名。默认值可以通过路由的构造选项linkActiveClass来全局配置
+            linkActiveClass: 'myactive'
+        })
+
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            // 将路由规则对象，注册到 vm 实例上，用来监听 URL 地址的变化，然后展示对应的组件
+            router: routerObj
+        });
+    </script>
+</body>
+
+</html>

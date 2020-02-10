@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <!-- 1. 导入包 -->
+    <!-- 需求 当路径改变输出响应语句 -->
+    <script src="vue-router_3.0.2.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/login">登录</router-link>
+        <router-link to="/register">注册</router-link>
+
+        <!-- 容器 -->
+        <router-view></router-view>
+
+    </div>
+
+    <script>
+        // 2. 创建子组件
+        var login = {
+            template: '<h3>这是登录子组件，这个组件是 尹宝祯 开发的。</h3>'
+        }
+
+        var register = {
+            template: '<h3>这是注册子组件，这个组件是 邢昱恺 开发的。</h3>'
+        }
+
+        // 3. 创建一个路由对象
+        var router = new VueRouter({
+            routes: [ // 路由规则数组
+                {
+                    path: '/',
+                    redirect: '/login'
+                }, {
+                    path: '/login',
+                    component: login
+                }, {
+                    path: '/register',
+                    component: register
+                }
+            ],
+            linkActiveClass: 'myactive' // 和激活相关的类
+        })
+
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            // router: router
+            router,
+            watch: {
+                //  this.$route.path  路径
+                '$route.path': function(newVal, oldVal) {
+                    // console.log(newVal + ' --- ' + oldVal)
+                    if (newVal === '/login') {
+                        console.log('欢迎进入登录页面')
+                    } else if (newVal === '/register') {
+                        console.log('欢迎进入注册页面')
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

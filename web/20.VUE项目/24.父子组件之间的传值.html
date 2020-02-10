@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父子组件之间的传值</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{msgFormSon}} ===子组件引用父组件的值要用v-bond+props属性 子组件传给父组件值要用 v-on绑定函数通过this.$emit(func)进行
+        <com1 v-bind:parentmsg="msg" @func111="getMsgFormSon"></com1>
+
+    </div>
+
+
+    <template id="tmpl">
+    <div>
+      <h1>这是子元素 --- {{ parentmsg }}</h1>
+      <input type="button" value="向父组件传递消息" @click="sendMsg">
+    </div>
+  </template>
+
+    <script>
+        var com1 = {
+            template: '#tmpl',
+            data() {
+                return {
+                    msg: '我是一个孝顺的孩子，给爸爸一些钱去挥霍吧！'
+                }
+            },
+            //由子组件属性props定义一下 绑定父组件msg的属性 parentmsg
+            props: ['parentmsg'],
+            methods: {
+                sendMsg() {
+                    this.$emit('func111', this.msg)
+                }
+            }
+        }
+
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '这是父组件中的数据，你爸爸我有100块钱，my son, 你要不',
+                msgFormSon: ''
+            },
+            methods: {
+                //data 是this.$emit传递过来的参数
+                getMsgFormSon(data) {
+                    this.msgFormSon = data
+                    console.log(this.msgFormSon)
+                }
+            },
+            components: {
+                com1
+            }
+        });
+    </script>
+</body>
+
+</html>

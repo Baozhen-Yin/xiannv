@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13.组件切换-方式1（使用v-if和v-else结合flag进行切换）</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <a href="" @click.prevent="flag=true">登录</a>
+        <a href="" @click.prevent="flag=false">注册</a>
+        <!-- v-else必须要和v-if匹配使用，v-else不能单独使用。
+            只有v-if的值为false时，v-else模块才会显示出来。 -->
+        <login v-if="flag"></login>
+        <register v-else="flag"></register>
+
+    </div>
+
+    <script>
+        Vue.component('login', {
+            template: '<h3>登录组件</h3>'
+        })
+
+        Vue.component('register', {
+            template: '<h3>注册组件</h3>'
+        })
+
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag: true
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>
