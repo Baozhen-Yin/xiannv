@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+    <title>30.watch、computed、methods对比</title>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        methods: {
+            //是一个function 更侧重业务逻辑处理 适合写大量业务逻辑
+            //methods方法表示一个具体的操作，主要书写业务逻辑
+            getFullname() {
+                this.fullname = this.firstname + '-' + this.lastname
+            }
+        },
+        watch: {
+            // watch不用return
+            // watch是一个对象，键是需要观察的表达式，值是对应回调函数。主要用来监听某些特定数据的变化，
+            // 从而进行某些具体业务的逻辑操作 可以看作是methods和computed的结合体
+            '$route.path': function(newVal, oldVal) {
+                // console.log(newVal + ' --- ' + oldVal)
+                if (newVal === '/login') {
+                    console.log('欢迎进入登录页面')
+                } else if (newVal === '/register') {
+                    console.log('欢迎进入注册页面')
+                }
+            }
+        },
+        computed: {
+            //在计算属性内部无论如何都要ruturn出去一个值
+            //适合做简单操作 不涉及业务逻辑 操作完return出去即可
+            //computed属性结果会被""缓存""" 除非依赖的响应式属性变化才会重新计算，主要当作属性来使用
+            'fullname': function() {
+                console.log('ok')
+                return this.firstname + '-' + this.middlename + '-' + this.lastname + "-" + this.ybzybzybz
+            }
+        },
+    })
+</script>
+
+</html>

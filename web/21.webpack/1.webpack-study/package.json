@@ -1,0 +1,31 @@
+{
+    "name": "1.webpack-study",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev2": "webpack-dev-server --open  --port 3000 --contentBase src  --hot",
+        "dev": "webpack-dev-server "
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "jquery": "^3.4.1"
+    },
+    "devDependencies": {
+        "css-loader": "^3.4.2",
+        "html-webpack-plugin": "^3.2.0",
+        "less": "^3.11.1",
+        "less-loader": "^5.0.0",
+        "sass": "^1.25.0",
+        "sass-loader": "^8.0.2",
+        "scss": "^0.2.4",
+        "scss-loader": "0.0.1",
+        "style-loader": "^1.1.3",
+        "webpack": "^4.41.6",
+        "webpack-cli": "^3.3.11",
+        "webpack-dev-server": "^3.10.3"
+    }
+}

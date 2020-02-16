@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>28.watch-监视路由地址的改变</title>
     <script src="vue.js"></script>
     <!-- 1. 导入包 -->
     <!-- 需求 当路径改变输出响应语句 -->
+    <!-- watch优势是keyup替代不了的 -->
+    <!-- 1.keyup监听文本框数据 -->
+    <!-- 2.watch可以监听看不见摸不着的虚拟数据 比如非DOM事件 路由地址 -->
     <script src="vue-router_3.0.2.js"></script>
 </head>
 
@@ -25,7 +28,7 @@
     <script>
         // 2. 创建子组件
         var login = {
-            template: '<h3>这是登录子组件，这个组件是 尹宝祯 开发的。</h3>'
+            template: '<h3>这是登录子组件，这个组件是 尹宝祯 开发的。{{msg}}</h3>'
         }
 
         var register = {

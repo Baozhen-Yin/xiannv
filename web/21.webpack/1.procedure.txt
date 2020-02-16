@@ -1,0 +1,109 @@
+1.PS C:\Users\Kiwi\Desktop\YBZ\xiannv\web\21.webpack\2.review-webpack1> npm init -y 创建package.json
+
+2.创建src 放index.html 是项目首页 dist放打包好的代码
+
+3.在src下面创建main.js 是项目的入口文件
+
+4.npm i jquery - s 下载jquery文件
+
+5.不推荐在index.html这里引用任何包和css文件
+
+6.先在index.html 导入main.js  (挖坑) 报错Uncaught SyntaxError: Cannot use import statement outside a module
+  由于ES6代码太高级了 解析不了 所以报错
+
+7.webpack4.0以上版本必须搭配 webpack-cli使用 要把cli安装一下  npm install webpack-cli -g
+
+8. webpack .\src\main.js -o  .\dist\bundle.js  格式 webpack 要打包文件的路径 打包好输出文件的路径
+  因为main.js涉及到了ES6新语法 浏览器不识别 通过webpack前端构建工具 做了处理生成了bundle.js 的文件 webpack做了什么事情 刚刚？
+  8.1 webpack 能够处理 JS的互相依赖关系
+  8.2 webpack 能够处理JS兼容问题 把高级的 浏览器不识别的语法 转换为低级的浏览器能够正常识别的语法
+
+9.如果想要数据实时更新 不要一直打包 很麻烦 需要 配置文件 webpack.config.js 设置出口入口 
+    这个配置文件其实就是js文件 通过node中的模块操作 向外暴露了一个配置对象 配置好了直接在中端webpack即可
+    当我们在控制台直接输入webpack命令执行的时候 webpack做了以下几步
+    9.1  首先 webpack发现我们并没有通过命令的方式给他指定入口和出口
+    9.2  webpack就回去项目的根目录中查找一个叫做 webpack.config.js 这个配置文件
+    9.3  当找到配置文件后解析执行这个配置文件 解析执行完毕得到配置对象
+    9.4  当webpack拿到配置对象就拿到了指定的入口和出口 然后进行打包构建
+
+10.使用webpack-dev-server 这个工具 来实现自动打包编译的功能 
+    10.1 npm install webpack-dev-server -D  
+    10.2 安装完毕后和webpack命令用法完全一样 本地安装-D 
+    10.3 因为是本地安装 所以无法直接当作脚本命令 在powershell直接运行 （只有安装到全局 -g的工具 才能在终端直接运行）
+    10.4 所有我们要去 package.json 找到scripts这个属性 配置一些我们要运行的命令  "dev":"webpack-dev-server" 
+    10.5 注意 webpack-dev-server这个工具如果想要运行 要求在"本地"项目中 必须安装webpack 也需要 webpack-cli
+
+11. 1.i ｢wds｣: Project is running at http://localhost:8080/ 项目运行在8080端口
+    2.i ｢wds｣: webpack output is served from /  （webpack输出文件正在托管于根路径/） http://localhost:8080/bundle.js通过访问
+    3.在这个时候修改main.js里面的内容 页面样式是不会改变的 因为页面要引入根路径里面的bundle (/bundle.js) 而不是(./dist/bundle.js)
+     可以理解为 在根路径出现了一个bundle.js 和dist src平级
+    4.webpack-dev-server帮我们打包生成的bundle.js文件并没有存放到实际的物理磁盘上 而是直接托管到了电脑内存中 所以项目根目录中
+     找不到这个打包好的bundle.js
+    5.因为放到电脑内存比在物理磁盘快
+
+12.能不能自动打包好后打开浏览器？ 去package.json（第一种这是配置dev-server命令参数的第二种形式推荐的使用方式）
+    12.1 "dev": "webpack-dev-server --open" 自动打开浏览器
+    12.2 "dev": "webpack-dev-server --open  --port 3000" 端口号设置为3000
+    12.3 "dev": "webpack-dev-server --open  --port 3000 --contentBase src" 设置为主页
+    12.4 "dev": "webpack-dev-server --open  --port 3000 --contentBase src  --hot" 热重载热更新
+    12.5 热更新：使得应用在运行状态下，不重载刷新就能更新、增加、移除模块的机制，在应用程序的开发环境，
+               方便开发人员在不刷新页面的情况下，就能修改代码，并且直观地在页面上看到变化的机制。提升开发效率。
+
+13.能不能自动打包好后打开浏览器？ 去webpack.config.js 添加属性devServer（这是配置dev-server命令参数的第二种形式）
+
+14. 1.把页面也放到电脑内存中 插件：html-webpack-plugin 
+    2.去 webpack.config.js 导入这个包 
+    3.配置template：(需要放进电脑内存的文件)和filename(放入电脑内存的文件的名称设定)这两个属性
+    4.当使用了这个插件 我们不再需要手动设置bundle.js的使用路径 因为这个插件已经帮我们自动创建了一个 合适的script标签并且引用了正确路径
+    5.这个插件两个作用：1.自动在内存中根据指定页面生成一个内存的页面
+                      2.自动把打包好的bundle.js追加到页面中去
+
+15.因为在页面引用css将会发送二次请求 所以不建议直接在index.html页面中使用路径
+    1.去main.js 引用文件 import './css/index.css' 但是webpack处理不了这种后缀为css的文件 webpack默认只能打包处理js类型文件
+    2.如果要处理非js类型的文件 需要手动安装一些 合适的第三方 loader 加载器
+    3.npm install style-loader css-loader -D
+    4.打开webpack.config.js 这个配置文件 在里面新增一个配置节点 叫做module 它是一个对象 有一个rules属性这个数组存放了所有
+    第三方文件的匹配和处理规则
+    5.注意 webpack处理第三方文件类型的过程
+       5.1 发现这个要处理的文件不是js 就去配置文件中看下有没有对应的第三方loader规则
+       5.2 如果能找到对应的规则 就会调用对应的loader处理这种文件类型
+       5.3 在调用loader的时候 就是从后往前调用的 css-loader处理结果再给 style-loader继续处理
+       5.4 当最后的一个loader调用完毕会把处理的结果直接交给webpack进行打包合并 最终输出到bundle.js
+
+16.url-loader的使用（图片）
+    1. 默认情况webpack无法处理css文件的url 不管是文件还是字体库
+    2.需要下载插件 url-loader file-loader  / npm install file-loader -D 去新建匹配规则
+    3.file-loader 是内部依赖 不需要去定义 
+    4.图片地址在页面中被解析为background: url(data:image/jpeg;base64编码, 的字符串 不是我们给的源路径 防止二次请求
+    5.和post get请求一样 用？进行传参  limit给定的值是图片大小子节 如果引用的图片>=给的的limit值，则不会被转化为base64格式的字符串
+      如果小于给定的limit值则会被转为base64的字符串 name=[name].[ext]表示之前叫啥名现在就啥名
+      7&name=[hash:8]-[name].[ext] 为了防止不同文件夹下面同名文件 所以放一个8位hash值
+
+17.Babel
+    在webpack中只能处理一部分ES6语法，一些更高级的ES6语法或者ES7语法，webpack是处理不了的；这时候 
+    就需要借助第三方的loader来帮助webpack处理这些高级的语法，当第三方loader把高级语法转为 低级的语法之后 
+    会把结果交给webpack打包到bundle.js中,通过Babel可以帮我们转化将高级的语法转化低级的语法，
+    1.在webpack中可以运行如下两套命令，安装两套包去安装Babel相关的loader功能
+       1.1 第一套包 ：npm install babel-core babel-loader babel-plugin-transform-runtime -D 这套是转化工具
+       1.2.第二套包：npm install babel-preset-env babel-preset-stage-0 -D  这套是负责转化语法工具
+    2.打开webpack配置文件 在module节点下的rules数组中，再添加一个新的匹配规则：
+       2.1{test:/\.js$/,use:'babel-loader',exclude:/node_modules/}
+       2.2注意：在配置babel的loader规则的时候 必须把node_modules目录 通过exclude选项排除掉：原因有俩
+       2.2.1 如果不排除node_modules 则babel会把 node_modules中所有的第三方JS文件都打包编译，这样会非常消耗cpu，打包速度也会慢
+       2.2.2 哪怕 最终babel把所有node_modules转化完毕项目也无法正常运行
+    3.在项目的根目录中 新建一个 叫做 .babelrc 的babel配置文件 这个配置文件属于JSON格式 所以再写.babelrc必须符合JSON语法规范
+      不能使用注释，字符串必须双引号 ,写如下配置
+      3.1    {
+              "presets":['env','stage-0'],  //babel语法
+              "plugins":['transform-runtime']
+             }
+    4.了解我们现在安装的 babel-preset-env 是比较新的ES语法插件，之前我们安装的是babel-preset-es2015 现在除了更新的语法插件就是这个
+      它包含了所有和ES***相关的语法
+
+18.在普通页面中使用rander函数渲染组件
+        render: function(createElements) { // createElements 是一个方法,调用它，能够把指定的组件模板，渲染为 html 结构
+                return createElements(login)
+                    // 注意：这里 return 的结果，会 替换页面中 el 指定的那个 容器
+        }
+        用conponent插值表达式来渲染组件不会替换原来内容，用rander会，相当于v-text，返回的其实是一个虚拟的Dom节点Vnode
+
