@@ -1,0 +1,36 @@
+1.什么是脚手架？
+   1.1 用于快速生成Vue项目基础架构，官网地址为 http://cli.vuejs.org/zh/ 安装npm install -g @vue/cli  
+   1.2 就是一个命令行工具 用来快速生成Vue项目基础架构 从而简化程序员创建vue项目的过程
+
+2.脚手架基本使用
+   2.1 基于 交互式命令行 的方式 创建新版Vue项目 vue create my-project
+   2.2 基于 图形化页面 的方式 创建新版Vue项目 vue ui
+   2.3 基于2.x的旧模板 创建旧版vue项目 vue init webpack my-project
+   2.4 项目创建完毕后 1.cd my-project  2. npm run serve
+
+3.vue脚手架的自定义配置
+   1 通过package.json 配置项目  "vue": {"devserver": {    "port": "8888",    "open": true}}
+       1.1 port代表 端口被改成8888 open是项目自动打开页面 但是不推荐这种方式，因为package主要用来管理包的配置信息，为了方便维护
+       推荐脚手架相关配置，单独定义到vue.config.js中去
+   2.通过单独的文件配置项目
+    2.1 在项目根目录创建 vue.config.js
+    2.2 在该文件中进行相关配置，从而覆盖默认配置
+
+4.Element UI:一套为开发者、设计师和产品经理基于vue 2.0的桌面组件库 http://element-cn.eleme.io/#/zh-CN
+
+5.基于命令行方式手动安装
+   2.1.安装依赖包 npm i element-ui -S 
+   2.2.导入相关Element-UI资源 
+      2.2.1 import ElementUI from 'element-ui'
+      2.2.2 import 'element-ui/lib/theme-cjalk/index.css'
+      2.2.3 Vue.use(ElementUI)
+      2.2.4 ESLint: Expected indentation of 2 spaces but found 4. (indent)
+      2.2.5 解决方法 在vue.config.js中 添加     lintOnSave: false,  false不能加引号
+
+6.基于图形化界面自动安装
+   6.1 运行vue ui命令
+   6.2 通过Vue项目管理器，进入具体的项目配置面板
+   6.3 点击插件 ——> 添加插件 进入插件询问面板
+   6.4 搜索vue-cli-plugin-element 并且安装
+   6.5 配置插件，实现按需导入，从而减少打包后项目体积
+
