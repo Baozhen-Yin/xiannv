@@ -1,0 +1,101 @@
+1.前后端分离的开发模式
+  1.1 后端主要负责操作数据库以及向前端暴露api接口
+  1.2 前端主要负责绘制页面同时基于ajax来调用后端api接口
+  1.3 后端负责写接口 后端负责调接口
+
+2.token是用来登录状态保存的
+  2.1   "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE1ODIwOTc5ODMsImV4cCI6MTU4MjE4NDM4M30.vOi8EwBRaHemryfVxOF--POadoBCwX5deMvG6oQSzHU"
+  2.2   相当于session 用于服务器与客户端之间状态保持的
+
+3. 登录业务相关技术点
+  3.1 http是无状态的
+  3.2 通过cookie在客户端记录状态
+  3.3 通过session在服务器端记录状态
+  3.4 通过token方式维持状态
+    3.4.1 token原理分析
+    3.4.1.1  服务器专门提供登录api接口 客户端需要通过ajax访问这些服务器上的数据 客户端与服务器之间存在跨域问题，
+    3.4.1.2  客户端在登陆页面输入用户名和密码进行登录，服务器验证通过之后生成该用户的对应的token值并返回此token值给客户端，
+             token值是由服务器生成的，每个用户对应token值不一，
+    3.4.1.3  客户端存储该token 客户端后续的所有请求都携带该token发送请求，服务器会将客户端带来的token验证是哪名用户，去返回不同的结果
+    3.4.1.4  服务器端会验证这个token是否存在 存在即已经登录 会根据token返回不同数据
+    
+  3.5 现在这个项目运行在一个新的端口号 服务器可能与前端vue有一个跨域的问题，如果前端和后台接口不存在跨域问题，那么推荐cookie
+      和session，如果存在跨域问题，就需要使用token来维持状态
+
+
+4.elementUI中resetFields	对整个表单进行重置，将所有字段值重置为初始值并移除校验结果
+  elementUI中 validate	对整个表单进行校验的方法，参数为一个回调函数。该回调函数会在校验结束后被调用，
+ 并传入两个参数：是否校验成功和未通过校验的字段。若不传入回调函数，则会返回一个 promise
+
+  router	是否使用 vue-router 的模式，启用该模式会在激活导航时以 index 作为 path 进行路由跳转
+
+5.ref 在属性添加 获取实例对象 
+      如果在普通的DOM元素上使用，引用信息就是元素; 如果用在子组件上，引用信息就是""组件实例""
+        注意：只要想要在Vue中直接操作DOM元素，就必须用ref属性进行注册
+
+6.Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。
+    1.axios并没有install 方法，所以是不能使用vue.use()方法的。
+       1.结合 vue-axios使用
+       2.axios 改写为 Vue 的原型属性。Vue.prototype.$http=Axios
+       3.结合 Vuex的action
+    2.特点：1.从浏览器中创建 XMLHttpRequests 2.从 node.js 创建 http 请求
+       3.支持 Promise API  4.拦截请求和响应
+       5.转换请求数据和响应数据 6.取消请求
+       7.自动转换 JSON 数据  8.客户端支持防御 XSRF
+    3.发起登录请求  this.$http.post('login',this.loginForm) this.loginForm作为参数传到后台
+    4.需要启动app.js
+    5.如果一个方法返回的是promise 可以用asnyc 和 await简化
+
+7.跨域
+  {emulateJSON: true}
+
+8.express 的app.use()和app.all()的区别
+     1.use通常是用作中间件的
+        use由于是做中间件，use('/a') 只用路径以 /a 开始即可匹配，如 /a/b 、 /a/b/c 都会应有后面的处理函数。
+         use见到最多的情况应该是直接 use((...)=>{...}),标识匹配路径是 / 开头，即所有的。
+     2.all是路由中指代所有的请求方式，如all('/a'),能同时覆盖：get('/a') 、 post('/a')、 put('/a') 等
+         all则是具体的路由，直接使用字符串的方式，则匹配的是 /a这 个路径。 仅能匹配 /a, 以下请求路径都是‘无效’的：/a/b、/a/b/c ...
+
+9.
+      2.1.将登录成功之后的token 保存到客户端的sessionStorage中
+              1.1 项目中除了登录以外的其他api接口必须在登录之后才可以使用
+              1.2 token 只应当在当前网页打开时生效，所以保存到sessionStorage中
+      2.2.通过编程式导航($router)跳转到后台主页，路由地址是 /home ,$router.push
+      push方法的跳转会向 history 栈添加一个新的记录，当我们点击浏览器的返回按钮时可以看到之前的页面。
+
+      2.3 home组件只有在登录才会被看见 没有登陆不能访问 属于有权限的页面
+        2.3.1 需要路由导航守卫控制访问权限（为路由对象添加beforeEach）：如果用户没有登录，但是直接通过URL访问特定页面，需要重新导航到登录页面
+         router.beforeEach((to, from, next) => 
+         {to代表将要访问的路径，from代表从哪个路径跳转而来 next是一个函数，表示放行 next()放行 next('/login')强制跳转})
+
+      2.4 退出功能实现原理
+         token退出方式比较简单，只需要销毁本地token即可。这样后续请求就不会携带token，必须重新登录一个新的token才能访问页面
+         清空token  window.sessionStorage.clear()
+         跳转登录页  this.$router.push('/login')
+
+10.vue-axios interceptors(拦截器)，axios使用拦截器统一处理所有的http请求的方法,在请求或响应被 then 或 catch 处理前拦截它们。e 
+   1.每个请求都需要携带 to啊 ken ，所以我们可以使用 axios request 拦截器，在这里，我们给每个请求都加 token,
+   这样就可以节省每个请求再一次次的复制粘贴代码。
+   2.token 失效问题，当我们token 失效，我们服务端会返回一个特定的错误表示，比如 token invalid，
+   但是我们不能在每个请求之后去做刷新 token 的操作呀，所以这里我们就用 'axios response 拦截器'，
+   我们统一处理所有请求成功之后响应过来的数据，然后对特殊数据进行处理，其他的正常分发。
+   3.添加请求拦截器axios.interceptors.request.use(function (config) {// 在发送请求之前做些什么 return config;}, function (error) {
+    // 对请求错误做些什么return Promise.reject(error);});
+
+11.:index="item.id+''" 动态绑定只接收字符串 数字转为的字符的方法可以再后面拼接空字符串
+
+12.vue template 中 slot-scope/scope 的使用
+   template 的使用情形为，我们已经封装好一个组件，预留了插槽，使用 的插槽
+   我们主要说一下这个scope是个什么东西，按照element上的提示：
+   table按照tableData这个数组的长度来生成多少行，按照有多少个el-table-column来生成多少列。 scope就相当于是tableData的一行，与el-table-column唯一对应
+   通过 Scoped slot 可以获取到 row, column, $index 和 store（table 内部的状态管理）的数据
+   我们传进去的tableData，在table内部生成了类似于Excel的scope，因此，通过scope.row.date，我们就可以读取到每一行中的date。
+
+13.ES6解构赋值
+    1.ES5写法
+    var data = {userName: 'aaaa', password: 123456}
+    var userName = data.userName
+    var password = data.password
+    
+    2.ES6写法
+    const {userName, password} = {userName: 'aaaa', password: 123456}
