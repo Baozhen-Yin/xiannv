@@ -9,6 +9,7 @@ var session = require('express-session');
 // 创建web服务器
 const app = express();
 // 接收post请求参数
+
 // 实现session功能
 app.use(session({
     secret: 'keyboard cat',
@@ -41,10 +42,10 @@ app.get('/test', (req, res) => {
 //1.优化 better
 app.get('/better', (req, res) => {
     // 接收客户端传递过来的函数的名称
-    //const fnName = req.query.callback; 
+    // const fnName = req.query.callback; 
     // 将函数名称对应的函数调用代码返回给客户端
-    //const data = JSON.stringify({name: "张三"});
-    //const result = fnName + '('+ data +')';
+    // const data = JSON.stringify({name: "张三"});
+    // const result = fnName + '('+ data +')';
     // setTimeout(() => {
     // 	res.send(result);
     // }, 1000)

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>08.访问非同源数据的服务器端解决方案</title>
+    <!-- 第三种方法 -->
+    <!-- 同源政策是浏览器给予的Ajax技术的限制 ""服务器端是不存在同源政策限制""" -->
+    <!-- A浏览器端 请求 A服务器端 请求 B服务器端 -->
+    <!-- B服务器端 响应 A服务器端 响应 A浏览器端 -->
+    <!-- 这样就绕过了浏览器的同源政策限制 -->
+
+    <!-- 需要使用request第三方模块  向其他服务器端请求数据的模块 -->
+</head>
+
+<body>
+    <button id="btn">点我发送请求</button>
+    <script src="js/ajax.js"></script>
+    <script>
+        // 获取按钮
+        var btn = document.getElementById('btn');
+        // 为按钮添加点击事件
+        btn.onclick = function() {
+            ajax({
+                type: 'get',
+                //自己客户端向自己服务器端在发送请求
+                url: 'http://localhost:3000/server',
+                success: function(data) {
+                    console.log(data);
+                }
+            })
+        };
+    </script>
+</body>
+
+</html>

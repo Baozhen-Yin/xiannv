@@ -21,7 +21,7 @@
 
 <body>
     <button id="btn">点我发送请求</button>
-    <script src="/js/ajax.js"></script>
+    <script src="js/ajax.js"></script>
     <script>
         // 获取按钮
         var btn = document.getElementById('btn');
@@ -35,6 +35,17 @@
                 }
             })
         };
+
+//   app.get('/cross', (req, res) => {
+//     //1.允许哪些客户端访问我  *:允许所有
+//     res.header('Access-Control-Allow-Origin', '*')
+
+//     //2.允许客户端使用哪些请求方法访问我
+//     res.header('Access-Control-Allow-Methods', 'get,post')
+      // 3.发送
+//     res.send('ok')
+// });
+
     </script>
 </body>
 

@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path') //node 中专门处理路径的模块
 const webpack = require('webpack') //启用热更新第二步
 
 //只要是插件都需要放到plugins节点中去
