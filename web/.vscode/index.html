@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-bottom: 10px solid pink;
+        }
+        /* .item {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(25, 179, 218);
+            margin-top: 100px;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- <div class="item">test</div> -->
+    </div>
+
+</body>
+<script>
+    // let Parent = function(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    // };
+    // Parent.prototype.sayName = function() {
+    //     console.log(this.name);
+    // };
+    // //自己定义的new方法
+    // let newMethod = function(Parent, ...rest) {
+    //     var child = {}
+    //     child.__proto__ = Parent.prototype
+    //         // 2.将this和调用参数传给构造器执行
+    //     let result = Parent.apply(child, rest);
+    //     // 3.如果构造器没有手动返回对象，则返回第一步的对象
+    //     return typeof result === 'object' ? result : child;
+    // };
+    // //创建实例，将构造函数Parent与形参作为参数传入
+    // const child = newMethod(Parent, 'echo', 26);
+    // child.sayName() //'echo';
+    // console.log(child.age);
+
+
+    // //最后检验，与使用new的效果相同
+    // child instanceof Parent //true
+    // console.log(child.hasOwnProperty('name')); //true
+    // console.log(child.hasOwnProperty('age')); //true
+    // console.log(child.hasOwnProperty('sayName')); //false
+    // console.dir(Parent)
+    //实现bind方法
+    Function.prototype.bind = function(oThis) {
+        if (typeof this !== 'function') {
+            throw new TypeError('被绑定的对象需要是函数')
+        }
+        var fn = this
+        var args = arguments.slice(1)
+        fBound = function() { //this instanceof fBound === true时,说明返回的fBound被当做new的构造函数调用
+            return fn.apply(this instanceof fBound ? this : oThis, args.concat([].slice.call(arguments)))
+        }
+        var func = function() {}
+            //维护原型关系
+        if (this.prototype) {
+            func.prototype = this.prototype
+        }
+        //使fBound.prototype是func的实例，返回的fBound若作为new的构造函数，新对象的__proto__就是func的实例
+        fBound.prototype = new func()
+        return fBound
+    }
+</script>
+
+</html>

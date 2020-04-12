@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1、利用自身浮动 */
+        
+        .boxLeft {
+            height: 100px;
+            width: 200px;
+            background: #987;
+            float: left;
+        }
+        
+        .boxRight {
+            height: 100px;
+            width: 300px;
+            background: #369;
+            float: right;
+        }
+        
+        .boxCenter {
+            height: 100px;
+            margin-left: 220px;
+            margin-right: 320px;
+            background: #192;
+        }
+        /* 2、利用绝对定位 */
+        
+        .boxLeft2 {
+            height: 100px;
+            width: 200px;
+            background: #987;
+            position: absolute;
+            left: 0;
+        }
+        
+        .boxRight2 {
+            height: 100px;
+            width: 300px;
+            background: #369;
+            position: absolute;
+            right: 0;
+        }
+        
+        .boxCenter2 {
+            height: 100px;
+            margin-left: 220px;
+            margin-right: 320px;
+            background: #192;
+        }
+        /* 3、利用弹性布局 */
+        
+        .box3 {
+            display: flex;
+        }
+        
+        .boxLeft3 {
+            height: 100px;
+            width: 200px;
+            background: #987;
+        }
+        
+        .boxRight3 {
+            height: 100px;
+            width: 300px;
+            background: #369;
+        }
+        
+        .boxCenter3 {
+            height: 100px;
+            margin: 0 20px;
+            background: #192;
+            flex: 1;
+        }
+        /* 4、利用负margin */
+        
+        .boxCenter4 {
+            width: 100%;
+            min-height: 100px;
+            float: left;
+        }
+        
+        .center {
+            min-height: 100px;
+            margin-left: 220px;
+            margin-right: 320px;
+            background: #192;
+        }
+        
+        .boxLeft4 {
+            min-height: 100px;
+            width: 200px;
+            background: #987;
+            float: left;
+            margin-left: -100%;
+        }
+        
+        .boxRight4 {
+            min-height: 100px;
+            width: 300px;
+            background: #369;
+            float: left;
+            margin-left: -300px;
+        }
+        /* 5、利用display */
+        
+        .box5 {
+            display: table;
+            width: 100%;
+        }
+        
+        .boxLeft5 {
+            min-height: 100px;
+            width: 200px;
+            background: #987;
+            display: table-cell;
+        }
+        
+        .boxCenter5 {
+            min-height: 100px;
+            background: #192;
+            margin: 0 20px;
+        }
+        
+        .boxRight5 {
+            min-height: 100px;
+            width: 300px;
+            background: #369;
+            display: table-cell;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>1、利用自身浮动</h2>
+    <p>左右浮动两块div元素，脱离标准流，中间那块元素就会上去，跟他们一行，利用margin留出左右宽度</p>
+    <div class="box1">
+        <div class="boxLeft">左边</div>
+        <div class="boxRight">右边</div>
+        <!-- 注意这个div一定要放最下面 -->
+        <div class="boxCenter">中间</div>
+    </div>
+
+    <h2>2、利用绝对定位</h2>
+    <p>左右绝对定位的两块div元素,脱离标准流，中间那块元素就会上去，跟他们一行，利用margin留出左右宽度</p>
+    <div class="box2">
+        <div class="boxLeft2">左边</div>
+        <div class="boxRight2">右边</div>
+        <div class="boxCenter2">中间</div>
+    </div>
+
+    <h2>3、利用弹性布局</h2>
+    <p>设置flex:1;可以自适应剩余空间</p>
+    <div class="box3">
+        <div class="boxLeft3">左边</div>
+        <!-- 注意这个div一定要放中间 -->
+        <div class="boxCenter3">中间</div>
+        <div class="boxRight3">右边</div>
+    </div>
+
+    <h2>4、利用负margin</h2>
+    <p>中间部分浮动，设置宽度100%，充满整个屏幕宽，内部一个div放置内容，利用margin设置留出左右两块的宽度</p>
+    <div class="box4">
+        <!-- 注意这个div一定要放最上面 -->
+        <div class="boxCenter4">
+            <div class="center">中间</div>
+        </div>
+        <div class="boxLeft4">左边</div>
+        <div class="boxRight4">右边</div>
+    </div>
+
+    <h2>5、利用display:table;</h2>
+    <div class="box5">
+        <div class="boxLeft5">左边</div>
+        <!-- 注意这个div一定要放中间 -->
+        <div class="boxCenter5">中间</div>
+        <div class="boxRight5">右边</div>
+    </div>
+
+
+</body>
+
+</html>
